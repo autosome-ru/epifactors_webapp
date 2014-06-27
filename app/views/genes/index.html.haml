@@ -1,0 +1,52 @@
+%table.tablesorter#epigenes
+  %thead
+    %tr
+      %th HGNC_Symbol
+      %th.sorter-false HGNC_ID
+      %th HGNC_name
+      %th.sorter-false geneID
+      %th.sorter-false RefSeq_Hs
+      %th.sorter-false UniProt AC
+      %th UniProt ID
+      %th MGI_ID
+      %th.sorter-false RefSeq_Mm
+      %th EC_number
+      %th EC_descr
+      %th GeneTag
+      %th GeneDesc
+      %th.filter-select Functional class
+      %th.filter-select Function
+      %th.sorter-false PMID
+      %th Protein complex
+      %th.sorter-false PMID
+      %th Target
+      %th.filter-select Target molecule
+      %th Product
+      %th.sorter-false PMID
+      %th.sorter-false Details
+  %tbody
+    - @genes.each do |gene|
+      %tr
+        %td= gene.hgnc_symbol
+        %td= gene.hgnc_id
+        %td= gene.hgnc_name
+        %td= gene.gene_id
+        %td= gene.refseq_hs
+        %td= gene.uniprot_ac
+        %td= gene.uniprot_id
+        %td= gene.mgi_id
+        %td= (gene.refseq_mm || '').split('|').join(', ')
+        %td= gene.ec_number
+        %td= gene.ec_description
+        %td= gene.gene_tag
+        %td= gene.gene_desc
+        %td= gene.funct_class
+        %td= gene.funct
+        %td= gene.funct_pmid
+        %td= gene.protein_complex
+        %td= gene.protein_complex_pmid
+        %td= gene.target
+        %td= gene.target_molecule
+        %td= gene.product
+        %td= gene.product_pmid
+        %td= gene.details

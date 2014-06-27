@@ -1,0 +1,71 @@
+%table.epigene_info
+  %tbody
+    %tr
+      %td HGNC_Symbol
+      %td= @gene.hgnc_symbol
+    %tr
+      %td HGNC_ID
+      %td.hgnc_id= @gene.hgnc_id
+    %tr
+      %td HGNC_name
+      %td= @gene.hgnc_name
+    %tr
+      %td geneID
+      %td.gene_id= @gene.gene_id
+    %tr
+      %td RefSeq_Hs
+      %td.refseq= @gene.refseq_hs
+    %tr
+      %td UniProt AC
+      %td.uniprot_ac= @gene.uniprot_ac
+    %tr
+      %td UniProt ID
+      %td.uniprot= @gene.uniprot_id
+    %tr
+      %td MGI_ID
+      %td= @gene.mgi_id
+    %tr
+      %td RefSeq_Mm
+      %td.refseq= (@gene.refseq_mm || '').split('|').join(', ')
+    %tr
+      %td EC_number
+      %td= @gene.ec_number
+    %tr
+      %td EC_descr
+      %td= @gene.ec_description
+    %tr
+      %td GeneTag
+      %td= @gene.gene_tag
+    %tr
+      %td GeneDesc
+      %td= @gene.gene_desc
+    %tr
+      %td Functional class
+      %td= @gene.funct_class
+    %tr
+      %td Function
+      %td= @gene.funct
+    %tr
+      %td PMID
+      %td.pmid= @gene.funct_pmid
+    %tr
+      %td Protein complex
+      %td= @gene.protein_complex
+    %tr
+      %td PMID
+      %td.pmid= @gene.protein_complex_pmid
+    %tr
+      %td Target
+      %td= @gene.target
+    %tr
+      %td Target molecule
+      %td= @gene.target_molecule
+    %tr
+      %td Product
+      %td= @gene.product
+    %tr
+      %td PMID
+      %td.pmid= @gene.product_pmid
+    %tr
+      %td Details
+      %td= @gene.details
