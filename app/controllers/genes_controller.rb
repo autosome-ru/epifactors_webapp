@@ -1,0 +1,2 @@
+class GenesController < ApplicationController
+end

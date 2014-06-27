@@ -1,0 +1,2 @@
+class GeneComplexesController < ApplicationController
+end
