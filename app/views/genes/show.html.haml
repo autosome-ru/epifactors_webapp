@@ -1,6 +1,9 @@
 %table.epigene_info
   %tbody
     %tr
+      %td Gene complexes
+      %td= @gene.gene_complexes.map{|gene_complex| link_to gene_complex.complex_name, gene_complex_path(gene_complex) }.join(', ').html_safe
+    %tr
       %td HGNC_Symbol
       %td= @gene.hgnc_symbol
     %tr
@@ -69,3 +72,32 @@
     %tr
       %td Details
       %td= @gene.details
+
+%table.expression_statistics
+  %tr
+    %td Expression range:
+    %td
+      = @expression_statistics.min
+      to
+      = @expression_statistics.max
+
+  %tr
+    %td Mean expression:
+    %td
+      = @expression_statistics.mean
+      &pm;
+      = @expression_statistics.stddev
+  %tr
+    %td Median expression:
+    %td= @expression_statistics.median
+
+%table.gene_expression_by_tissue.tablesorter
+  %thead
+    %tr
+      %th Tissue
+      %th{'data-placeholder' => "Try `>=100` or `100 to 1000`"} Expression
+  %tbody
+  - @expressions.each do |tissue, expression|
+    %tr
+      %td= tissue
+      %td= expression

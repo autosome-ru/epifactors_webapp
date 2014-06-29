@@ -1,0 +1,35 @@
+%table.tablesorter#gene_complexes
+  %thead
+    %tr
+      %th Complex group
+      %th Complex group name
+      %th Complex name
+      %th Alternative names
+      %th Proteins involved (from Uniprot description)
+      %th UniprotIDs
+      %th.splitted_terms_filter.filter-onlyAvail Function
+      %th PMID (complex members)
+      %th Target
+      %th.splitted_terms_filter.filter-onlyAvail Target molecule
+      %th Product
+      %th PMID (function)
+      %th Details
+  %tbody
+    - @gene_complexes.each do |gene_complex|
+      %tr
+        %td
+          = gene_complex.complex_group
+          %br
+          = link_to '(complex info)', gene_complex_path(gene_complex)
+        %td= gene_complex.complex_group_name
+        %td= gene_complex.complex_name
+        %td= gene_complex.alternative_names
+        %td= gene_complex.proteins_involved
+        %td= gene_complex.uniprot_ids
+        %td= gene_complex.funct
+        %td.pmid= gene_complex.complex_members_pmid
+        %td= gene_complex.target
+        %td= gene_complex.target_molecule
+        %td= gene_complex.product
+        %td.pmid= gene_complex.function_pmid
+        %td= gene_complex.details

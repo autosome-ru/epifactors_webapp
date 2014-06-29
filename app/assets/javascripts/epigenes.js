@@ -1,4 +1,4 @@
-$(function() {
+page_ready = function() {
   convert_to_pmid = function() {
     var result = $('<div></div>')
     var pmids = $(this).text().split(', ');
@@ -6,7 +6,7 @@ $(function() {
       if (index) { result.append(', '); }
       result.append( $('<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>') );
     });
-    $(this).html( result.html() ); 
+    $(this).html( result.html() );
   }
 
   convert_to_uniprot = function() {
@@ -39,7 +39,7 @@ $(function() {
     });
     $(this).html( result.html() );
   }
-  
+
   $('table#epigenes tbody td:nth-child(4)').each(convert_to_gene_id);
   $('.gene_id').each(convert_to_gene_id);
 
@@ -52,20 +52,20 @@ $(function() {
 
   $('table#epigenes tbody td:nth-child(7)').each(convert_to_uniprot);
   $('.uniprot').each(convert_to_uniprot);
-  
+
   $('table#epigenes tbody td:nth-child(2)').each(convert_to_hgnc);
   $('.hgnc_id').each(convert_to_hgnc);
-  
+
   $('table#epigenes tbody td:nth-child(5)').each(convert_to_refseq);
   $('table#epigenes tbody td:nth-child(9)').each(convert_to_refseq);
   $('.refseq').each(convert_to_refseq);
-  
+
   $('table#epigenes tbody td:nth-child(6)').each(convert_to_uniprot_ac);
   $('.uniprot_ac').each(convert_to_uniprot_ac);
 
   // call the tablesorter plugin
 
-  $("table#epigenes, table#complexes").tablesorter({
+  $(".tablesorter").tablesorter({
     theme: 'blue',
     widthFixed : true,
     widgets: ["zebra", "filter"],
@@ -91,7 +91,7 @@ $(function() {
 
       // add custom filter elements to the filter row
       // see the filter formatter demos for more specifics
-      filter_formatter : null,
+      // filter_formatter : null,
 
       // add custom filter functions using this option
       // see the filter widget custom demo for more specifics on how to use this option
@@ -133,7 +133,49 @@ $(function() {
       filter_useParsedData : false,
 
       // data attribute in the header cell that contains the default filter value
-      filter_defaultAttrib : 'data-value'
+      filter_defaultAttrib : 'data-value',
+
+
+      filter_formatter : {
+        '.splitted_terms_filter' : function($cell, indx){
+          return $.tablesorter.filterFormatter.select2( $cell, indx, {
+            match : false,
+            multiple: true
+          });
+        }
+      },
+
+      filter_functions : {
+        '.splitted_terms_filter' : function(exact_text, normalized_text, search_for, column_index, $row) {
+          // `/pattern/` string --> /pattern/ regexp
+          var search_regexp = eval(search_for);
+          var tokens = exact_text.trim().split(', ');
+
+          for(var i = 0; i < tokens.length; ++i) {
+            if (search_regexp.test(tokens[i])) {
+              return true;
+            }
+          }
+          return false;
+        }
+      },
+
+      filter_selectSource : {
+        '.splitted_terms_filter' : function(table, column, onlyAvail){
+          // get an array of all table cell contents for a table column
+          var array = $.tablesorter.filter.getOptions(table, column, onlyAvail);
+          // manipulate the array as desired, then return it
+          var tokens = [];
+          $.each(array, function(i,el) {
+            tokens = tokens.concat( el.trim().split(', ') );
+          });
+          return $.unique(tokens).filter( function(el) { return el.length > 0; } );
+        }
+      }
     }
+
   });
-});
+};
+
+$(document).ready(page_ready)
+$(document).on('page:load', page_ready)

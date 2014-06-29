@@ -14,20 +14,23 @@
       %th EC_descr
       %th GeneTag
       %th GeneDesc
-      %th.filter-select Functional class
-      %th.filter-select Function
+      %th.splitted_terms_filter.filter-onlyAvail Functional class
+      %th.splitted_terms_filter.filter-onlyAvail Function
       %th.sorter-false PMID
       %th Protein complex
       %th.sorter-false PMID
       %th Target
-      %th.filter-select Target molecule
+      %th.splitted_terms_filter.filter-onlyAvail Target molecule
       %th Product
       %th.sorter-false PMID
       %th.sorter-false Details
   %tbody
     - @genes.each do |gene|
       %tr
-        %td= gene.hgnc_symbol
+        %td
+          = gene.hgnc_symbol
+          %br
+          = link_to '(gene info)', gene_path(gene)
         %td= gene.hgnc_id
         %td= gene.hgnc_name
         %td= gene.gene_id
