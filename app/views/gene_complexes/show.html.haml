@@ -1,44 +1,16 @@
-%table.gene_complex_info
+%table.gene_complex_info.key_value_info
   %tbody
-    %tr
-      %td Genes in complex
-      %td= @gene_complex.genes.map{|gene| link_to gene.hgnc_symbol, gene_path(gene) }.join(', ').html_safe
-    %tr
-      %td Complex group
-      %td= @gene_complex.complex_group
-    %tr
-      %td Complex group name
-      %td= @gene_complex.complex_group_name
-    %tr
-      %td Complex name
-      %td= @gene_complex.complex_name
-    %tr
-      %td Alternative names
-      %td= @gene_complex.alternative_names
-    %tr
-      %td Proteins involved (from Uniprot description)
-      %td= @gene_complex.proteins_involved
-    %tr
-      %td UniprotIDs
-      %td= @gene_complex.uniprot_ids
-    %tr
-      %td Function
-      %td= @gene_complex.funct
-    %tr
-      %td PMID (complex members)
-      %td.pmid= @gene_complex.complex_members_pmid
-    %tr
-      %td Target
-      %td= @gene_complex.target
-    %tr
-      %td Target molecule
-      %td= @gene_complex.target_molecule
-    %tr
-      %td Product
-      %td= @gene_complex.product
-    %tr
-      %td PMID (function)
-      %td.pmid= @gene_complex.function_pmid
-    %tr
-      %td Details
-      %td= @gene_complex.details
+    = table_info_row @gene_complex, :genes
+    = table_info_row @gene_complex, :complex_group
+    = table_info_row @gene_complex, :complex_group_name
+    = table_info_row @gene_complex, :complex_name
+    = table_info_row @gene_complex, :alternative_names
+    = table_info_row @gene_complex, :proteins_involved
+    = table_info_row @gene_complex, :uniprot_ids
+    = table_info_row @gene_complex, :funct
+    = table_info_row @gene_complex, :complex_members_pmid, value_column_html: {class: 'pmid'}
+    = table_info_row @gene_complex, :target
+    = table_info_row @gene_complex, :target_molecule
+    = table_info_row @gene_complex, :product
+    = table_info_row @gene_complex, :function_pmid, value_column_html: {class: 'pmid'}
+    = table_info_row @gene_complex, :details

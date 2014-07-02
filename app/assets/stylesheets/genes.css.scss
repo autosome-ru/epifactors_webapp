@@ -1,3 +1,25 @@
 // Place all the styles related to the genes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.key_value_info {
+  td {
+    padding: 5px;
+    border: 1px solid black;
+  }
+  td:first-child {
+    width: 200px;
+    font-weight: bolder;
+  }
+  td:last-child {
+    width:600px;
+  }
+}
+
+table.expression_statistics {
+  margin: 20px 0;
+  tr:first-child td {padding-top: 10px;}
+  tr:last-child td {padding-bottom: 10px;}
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}

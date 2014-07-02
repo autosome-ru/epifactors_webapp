@@ -1,103 +1,51 @@
-%table.epigene_info
+%table.epigene_info.key_value_info
+  %tbody
+    = table_info_row @gene, :gene_complexes
+    = table_info_row @gene, :hgnc_symbol
+    = table_info_row @gene, :hgnc_id
+    = table_info_row @gene, :hgnc_name
+    = table_info_row @gene, :gene_id
+    = table_info_row @gene, :refseq_hs
+    = table_info_row @gene, :uniprot_ac
+    = table_info_row @gene, :uniprot_id
+    = table_info_row @gene, :mgi_id
+    = table_info_row @gene, :refseq_mm do |gene|
+      = (gene.refseq_mm || '').split('|').join(', ')
+    = table_info_row @gene, :ec_number
+    = table_info_row @gene, :ec_description
+    = table_info_row @gene, :gene_tag
+    = table_info_row @gene, :gene_desc
+    = table_info_row @gene, :funct_class
+    = table_info_row @gene, :funct
+    = table_info_row @gene, :funct_pmid, value_column_html: {class: 'pmid'}
+    = table_info_row @gene, :protein_complex
+    = table_info_row @gene, :protein_complex_pmid, value_column_html: {class: 'pmid'}
+    = table_info_row @gene, :target
+    = table_info_row @gene, :target_molecule
+    = table_info_row @gene, :product
+    = table_info_row @gene, :product_pmid, value_column_html: {class: 'pmid'}
+    = table_info_row @gene, :details
+
+%table.expression_statistics.key_value_info
   %tbody
     %tr
-      %td Gene complexes
-      %td= @gene.gene_complexes.map{|gene_complex| link_to gene_complex.complex_name, gene_complex_path(gene_complex) }.join(', ').html_safe
-    %tr
-      %td HGNC_Symbol
-      %td= @gene.hgnc_symbol
-    %tr
-      %td HGNC_ID
-      %td.hgnc_id= @gene.hgnc_id
-    %tr
-      %td HGNC_name
-      %td= @gene.hgnc_name
-    %tr
-      %td geneID
-      %td.gene_id= @gene.gene_id
-    %tr
-      %td RefSeq_Hs
-      %td.refseq= @gene.refseq_hs
-    %tr
-      %td UniProt AC
-      %td.uniprot_ac= @gene.uniprot_ac
-    %tr
-      %td UniProt ID
-      %td.uniprot= @gene.uniprot_id
-    %tr
-      %td MGI_ID
-      %td= @gene.mgi_id
-    %tr
-      %td RefSeq_Mm
-      %td.refseq= (@gene.refseq_mm || '').split('|').join(', ')
-    %tr
-      %td EC_number
-      %td= @gene.ec_number
-    %tr
-      %td EC_descr
-      %td= @gene.ec_description
-    %tr
-      %td GeneTag
-      %td= @gene.gene_tag
-    %tr
-      %td GeneDesc
-      %td= @gene.gene_desc
-    %tr
-      %td Functional class
-      %td= @gene.funct_class
-    %tr
-      %td Function
-      %td= @gene.funct
-    %tr
-      %td PMID
-      %td.pmid= @gene.funct_pmid
-    %tr
-      %td Protein complex
-      %td= @gene.protein_complex
-    %tr
-      %td PMID
-      %td.pmid= @gene.protein_complex_pmid
-    %tr
-      %td Target
-      %td= @gene.target
-    %tr
-      %td Target molecule
-      %td= @gene.target_molecule
-    %tr
-      %td Product
-      %td= @gene.product
-    %tr
-      %td PMID
-      %td.pmid= @gene.product_pmid
-    %tr
-      %td Details
-      %td= @gene.details
+      %td Expression range:
+      %td= @expression_statistics.range
 
-%table.expression_statistics
-  %tr
-    %td Expression range:
-    %td
-      = @expression_statistics.min
-      to
-      = @expression_statistics.max
+    %tr
+      %td Mean expression:
+      %td= @expression_statistics.mean_with_stddev
+    %tr
+      %td Median expression:
+      %td= @expression_statistics.median
 
-  %tr
-    %td Mean expression:
-    %td
-      = @expression_statistics.mean
-      &pm;
-      = @expression_statistics.stddev
-  %tr
-    %td Median expression:
-    %td= @expression_statistics.median
-
-%table.gene_expression_by_tissue.tablesorter
+%table.gene_expression_by_tissue.tablesorter{'data-sortlist' => '[[1,1]]'}
   %thead
     %tr
       %th Tissue
-      %th{'data-placeholder' => "Try `>=100` or `100 to 1000`"} Expression
+      %th{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'} Expression
   %tbody
   - @expressions.each do |tissue, expression|
     %tr
       %td= tissue
-      %td= expression
+      %td= expression.round(1)

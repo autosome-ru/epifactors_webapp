@@ -7,28 +7,28 @@ page_ready = function() {
       result.append( $('<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>') );
     });
     $(this).html( result.html() );
-  }
+  };
 
   convert_to_uniprot = function() {
     var uniprot = $(this).text();
     $(this).html( $('<a href="http://www.uniprot.org/uniprot/' + uniprot +'">' + uniprot + '</a>') );
-  }
+  };
 
   convert_to_hgnc = function() {
     var hgnc = $(this).text();
     $(this).html( $('<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>') );
-  }
+  };
 
   convert_to_uniprot_ac = function() {
     var uniprot_ac = $(this).text();
     $(this).html( $('<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>') );
-  }
+  };
 
 
   convert_to_gene_id = function() {
     var gene_id = $(this).text();
     $(this).html( $('<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>') );
-  }
+  };
 
   convert_to_refseq = function() {
     var result = $('<div></div>')
@@ -38,11 +38,34 @@ page_ready = function() {
       result.append( $('<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>') );
     });
     $(this).html( result.html() );
-  }
+  };
+
+  convert_to_ec = function() {
+    var result = $('<div></div>')
+    var ecs = $(this).text().split(', ');
+    $.each(ecs, function(index, ec){
+      if (index) { result.append(', '); }
+      ec_parts = ec.split('.')
+      ec_query = [];
+      $.each(ec_parts, function(ec_part_index,ec_part) {
+        if (Number(ec_part)) {
+          ec_query.push('field' + (1 + ec_part_index) + '=' + ec_part)
+        }
+      });
+      if (ec_query.length > 0) {
+        result.append( $('<a href="http://enzyme.expasy.org/cgi-bin/enzyme/enzyme-search-ec?' + ec_query.join('&') + '">' + ec + '</a>') );
+      } else {
+        result.append(ec);
+      }
+    });
+    $(this).html( result.html() );
+
+  };
 
   $('table#epigenes tbody td:nth-child(4)').each(convert_to_gene_id);
   $('.gene_id').each(convert_to_gene_id);
 
+  $('table#epigenes tbody td:nth-child(10)').each(convert_to_ec);
   $('table#epigenes tbody td:nth-child(16)').each(convert_to_pmid);
   $('table#epigenes tbody td:nth-child(18)').each(convert_to_pmid);
   $('table#epigenes tbody td:nth-child(22)').each(convert_to_pmid);
@@ -68,7 +91,7 @@ page_ready = function() {
   $(".tablesorter").tablesorter({
     theme: 'blue',
     widthFixed : true,
-    widgets: ["zebra", "filter"],
+    widgets: ['zebra', 'stickyHeaders', 'filter'],
     ignoreCase: false,
     widgetOptions : {
       filter_childRows : false,
@@ -99,7 +122,7 @@ page_ready = function() {
 
       // if true, filters are collapsed initially, but can be revealed by hovering over the grey bar immediately
       // below the header row. Additionally, tabbing through the document will open the filter row when an input gets focus
-      filter_hideFilters : true,
+      filter_hideFilters : false,
 
       // Set this option to false to make the searches case sensitive
       filter_ignoreCase : true,
@@ -171,7 +194,24 @@ page_ready = function() {
           });
           return $.unique(tokens).filter( function(el) { return el.length > 0; } );
         }
-      }
+      },
+
+      // extra class name added to the sticky header row
+      stickyHeaders : '',
+      // number or jquery selector targeting the position:fixed element
+      stickyHeaders_offset : 0,
+      // added to table ID, if it exists
+      stickyHeaders_cloneId : '-sticky',
+      // trigger "resize" event on headers
+      stickyHeaders_addResizeEvent : true,
+      // if false and a caption exist, it won't be included in the sticky header
+      stickyHeaders_includeCaption : true,
+      // The zIndex of the stickyHeaders, allows the user to adjust this to their needs
+      stickyHeaders_zIndex : 2,
+      // jQuery selector or object to attach sticky header to
+      stickyHeaders_attachTo : null,
+      // scroll table top into view after filtering
+      stickyHeaders_filteredToTop: true
     }
 
   });

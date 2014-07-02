@@ -21,7 +21,7 @@ epigenes_worksheet.extract_data.drop(1).each_with_index do |row, ind|
   protein_complex, protein_complex_pmid, target,
   target_molecule, product, product_pmid, details = *row
 
-  Gene.where(id: ind).first_or_create(
+  Gene.where(id: ind + 1).first_or_create(
       hgnc_symbol:hgnc_symbol, hgnc_id:hgnc_id, hgnc_name:hgnc_name, gene_id:gene_id,
       refseq_hs:refseq_hs, uniprot_ac:uniprot_ac, uniprot_id:uniprot_id, mgi_id:mgi_id,
       refseq_mm:refseq_mm, ec_number:ec_number, ec_description:ec_description, gene_tag:gene_tag,
@@ -38,7 +38,7 @@ complexes_worksheet.extract_data.drop(1).each_with_index do |row, ind|
   funct, complex_members_pmid, target, target_molecule,
   product, function_pmid, details = *row
 
-  GeneComplex.where(id: ind).first_or_create(
+  GeneComplex.where(id: ind + 1).first_or_create(
       complex_group:complex_group, complex_group_name:complex_group_name, complex_name:complex_name,
       alternative_names:alternative_names, proteins_involved:proteins_involved, uniprot_ids:uniprot_ids,
       funct:funct, complex_members_pmid:complex_members_pmid, target:target, target_molecule:target_molecule,

@@ -20,4 +20,45 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      gene:
+        gene_complexes: Gene complexes
+        hgnc_symbol: HGNC symbol
+        hgnc_id: HGNC ID
+        hgnc_name: HGNC name
+        gene_id: gene ID
+        refseq_hs: RefSeq Hs
+        uniprot_ac: UniProt AC
+        uniprot_id: UniProt ID
+        mgi_id: MGI ID
+        refseq_mm: RefSeq Mm
+        ec_number: Enzyme commission number
+        ec_description: Enzyme commission description
+        gene_tag: Gene tag
+        gene_desc: Gene description
+        funct_class: Functional class
+        funct: Function
+        funct_pmid: PMID (function)
+        protein_complex: Protein complex
+        protein_complex_pmid: PMID (protein complex)
+        target: Target
+        target_molecule: Target molecule
+        product: Product
+        product_pmid: PMID (product)
+        details: Details
+      gene_complex:
+        genes: Genes in complex
+        complex_group: Complex group
+        complex_group_name: Complex group name
+        complex_name: Complex name
+        alternative_names: Alternative names
+        proteins_involved: Proteins involved (from Uniprot description)
+        uniprot_ids: Uniprot IDs
+        funct: Function
+        complex_members_pmid: PMID (complex members)
+        target: Target
+        target_molecule: Target molecule
+        product: Product
+        function_pmid: PMID (function)
+        details: Details

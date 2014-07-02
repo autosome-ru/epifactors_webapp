@@ -8,7 +8,7 @@ class GeneExpressions
 
   def expressions_by_hgnc(hgnc_id)
     expressions = gene_expressions[hgnc_id.to_i]
-    expressions && tissues.zip(expressions)
+    expressions ? Hash[tissues.zip(expressions)] : {}
   end
 
   def self.read_from_file(tissue_names_file, gene_expressions_file)
