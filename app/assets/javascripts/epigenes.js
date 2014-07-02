@@ -19,33 +19,61 @@ page_ready = function() {
     return result;
   }
 
+
+
+  transform_each_uniprot = function(input, converter) {
+    var result = '';
+    var elements = input.split(new RegExp(/(\s*,\s*|\s*\(\s*|\s*\)\s*\+?\s*|\s*\|\s*)/));
+    $.each(elements, function(index, element){
+      if (index % 2 == 0) {
+        result += converter(element);
+      } else {
+        result += element;
+      }
+    });
+    return result;
+  }
+
+  convert_each_uniprot = function(converter) {
+    var inp = $(this).text();
+    $(this).html( transform_each_uniprot(inp, converter) );
+  };
+
+
+
   convert_to_pmid = function() {
     convert_each_element.call(this, function(pmid) {
       return '<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
     });
   };
 
+  convert_to_mgi = function() {
+    convert_each_element.call(this, function(mgi_name) {
+      return '<a href="http://www.informatics.jax.org/searchtool/Search.do?query=' + mgi_name + '">' + mgi_name + '</a>';
+    });
+  };
+
   convert_to_uniprot = function() {
-    convert_element.call(this, function(uniprot) {
+    convert_each_uniprot.call(this, function(uniprot) {
       return '<a href="http://www.uniprot.org/uniprot/' + uniprot +'">' + uniprot + '</a>';
     });
   };
 
   convert_to_hgnc = function() {
-    convert_element.call(this, function(hgnc) {
+    convert_each_element.call(this, function(hgnc) {
       return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>';
     });
   };
 
   convert_to_uniprot_ac = function() {
-    convert_element.call(this, function(uniprot_ac) {
+    convert_each_element.call(this, function(uniprot_ac) {
       return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>';
     });
   };
 
 
   convert_to_gene_id = function() {
-    convert_element.call(this, function(gene_id) {
+    convert_each_element.call(this, function(gene_id) {
       return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>';
     });
   };
@@ -68,7 +96,7 @@ page_ready = function() {
       if (ec_query.length > 0) {
         return '<a href="http://enzyme.expasy.org/cgi-bin/enzyme/enzyme-search-ec?' + ec_query.join('&') + '">' + ec + '</a>';
       } else {
-        return ec_query;
+        return ec;
       }
     });
 
@@ -76,9 +104,12 @@ page_ready = function() {
   };
 
   $('table#epigenes tbody td:nth-child(4)').each(convert_to_gene_id);
+  $('table#histones tbody td:nth-child(4)').each(convert_to_gene_id);
   $('.gene_id').each(convert_to_gene_id);
 
   $('table#epigenes tbody td:nth-child(10)').each(convert_to_ec);
+  $('table#histones tbody td:nth-child(10)').each(convert_to_ec);
+  $('.ec_number').each(convert_to_ec);
 
   $('table#epigenes tbody td:nth-child(16)').each(convert_to_pmid);
   $('table#epigenes tbody td:nth-child(18)').each(convert_to_pmid);
@@ -88,16 +119,26 @@ page_ready = function() {
   $('.pmid').each(convert_to_pmid);
 
   $('table#epigenes tbody td:nth-child(7)').each(convert_to_uniprot);
+  $('table#histones tbody td:nth-child(7)').each(convert_to_uniprot);
+  $('table#gene_complexes tbody td:nth-child(6)').each(convert_to_uniprot);
   $('.uniprot').each(convert_to_uniprot);
 
+  $('table#epigenes tbody td:nth-child(8)').each(convert_to_mgi);
+  $('table#histones tbody td:nth-child(8)').each(convert_to_mgi);
+  $('.mgi').each(convert_to_mgi);
+
   $('table#epigenes tbody td:nth-child(2)').each(convert_to_hgnc);
+  $('table#histones tbody td:nth-child(2)').each(convert_to_hgnc);
   $('.hgnc_id').each(convert_to_hgnc);
 
   $('table#epigenes tbody td:nth-child(5)').each(convert_to_refseq);
   $('table#epigenes tbody td:nth-child(9)').each(convert_to_refseq);
+  $('table#histones tbody td:nth-child(5)').each(convert_to_refseq);
+  $('table#histones tbody td:nth-child(9)').each(convert_to_refseq);
   $('.refseq').each(convert_to_refseq);
 
   $('table#epigenes tbody td:nth-child(6)').each(convert_to_uniprot_ac);
+  $('table#histones tbody td:nth-child(6)').each(convert_to_uniprot_ac);
   $('.uniprot_ac').each(convert_to_uniprot_ac);
 
   // call the tablesorter plugin

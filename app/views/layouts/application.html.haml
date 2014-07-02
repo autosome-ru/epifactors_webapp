@@ -11,11 +11,12 @@
         = menu_group do
           = menu_item 'Full table of genes', genes_path
           = menu_item 'Full table of gene complexes', gene_complexes_path
+          = menu_item 'Full table of histones', histones_path
         = form_tag epigene_search_path, class: 'pull-right navbar-search' do
           = label_tag do
             Search:
             = text_field_tag 'search'
-          = select_tag 'kind', options_for_select({'Genes' => :genes, 'Gene complexes' => :gene_complexes}, :genes)
+          = select_tag 'kind', options_for_select({'Genes' => :genes, 'Gene complexes' => :gene_complexes, 'Histones' => :histones}, :genes)
           = submit_tag 'Search'
     .container
       = yield

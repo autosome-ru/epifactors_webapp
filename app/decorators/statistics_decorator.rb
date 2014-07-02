@@ -10,9 +10,10 @@ class StatisticsDecorator < Draper::Decorator
   def median; object.median || 'N/A'; end
 
   def range
-    "#{object.min} to #{object.max}"
+    (object.size > 0) ? "#{object.min} to #{object.max}" : 'N/A'
   end
+
   def mean_with_stddev
-    "#{object.mean} &pm; #{object.stddev}".html_safe
+    (object.size > 0) ? "#{object.mean} &pm; #{object.stddev}".html_safe : 'N/A'
   end
 end

@@ -53,8 +53,8 @@ en:
         complex_group_name: Complex group name
         complex_name: Complex name
         alternative_names: Alternative names
-        proteins_involved: Proteins involved (from Uniprot description)
-        uniprot_ids: Uniprot IDs
+        proteins_involved: Proteins involved (from UniProt description)
+        uniprot_ids: UniProt IDs
         funct: Function
         complex_members_pmid: PMID (complex members)
         target: Specific target
@@ -62,3 +62,17 @@ en:
         product: Product
         function_pmid: PMID (function)
         details: Details
+      histone:
+        hgnc_symbol: HGNC symbol
+        hgnc_id: HGNC ID
+        hgnc_name: HGNC name
+        gene_id: Gene ID
+        refseq_hs: RefSeq Hs
+        uniprot_ac: UniProt AC
+        uniprot_id: UniProt ID
+        mgi_id: MGI ID
+        refseq_mm: RefSeq Mm
+        ec_number: Enzyme commission number
+        ec_descr: Enzyme commission description
+        gene_tag: Gene tag
+        gene_desc: Gene description

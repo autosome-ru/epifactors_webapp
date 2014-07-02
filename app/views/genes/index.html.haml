@@ -27,6 +27,7 @@
       = gene_table_header :product
       = gene_table_header :product_pmid, hide_by_default: true, dont_sort: true
       = gene_table_header :details, hide_by_default: true, dont_sort: true
+      = gene_table_header :gene_complexes, dont_sort: true
 
   %tbody
     - @genes.each do |gene|
@@ -57,3 +58,4 @@
         %td= gene.product
         %td= gene.product_pmid
         %td= gene.details
+        %td= gene.gene_complexes

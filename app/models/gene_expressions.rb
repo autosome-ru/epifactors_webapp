@@ -21,7 +21,8 @@ class GeneExpressions
     GeneExpressions.new(tissues, gene_expressions)
   end
 
-  class << self
-    attr_accessor :instance
+  def self.instance
+    @instance ||= GeneExpressions.read_from_file( Rails.root.join('db','tissue_names.txt'),
+                                                  Rails.root.join('db','gene_expressions_by_tissue.txt'))
   end
 end

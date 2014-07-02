@@ -1,0 +1,39 @@
+%button#popover.btn.btn-default{type: 'button'} Select Columns
+%button.btn.btn-default.reset{type: 'button'} Reset filters
+
+%table#histones.tablesorter.bootstrap-select-columns-popup
+  %thead
+    %tr
+      = histone_table_header :hgnc_symbol, show_always: true
+      = histone_table_header :hgnc_id, hide_by_default: true, dont_sort: true
+      = histone_table_header :hgnc_name
+      = histone_table_header :gene_id, hide_by_default: true, dont_sort: true
+      = histone_table_header :refseq_hs, hide_by_default: true, dont_sort: true
+      = histone_table_header :uniprot_ac, hide_by_default: true, dont_sort: true
+      = histone_table_header :uniprot_id
+      = histone_table_header :mgi_id
+      = histone_table_header :refseq_mm, hide_by_default: true, dont_sort: true
+      = histone_table_header :ec_number, hide_by_default: true
+      = histone_table_header :ec_descr, hide_by_default: true
+      = histone_table_header :gene_tag, hide_by_default: true
+      = histone_table_header :gene_desc, hide_by_default: true
+
+  %tbody
+    - @histones.each do |histone|
+      %tr
+        %td
+          = histone.hgnc_symbol
+          %br
+          = link_to '(histone info)', histone_path(histone)
+        %td= histone.hgnc_id
+        %td= histone.hgnc_name
+        %td= histone.gene_id
+        %td= histone.refseq_hs
+        %td= histone.uniprot_ac
+        %td= histone.uniprot_id
+        %td= histone.mgi_id
+        %td= histone.refseq_mm
+        %td= histone.ec_number
+        %td= histone.ec_descr
+        %td= histone.gene_tag
+        %td= histone.gene_desc

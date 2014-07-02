@@ -10,6 +10,7 @@ class GeneDecorator < Draper::Decorator
   def refseq_mm
     (object.refseq_mm || '').split('|').join(', ')
   end
+
   def refseq_hs
     (object.refseq_hs || '').split('|').join(', ')
   end

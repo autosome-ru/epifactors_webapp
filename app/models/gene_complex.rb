@@ -1,6 +1,11 @@
 class GeneComplex < ActiveRecord::Base
   def genes
-    Gene.where(uniprot_id: uniprot_ids.strip.empty? ? [] : uniprot_ids.strip.split(', '))
+    ids = uniprot_ids.strip.split(',')
+      .flat_map{|s| s.strip.split(/\(|\)\+?/)}
+      .flat_map{|s| s.strip.split('|')}
+      .flat_map{|uniprot_id| uniprot_id.strip.sub(/\?$/,'')}
+
+    Gene.where(uniprot_id: ids)
   end
 
   searchable_attributes = [ :complex_group,:complex_group_name,:complex_name,:alternative_names,:proteins_involved,
