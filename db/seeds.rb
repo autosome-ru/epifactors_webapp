@@ -8,9 +8,10 @@
 
 require 'rubyXL'
 
-workbook = RubyXL::Parser.parse(Rails.root.join('db','EpiGenes&Complexes_main_1.4beta_ver10.06.2014.xlsx'))
+workbook = RubyXL::Parser.parse(Rails.root.join('db','EpiGenes&Complexes_main_1.4beta_Grigory_ver27062014.xlsx'))
 epigenes_worksheet = workbook.worksheets[0]
 complexes_worksheet = workbook.worksheets[1]
+histones_worksheet = RubyXL::Parser.parse(Rails.root.join('db','EpiGenes_histones_1.1beta.xlsx')).worksheets[0]
 
 epigenes_worksheet.extract_data.drop(1).each_with_index do |row, ind|
 
@@ -35,14 +36,14 @@ complexes_worksheet.extract_data.drop(1).each_with_index do |row, ind|
 
   complex_group, complex_group_name, complex_name,
   alternative_names, proteins_involved, uniprot_ids,
-  funct, complex_members_pmid, target, target_molecule,
-  product, function_pmid, details = *row
+  complex_members_pmid, funct, function_pmid, target_molecule,
+  target, product, targets_and_products_pmid,  details = *row
 
   GeneComplex.where(id: ind + 1).first_or_create(
       complex_group:complex_group, complex_group_name:complex_group_name, complex_name:complex_name,
       alternative_names:alternative_names, proteins_involved:proteins_involved, uniprot_ids:uniprot_ids,
       funct:funct, complex_members_pmid:complex_members_pmid, target:target, target_molecule:target_molecule,
-      product:product, function_pmid:function_pmid, details:details)
+      product:product, function_pmid:function_pmid, details:details, targets_and_products_pmid: targets_and_products_pmid)
 end
 
 # File.readlines(Rails.root.join('db','tissue_names.txt')).each_with_index do |line, ind|
@@ -55,3 +56,16 @@ end
 #     GeneExpression.where(hgnc_id: hgnc_id, tissue_id: ind).first_or_create(expression: expr)
 #   end
 # end
+
+histones_worksheet.extract_data.drop(1).each_with_index do |row, ind|
+  hgnc_symbol, hgnc_id, hgnc_name, gene_id, refseq_hs, uniprot_ac,
+  uniprot_id, mgi_id, refseq_mm, ec_number, ec_descr, gene_tag, gene_desc = *row
+
+  Histone.where(id: ind + 1).first_or_create(
+      hgnc_symbol: hgnc_symbol, hgnc_id: hgnc_id, hgnc_name: hgnc_name,
+      gene_id: gene_id, refseq_hs: refseq_hs, uniprot_ac: uniprot_ac,
+      uniprot_id: uniprot_id, mgi_id: mgi_id, refseq_mm: refseq_mm,
+      ec_number: ec_number, ec_descr: ec_descr, gene_tag: gene_tag,
+      gene_desc: gene_desc
+  )
+end

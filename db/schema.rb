@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627074014) do
+ActiveRecord::Schema.define(version: 20140702200321) do
 
   create_table "gene_complexes", force: true do |t|
     t.integer  "complex_group"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140627074014) do
     t.string   "target_molecule"
     t.string   "product"
     t.string   "function_pmid"
+    t.string   "targets_and_products_pmid"
     t.text     "details"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -55,6 +56,24 @@ ActiveRecord::Schema.define(version: 20140627074014) do
     t.string   "product"
     t.string   "product_pmid"
     t.text     "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "histones", force: true do |t|
+    t.string   "hgnc_symbol"
+    t.integer  "hgnc_id"
+    t.string   "hgnc_name"
+    t.integer  "gene_id"
+    t.string   "refseq_hs"
+    t.string   "uniprot_ac"
+    t.string   "uniprot_id"
+    t.string   "mgi_id"
+    t.string   "refseq_mm"
+    t.string   "ec_number"
+    t.string   "ec_descr"
+    t.string   "gene_tag"
+    t.string   "gene_desc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

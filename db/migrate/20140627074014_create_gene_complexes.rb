@@ -13,6 +13,7 @@ class CreateGeneComplexes < ActiveRecord::Migration
       t.string :target_molecule
       t.string :product
       t.string :function_pmid
+      t.string :targets_and_products_pmid
       t.text :details
 
       t.timestamps

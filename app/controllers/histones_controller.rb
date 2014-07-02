@@ -1,0 +1,2 @@
+class HistonesController < ApplicationController
+end

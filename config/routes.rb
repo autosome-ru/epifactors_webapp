@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :histones
+
   root 'epigene_welcome#index'
   get 'epigenes/' => 'epigene_welcome#index', as: :epigene_index
   post 'epigenes/search' => 'epigene_welcome#search', as: :epigene_search

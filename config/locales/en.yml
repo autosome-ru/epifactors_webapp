@@ -57,7 +57,7 @@ en:
         uniprot_ids: Uniprot IDs
         funct: Function
         complex_members_pmid: PMID (complex members)
-        target: Target
+        target: Specific target
         target_molecule: Target molecule
         product: Product
         function_pmid: PMID (function)
