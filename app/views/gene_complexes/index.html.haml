@@ -1,19 +1,19 @@
 %table.tablesorter#gene_complexes
   %thead
     %tr
-      %th Complex group
-      %th Complex group name
-      %th Complex name
-      %th Alternative names
-      %th Proteins involved (from Uniprot description)
-      %th Uniprot IDs
-      %th.splitted_terms_filter.filter-onlyAvail Function
-      %th PMID (complex members)
-      %th Target
-      %th.splitted_terms_filter.filter-onlyAvail Target molecule
-      %th Product
-      %th PMID (function)
-      %th Details
+      %th= t 'activerecord.attributes.gene_complex.complex_group'
+      %th= t 'activerecord.attributes.gene_complex.complex_group_name'
+      %th= t 'activerecord.attributes.gene_complex.complex_name'
+      %th= t 'activerecord.attributes.gene_complex.alternative_names'
+      %th= t 'activerecord.attributes.gene_complex.proteins_involved'
+      %th= t 'activerecord.attributes.gene_complex.uniprot_ids'
+      %th.splitted_terms_filter.filter-onlyAvail= t 'activerecord.attributes.gene_complex.funct'
+      %th= t 'activerecord.attributes.gene_complex.complex_members_pmid'
+      %th= t 'activerecord.attributes.gene_complex.target'
+      %th.splitted_terms_filter.filter-onlyAvail= t 'activerecord.attributes.gene_complex.target_molecule'
+      %th= t 'activerecord.attributes.gene_complex.product'
+      %th= t 'activerecord.attributes.gene_complex.function_pmid'
+      %th= t 'activerecord.attributes.gene_complex.details'
   %tbody
     - @gene_complexes.each do |gene_complex|
       %tr
@@ -27,9 +27,9 @@
         %td= gene_complex.proteins_involved
         %td= gene_complex.uniprot_ids
         %td= gene_complex.funct
-        %td.pmid= gene_complex.complex_members_pmid
+        %td= gene_complex.complex_members_pmid
         %td= gene_complex.target
         %td= gene_complex.target_molecule
         %td= gene_complex.product
-        %td.pmid= gene_complex.function_pmid
+        %td= gene_complex.function_pmid
         %td= gene_complex.details

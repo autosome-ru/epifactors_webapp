@@ -1,64 +1,77 @@
 page_ready = function() {
-  convert_to_pmid = function() {
-    var result = $('<div></div>')
-    var pmids = $(this).text().split(', ');
-    $.each(pmids, function(index, pmid){
-      if (index) { result.append(', '); }
-      result.append( $('<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>') );
+  convert_element = function(converter) {
+    var inp = $(this).text();
+    $(this).html( converter(inp) );
+  };
+
+  convert_each_element = function(converter) {
+    var inp = $(this).text();
+    $(this).html( transform_each(inp, converter) );
+  };
+
+  transform_each = function(input, converter) {
+    var result = '';
+    var elements = input.split(', ');
+    $.each(elements, function(index, element){
+      if (index) { result += ', '; }
+      result += converter(element);
     });
-    $(this).html( result.html() );
+    return result;
+  }
+
+  convert_to_pmid = function() {
+    convert_each_element.call(this, function(pmid) {
+      return '<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
+    });
   };
 
   convert_to_uniprot = function() {
-    var uniprot = $(this).text();
-    $(this).html( $('<a href="http://www.uniprot.org/uniprot/' + uniprot +'">' + uniprot + '</a>') );
+    convert_element.call(this, function(uniprot) {
+      return '<a href="http://www.uniprot.org/uniprot/' + uniprot +'">' + uniprot + '</a>';
+    });
   };
 
   convert_to_hgnc = function() {
-    var hgnc = $(this).text();
-    $(this).html( $('<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>') );
+    convert_element.call(this, function(hgnc) {
+      return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>';
+    });
   };
 
   convert_to_uniprot_ac = function() {
-    var uniprot_ac = $(this).text();
-    $(this).html( $('<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>') );
+    convert_element.call(this, function(uniprot_ac) {
+      return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>';
+    });
   };
 
 
   convert_to_gene_id = function() {
-    var gene_id = $(this).text();
-    $(this).html( $('<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>') );
+    convert_element.call(this, function(gene_id) {
+      return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>';
+    });
   };
 
   convert_to_refseq = function() {
-    var result = $('<div></div>')
-    var refseqs = $(this).text().split(', ');
-    $.each(refseqs, function(index, refseq){
-      if (index) { result.append(', '); }
-      result.append( $('<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>') );
+    convert_each_element.call(this, function(refseq) {
+      return '<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>';
     });
-    $(this).html( result.html() );
   };
 
   convert_to_ec = function() {
-    var result = $('<div></div>')
-    var ecs = $(this).text().split(', ');
-    $.each(ecs, function(index, ec){
-      if (index) { result.append(', '); }
+    convert_each_element.call(this, function(ec) {
       ec_parts = ec.split('.')
       ec_query = [];
-      $.each(ec_parts, function(ec_part_index,ec_part) {
+      $.each(ec_parts, function(ec_part_index, ec_part) {
         if (Number(ec_part)) {
           ec_query.push('field' + (1 + ec_part_index) + '=' + ec_part)
         }
       });
       if (ec_query.length > 0) {
-        result.append( $('<a href="http://enzyme.expasy.org/cgi-bin/enzyme/enzyme-search-ec?' + ec_query.join('&') + '">' + ec + '</a>') );
+        return '<a href="http://enzyme.expasy.org/cgi-bin/enzyme/enzyme-search-ec?' + ec_query.join('&') + '">' + ec + '</a>';
       } else {
-        result.append(ec);
+        return ec_query;
       }
     });
-    $(this).html( result.html() );
+
 
   };
 
@@ -66,11 +79,12 @@ page_ready = function() {
   $('.gene_id').each(convert_to_gene_id);
 
   $('table#epigenes tbody td:nth-child(10)').each(convert_to_ec);
+
   $('table#epigenes tbody td:nth-child(16)').each(convert_to_pmid);
   $('table#epigenes tbody td:nth-child(18)').each(convert_to_pmid);
   $('table#epigenes tbody td:nth-child(22)').each(convert_to_pmid);
-  $('table#complexes tbody td:nth-child(8)').each(convert_to_pmid);
-  $('table#complexes tbody td:nth-child(12)').each(convert_to_pmid);
+  $('table#gene_complexes tbody td:nth-child(8)').each(convert_to_pmid);
+  $('table#gene_complexes tbody td:nth-child(12)').each(convert_to_pmid);
   $('.pmid').each(convert_to_pmid);
 
   $('table#epigenes tbody td:nth-child(7)').each(convert_to_uniprot);

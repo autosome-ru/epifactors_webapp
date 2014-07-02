@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   get 'epigenes/' => 'epigene_welcome#index', as: :epigene_index
   post 'epigenes/search' => 'epigene_welcome#search', as: :epigene_search
 
-  resources :gene_complexes
+  resources :gene_complexes, only: [:show, :index]
 
-  resources :genes
+  resources :genes, only: [:show, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

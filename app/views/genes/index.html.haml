@@ -1,29 +1,30 @@
 %table.tablesorter#epigenes
   %thead
     %tr
-      %th HGNC symbol
-      %th.sorter-false HGNC ID
-      %th HGNC name
-      %th.sorter-false gene ID
-      %th.sorter-false RefSeq Hs
-      %th.sorter-false UniProt AC
-      %th UniProt ID
-      %th MGI ID
-      %th.sorter-false RefSeq Mm
-      %th Enzyme commission number
-      %th enzyme commission description
-      %th Gene tag
-      %th Gene description
-      %th.splitted_terms_filter.filter-onlyAvail Functional class
-      %th.splitted_terms_filter.filter-onlyAvail Function
-      %th.sorter-false PMID (function)
-      %th Protein complex
-      %th.sorter-false PMID (protein complex)
-      %th Target
-      %th.splitted_terms_filter.filter-onlyAvail Target molecule
-      %th Product
-      %th.sorter-false PMID (product)
-      %th.sorter-false Details
+      %th= t 'activerecord.attributes.gene.hgnc_symbol'
+      %th.sorter-false= t 'activerecord.attributes.gene.hgnc_id'
+      %th= t 'activerecord.attributes.gene.hgnc_name'
+      %th.sorter-false= t 'activerecord.attributes.gene.gene_id'
+      %th.sorter-false= t 'activerecord.attributes.gene.refseq_hs'
+      %th.sorter-false= t 'activerecord.attributes.gene.uniprot_ac'
+      %th= t 'activerecord.attributes.gene.uniprot_id'
+      %th= t 'activerecord.attributes.gene.mgi_id'
+      %th.sorter-false= t 'activerecord.attributes.gene.refseq_mm'
+      %th= t 'activerecord.attributes.gene.ec_number'
+      %th= t 'activerecord.attributes.gene.ec_description'
+      %th= t 'activerecord.attributes.gene.gene_tag'
+      %th= t 'activerecord.attributes.gene.gene_desc'
+      %th.splitted_terms_filter.filter-onlyAvail= t 'activerecord.attributes.gene.funct_class'
+      %th.splitted_terms_filter.filter-onlyAvail= t 'activerecord.attributes.gene.funct'
+      %th.sorter-false= t 'activerecord.attributes.gene.funct_pmid'
+      %th= t 'activerecord.attributes.gene.protein_complex'
+      %th.sorter-false= t 'activerecord.attributes.gene.protein_complex_pmid'
+      %th= t 'activerecord.attributes.gene.target'
+      %th.splitted_terms_filter.filter-onlyAvail= t 'activerecord.attributes.gene.target_molecule'
+      %th= t 'activerecord.attributes.gene.product'
+      %th.sorter-false= t 'activerecord.attributes.gene.product_pmid'
+      %th.sorter-false= t 'activerecord.attributes.gene.details'
+
   %tbody
     - @genes.each do |gene|
       %tr
