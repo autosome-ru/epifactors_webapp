@@ -27,7 +27,7 @@ en:
         hgnc_symbol: HGNC symbol
         hgnc_id: HGNC ID
         hgnc_name: HGNC name
-        gene_id: gene ID
+        gene_id: Gene ID
         refseq_hs: RefSeq Hs
         uniprot_ac: UniProt AC
         uniprot_id: UniProt ID

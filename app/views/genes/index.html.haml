@@ -1,29 +1,32 @@
-%table.tablesorter#epigenes
+%button#popover.btn.btn-default{type: 'button'} Select Columns
+%button.btn.btn-default.reset{type: 'button'} Reset filters
+
+%table#epigenes.tablesorter.bootstrap-select-columns-popup
   %thead
     %tr
-      %th= t 'activerecord.attributes.gene.hgnc_symbol'
-      %th.sorter-false= t 'activerecord.attributes.gene.hgnc_id'
-      %th= t 'activerecord.attributes.gene.hgnc_name'
-      %th.sorter-false= t 'activerecord.attributes.gene.gene_id'
-      %th.sorter-false= t 'activerecord.attributes.gene.refseq_hs'
-      %th.sorter-false= t 'activerecord.attributes.gene.uniprot_ac'
-      %th= t 'activerecord.attributes.gene.uniprot_id'
-      %th= t 'activerecord.attributes.gene.mgi_id'
-      %th.sorter-false= t 'activerecord.attributes.gene.refseq_mm'
-      %th= t 'activerecord.attributes.gene.ec_number'
-      %th= t 'activerecord.attributes.gene.ec_description'
-      %th= t 'activerecord.attributes.gene.gene_tag'
-      %th= t 'activerecord.attributes.gene.gene_desc'
-      %th.splitted_terms_filter.filter-onlyAvail= t 'activerecord.attributes.gene.funct_class'
-      %th.splitted_terms_filter.filter-onlyAvail= t 'activerecord.attributes.gene.funct'
-      %th.sorter-false= t 'activerecord.attributes.gene.funct_pmid'
-      %th= t 'activerecord.attributes.gene.protein_complex'
-      %th.sorter-false= t 'activerecord.attributes.gene.protein_complex_pmid'
-      %th= t 'activerecord.attributes.gene.target'
-      %th.splitted_terms_filter.filter-onlyAvail= t 'activerecord.attributes.gene.target_molecule'
-      %th= t 'activerecord.attributes.gene.product'
-      %th.sorter-false= t 'activerecord.attributes.gene.product_pmid'
-      %th.sorter-false= t 'activerecord.attributes.gene.details'
+      = gene_table_header :hgnc_symbol, show_always: true
+      = gene_table_header :hgnc_id, hide_by_default: true, dont_sort: true
+      = gene_table_header :hgnc_name
+      = gene_table_header :gene_id, hide_by_default: true, dont_sort: true
+      = gene_table_header :refseq_hs, hide_by_default: true, dont_sort: true
+      = gene_table_header :uniprot_ac, hide_by_default: true, dont_sort: true
+      = gene_table_header :uniprot_id
+      = gene_table_header :mgi_id
+      = gene_table_header :refseq_mm, hide_by_default: true, dont_sort: true
+      = gene_table_header :ec_number, hide_by_default: true
+      = gene_table_header :ec_description, hide_by_default: true
+      = gene_table_header :gene_tag, hide_by_default: true
+      = gene_table_header :gene_desc, hide_by_default: true
+      = gene_table_header :funct_class, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = gene_table_header :funct, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = gene_table_header :funct_pmid, hide_by_default: true, dont_sort: true
+      = gene_table_header :protein_complex
+      = gene_table_header :protein_complex_pmid, hide_by_default: true, dont_sort: true
+      = gene_table_header :target_molecule, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = gene_table_header :target
+      = gene_table_header :product
+      = gene_table_header :product_pmid, hide_by_default: true, dont_sort: true
+      = gene_table_header :details, hide_by_default: true, dont_sort: true
 
   %tbody
     - @genes.each do |gene|
@@ -49,8 +52,8 @@
         %td= gene.funct_pmid
         %td= gene.protein_complex
         %td= gene.protein_complex_pmid
-        %td= gene.target
         %td= gene.target_molecule
+        %td= gene.target
         %td= gene.product
         %td= gene.product_pmid
         %td= gene.details

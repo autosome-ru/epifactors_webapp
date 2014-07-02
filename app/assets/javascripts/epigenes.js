@@ -105,7 +105,7 @@ page_ready = function() {
   $(".tablesorter").tablesorter({
     theme: 'blue',
     widthFixed : true,
-    widgets: ['zebra', 'stickyHeaders', 'filter'],
+    widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'filter'],
     ignoreCase: false,
     widgetOptions : {
       filter_childRows : false,
@@ -151,7 +151,7 @@ page_ready = function() {
       filter_reset : 'button.reset',
 
       // Use the $.tablesorter.storage utility to save the most recent filters (default setting is false)
-      filter_saveFilters : true,
+      filter_saveFilters : false,
 
       // Delay in milliseconds before the filter widget starts searching; This option prevents searching for
       // every character while typing and should make searching large tables faster.
@@ -225,9 +225,61 @@ page_ready = function() {
       // jQuery selector or object to attach sticky header to
       stickyHeaders_attachTo : null,
       // scroll table top into view after filtering
-      stickyHeaders_filteredToTop: true
-    }
+      stickyHeaders_filteredToTop: true,
 
+
+      // // target the column selector markup
+      // columnSelector_container : $('#columnSelector'),
+      // // column status, true = display, false = hide
+      // // disable = do not display on list
+      // columnSelector_columns : {
+      //   0: 'disable' /* set to disabled; not allowed to unselect it */
+      // },
+      // remember selected columns (requires $.tablesorter.storage)
+      columnSelector_saveColumns: false,
+
+      // container layout
+      columnSelector_layout : '<label><input type="checkbox">{name}</label>',
+      // data attribute containing column name to use in the selector container
+      columnSelector_name  : 'data-selector-name',
+
+      /* Responsive Media Query settings */
+      // enable/disable mediaquery breakpoints
+      columnSelector_mediaquery: false,
+      // // toggle checkbox name
+      // columnSelector_mediaqueryName: 'Auto: ',
+      // // breakpoints checkbox initial setting
+      // columnSelector_mediaqueryState: false,
+      // // responsive table hides columns with priority 1-6 at these breakpoints
+      // // see http://view.jquerymobile.com/1.3.2/dist/demos/widgets/table-column-toggle/#Applyingapresetbreakpoint
+      // // *** set to false to disable ***
+      // columnSelector_breakpoints : [ '20em', '30em', '40em', '50em', '60em', '70em' ],
+      // // data attribute containing column priority
+      // // duplicates how jQuery mobile uses priorities:
+      // // http://view.jquerymobile.com/1.3.2/dist/demos/widgets/table-column-toggle/
+      // columnSelector_priority : 'data-priority'
+    },
+
+    filter_reset : 'button.reset'
+  });
+
+   $('#popover')
+    .popover({
+      placement: 'right',
+      html: true, // required if content has HTML
+      content: '<div id="popover-target"></div>'
+    })
+    // bootstrap popover event triggered when the popover opens
+    .on('shown.bs.popover', function () {
+      // call this function to copy the column selection code into the popover
+      $.tablesorter.columnSelector.attachTo( $('.bootstrap-select-columns-popup'), '#popover-target');
+    });
+
+  // initialize column selector using default settings
+  // note: no container is defined!
+  $(".bootstrap-select-columns-popup").tablesorter({
+    theme: 'blue',
+    widgets: ['zebra', 'columnSelector', 'stickyHeaders']
   });
 };
 
