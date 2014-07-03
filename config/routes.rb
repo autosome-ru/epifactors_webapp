@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  resources :histones
 
   root 'epigene_welcome#index'
   get 'epigenes/' => 'epigene_welcome#index', as: :epigene_index
   post 'epigenes/search' => 'epigene_welcome#search', as: :epigene_search
 
-  resources :gene_complexes, only: [:show, :index]
-
   resources :genes, only: [:show, :index]
+  resources :gene_complexes, only: [:show, :index]
+  resources :histones, only: [:show, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
