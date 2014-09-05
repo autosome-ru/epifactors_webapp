@@ -1,0 +1,10 @@
+%table.gene_expression_by_tissue.tablesorter{'data-sortlist' => '[[1,1]]'}
+  %thead
+    %tr
+      %th Sample
+      %th{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'} Expression
+  %tbody
+  - expressions_by_tissues.each do |tissue, expression|
+    %tr
+      %td= tissue
+      %td= expression.round(1)
