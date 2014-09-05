@@ -1,145 +1,136 @@
 page_ready = function() {
-  convert_element = function(converter) {
+  convert_argument = function(converter) {
     var inp = $(this).text();
     $(this).html( converter(inp) );
   };
 
-  convert_each_element = function(converter) {
-    var inp = $(this).text();
-    $(this).html( transform_each(inp, converter) );
+  convert_element = function(converter) {
+    return function() { convert_argument.call(this, converter); };
   };
 
-  transform_each = function(input, converter) {
-    var result = '';
-    var elements = input.split(', ');
-    $.each(elements, function(index, element){
-      if (index) { result += ', '; }
-      result += converter(element);
-    });
-    return result;
-  }
+  // convert_each_element = function(converter) {
+  //   var inp = $(this).text();
+  //   $(this).html( transform_each(inp, converter) );
+  // };
 
+  // transform_each = function(input, converter) {
+  //   var result = '';
+  //   var elements = input.split(', ');
+  //   $.each(elements, function(index, element){
+  //     if (index) { result += ', '; }
+  //     result += converter(element);
+  //   });
+  //   return result;
+  // }
 
+  // pattern MUST be a single group, otherwise spliter-terms won't be in split results;
+  // multiple groups will result in several indistinguashable partial splitter terms. So use /(pattern)/ with pattern without (groups)
+  convert_each_token_with = function(converter, splitter_pattern) {
+    if (typeof(splitter_pattern)==='undefined') splitter_pattern = /([\s?|()+,]+)/;
 
-  transform_each_uniprot = function(input, converter) {
-    var result = '';
-    var elements = input.split(new RegExp(/(\s*,\s*|\s*\(\s*|\s*\)\s*\+?\s*|\s*\|\s*)/));
-    $.each(elements, function(index, element){
-      if (index % 2 == 0) {
-        result += converter(element);
-      } else {
-        result += element;
-      }
-    });
-    return result;
-  }
-
-  convert_each_uniprot = function(converter) {
-    var inp = $(this).text();
-    $(this).html( transform_each_uniprot(inp, converter) );
-  };
-
-
-
-  convert_to_pmid = function() {
-    convert_each_element.call(this, function(pmid) {
-      return '<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
-    });
-  };
-
-  convert_to_mgi = function() {
-    convert_each_element.call(this, function(mgi_name) {
-      return '<a href="http://www.informatics.jax.org/searchtool/Search.do?query=' + mgi_name + '">' + mgi_name + '</a>';
-    });
-  };
-
-  convert_to_uniprot = function() {
-    convert_each_uniprot.call(this, function(uniprot) {
-      return '<a href="http://www.uniprot.org/uniprot/' + uniprot +'">' + uniprot + '</a>';
-    });
-  };
-
-  convert_to_hgnc = function() {
-    convert_each_element.call(this, function(hgnc) {
-      return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>';
-    });
-  };
-
-  convert_to_uniprot_ac = function() {
-    convert_each_element.call(this, function(uniprot_ac) {
-      return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>';
-    });
-  };
-
-
-  convert_to_gene_id = function() {
-    convert_each_element.call(this, function(gene_id) {
-      return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>';
-    });
-  };
-
-  convert_to_refseq = function() {
-    convert_each_element.call(this, function(refseq) {
-      return '<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>';
-    });
-  };
-
-  convert_to_ec = function() {
-    convert_each_element.call(this, function(ec) {
-      ec_parts = ec.split('.')
-      ec_query = [];
-      $.each(ec_parts, function(ec_part_index, ec_part) {
-        if (Number(ec_part)) {
-          ec_query.push('field' + (1 + ec_part_index) + '=' + ec_part)
+    return function(input) {
+      var result = '';
+      // var elements = input.split(new RegExp(/(\s*,\s*|\s*\(\s*|\s*\)\s*\+?\s*|\s*\|\s*)/));
+      var elements = input.split(splitter_pattern);
+      $.each(elements, function(index, element){
+        if (splitter_pattern.test(element)) { // splitters goes as they go
+          result += element;
+        } else {
+          result += converter(element);
         }
       });
-      if (ec_query.length > 0) {
-        return '<a href="http://enzyme.expasy.org/cgi-bin/enzyme/enzyme-search-ec?' + ec_query.join('&') + '">' + ec + '</a>';
-      } else {
-        return ec;
-      }
-    });
+      return result;
+    };
+  }
 
-
+  convert_multiple = function(apply_func, splitter_pattern, joining_sequence) {
+    if (typeof(splitter_pattern)==='undefined') splitter_pattern = /,/;
+    if (typeof(joining_sequence)==='undefined') joining_sequence = ', ';
+    return function(multiple_ids) {
+      return multiple_ids.split(splitter_pattern).map(function(el){ return apply_func( el.trim() ); }).join(joining_sequence)
+    }
   };
 
-  $('table#epigenes tbody td:nth-child(4)').each(convert_to_gene_id);
-  $('table#histones tbody td:nth-child(4)').each(convert_to_gene_id);
-  $('.gene_id').each(convert_to_gene_id);
+  pmid_link = function(pmid) {
+    return '<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
+  };
+  mgi_id_link = function(mgi_name) {
+    return '<a href="http://www.informatics.jax.org/searchtool/Search.do?query=' + mgi_name + '">' + mgi_name + '</a>';
+  };
+  uniprot_id_link = function(uniprot_id) {
+    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
+  };
+  hgnc_id_link = function(hgnc) {
+    return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>';
+  };
+  uniprot_ac_link = function(uniprot_ac) {
+    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>';
+  };
+  gene_id_link = function(gene_id) {
+    return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>';
+  };
+  refseq_link = function(refseq) {
+    return '<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>';
+  };
+  pfam_domain_link = function(pfam_info) {
+    infos = pfam_info.trim().split(/\s+/);
+    return '<a href="http://pfam.xfam.org/family/' + infos[1] + '">' + infos.slice(0, 2).join(' ') + '</a> ' + infos[2];
+  };
+  // pfam_domains_links = function(pfam_infos) {
+  //   return pfam_infos.split(',').map(function(pfam_info){ return pfam_domain_link(pfam_info) }).join(',<br/>');
+  // };
+  ec_number_link = function(ec) {
+    ec_parts = ec.split('.');
+    ec_query = [];
+    $.each(ec_parts, function(ec_part_index, ec_part) {
+      if (Number(ec_part)) {
+        ec_query.push('field' + (1 + ec_part_index) + '=' + ec_part);
+      }
+    });
+    if (ec_query.length > 0) {
+      return '<a href="http://enzyme.expasy.org/cgi-bin/enzyme/enzyme-search-ec?' + ec_query.join('&') + '">' + ec + '</a>';
+    } else {
+      return ec;
+    }
+  };
 
-  $('table#epigenes tbody td:nth-child(10)').each(convert_to_ec);
-  $('table#histones tbody td:nth-child(10)').each(convert_to_ec);
-  $('.ec_number').each(convert_to_ec);
 
-  $('table#epigenes tbody td:nth-child(16)').each(convert_to_pmid);
-  $('table#epigenes tbody td:nth-child(18)').each(convert_to_pmid);
-  $('table#epigenes tbody td:nth-child(22)').each(convert_to_pmid);
-  $('table#gene_complexes tbody td:nth-child(8)').each(convert_to_pmid);
-  $('table#gene_complexes tbody td:nth-child(12)').each(convert_to_pmid);
-  $('.pmid').each(convert_to_pmid);
+  // convert_to_uniprot    = function() { convert_each_uniprot.call(this, uniprot_id_link); };
 
-  $('table#epigenes tbody td:nth-child(7)').each(convert_to_uniprot);
-  $('table#histones tbody td:nth-child(7)').each(convert_to_uniprot);
-  $('table#gene_complexes tbody td:nth-child(6)').each(convert_to_uniprot);
-  $('.uniprot').each(convert_to_uniprot);
 
-  $('table#epigenes tbody td:nth-child(8)').each(convert_to_mgi);
-  $('table#histones tbody td:nth-child(8)').each(convert_to_mgi);
-  $('.mgi').each(convert_to_mgi);
+  columns_by_header = function(table_selector, header_classes) {
+    header_indices = $(table_selector).find('thead tr th').filter(header_classes).map(function() {
+      return $(this).index();
+    });
+    header_indices = $.unique(header_indices);
+    return header_indices;
+  };
 
-  $('table#epigenes tbody td:nth-child(2)').each(convert_to_hgnc);
-  $('table#histones tbody td:nth-child(2)').each(convert_to_hgnc);
-  $('.hgnc_id').each(convert_to_hgnc);
+  apply_to_columns = function(table_selector, header_classes, apply_func) {
+    $table_selector = $(table_selector)
+    header_indices = columns_by_header($table_selector, header_classes);
+    $.each(header_indices, function(i, column_index) {
+      $table_selector.find('tbody tr td:nth-child('+ (column_index + 1) +')').each(apply_func);
+    });
+  };
 
-  $('table#epigenes tbody td:nth-child(5)').each(convert_to_refseq);
-  $('table#epigenes tbody td:nth-child(9)').each(convert_to_refseq);
-  $('table#histones tbody td:nth-child(5)').each(convert_to_refseq);
-  $('table#histones tbody td:nth-child(9)').each(convert_to_refseq);
-  $('.refseq').each(convert_to_refseq);
+  // applies transformation to every element with given class and to every cell in a column with header of given class
+  apply_converter = function(element_classes, apply_func) {
+    transformation_func = convert_element(apply_func);
+    apply_to_columns('table', element_classes, transformation_func); // applied to any table, not a specific one
+    $(element_classes).filter(':not(th)').each(transformation_func); // not applied to header names in tables but to any other element
+  };
 
-  $('table#epigenes tbody td:nth-child(6)').each(convert_to_uniprot_ac);
-  $('table#histones tbody td:nth-child(6)').each(convert_to_uniprot_ac);
-  $('.uniprot_ac').each(convert_to_uniprot_ac);
+  apply_converter('.gene_id',         gene_id_link);
+  apply_converter('.pmid',            convert_multiple(pmid_link));
+  apply_converter('.ec_number',       ec_number_link);
+  apply_converter('.hgnc_id',         hgnc_id_link);
+  apply_converter('.mgi_id',          mgi_id_link);
+  apply_converter('.uniprot_id',      convert_multiple(uniprot_id_link));
+  apply_converter('.uniprot_id_comb', convert_each_token_with(uniprot_id_link));
+  apply_converter('.uniprot_ac',      uniprot_ac_link);
+  apply_converter('.refseq',          refseq_link);
+  apply_converter('.pfam_domain',     convert_multiple(pfam_domain_link));
 
   // call the tablesorter plugin
 
