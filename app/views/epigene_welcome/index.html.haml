@@ -1,11 +1,1 @@
-= link_to 'Full table of genes', genes_path
-%br
-= link_to 'Full table of gene complexes', gene_complexes_path
-%br
-= link_to 'Full table of histones', histones_path
-
-= form_tag epigene_search_path do
-  = label_tag 'search', 'Search:'
-  = text_field_tag 'search'
-  = select_tag 'kind', options_for_select({'Genes' => :genes, 'Gene complexes' => :gene_complexes, 'Histones' => :histones}, :genes)
-  = submit_tag 'Search'
+%h1 Place for an image

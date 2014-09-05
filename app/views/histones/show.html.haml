@@ -2,41 +2,26 @@
 %table.epigene_info.key_value_info
   %tbody
     = table_info_row @histone, :hgnc_symbol
+    = table_info_row @histone, :status
     = table_info_row @histone, :hgnc_id, value_column_html: {class: 'hgnc_id'}
     = table_info_row @histone, :hgnc_name
     = table_info_row @histone, :gene_id, value_column_html: {class: 'gene_id'}
-    = table_info_row @histone, :refseq_hs, value_column_html: {class: 'refseq'}
     = table_info_row @histone, :uniprot_ac, value_column_html: {class: 'uniprot_ac'}
-    = table_info_row @histone, :uniprot_id, value_column_html: {class: 'uniprot'}
+    = table_info_row @histone, :uniprot_id, value_column_html: {class: 'uniprot_id'}
+    = table_info_row @histone, :domain, value_column_html: {class: 'pfam_domain'}
+    = table_info_row @histone, :mgi_symbol
     = table_info_row @histone, :mgi_id, value_column_html: {class: 'mgi'}
-    = table_info_row @histone, :refseq_mm, value_column_html: {class: 'refseq'}
-    = table_info_row @histone, :ec_number, value_column_html: {class: 'ec_number'}
-    = table_info_row @histone, :ec_descr
+    = table_info_row @histone, :uniprot_ac_mm, value_column_html: {class: 'uniprot_ac'}
+    = table_info_row @histone, :uniprot_id_mm, value_column_html: {class: 'uniprot_id'}
     = table_info_row @histone, :gene_tag
     = table_info_row @histone, :gene_desc
+    = table_info_row @histone, :complex_name
+    = table_info_row @histone, :targeted_by_protein
+    = table_info_row @histone, :targeted_by_complex
+    = table_info_row @histone, :pmid, value_column_html: {class: 'pmid'}
+    = table_info_row @histone, :comment
 
 %hr
 %h4 Expression statistics
-%table.expression_statistics.key_value_info
-  %tbody
-    %tr
-      %td Expression range:
-      %td= @expression_statistics.range
-
-    %tr
-      %td Mean expression:
-      %td= @expression_statistics.mean_with_stddev
-    %tr
-      %td Median expression:
-      %td= @expression_statistics.median
-
-%table.gene_expression_by_tissue.tablesorter{'data-sortlist' => '[[1,1]]'}
-  %thead
-    %tr
-      %th Sample
-      %th{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'} Expression
-  %tbody
-  - @expressions.each do |tissue, expression|
-    %tr
-      %td= tissue
-      %td= expression.round(1)
+= render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
+= render partial: 'shared/expressions_by_tissues', locals: {expressions_by_tissues: @expressions}

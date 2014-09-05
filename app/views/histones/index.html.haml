@@ -5,35 +5,44 @@
   %thead
     %tr
       = histone_table_header :hgnc_symbol, show_always: true
-      = histone_table_header :hgnc_id, hide_by_default: true, dont_sort: true
+      = histone_table_header :status
+      = histone_table_header :hgnc_id, hide_by_default: true, dont_sort: true, class: 'hgnc_id'
       = histone_table_header :hgnc_name
-      = histone_table_header :gene_id, hide_by_default: true, dont_sort: true
-      = histone_table_header :refseq_hs, hide_by_default: true, dont_sort: true
-      = histone_table_header :uniprot_ac, hide_by_default: true, dont_sort: true
-      = histone_table_header :uniprot_id
-      = histone_table_header :mgi_id
-      = histone_table_header :refseq_mm, hide_by_default: true, dont_sort: true
-      = histone_table_header :ec_number, hide_by_default: true
-      = histone_table_header :ec_descr, hide_by_default: true
+      = histone_table_header :gene_id, hide_by_default: true, dont_sort: true, class: 'gene_id'
+      = histone_table_header :uniprot_ac, hide_by_default: true, dont_sort: true, class: 'uniprot_ac'
+      = histone_table_header :uniprot_id, class: 'uniprot_id'
+      = histone_table_header :domain, class: 'pfam_domain'
+      = histone_table_header :mgi_symbol
+      = histone_table_header :mgi_id, class: 'mgi_id'
+      = histone_table_header :uniprot_ac_mm, hide_by_default: true, dont_sort: true, class: 'uniprot_ac'
+      = histone_table_header :uniprot_id_mm, class: 'uniprot_id'
       = histone_table_header :gene_tag, hide_by_default: true
       = histone_table_header :gene_desc, hide_by_default: true
+      = histone_table_header :complex_name
+      = histone_table_header :targeted_by_protein
+      = histone_table_header :targeted_by_complex
+      = histone_table_header :pmid, class: 'pmid'
+      = histone_table_header :comment
 
   %tbody
     - @histones.each do |histone|
       %tr
-        %td
-          = histone.hgnc_symbol
-          %br
-          = link_to '(histone info)', histone_path(histone)
+        %td= histone.hgnc_symbol
+        %td= histone.status
         %td= histone.hgnc_id
         %td= histone.hgnc_name
         %td= histone.gene_id
-        %td= histone.refseq_hs
         %td= histone.uniprot_ac
         %td= histone.uniprot_id
+        %td= histone.domain
+        %td= histone.mgi_symbol
         %td= histone.mgi_id
-        %td= histone.refseq_mm
-        %td= histone.ec_number
-        %td= histone.ec_descr
+        %td= histone.uniprot_ac_mm
+        %td= histone.uniprot_id_mm
         %td= histone.gene_tag
         %td= histone.gene_desc
+        %td= histone.complex_name
+        %td= histone.targeted_by_protein
+        %td= histone.targeted_by_complex
+        %td= histone.pmid
+        %td= histone.comment

@@ -4,38 +4,41 @@
 %table#gene_complexes.bootstrap-select-columns-popup.tablesorter
   %thead
     %tr
-      = gene_complex_table_header :complex_group, hide_by_default: true
-      = gene_complex_table_header :complex_group_name
+      = gene_complex_table_header :group, hide_by_default: true
+      = gene_complex_table_header :group_name
       = gene_complex_table_header :complex_name, show_always: true
-      = gene_complex_table_header :alternative_names
-      = gene_complex_table_header :proteins_involved, hide_by_default: true
-      = gene_complex_table_header :uniprot_ids
-      = gene_complex_table_header :funct, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_complex_table_header :complex_members_pmid, hide_by_default: true
-      = gene_complex_table_header :target_molecule, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_complex_table_header :target
+      = gene_complex_table_header :status
+      = gene_complex_table_header :alternative_name
+      = gene_complex_table_header :protein, hide_by_default: true
+      = gene_complex_table_header :uniprot_id, class: 'uniprot_id_comb'
+      = gene_complex_table_header :pmid_complex, hide_by_default: true, class: 'pmid'
+      = gene_complex_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = gene_complex_table_header :pmid_function, hide_by_default: true, class: 'pmid'
+      = gene_complex_table_header :target, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = gene_complex_table_header :specific_target
       = gene_complex_table_header :product
-      = gene_complex_table_header :function_pmid, hide_by_default: true
-      = gene_complex_table_header :details, hide_by_default: true
+      = gene_complex_table_header :uniprot_id_target, hide_by_default: true, class: 'uniprot_id'
+      = gene_complex_table_header :pmid_target, hide_by_default: true, class: 'pmid'
+      = gene_complex_table_header :comment, hide_by_default: true
       = gene_complex_table_header :genes, dont_sort: true
 
   %tbody
     - @gene_complexes.each do |gene_complex|
       %tr
-        %td= gene_complex.complex_group
-        %td= gene_complex.complex_group_name
-        %td
-          = gene_complex.complex_name
-          %br
-          = link_to '(complex info)', gene_complex_path(gene_complex)
-        %td= gene_complex.alternative_names
-        %td= gene_complex.proteins_involved
-        %td= gene_complex.uniprot_ids
-        %td= gene_complex.funct
-        %td= gene_complex.complex_members_pmid
-        %td= gene_complex.target_molecule
+        %td= gene_complex.group
+        %td= gene_complex.group_name
+        %td= gene_complex.complex_name
+        %td= gene_complex.status
+        %td= gene_complex.alternative_name
+        %td= gene_complex.protein
+        %td= gene_complex.uniprot_id
+        %td= gene_complex.pmid_complex
+        %td= gene_complex.function
+        %td= gene_complex.pmid_function
         %td= gene_complex.target
+        %td= gene_complex.specific_target
         %td= gene_complex.product
-        %td= gene_complex.function_pmid
-        %td= gene_complex.details
+        %td= gene_complex.uniprot_id_target
+        %td= gene_complex.pmid_target
+        %td= gene_complex.comment
         %td= gene_complex.genes

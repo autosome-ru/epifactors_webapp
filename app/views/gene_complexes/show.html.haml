@@ -1,16 +1,18 @@
 %table.gene_complex_info.key_value_info
   %tbody
-    = table_info_row @gene_complex, :complex_group
-    = table_info_row @gene_complex, :complex_group_name
+    = table_info_row @gene_complex, :group
+    = table_info_row @gene_complex, :group_name
     = table_info_row @gene_complex, :complex_name
-    = table_info_row @gene_complex, :alternative_names
-    = table_info_row @gene_complex, :proteins_involved
-    = table_info_row @gene_complex, :uniprot_ids, value_column_html: {class: 'uniprot'}
-    = table_info_row @gene_complex, :funct
-    = table_info_row @gene_complex, :complex_members_pmid, value_column_html: {class: 'pmid'}
+    = table_info_row @gene_complex, :status
+    = table_info_row @gene_complex, :alternative_name
+    = table_info_row @gene_complex, :protein
+    = table_info_row @gene_complex, :uniprot_id, value_column_html: {class: 'uniprot_id_comb'}
+    = table_info_row @gene_complex, :pmid_complex, value_column_html: {class: 'pmid'}
+    = table_info_row @gene_complex, :function
+    = table_info_row @gene_complex, :pmid_function, value_column_html: {class: 'pmid'}
     = table_info_row @gene_complex, :target
-    = table_info_row @gene_complex, :target_molecule
+    = table_info_row @gene_complex, :specific_target
     = table_info_row @gene_complex, :product
-    = table_info_row @gene_complex, :function_pmid, value_column_html: {class: 'pmid'}
-    = table_info_row @gene_complex, :details
-    = table_info_row @gene_complex, :genes
+    = table_info_row @gene_complex, :uniprot_id_target, value_column_html: {class: 'uniprot_id'}
+    = table_info_row @gene_complex, :pmid_target, value_column_html: {class: 'pmid'}
+    = table_info_row @gene_complex, :comment
