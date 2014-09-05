@@ -1,20 +1,23 @@
 class CreateGeneComplexes < ActiveRecord::Migration
+
   def change
     create_table :gene_complexes do |t|
-      t.integer :complex_group
-      t.string :complex_group_name
-      t.string :complex_name
-      t.string :alternative_names
-      t.text :proteins_involved
-      t.text :uniprot_ids
-      t.string :funct
-      t.string :complex_members_pmid
-      t.string :target
-      t.string :target_molecule
-      t.string :product
-      t.string :function_pmid
-      t.string :targets_and_products_pmid
-      t.text :details
+      t.integer :group                      # Group
+      t.string  :group_name                 # Group_name
+      t.string  :complex_name               # Complex_name
+      t.string  :status                     # Status
+      t.string  :alternative_name           # Alternative_name
+      t.text    :protein                    # Protein
+      t.text    :uniprot_id                 # UniProt_ID
+      t.string  :pmid_complex               # PMID_complex
+      t.string  :function                   # Function
+      t.string  :pmid_function              # PMID_function
+      t.string  :target                     # Target
+      t.string  :specific_target            # Specific_target
+      t.string  :product                    # Product
+      t.text    :uniprot_id_target          # Uniprot_ID_target
+      t.string  :pmid_target                # PMID_target
+      t.text    :comment                    # Comment
 
       t.timestamps
     end

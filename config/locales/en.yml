@@ -23,56 +23,67 @@ en:
   activerecord:
     attributes:
       gene:
-        gene_complexes: Gene complexes
-        hgnc_symbol: HGNC symbol
-        hgnc_id: HGNC ID
-        hgnc_name: HGNC name
-        gene_id: Gene ID
-        refseq_hs: RefSeq Hs
-        uniprot_ac: UniProt AC
-        uniprot_id: UniProt ID
-        mgi_id: MGI ID
-        refseq_mm: RefSeq Mm
-        ec_number: Enzyme commission number
-        ec_description: Enzyme commission description
-        gene_tag: Gene tag
-        gene_desc: Gene description
-        funct_class: Functional class
-        funct: Function
-        funct_pmid: PMID (function)
-        protein_complex: Protein complex
-        protein_complex_pmid: PMID (protein complex)
-        target: Target
-        target_molecule: Target molecule
-        product: Product
-        product_pmid: PMID (product)
-        details: Details
+        hgnc_symbol:                HGNC approved symbol
+        status:                     Status of entry
+        hgnc_id:                    HGNC ID
+        hgnc_name:                  HGNC approved name
+        gene_id:                    Entrez gene ID
+        uniprot_ac:                 UniProt AC
+        uniprot_id:                 UniProt ID
+        domain:                     Pfam domains
+        mgi_symbol:                 MGI symbol
+        mgi_id:                     MGI ID
+        uniprot_ac_mm:              UniProt AC (Mm)
+        uniprot_id_mm:              UniProt ID (Mm)
+        gene_tag:                   HGNC gene family tag
+        gene_desc:                  HGNC gene family description
+        functional_class:           Functional class
+        function:                   Function
+        pmid_function:              PMID for information on class and function
+        complex_name:               Protein complex
+        target:                     Target molecule
+        specific_target:            Target entity
+        product:                    Product
+        uniprot_id_target:          UniProt ID of targets
+        pmid_target:                PMID for reference on target
+        comment:                    Comment
+
       gene_complex:
-        genes: Genes in complex
-        complex_group: Complex group
-        complex_group_name: Complex group name
-        complex_name: Complex name
-        alternative_names: Alternative names
-        proteins_involved: Proteins involved (from UniProt description)
-        uniprot_ids: UniProt IDs
-        funct: Function
-        complex_members_pmid: PMID (complex members)
-        target: Specific target
-        target_molecule: Target molecule
-        product: Product
-        function_pmid: PMID (function)
-        details: Details
+        # genes: Genes in complex
+        group:                      Complex group
+        group_name:                 Complex group name
+        complex_name:               Complex name
+        status:                     Status of entry
+        alternative_name:           Alternative names
+        protein:                    Proteins involved
+        uniprot_id:                 Uniprot IDs of involved proteins
+        pmid_complex:               PMID for reference on complex composition
+        function:                   Function
+        pmid_function:              PMID for reference on function
+        target:                     Target molecule type
+        specific_target:            Specific target
+        product:                    Product
+        uniprot_id_target:          Target UniProt ID
+        pmid_target:                PMID for reference on targets and products
+        comment:                    Comment
+
       histone:
-        hgnc_symbol: HGNC symbol
-        hgnc_id: HGNC ID
-        hgnc_name: HGNC name
-        gene_id: Gene ID
-        refseq_hs: RefSeq Hs
-        uniprot_ac: UniProt AC
-        uniprot_id: UniProt ID
-        mgi_id: MGI ID
-        refseq_mm: RefSeq Mm
-        ec_number: Enzyme commission number
-        ec_descr: Enzyme commission description
-        gene_tag: Gene tag
-        gene_desc: Gene description
+        hgnc_symbol:                HGNC approved symbol
+        status:                     Status of entry
+        hgnc_id:                    HGNC ID
+        hgnc_name:                  HGNC approved name
+        gene_id:                    Entrez gene ID
+        uniprot_ac:                 UniProt AC
+        uniprot_id:                 UniProt ID
+        domain:                     Pfam domains
+        mgi_symbol:                 MGI symbol
+        mgi_id:                     MGI ID
+        uniprot_ac_mm:              UniProt AC (Mm)
+        uniprot_id_mm:              UniProt ID (Mm)
+        gene_tag:                   HGNC gene family tag
+        gene_desc:                  HGNC gene family description
+        complex_name:               Protein complex
+        targeted_by_protein:        UniProt ID of targeting protein
+        targeted_by_complex:        Name of targeting complex
+        pmid:                       PMID for reference on annotation
+        comment:                    Comment
