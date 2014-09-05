@@ -11,18 +11,22 @@ class GeneExpressions
     expressions ? Hash[tissues.zip(expressions)] : {}
   end
 
-  def self.read_from_file(tissue_names_file, gene_expressions_file)
-    tissues = File.readlines(tissue_names_file).map(&:strip)
+  # def self.read_from_file(tissue_names_file, gene_expressions_file)
+  def self.read_from_file(gene_expressions_file)
+    # tissues = File.readlines(tissue_names_file).map(&:strip)
+    tissues = nil
     gene_expressions = {}
-    File.readlines(gene_expressions_file).each do |line|
-      hgnc_id, *expressions = line.strip.split("\t")
-      gene_expressions[hgnc_id.to_i] = expressions.map(&:to_f)
+    File.open(gene_expressions_file) do |f|
+      tissues = f.readline.chomp.split("\t").drop(2)
+      f.each_line do |line|
+        hgnc_id, hgnc_symbol, *expressions = line.strip.split("\t")
+        gene_expressions[hgnc_id.to_i] = expressions.map(&:to_f)
+      end
     end
     GeneExpressions.new(tissues, gene_expressions)
   end
 
   def self.instance
-    @instance ||= GeneExpressions.read_from_file( Rails.root.join('db','tissue_names.txt'),
-                                                  Rails.root.join('db','gene_expressions_by_tissue.txt'))
+    @instance ||= GeneExpressions.read_from_file( Rails.root.join('db','data','gene_expressions_by_tissue.txt') )
   end
 end
