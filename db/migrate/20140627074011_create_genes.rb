@@ -4,9 +4,9 @@ class CreateGenes < ActiveRecord::Migration
     create_table :genes do |t|
       t.string  :hgnc_symbol            # HGNC_symbol
       t.string  :status                 # Status
-      t.integer :hgnc_id                # HGNC_ID
+      t.string  :hgnc_id                # HGNC_ID
       t.string  :hgnc_name              # HGNC_name
-      t.integer :gene_id                # GeneID
+      t.string  :gene_id                # GeneID
       t.string  :uniprot_ac             # UniProt_AC
       t.string  :uniprot_id             # UniProt_ID
       t.text    :domain                 # Domain

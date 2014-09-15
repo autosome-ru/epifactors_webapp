@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140702200321) do
   enable_extension "plpgsql"
 
   create_table "gene_complexes", force: true do |t|
-    t.integer  "group"
+    t.string   "group"
     t.string   "group_name"
     t.string   "complex_name"
     t.string   "status"
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 20140702200321) do
   create_table "genes", force: true do |t|
     t.string   "hgnc_symbol"
     t.string   "status"
-    t.integer  "hgnc_id"
+    t.string   "hgnc_id"
     t.string   "hgnc_name"
-    t.integer  "gene_id"
+    t.string   "gene_id"
     t.string   "uniprot_ac"
     t.string   "uniprot_id"
     t.text     "domain"
@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(version: 20140702200321) do
   create_table "histones", force: true do |t|
     t.string   "hgnc_symbol"
     t.string   "status"
-    t.integer  "hgnc_id"
+    t.string   "hgnc_id"
     t.string   "hgnc_name"
-    t.integer  "gene_id"
+    t.string   "gene_id"
     t.string   "uniprot_ac"
     t.string   "uniprot_id"
     t.string   "domain"

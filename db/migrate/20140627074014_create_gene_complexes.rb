@@ -2,7 +2,7 @@ class CreateGeneComplexes < ActiveRecord::Migration
 
   def change
     create_table :gene_complexes do |t|
-      t.integer :group                      # Group
+      t.string  :group                      # Group
       t.string  :group_name                 # Group_name
       t.string  :complex_name               # Complex_name
       t.string  :status                     # Status
