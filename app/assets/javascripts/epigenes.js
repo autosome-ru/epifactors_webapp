@@ -1,4 +1,11 @@
 page_ready = function() {
+
+  methodToFunction = function(meth) {
+    return function(el) {
+      return meth.call(el);
+    }
+  };
+
   convert_argument = function(converter) {
     var inp = $(this).text();
     $(this).html( converter(inp) );
@@ -7,21 +14,6 @@ page_ready = function() {
   convert_element = function(converter) {
     return function() { convert_argument.call(this, converter); };
   };
-
-  // convert_each_element = function(converter) {
-  //   var inp = $(this).text();
-  //   $(this).html( transform_each(inp, converter) );
-  // };
-
-  // transform_each = function(input, converter) {
-  //   var result = '';
-  //   var elements = input.split(', ');
-  //   $.each(elements, function(index, element){
-  //     if (index) { result += ', '; }
-  //     result += converter(element);
-  //   });
-  //   return result;
-  // }
 
   // pattern MUST be a single group, otherwise spliter-terms won't be in split results;
   // multiple groups will result in several indistinguashable partial splitter terms. So use /(pattern)/ with pattern without (groups)
@@ -43,11 +35,12 @@ page_ready = function() {
     };
   }
 
-  convert_multiple = function(apply_func, splitter_pattern, joining_sequence) {
+  convert_multiple = function(apply_func, joining_sequence, splitter_pattern) {
     if (typeof(splitter_pattern)==='undefined') splitter_pattern = /,/;
     if (typeof(joining_sequence)==='undefined') joining_sequence = ', ';
     return function(multiple_ids) {
-      return multiple_ids.split(splitter_pattern).map(function(el){ return apply_func( el.trim() ); }).join(joining_sequence)
+      // return multiple_ids.split(splitter_pattern).map(function(el){ return apply_func( el.trim() ); }).join(joining_sequence)
+      return multiple_ids.split(splitter_pattern).map(methodToFunction(String.prototype.trim)).map(apply_func).join(joining_sequence)
     }
   };
 
@@ -73,15 +66,13 @@ page_ready = function() {
     return '<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>';
   };
   pfam_domain_link = function(pfam_info) {
-    infos = pfam_info.trim().split(/\s+/);
-    return '<a href="http://pfam.xfam.org/family/' + infos[1] + '">' + infos.slice(0, 2).join(' ') + '</a> ' + infos[2];
+    var infos = pfam_info.trim().split(/\s+/);
+    return '<a href="http://pfam.xfam.org/family/' + infos[1] + '">' + infos.slice(0, 2).join('&nbsp;') + '</a> (' + infos.slice(2).join(', ') + ')';
   };
-  // pfam_domains_links = function(pfam_infos) {
-  //   return pfam_infos.split(',').map(function(pfam_info){ return pfam_domain_link(pfam_info) }).join(',<br/>');
-  // };
+
   ec_number_link = function(ec) {
-    ec_parts = ec.split('.');
-    ec_query = [];
+    var ec_parts = ec.split('.');
+    var ec_query = [];
     $.each(ec_parts, function(ec_part_index, ec_part) {
       if (Number(ec_part)) {
         ec_query.push('field' + (1 + ec_part_index) + '=' + ec_part);
@@ -99,38 +90,27 @@ page_ready = function() {
 
 
   columns_by_header = function(table_selector, header_classes) {
-    header_indices = $(table_selector).find('thead tr th').filter(header_classes).map(function() {
+    var header_indices = $(table_selector).find('thead tr th').filter(header_classes).map(function() {
       return $(this).index();
     });
-    header_indices = $.unique(header_indices);
-    return header_indices;
+    return $.unique(header_indices);
   };
 
   apply_to_columns = function(table_selector, header_classes, apply_func) {
-    $table_selector = $(table_selector)
-    header_indices = columns_by_header($table_selector, header_classes);
+    var $table_selector = $(table_selector)
+    var header_indices = columns_by_header($table_selector, header_classes);
     $.each(header_indices, function(i, column_index) {
-      $table_selector.find('tbody tr td:nth-child('+ (column_index + 1) +')').each(apply_func);
+      $table_selector.find('tbody tr td:nth-child(' + (column_index + 1) + ')').each(apply_func);
     });
   };
 
   // applies transformation to every element with given class and to every cell in a column with header of given class
   apply_converter = function(element_classes, apply_func) {
-    transformation_func = convert_element(apply_func);
+    var transformation_func = convert_element(apply_func);
     apply_to_columns('table', element_classes, transformation_func); // applied to any table, not a specific one
     $(element_classes).filter(':not(th)').each(transformation_func); // not applied to header names in tables but to any other element
   };
 
-  apply_converter('.gene_id',         gene_id_link);
-  apply_converter('.pmid',            convert_multiple(pmid_link));
-  apply_converter('.ec_number',       ec_number_link);
-  apply_converter('.hgnc_id',         hgnc_id_link);
-  apply_converter('.mgi_id',          mgi_id_link);
-  apply_converter('.uniprot_id',      convert_multiple(uniprot_id_link));
-  apply_converter('.uniprot_id_comb', convert_each_token_with(uniprot_id_link));
-  apply_converter('.uniprot_ac',      uniprot_ac_link);
-  apply_converter('.refseq',          refseq_link);
-  apply_converter('.pfam_domain',     convert_multiple(pfam_domain_link));
 
   // call the tablesorter plugin
 
@@ -236,7 +216,7 @@ page_ready = function() {
           // manipulate the array as desired, then return it
           var tokens = [];
           $.each(array, function(i,el) {
-            tokens = tokens.concat( el.trim().split(', ') );
+            tokens = tokens.concat( el.split(',').map(methodToFunction(String.prototype.trim)) );
           });
           return $.unique(tokens).filter( function(el) { return el.length > 0; } );
         }
@@ -292,10 +272,25 @@ page_ready = function() {
       // columnSelector_priority : 'data-priority'
     },
 
-    filter_reset : 'button.reset'
+    filter_reset : 'button.reset',
+    // delayInit: false,
+    initialized : function(table){
+      apply_converter('.gene_id',         gene_id_link);
+      apply_converter('.pmid',            convert_multiple(pmid_link));
+      apply_converter('.ec_number',       ec_number_link);
+      apply_converter('.hgnc_id',         hgnc_id_link);
+      apply_converter('.mgi_id',          mgi_id_link);
+      apply_converter('.uniprot_id',      convert_multiple(uniprot_id_link));
+      apply_converter('.uniprot_id_comb', convert_each_token_with(uniprot_id_link));
+      apply_converter('.uniprot_ac',      uniprot_ac_link);
+      apply_converter('.refseq',          refseq_link);
+      apply_converter('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
+
+      $('.loading_logo').hide();
+    }
   });
 
-   $('#popover')
+  $('#popover')
     .popover({
       placement: 'right',
       html: true, // required if content has HTML
