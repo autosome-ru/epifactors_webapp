@@ -1,5 +1,7 @@
-%button#popover.btn.btn-default{type: 'button'} Select Columns
-%button.btn.btn-default.reset{type: 'button'} Reset filters
+.table-actions
+  %button.btn.btn-default.reset{type: 'button'} Reset filters
+  %button#popover.btn.btn-default{type: 'button'} Select Columns
+  .loading_logo
 
 %table#epigenes.tablesorter.bootstrap-select-columns-popup
   %thead
@@ -23,8 +25,8 @@
       = gene_table_header :pmid_function, hide_by_default: true, dont_sort: true, class: 'pmid'
       = gene_table_header :complex_name
       = gene_table_header :target, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_table_header :specific_target
-      = gene_table_header :product
+      = gene_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = gene_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :uniprot_id_target, class: 'uniprot_id'
       = gene_table_header :pmid_target, hide_by_default: true, dont_sort: true, class: 'pmid'
       = gene_table_header :comment, hide_by_default: true, dont_sort: true

@@ -1,6 +1,17 @@
+.table-actions {
+  padding-left: 10px;
+}
+
 .tablesorter {
+  th {
+    min-width: 150px;
+  }
   th.splitted_terms_filter {
     min-width: 200px;
+  }
+
+  input.tablesorter-filter {
+    height: 28px;
   }
 }
 
@@ -10,4 +21,14 @@
     display: block;
     width: 100%;
   }
+}
+
+.loading_logo {
+  display: inline-block;
+  vertical-align: middle;
+  $size: 34px;
+  height: $size;
+  width: $size;
+  background-image: image-url("loading.gif");
+  background-size: $size $size;
 }

@@ -1,5 +1,7 @@
-%button#popover.btn.btn-default{type: 'button'} Select Columns
-%button.btn.btn-default.reset{type: 'button'} Reset filters
+.table-actions
+  %button.btn.btn-default.reset{type: 'button'} Reset filters
+  %button#popover.btn.btn-default{type: 'button'} Select Columns
+  .loading_logo
 
 %table#histones.tablesorter.bootstrap-select-columns-popup
   %thead
@@ -16,11 +18,11 @@
       = histone_table_header :mgi_id, class: 'mgi_id'
       = histone_table_header :uniprot_ac_mm, hide_by_default: true, dont_sort: true, class: 'uniprot_ac'
       = histone_table_header :uniprot_id_mm, class: 'uniprot_id'
-      = histone_table_header :gene_tag, hide_by_default: true
-      = histone_table_header :gene_desc, hide_by_default: true
+      = histone_table_header :gene_tag, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = histone_table_header :gene_desc, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = histone_table_header :complex_name
       = histone_table_header :targeted_by_protein
-      = histone_table_header :targeted_by_complex
+      = histone_table_header :targeted_by_complex, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = histone_table_header :pmid, class: 'pmid'
       = histone_table_header :comment
 

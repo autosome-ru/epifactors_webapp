@@ -1,9 +1,13 @@
+nav .container {
+  width: 100%;
+}
 .navbar-inner {
   border-radius: 0;
 }
 .navbar-search {
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-right: 30px;
   margin-top: 0;
   margin-bottom: 0;
   label, input { display: inline-block; }

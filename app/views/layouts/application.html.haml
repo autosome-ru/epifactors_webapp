@@ -15,8 +15,8 @@
         = form_tag epigene_search_path, class: 'pull-right navbar-search' do
           = label_tag do
             Search:
-            = text_field_tag 'search'
-          = select_tag 'kind', options_for_select({'Genes' => :genes, 'Gene complexes' => :gene_complexes, 'Targets' => :histones}, :genes)
+            = text_field_tag 'search', params[:search]
+          = select_tag 'kind', options_for_select({'Genes' => :genes, 'Gene complexes' => :gene_complexes, 'Targets' => :histones},  [:genes, :gene_complexes, :histones].include?(params[:controller].to_sym) ? params[:controller].to_sym : :genes)
           = submit_tag 'Search'
     .container
       = yield

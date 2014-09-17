@@ -49,7 +49,7 @@ en:
         comment:                    Comment
 
       gene_complex:
-        # genes: Genes in complex
+        genes:                      Genes in complex
         group:                      Complex group
         group_name:                 Complex group name
         complex_name:               Complex name

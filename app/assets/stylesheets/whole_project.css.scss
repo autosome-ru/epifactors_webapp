@@ -1,0 +1,11 @@
+table:not(.tablesorter) {
+  tr, td {
+    border-color: #a7a7a7;
+  }
+}
+
+table.gene_expression_by_tissue, table:not(.tablesorter) {
+  margin-left: 20px;
+}
+
+h4 { margin-left:20px; }
