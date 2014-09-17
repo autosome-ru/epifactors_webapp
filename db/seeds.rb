@@ -108,14 +108,13 @@ histones.each_with_index do |histone_info, ind|
   Histone.where(id: ind + 1).first_or_create( histone_info )
 end
 
-# tpm_filename = '/home/ilya/iogen/cages/hg19/freeze1/hg19.cage_peak_tpm_ann.osc.txt'
-# tissue_expressions_file = Rails.root.join('db', 'data', 'gene_expressions_by_tissue.txt')
-tpm_filename = '/home/ilya/iogen/cages/hg19/robust_phase1_pls_2.tpm.desc121113.osc.txt'
-tissue_expressions_file = Rails.root.join('db', 'data', 'gene_expressions_by_tissue_with_timecourses.txt')
+{ '/home/ilya/iogen/cages/hg19/robust_phase1_pls_2.tpm.desc121113.osc.txt' => Rails.root.join('db', 'data', 'gene_expressions_by_tissue_with_timecourses.txt'),
+  '/home/ilya/iogen/cages/hg19/freeze1/hg19.cage_peak_tpm_ann.osc.txt' => Rails.root.join('db', 'data', 'gene_expressions_by_tissue.txt')
+}.each do |tpm_filename, tissue_expressions_file|
 if File.exist?(tissue_expressions_file)
-  $stderr.puts 'Skipping gene expressions...'
+  $stderr.puts "Skipping gene expressions (#{tpm_filename} --> #{tissue_expressions_file})..."
 else
-  $stderr.puts 'Extracting gene expressions...'
+  $stderr.puts "Extracting gene expressions (#{tpm_filename} --> #{tissue_expressions_file})..."
   hgnc_symbols = {}
   epigenes.select{|info| info[:hgnc_id] && info[:hgnc_id] != '-' }.each{|info| hgnc_symbols[info[:hgnc_id]] = info[:hgnc_symbol] }
   histones.select{|info| info[:hgnc_id] && info[:hgnc_id] != '-' }.each{|info| hgnc_symbols[info[:hgnc_id]] = info[:hgnc_symbol] }
@@ -130,4 +129,5 @@ else
       fw.puts [gene, hgnc_symbols[gene], *gene_expressions_by_tissue].join("\t")
     end
   end
+end
 end
