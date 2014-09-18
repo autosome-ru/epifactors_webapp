@@ -2,7 +2,7 @@
   %tbody
     = table_info_row @gene_complex, :group
     = table_info_row @gene_complex, :group_name
-    = table_info_row @gene_complex, :complex_name
+    = table_info_row @gene_complex.object, :complex_name
     = table_info_row @gene_complex, :status
     = table_info_row @gene_complex, :alternative_name
     = table_info_row @gene_complex, :protein

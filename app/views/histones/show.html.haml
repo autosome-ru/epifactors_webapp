@@ -1,7 +1,7 @@
 %h4 Histone info
 %table.epigene_info.key_value_info
   %tbody
-    = table_info_row @histone, :hgnc_symbol
+    = table_info_row @histone.object, :hgnc_symbol
     = table_info_row @histone, :status
     = table_info_row @histone, :hgnc_id, value_column_html: {class: 'hgnc_id'}
     = table_info_row @histone, :hgnc_name
