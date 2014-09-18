@@ -1,7 +1,7 @@
 class Gene < ActiveRecord::Base
   # # BAD DEFINITION
   # def gene_complexes
-  #   GeneComplex.where('uniprot_ids ILIKE ? OR uniprot_ids ILIKE ? OR uniprot_ids ILIKE ? OR uniprot_ids ILIKE ?', 
+  #   GeneComplex.where('uniprot_ids LIKE ? OR uniprot_ids LIKE ? OR uniprot_ids LIKE ? OR uniprot_ids LIKE ?', 
   #                     uniprot_id,
   #                     "%, #{uniprot_id},%",
   #                     "#{uniprot_id}, %",

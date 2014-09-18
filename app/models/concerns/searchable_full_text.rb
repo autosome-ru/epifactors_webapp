@@ -7,7 +7,7 @@ module SearchableFullText
           all
         else
           search_term_array = Array.new(searchable_attributes.size, "%#{word}%")
-          where( searchable_attributes.map{|attr| "\"#{attr}\" ILIKE ?"}.join(' OR '), *search_term_array )
+          where( searchable_attributes.map{|attr| "\"#{attr}\" LIKE ?"}.join(' OR '), *search_term_array )
         end
       }
     end

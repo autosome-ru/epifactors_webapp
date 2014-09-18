@@ -2,9 +2,9 @@ class GeneComplexesController < ApplicationController
   respond_to :html
   def index
     if params[:group_name]
-      @gene_complexes = GeneComplex.where("\"group_name\" ILIKE ?", "%#{params[:group_name]}%")
+      @gene_complexes = GeneComplex.where("\"group_name\" LIKE ?", "%#{params[:group_name]}%")
     elsif params[:complex_name]
-      @gene_complexes = GeneComplex.where("\"complex_name\" ILIKE ?", "%#{params[:complex_name]}%")
+      @gene_complexes = GeneComplex.where("\"complex_name\" LIKE ?", "%#{params[:complex_name]}%")
       if @gene_complexes.count == 1
         redirect_to gene_complex_path(@gene_complexes.first.id) and return
       end
