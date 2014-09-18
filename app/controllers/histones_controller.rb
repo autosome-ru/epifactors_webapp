@@ -1,7 +1,11 @@
 class HistonesController < ApplicationController
   respond_to :html
   def index
-    @histones = Histone.by_word(params[:search])
+    if params[:hgnc_name]
+      @histones = Histone.where("\"hgnc_name\" ILIKE ?", "%#{params[:hgnc_name]}%")
+    else
+      @histones = Histone.by_word(params[:search])
+    end
     @histones = HistoneDecorator.decorate_collection(@histones)
     respond_with(@histones)
   end

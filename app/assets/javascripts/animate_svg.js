@@ -7,49 +7,103 @@ multiplicate_size = function(size, multiplier) {
   return (sz * multiplier) + units;
 }
 
-bind_two_position_handler = function(element, css_feature, eventOn, eventOff, new_value_func) {
-  var old_css_value = null;
-  $(element).bind(eventOn, function() {
-    if (old_css_value == null) {
-      old_css_value = $(this).css(css_feature);
-      $(this).css(css_feature, new_value_func(old_css_value));
-    }
-  });
 
-  $(element).bind(eventOff, function() {
-    if (old_css_value != null) {
-      $(this).css(css_feature, old_css_value);
-      old_css_value = null;
+set_css_attr = function(selector, attr, val_function) {
+  $(selector).each(function(i, element) {
+    if (typeof( $(element).data("old-css-value-"+attr) ) == 'undefined') {
+      var old_value = $(element).css(attr);
+      $(element).css(attr, val_function(old_value));
+      $(element).data("old-css-value-"+attr, old_value);
     }
   });
-}
+};
+
+restore_css_attr = function(selector, attr) {
+  $(selector).each(function(i, element) {
+    var old_value = $(element).data("old-css-value-"+attr);
+    if (typeof( $(element).data("old-css-value-"+attr) ) != 'undefined') {
+      $(element).css(attr, old_value);
+      $(element).removeData("old-css-value-"+attr);
+    }
+  });
+};
+
+
+set_attr = function(selector, attr, val_function) {
+  $(selector).each(function(i, element) {
+    if (typeof( $(element).data("old-attr-value-"+attr) ) == 'undefined') {
+      var old_value = element.getAttribute(attr);
+      element.setAttribute(attr, val_function(old_value));
+      $(element).data("old-attr-value-"+attr, old_value);
+    }
+  });
+};
+
+restore_attr = function(selector, attr) {
+  $(selector).each(function(i, element) {
+    var old_value = $(element).data("old-attr-value-"+attr);
+    if (typeof( $(element).data("old-attr-value-"+attr) ) != 'undefined') {
+      element.setAttribute(attr, old_value);
+      $(element).removeData("old-attr-value-"+attr);
+    }
+  });
+};
 
 animate_svg = function() {
   var image = $('.main_scheme_svg');
-  var $elements = image.find('.factor-CAF1');
-  var $texts = image.find('text.factor-CAF1');
-  var $backgrounds = image.find('path.factor-CAF1');
-  $texts.each(function(i,el) {
-    bind_two_position_handler(el, 'font-size', 'upscale', 'downscale', function(font_size) {
-      return multiplicate_size(font_size,1.1);
-    });
-  });
-  $backgrounds.each(function(i,el) {
-    bind_two_position_handler(el, 'fill', 'saturateBG', 'desaturateBG', function(old_fill) {
-      return 'red';
-    });
-  });
-  // $texts.each(function(i,el) { bind_updownscale_handler(el); } );
-  // $backgrounds.each(function(i,el) { bind_BGSaturator_handler(el); } );
+  var epigenes = image.find('g.epigene');
+  var histones = image.find('g.histone');
+  epigenes.hover(
+    function(e) {
+      var name = $(e.target).closest('g.epigene').data('epigene-name');
+      var same_epigenes = epigenes.filter('[data-epigene-name="'+name+'"]');
 
-  $elements.hover(
-    function(e){
-      $texts.trigger('upscale');
-      $backgrounds.trigger('saturateBG');
+      set_css_attr(same_epigenes.find('path'), 'fill', function(){return 'red';} );
+      set_css_attr(same_epigenes.find('text, tspan'), 'font-size', function(font_size){return multiplicate_size(font_size,1.1);} );
+      set_css_attr(same_epigenes.find('text, tspan'), 'font-weight', function(){return 'bolder';} );
     },
-    function(e){
-      $texts.trigger('downscale');
-      $backgrounds.trigger('desaturateBG');
+    function(e) {
+      var name = $(e.target).closest('g.epigene').data('epigene-name');
+      var same_epigenes = epigenes.filter('[data-epigene-name="'+name+'"]');
+
+      restore_css_attr(same_epigenes.find('path'), 'fill');
+      restore_css_attr(same_epigenes.find('text, tspan'), 'font-size');
+      restore_css_attr(same_epigenes.find('text, tspan'), 'font-weight');
+    }
+  );
+
+  epigenes.click(function(e) {
+    var name = $(e.target).closest('g.epigene').data('epigene-name');
+    window.location = 'gene_complexes?group_name='+name;
+  });
+
+  histones.click(function(e) {
+    var name = $(e.target).closest('g.histone').data('histone-name');
+    window.location = 'histones?hgnc_name='+name;
+  });
+
+  histones.hover(
+    function(e) {
+      var name = $(e.target).closest('g.histone').data('histone-name');
+      var same_histones = histones.filter('[data-histone-name="'+name+'"]');
+
+      // set_css_attr(same_histones.find('path'), 'fill', function(){return 'red';} );
+      set_css_attr(same_histones.find('text, tspan'), 'font-size', function(font_size){return multiplicate_size(font_size,1.5);} );
+      set_css_attr(same_histones.find('text, tspan'), 'font-weight', function(){return 'bolder';} );
+      set_attr(same_histones.find('circle'), 'r', function(r){return r*2;} );
+      set_attr(same_histones.find('ellipse'), 'rx', function(rx){return rx*2;} );
+      set_attr(same_histones.find('ellipse'), 'ry', function(ry){return ry*2;} );
+    },
+    function(e) {
+      var name = $(e.target).closest('g.histone').data('histone-name');
+      var same_histones = histones.filter('[data-histone-name="'+name+'"]');
+
+      // restore_css_attr(same_histones.find('path'), 'fill');
+      restore_css_attr(same_histones.find('text, tspan'), 'font-size');
+      restore_css_attr(same_histones.find('text, tspan'), 'font-weight');
+      restore_attr(same_histones.find('circle'), 'r');
+      restore_attr(same_histones.find('ellipse'), 'rx');
+      restore_attr(same_histones.find('ellipse'), 'ry');
     }
   );
 };

@@ -9,18 +9,18 @@
       = gene_complex_table_header :group, hide_by_default: true
       = gene_complex_table_header :group_name
       = gene_complex_table_header :complex_name, show_always: true
-      = gene_complex_table_header :status
+      = gene_complex_table_header :status, hide_by_default: true
       = gene_complex_table_header :alternative_name
       = gene_complex_table_header :protein, hide_by_default: true
       = gene_complex_table_header :uniprot_id, class: 'uniprot_id_comb'
-      = gene_complex_table_header :pmid_complex, hide_by_default: true, class: 'pmid'
+      = gene_complex_table_header :pmid_complex, dont_sort: true, hide_by_default: true, class: 'pmid'
       = gene_complex_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_complex_table_header :pmid_function, hide_by_default: true, class: 'pmid'
+      = gene_complex_table_header :pmid_function, dont_sort: true, hide_by_default: true, class: 'pmid'
       = gene_complex_table_header :target, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_complex_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_complex_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_complex_table_header :uniprot_id_target, hide_by_default: true, class: 'uniprot_id'
-      = gene_complex_table_header :pmid_target, hide_by_default: true, class: 'pmid'
+      = gene_complex_table_header :pmid_target, dont_sort: true, hide_by_default: true, class: 'pmid'
       = gene_complex_table_header :comment, hide_by_default: true
       = gene_complex_table_header :genes, dont_sort: true
 

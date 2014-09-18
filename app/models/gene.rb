@@ -1,11 +1,12 @@
 class Gene < ActiveRecord::Base
-  def gene_complexes
-    GeneComplex.where('uniprot_ids LIKE ? OR uniprot_ids LIKE ? OR uniprot_ids LIKE ? OR uniprot_ids LIKE ?', 
-                      uniprot_id,
-                      "%, #{uniprot_id},%",
-                      "#{uniprot_id}, %",
-                      "%, #{uniprot_id}" )
-  end
+  # # BAD DEFINITION
+  # def gene_complexes
+  #   GeneComplex.where('uniprot_ids ILIKE ? OR uniprot_ids ILIKE ? OR uniprot_ids ILIKE ? OR uniprot_ids ILIKE ?', 
+  #                     uniprot_id,
+  #                     "%, #{uniprot_id},%",
+  #                     "#{uniprot_id}, %",
+  #                     "%, #{uniprot_id}" )
+  # end
 
   searchable_attributes = [
     :hgnc_symbol, :hgnc_id, :hgnc_name, :gene_id, :uniprot_ac, :uniprot_id,

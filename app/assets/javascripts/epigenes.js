@@ -70,6 +70,10 @@ page_ready = function() {
     return '<a href="http://pfam.xfam.org/family/' + infos[1] + '">' + infos.slice(0, 2).join('&nbsp;') + '</a> (' + infos.slice(2).join(', ') + ')';
   };
 
+  target_complex_link = function(target) {
+    return '<a href="/gene_complexes?complex_name=' + target + '">' + target + '</a>';
+  }
+
   ec_number_link = function(ec) {
     var ec_parts = ec.split('.');
     var ec_query = [];
@@ -277,6 +281,7 @@ page_ready = function() {
     initialized : function(table){
       apply_converter('.gene_id',         gene_id_link);
       apply_converter('.pmid',            convert_multiple(pmid_link));
+      apply_converter('.target_complex',  convert_multiple(target_complex_link));
       apply_converter('.ec_number',       ec_number_link);
       apply_converter('.hgnc_id',         hgnc_id_link);
       apply_converter('.mgi_id',          mgi_id_link);

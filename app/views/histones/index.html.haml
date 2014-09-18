@@ -7,7 +7,7 @@
   %thead
     %tr
       = histone_table_header :hgnc_symbol, show_always: true
-      = histone_table_header :status
+      = histone_table_header :status, hide_by_default: true
       = histone_table_header :hgnc_id, hide_by_default: true, dont_sort: true, class: 'hgnc_id'
       = histone_table_header :hgnc_name
       = histone_table_header :gene_id, hide_by_default: true, dont_sort: true, class: 'gene_id'
@@ -15,16 +15,16 @@
       = histone_table_header :uniprot_id, class: 'uniprot_id'
       = histone_table_header :domain, class: 'pfam_domain'
       = histone_table_header :mgi_symbol
-      = histone_table_header :mgi_id, class: 'mgi_id'
+      = histone_table_header :mgi_id, class: 'mgi_id', dont_sort: true
       = histone_table_header :uniprot_ac_mm, hide_by_default: true, dont_sort: true, class: 'uniprot_ac'
       = histone_table_header :uniprot_id_mm, class: 'uniprot_id'
       = histone_table_header :gene_tag, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = histone_table_header :gene_desc, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = histone_table_header :complex_name
-      = histone_table_header :targeted_by_protein
-      = histone_table_header :targeted_by_complex, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = histone_table_header :pmid, class: 'pmid'
-      = histone_table_header :comment
+      = histone_table_header :complex_name, hide_by_default: true
+      = histone_table_header :targeted_by_protein, hide_by_default: true
+      = histone_table_header :targeted_by_complex, class: ['splitted_terms_filter', 'filter-onlyAvail', 'target_complex'], dont_sort: true
+      = histone_table_header :pmid, class: 'pmid', hide_by_default: true, dont_sort: true
+      = histone_table_header :comment, hide_by_default: true
 
   %tbody
     - @histones.each do |histone|

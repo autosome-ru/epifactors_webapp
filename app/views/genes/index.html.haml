@@ -7,7 +7,7 @@
   %thead
     %tr
       = gene_table_header :hgnc_symbol, show_always: true
-      = gene_table_header :status
+      = gene_table_header :status, hide_by_default: true
       = gene_table_header :hgnc_id, hide_by_default: true, dont_sort: true, class: 'hgnc_id'
       = gene_table_header :hgnc_name
       = gene_table_header :gene_id, hide_by_default: true, dont_sort: true, class: 'gene_id'
@@ -27,7 +27,7 @@
       = gene_table_header :target, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_table_header :uniprot_id_target, class: 'uniprot_id'
+      = gene_table_header :uniprot_id_target, class: 'uniprot_id', hide_by_default: true
       = gene_table_header :pmid_target, hide_by_default: true, dont_sort: true, class: 'pmid'
       = gene_table_header :comment, hide_by_default: true, dont_sort: true
       -# = gene_table_header :gene_complexes, dont_sort: true
