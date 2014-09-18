@@ -111,23 +111,23 @@ end
 { '/home/ilya/iogen/cages/hg19/robust_phase1_pls_2.tpm.desc121113.osc.txt' => Rails.root.join('db', 'data', 'gene_expressions_by_tissue_with_timecourses.txt'),
   '/home/ilya/iogen/cages/hg19/freeze1/hg19.cage_peak_tpm_ann.osc.txt' => Rails.root.join('db', 'data', 'gene_expressions_by_tissue.txt')
 }.each do |tpm_filename, tissue_expressions_file|
-if File.exist?(tissue_expressions_file)
-  $stderr.puts "Skipping gene expressions (#{tpm_filename} --> #{tissue_expressions_file})..."
-else
-  $stderr.puts "Extracting gene expressions (#{tpm_filename} --> #{tissue_expressions_file})..."
-  hgnc_symbols = {}
-  epigenes.select{|info| info[:hgnc_id] && info[:hgnc_id] != '-' }.each{|info| hgnc_symbols[info[:hgnc_id]] = info[:hgnc_symbol] }
-  histones.select{|info| info[:hgnc_id] && info[:hgnc_id] != '-' }.each{|info| hgnc_symbols[info[:hgnc_id]] = info[:hgnc_symbol] }
-  target_hgnc_ids = Set.new(hgnc_symbols.keys)
+  if File.exist?(tissue_expressions_file)
+    $stderr.puts "Skipping gene expressions (#{tpm_filename} --> #{tissue_expressions_file})..."
+  else
+    $stderr.puts "Extracting gene expressions (#{tpm_filename} --> #{tissue_expressions_file})..."
+    hgnc_symbols = {}
+    epigenes.select{|info| info[:hgnc_id] && info[:hgnc_id] != '-' }.each{|info| hgnc_symbols[info[:hgnc_id]] = info[:hgnc_symbol] }
+    histones.select{|info| info[:hgnc_id] && info[:hgnc_id] != '-' }.each{|info| hgnc_symbols[info[:hgnc_id]] = info[:hgnc_symbol] }
+    target_hgnc_ids = Set.new(hgnc_symbols.keys)
 
-  tissue_names = tissue_names_from_peaks_file(tpm_filename)
-  gene_expressions = gene_expressions_from_peaks_file(tpm_filename, target_hgnc_ids)
+    tissue_names = tissue_names_from_peaks_file(tpm_filename)
+    gene_expressions = gene_expressions_from_peaks_file(tpm_filename, target_hgnc_ids)
 
-  File.open(tissue_expressions_file, 'w') do |fw|
-    fw.puts ['HGNC ID', 'HGNC symbol', *tissue_names].join("\t")
-    gene_expressions.each do |gene, gene_expressions_by_tissue|
-      fw.puts [gene, hgnc_symbols[gene], *gene_expressions_by_tissue].join("\t")
+    File.open(tissue_expressions_file, 'w') do |fw|
+      fw.puts ['HGNC ID', 'HGNC symbol', *tissue_names].join("\t")
+      gene_expressions.each do |gene, gene_expressions_by_tissue|
+        fw.puts [gene, hgnc_symbols[gene], *gene_expressions_by_tissue].join("\t")
+      end
     end
   end
-end
 end
