@@ -291,7 +291,7 @@ page_ready = function() {
       apply_converter('.refseq',          refseq_link);
       apply_converter('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
 
-      $('.loading_logo').hide();
+      $('.loading_table').hide();
     }
   });
 
