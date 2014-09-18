@@ -112,6 +112,11 @@ page_ready = function() {
   apply_converter = function(element_classes, apply_func) {
     var transformation_func = convert_element(apply_func);
     apply_to_columns('table', element_classes, transformation_func); // applied to any table, not a specific one
+  };
+
+  apply_converter_to_non_table = function(element_classes, apply_func) {
+    console.log(element_classes);
+    var transformation_func = convert_element(apply_func);
     $(element_classes).filter(':not(th)').each(transformation_func); // not applied to header names in tables but to any other element
   };
 
@@ -313,6 +318,18 @@ page_ready = function() {
     theme: 'blue',
     widgets: ['zebra', 'columnSelector', 'stickyHeaders']
   });
+
+  apply_converter_to_non_table('.gene_id',         gene_id_link);
+  apply_converter_to_non_table('.pmid',            convert_multiple(pmid_link));
+  apply_converter_to_non_table('.target_complex',  convert_multiple(target_complex_link));
+  apply_converter_to_non_table('.ec_number',       ec_number_link);
+  apply_converter_to_non_table('.hgnc_id',         hgnc_id_link);
+  apply_converter_to_non_table('.mgi_id',          mgi_id_link);
+  apply_converter_to_non_table('.uniprot_id',      convert_multiple(uniprot_id_link));
+  apply_converter_to_non_table('.uniprot_id_comb', convert_each_token_with(uniprot_id_link));
+  apply_converter_to_non_table('.uniprot_ac',      uniprot_ac_link);
+  apply_converter_to_non_table('.refseq',          refseq_link);
+  apply_converter_to_non_table('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
 };
 
 $(document).ready(page_ready)
