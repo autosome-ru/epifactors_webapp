@@ -18,7 +18,7 @@
     = table_info_row @gene, :functional_class
     = table_info_row @gene, :function
     = table_info_row @gene, :pmid_function, value_column_html: {class: 'pmid'}
-    = table_info_row @gene, :complex_name
+    = table_info_row @gene, :complex_name, value_column_html: {class: 'target_complex'}
     = table_info_row @gene, :target
     = table_info_row @gene, :specific_target
     = table_info_row @gene, :product
