@@ -50,7 +50,7 @@ restore_attr = function(selector, attr) {
 };
 
 animate_svg = function() {
-  var image = $('.main_scheme_svg');
+  var image = $('#main_scheme_svg');
   var epigenes = image.find('g.epigene');
   var histones = image.find('g.histone');
   epigenes.hover(
@@ -108,5 +108,9 @@ animate_svg = function() {
   );
 };
 
-$(document).ready(animate_svg)
-$(document).on('page:load', animate_svg)
+load_svg = function() {
+  $('#main_scheme_svg').load('/main_scheme.svg', null, animate_svg);
+}
+
+$(document).ready(load_svg)
+$(document).on('page:load', load_svg)
