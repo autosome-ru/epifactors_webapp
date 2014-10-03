@@ -12083,6 +12083,27 @@
    id="text2683" style="font-size:9px;font-family:Arial-BoldMT">H2A</text>
 
 </g><g
+   id="g14172"
+   class="histone"
+   data-histone-name="H1"><ellipse
+   stroke-miterlimit="10"
+   cx="379"
+   cy="418"
+   rx="9.7469559"
+   ry="9.850502"
+   id="ellipse2517"
+   sodipodi:cx="150"
+   sodipodi:cy="358"
+   sodipodi:rx="9.7469559"
+   sodipodi:ry="9.850502"
+   style="fill:#bf912a;stroke:#7f653f;stroke-miterlimit:10" /><text
+   y="421"
+   x="374"
+   font-size="9"
+   id="text2681"
+   style="font-size:9px;font-family:Arial-BoldMT">H1</text>
+
+</g><g
    id="g14176"
    class="histone"
    data-histone-name="H4"><circle
