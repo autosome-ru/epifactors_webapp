@@ -3,20 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 table.key_value_info {
+  width: 100%;
   td {
     padding: 5px;
     border: 1px solid black;
   }
   td:first-child {
-    width: 200px;
+    width: 25%;
     font-weight: bolder;
   }
   td:last-child {
-    width:600px;
+    width: 75%;
   }
 }
 
 table.expression_statistics {
+  width: 100%;
   margin: 20px 0;
   tr:first-child td {padding-top: 10px;}
   tr:last-child td {padding-bottom: 10px;}

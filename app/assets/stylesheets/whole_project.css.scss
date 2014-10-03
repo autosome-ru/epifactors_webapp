@@ -9,3 +9,16 @@ table.gene_expression_by_tissue, table:not(.tablesorter) {
 }
 
 h4 { margin-left:20px; }
+
+.expression-bar {
+  background-color: red;
+  height: 7px;
+}
+
+.hocomoco_link {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  img {
+    padding-left: 30px;
+  }
+}

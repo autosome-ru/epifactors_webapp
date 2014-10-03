@@ -3,7 +3,7 @@ page_ready = function() {
   methodToFunction = function(meth) {
     return function(el) {
       return meth.call(el);
-    }
+    };
   };
 
   convert_argument = function(converter) {
@@ -33,7 +33,7 @@ page_ready = function() {
       });
       return result;
     };
-  }
+  };
 
   convert_multiple = function(apply_func, joining_sequence, splitter_pattern) {
     if (typeof(splitter_pattern)==='undefined') splitter_pattern = /,/;
@@ -41,7 +41,7 @@ page_ready = function() {
     return function(multiple_ids) {
       // return multiple_ids.split(splitter_pattern).map(function(el){ return apply_func( el.trim() ); }).join(joining_sequence)
       return multiple_ids.split(splitter_pattern).map(methodToFunction(String.prototype.trim)).map(apply_func).join(joining_sequence)
-    }
+    };
   };
 
   pmid_link = function(pmid) {
@@ -73,7 +73,7 @@ page_ready = function() {
 
   target_complex_link = function(target) {
     return '<a href="/gene_complexes?complex_name=' + target + '">' + target + '</a>';
-  }
+  };
 
   ec_number_link = function(ec) {
     var ec_parts = ec.split('.');
@@ -90,6 +90,23 @@ page_ready = function() {
     }
   };
 
+  expression_bar = function(value) {
+    return '<div class="expression-bar" style="width:' + value + 'px;"></div>';
+  };
+
+  hocomoco_link = function(value) {
+    if (value == '') {
+      return '';
+    }
+    var parts = value.split('_');
+    var tf = parts[0];
+    var model = parts[1];
+    var img_html = '<img src="http://autosome.ru/HOCOMOCO/logos/thumbs/' + value + '_thumb.jpg">';
+    var link_html = '<a href="http://autosome.ru/HOCOMOCO/modelDetails.php?tf=' + tf + '&model=' + model + '">' +
+                    value + img_html +
+                    '</a>';
+    return '<div class="hocomoco_link">' + link_html + '</div>';
+  };
 
   // convert_to_uniprot    = function() { convert_each_uniprot.call(this, uniprot_id_link); };
 
@@ -116,7 +133,6 @@ page_ready = function() {
   };
 
   apply_converter_to_non_table = function(element_classes, apply_func) {
-    console.log(element_classes);
     var transformation_func = convert_element(apply_func);
     $(element_classes).filter(':not(th)').each(transformation_func); // not applied to header names in tables but to any other element
   };
@@ -296,6 +312,7 @@ page_ready = function() {
       apply_converter('.uniprot_ac',      uniprot_ac_link);
       apply_converter('.refseq',          refseq_link);
       apply_converter('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
+      apply_converter('.expression_bar',  expression_bar);
 
       $('.loading_table').hide();
     }
@@ -375,6 +392,7 @@ page_ready = function() {
   apply_converter_to_non_table('.uniprot_ac',      uniprot_ac_link);
   apply_converter_to_non_table('.refseq',          refseq_link);
   apply_converter_to_non_table('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
+  apply_converter_to_non_table('.hocomoco',        convert_multiple(hocomoco_link, ''));
 };
 
 $(document).ready(page_ready)

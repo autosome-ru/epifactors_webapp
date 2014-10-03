@@ -19,4 +19,8 @@ class Gene < ActiveRecord::Base
                             # :gene_tag,:gene_desc,:funct_class,:funct,:protein_complex,:target,:target_molecule,:product,:details]
   include SearchableFullText
   searchable_by(searchable_attributes)
+
+  def tf?
+    functional_class.split(',').map(&:strip).include?('TF')
+  end
 end

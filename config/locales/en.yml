@@ -48,6 +48,8 @@ en:
         pmid_target:                PMID for information on target
         comment:                    Comment
 
+        hocomoco_link:              HOCOMOCO TFBS model
+
       gene_complex:
         genes:                      Genes in complex
         group:                      Complex group
