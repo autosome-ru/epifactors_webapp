@@ -2,7 +2,8 @@ class HistoneDecorator < Draper::Decorator
   delegate_all
 
   def hgnc_symbol
-    ( object.hgnc_symbol + '<br/>' + h.link_to('(histone info)', h.histone_path(object)) ).html_safe
+    protein_info = object.hgnc_name.start_with?('protamine')  ?  '(protamine info)' : '(histone info)'
+    ( object.hgnc_symbol + '<br/>' + h.link_to(protein_info, h.histone_path(object)) ).html_safe
   end
 
   def refseq_mm

@@ -39,13 +39,13 @@ en:
         gene_desc:                  HGNC gene family description
         functional_class:           Functional class
         function:                   Function
-        pmid_function:              PMID for information on class and function
+        pmid_function:              PMID for information on function
         complex_name:               Protein complex
         target:                     Target molecule
         specific_target:            Target entity
         product:                    Product
         uniprot_id_target:          UniProt ID of targets
-        pmid_target:                PMID for reference on target
+        pmid_target:                PMID for information on target
         comment:                    Comment
 
       gene_complex:

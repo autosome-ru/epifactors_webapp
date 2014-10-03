@@ -48,7 +48,8 @@ page_ready = function() {
     return '<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
   };
   mgi_id_link = function(mgi_name) {
-    return '<a href="http://www.informatics.jax.org/searchtool/Search.do?query=' + mgi_name + '">' + mgi_name + '</a>';
+    // return '<a href="http://www.informatics.jax.org/searchtool/Search.do?query=MGI:' + mgi_name + '">' + mgi_name + '</a>';
+    return '<a href="http://www.informatics.jax.org/marker/MGI:' + mgi_name + '">' + mgi_name + '</a>';
   };
   uniprot_id_link = function(uniprot_id) {
     return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
