@@ -17,9 +17,9 @@ module ApplicationHelper
 
   def table_header(content, options = {})
     klasses = []
-    klasses << 'sorter-false'  if options[:dont_sort]
-    klasses << 'columnSelector-disable'  if options[:show_always]
-    klasses << 'columnSelector-false'  if options[:hide_by_default]
+    klasses << 'sorter-false'  if options.delete(:dont_sort)
+    klasses << 'columnSelector-disable'  if options.delete(:show_always)
+    klasses << 'columnSelector-false'  if options.delete(:hide_by_default)
     if options[:class]
       klasses += options[:class]  if options[:class].is_a? Array
       klasses += options[:class].split(/[\s,]/)  if options[:class].is_a? String
