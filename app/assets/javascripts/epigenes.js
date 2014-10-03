@@ -301,6 +301,21 @@ page_ready = function() {
     }
   });
 
+  $.fn.check = function() {
+    this.each(function(ind, el) {
+      if (! $(el).is(':checked')) {
+        this.click();
+      }
+    });
+  };
+  $.fn.uncheck = function() {
+    this.each(function(ind, el) {
+      if ($(el).is(':checked')) {
+        this.click();
+      }
+    });
+  };
+
   $('#popover')
     .popover({
       placement: 'right',
@@ -311,8 +326,37 @@ page_ready = function() {
     .on('shown.bs.popover', function () {
       // call this function to copy the column selection code into the popover
       $.tablesorter.columnSelector.attachTo( $('.bootstrap-select-columns-popup'), '#popover-target');
+      var buttons_html =  '<div>' +
+                          '<a href="#" class="default-columns">Default</a> / ' +
+                          '<a href="#" class="hide-all">Hide all</a> / ' +
+                          '<a href="#" class="show-all">Show all</a>' +
+                          '</div>'
+      $('#popover-target').prepend($(buttons_html));
+      $('#popover-target .show-all').click(function(e) {
+        e.preventDefault;
+        $(e.target).closest('#popover-target').find('input:checkbox').check();
+        return false;
+      });
+      $('#popover-target .hide-all').click(function(e) {
+        e.preventDefault;
+        $(e.target).closest('#popover-target').find('input:checkbox').uncheck();
+        return false;
+      });
+      $('#popover-target .default-columns').click(function(e) {
+        e.preventDefault;
+        $('.bootstrap-select-columns-popup thead th').each(function(index, el) {
+          var column_index = $(el).data('column');
+          if ($(el).is('.columnSelector-false')) {
+            $(e.target).closest('#popover-target').find('input:checkbox[data-column=' + column_index + ']').uncheck();
+          } else {
+            $(e.target).closest('#popover-target').find('input:checkbox[data-column=' + column_index + ']').check();
+          }
+        });
+        return false;
+      });
     });
 
+  // Ilya: Don't understand whether it's neccesary
   // initialize column selector using default settings
   // note: no container is defined!
   $(".bootstrap-select-columns-popup").tablesorter({
