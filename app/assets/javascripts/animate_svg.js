@@ -91,7 +91,7 @@ animate_svg = function() {
 
   histones.click(function(e) {
     var name = $(e.target).closest('g.histone').data('histone-name');
-    window.location = 'histones?hgnc_name='+name;
+    window.location = 'histones?target_type=' + name;
   });
 
   histones.hover(

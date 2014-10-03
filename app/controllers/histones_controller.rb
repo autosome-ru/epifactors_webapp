@@ -1,8 +1,8 @@
 class HistonesController < ApplicationController
   respond_to :html
   def index
-    if params[:hgnc_name]
-      @histones = Histone.where("\"hgnc_name\" LIKE ?", "%#{params[:hgnc_name]}%")
+    if params[:target_type]
+      @histones = Histone.where("\"uniprot_id\" LIKE ?", "#{params[:target_type]}%")
     else
       @histones = Histone.by_word(params[:search])
     end
