@@ -1,6 +1,8 @@
 .table-actions
   %button.btn.btn-default.reset{type: 'button'} Reset filters
   %button#popover.btn.btn-default{type: 'button'} Select Columns
+  %button.download.btn.btn-default{type: 'button'} Get CSV
+  %input{type: "text", value: 'histones.csv', class: 'csv-filename'}
   .loading_table
     .loading_logo
 
@@ -30,7 +32,7 @@
   %tbody
     - @histones.each do |histone|
       %tr
-        %td= histone.hgnc_symbol
+        %td{'data-original-value' => histone.object.hgnc_symbol }= histone.hgnc_symbol
         %td= histone.status
         %td= histone.hgnc_id
         %td= histone.hgnc_name

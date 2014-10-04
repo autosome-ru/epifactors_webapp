@@ -1,9 +1,12 @@
+.expressions-table-actions
+  %button.download.btn.btn-default{type: 'button'} Get CSV
+  %input{type: "text", value: 'expressions.csv', class: 'csv-filename'}
 %table.gene_expression_by_tissue.tablesorter{'data-sortlist' => '[[1,1]]'}
   %thead
     %tr
       %th Sample
       %th{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'} Expression
-      %th.sorter-false.expression_bar Expression bar
+      %th.sorter-false.ignore_csv_output.expression_bar Expression bar
   %tbody
     - expressions_by_tissues.each do |tissue, expression|
       %tr

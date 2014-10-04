@@ -9,6 +9,9 @@ page_ready = function() {
   convert_argument = function(converter) {
     var inp = $(this).text();
     $(this).html( converter(inp) );
+    if ( !$(this).attr('data-original-value') ) {
+      $(this).attr('data-original-value', inp);
+    }
   };
 
   convert_element = function(converter) {
@@ -137,13 +140,17 @@ page_ready = function() {
     $(element_classes).filter(':not(th)').each(transformation_func); // not applied to header names in tables but to any other element
   };
 
-
-  // call the tablesorter plugin
+  $('.download').click(function(){
+    $('table.tablesorter').trigger('outputTable');
+  });
+  $('.csv-filename').change(function(e){
+    $('.tablesorter')[0].config.widgetOptions.output_saveFileName = $(e.target).val();
+  });
 
   $(".tablesorter").tablesorter({
     theme: 'blue',
     widthFixed : true,
-    widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'filter'],
+    widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output'],
     ignoreCase: false,
     widgetOptions : {
       filter_childRows : false,
@@ -296,6 +303,30 @@ page_ready = function() {
       // // duplicates how jQuery mobile uses priorities:
       // // http://view.jquerymobile.com/1.3.2/dist/demos/widgets/table-column-toggle/
       // columnSelector_priority : 'data-priority'
+
+
+      output_separator     : "\t",         // ',' 'json', 'array' or separator (e.g. ',')
+      output_ignoreColumns : [],          // columns to ignore [0, 1,... ] (zero-based index)
+      output_dataAttrib    : 'data-original-value', // data-attribute containing alternate cell text
+      output_headerRows    : true,        // output all header rows (multiple rows)
+      output_delivery      : 'd',         // (p)opup, (d)ownload
+      output_saveRows      : 'f',         // (a)ll, (f)iltered or (v)isible
+      // output_duplicateSpans: true,        // duplicate output data in tbody colspan/rowspan
+      // output_replaceQuote  : '\u201c;',   // change quote to left double quote
+      // output_includeHTML   : true,        // output includes all cell HTML (except the header cells)
+      output_trimSpaces    : false,       // remove extra white-space characters from beginning & end
+      // output_wrapQuotes    : false,       // wrap every cell output in quotes
+      // output_popupStyle    : 'width=580,height=310',
+      output_saveFileName  : 'data.csv',
+      // callbackJSON used when outputting JSON & any header cells has a colspan - unique names required
+      output_callbackJSON  : function($cell, txt, cellIndex) { return txt + '(' + cellIndex + ')'; },
+      // callback executed when processing completes
+      // return true to continue download/output
+      // return false to stop delivery & do something else with the data
+      output_callback      : function(config, data) { return true; },
+
+      // the need to modify this for Excel no longer exists
+      output_encoding      : 'data:application/octet-stream;charset=utf8,'
     },
 
     filter_reset : 'button.reset',
@@ -313,7 +344,8 @@ page_ready = function() {
       apply_converter('.refseq',          refseq_link);
       apply_converter('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
       apply_converter('.expression_bar',  expression_bar);
-
+      table.config.widgetOptions.output_saveFileName = $('.csv-filename').val();
+      table.config.widgetOptions.output_ignoreColumns = columns_by_header(table, '.ignore_csv_output');
       $('.loading_table').hide();
     }
   });
@@ -378,7 +410,7 @@ page_ready = function() {
   // note: no container is defined!
   $(".bootstrap-select-columns-popup").tablesorter({
     theme: 'blue',
-    widgets: ['zebra', 'columnSelector', 'stickyHeaders']
+    widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'output']
   });
 
   apply_converter_to_non_table('.gene_id',         gene_id_link);

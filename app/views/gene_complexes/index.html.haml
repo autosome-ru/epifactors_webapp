@@ -1,6 +1,8 @@
 .table-actions
   %button.btn.btn-default.reset{type: 'button'} Reset filters
   %button#popover.btn.btn-default{type: 'button'} Select Columns
+  %button.download.btn.btn-default{type: 'button'} Get CSV
+  %input{type: "text", value: 'protein_complexes.csv', class: 'csv-filename'}
   .loading_table
     .loading_logo
 
@@ -30,7 +32,7 @@
       %tr
         %td= gene_complex.group
         %td= gene_complex.group_name
-        %td= gene_complex.complex_name
+        %td{'data-original-value' => gene_complex.object.complex_name }= gene_complex.complex_name
         %td= gene_complex.status
         %td= gene_complex.alternative_name
         %td= gene_complex.protein

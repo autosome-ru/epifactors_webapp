@@ -1,6 +1,8 @@
 .table-actions
   %button.btn.btn-default.reset{type: 'button'} Reset filters
   %button#popover.btn.btn-default{type: 'button'} Select Columns
+  %button.download.btn.btn-default{type: 'button'} Get CSV
+  %input{type: "text", value: 'genes.csv', class: 'csv-filename'}
   .loading_table
     .loading_logo
 
@@ -36,7 +38,7 @@
   %tbody
     - @genes.each do |gene|
       %tr
-        %td= gene.hgnc_symbol
+        %td{'data-original-value' => gene.object.hgnc_symbol }= gene.hgnc_symbol
         %td= gene.status
         %td= gene.hgnc_id
         %td= gene.hgnc_name
