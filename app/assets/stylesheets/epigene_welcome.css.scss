@@ -7,8 +7,18 @@
   vertical-align: top;
   width: 65%;
 }
+
 .description{
   display: inline-block;
   vertical-align: top;
   width: 30%;
+}
+
+#main_scheme_png_stub{
+  display: inline-block;
+  background-image: image-url('/main_scheme_100dpi.png');
+  background-size: 475px 610px;
+  margin-left: 50px;
+  width: 475px;
+  height: 610px;
 }

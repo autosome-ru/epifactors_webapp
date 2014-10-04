@@ -27,9 +27,13 @@
   }
 }
 
-.loading_table, .loading_figure {
+.loading_table {
   display: inline-block;
 }
+.loading_figure {
+  display: block;
+}
+
 
 .loading_logo {
   display: inline-block;
