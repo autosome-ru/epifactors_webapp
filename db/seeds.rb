@@ -18,7 +18,7 @@ EPIGENES_COLUMNS_ORDER =  [
 
 
 
-GENE_COMPLEXES_COLUMNS_ORDER =  [
+PROTEIN_COMPLEXES_COLUMNS_ORDER =  [
   :group, :group_name, :complex_name, :status, :alternative_name, :protein, :uniprot_id, :pmid_complex,
   :function, :pmid_function, :target, :specific_target, :product, :uniprot_id_target, :pmid_target, :comment
 ]
@@ -85,12 +85,12 @@ end
 
 $stderr.puts 'Reading XLSes...'
 epigenes_worksheet = RubyXL::Parser.parse(Rails.root.join('db', 'data', 'EpiGenes_main_1_5.xlsx')).worksheets[0]
-complexes_worksheet = RubyXL::Parser.parse(Rails.root.join('db', 'data', 'EpiGenes_complexes_1_5.xlsx')).worksheets[0]
+protein_complexes_worksheet = RubyXL::Parser.parse(Rails.root.join('db', 'data', 'EpiGenes_complexes_1_5.xlsx')).worksheets[0]
 histones_worksheet = RubyXL::Parser.parse(Rails.root.join('db', 'data', 'EpiGenes_histones_1_5.xlsx')).worksheets[0]
 
 $stderr.puts 'Extracting worksheet data...'
 epigenes = extract_worksheet_data(epigenes_worksheet, EPIGENES_COLUMNS_ORDER)
-gene_complexes = extract_worksheet_data(complexes_worksheet, GENE_COMPLEXES_COLUMNS_ORDER)
+protein_complexes = extract_worksheet_data(protein_complexes_worksheet, PROTEIN_COMPLEXES_COLUMNS_ORDER)
 histones = extract_worksheet_data(histones_worksheet, HISTONES_COLUMNS_ORDER)
 
 $stderr.puts 'Extracting epigenes...'
@@ -98,9 +98,9 @@ epigenes.each_with_index do |epigene_info, ind|
   Gene.where(id: ind + 1).first_or_create!( epigene_info )
 end
 
-$stderr.puts 'Extracting gene complexes...'
-gene_complexes.each_with_index do |gene_complex_info, ind|
-  GeneComplex.where(id: ind + 1).first_or_create!( gene_complex_info )
+$stderr.puts 'Extracting protein complexes...'
+protein_complexes.each_with_index do |protein_complex_info, ind|
+  ProteinComplex.where(id: ind + 1).first_or_create!( protein_complex_info )
 end
 
 $stderr.puts 'Extracting histones...'
@@ -108,9 +108,9 @@ histones.each_with_index do |histone_info, ind|
   Histone.where(id: ind + 1).first_or_create!( histone_info )
 end
 
-GeneComplex.find_each do |gene_complex|
-  Gene.where(uniprot_id: gene_complex.uniprot_ids_splitted).find_each do |gene|
-    GeneInComplex.where(gene_id: gene.id, gene_complex_id: gene_complex.id).first_or_create!
+ProteinComplex.find_each do |protein_complex|
+  Gene.where(uniprot_id: protein_complex.uniprot_ids_splitted).find_each do |gene|
+    GeneInComplex.where(gene_id: gene.id, protein_complex_id: protein_complex.id).first_or_create!
   end
 end
 

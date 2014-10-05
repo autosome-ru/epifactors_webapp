@@ -75,7 +75,7 @@ page_ready = function() {
   };
 
   target_complex_link = function(target) {
-    return '<a href="/gene_complexes?complex_name=' + target + '">' + target + '</a>';
+    return '<a href="/protein_complexes?complex_name=' + target + '">' + target + '</a>';
   };
 
   ec_number_link = function(ec) {

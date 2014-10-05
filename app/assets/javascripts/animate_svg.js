@@ -86,7 +86,7 @@ animate_svg = function() {
 
   epigenes.click(function(e) {
     var name = $(e.target).closest('g.epigene').data('epigene-name');
-    window.location = 'gene_complexes?group_name='+name;
+    window.location = 'protein_complexes?group_name='+name;
   });
 
   histones.click(function(e) {

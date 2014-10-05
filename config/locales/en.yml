@@ -50,7 +50,7 @@ en:
 
         hocomoco_link:              HOCOMOCO TFBS model
 
-      gene_complex:
+      protein_complex:
         genes:                      Genes in complex
         group:                      Complex group
         group_name:                 Complex group name

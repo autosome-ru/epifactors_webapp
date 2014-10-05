@@ -1,4 +1,4 @@
-class GeneComplex < ActiveRecord::Base
+class ProteinComplex < ActiveRecord::Base
   has_many :gene_in_complexes
   has_many :genes, :through => :gene_in_complexes
   def uniprot_ids_splitted

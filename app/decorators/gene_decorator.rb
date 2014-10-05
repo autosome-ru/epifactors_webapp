@@ -1,9 +1,9 @@
 class GeneDecorator < Draper::Decorator
   delegate_all
 
-  def gene_complexes
-    object.gene_complexes.map{|gene_complex|
-      h.link_to gene_complex.complex_name, h.gene_complex_path(gene_complex)
+  def protein_complexes
+    object.protein_complexes.map{|protein_complex|
+      h.link_to protein_complex.complex_name, h.protein_complex_path(protein_complex)
     }.join(', ').html_safe
   end
 

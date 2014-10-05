@@ -1,7 +1,7 @@
-class CreateGeneComplexes < ActiveRecord::Migration
+class CreateProteinComplexes < ActiveRecord::Migration
 
   def change
-    create_table :gene_complexes do |t|
+    create_table :protein_complexes do |t|
       t.string  :group                      # Group
       t.string  :group_name                 # Group_name
       t.string  :complex_name               # Complex_name

@@ -13,36 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20141005145843) do
 
-  create_table "gene_complexes", force: true do |t|
-    t.string   "group"
-    t.string   "group_name"
-    t.string   "complex_name"
-    t.string   "status"
-    t.string   "alternative_name"
-    t.text     "protein"
-    t.text     "uniprot_id"
-    t.string   "pmid_complex"
-    t.string   "function"
-    t.string   "pmid_function"
-    t.string   "target"
-    t.string   "specific_target"
-    t.string   "product"
-    t.text     "uniprot_id_target"
-    t.string   "pmid_target"
-    t.text     "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "gene_in_complexes", force: true do |t|
-    t.integer  "gene_complex_id"
+    t.integer  "protein_complex_id"
     t.integer  "gene_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "gene_in_complexes", ["gene_complex_id"], name: "index_gene_in_complexes_on_gene_complex_id"
   add_index "gene_in_complexes", ["gene_id"], name: "index_gene_in_complexes_on_gene_id"
+  add_index "gene_in_complexes", ["protein_complex_id"], name: "index_gene_in_complexes_on_protein_complex_id"
 
   create_table "genes", force: true do |t|
     t.string   "hgnc_symbol"
@@ -93,6 +72,27 @@ ActiveRecord::Schema.define(version: 20141005145843) do
     t.string   "targeted_by_complex"
     t.string   "pmid"
     t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "protein_complexes", force: true do |t|
+    t.string   "group"
+    t.string   "group_name"
+    t.string   "complex_name"
+    t.string   "status"
+    t.string   "alternative_name"
+    t.text     "protein"
+    t.text     "uniprot_id"
+    t.string   "pmid_complex"
+    t.string   "function"
+    t.string   "pmid_function"
+    t.string   "target"
+    t.string   "specific_target"
+    t.string   "product"
+    t.text     "uniprot_id_target"
+    t.string   "pmid_target"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

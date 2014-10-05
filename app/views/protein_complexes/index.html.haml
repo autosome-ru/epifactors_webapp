@@ -1,0 +1,49 @@
+.table-actions
+  %button.btn.btn-default.reset{type: 'button'} Reset filters
+  %button#popover.btn.btn-default{type: 'button'} Select Columns
+  %button.download.btn.btn-default{type: 'button'} Get CSV
+  %input{type: "text", value: 'protein_complexes.csv', class: 'csv-filename'}
+  .loading_table
+    .loading_logo
+
+%table#protein-complexes.bootstrap-select-columns-popup.tablesorter
+  %thead
+    %tr
+      = protein_complex_table_header :group, hide_by_default: true
+      = protein_complex_table_header :group_name
+      = protein_complex_table_header :complex_name, show_always: true
+      = protein_complex_table_header :status, hide_by_default: true
+      = protein_complex_table_header :alternative_name
+      = protein_complex_table_header :protein, hide_by_default: true
+      = protein_complex_table_header :uniprot_id, class: 'uniprot_id_comb'
+      = protein_complex_table_header :pmid_complex, dont_sort: true, hide_by_default: true, class: 'pmid'
+      = protein_complex_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = protein_complex_table_header :pmid_function, dont_sort: true, hide_by_default: true, class: 'pmid'
+      = protein_complex_table_header :target, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = protein_complex_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = protein_complex_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = protein_complex_table_header :uniprot_id_target, hide_by_default: true, class: 'uniprot_id'
+      = protein_complex_table_header :pmid_target, dont_sort: true, hide_by_default: true, class: 'pmid'
+      = protein_complex_table_header :comment, hide_by_default: true
+      = protein_complex_table_header :genes, dont_sort: true
+
+  %tbody
+    - @protein_complexes.each do |protein_complex|
+      %tr
+        %td= protein_complex.group
+        %td= protein_complex.group_name
+        %td{'data-original-value' => protein_complex.object.complex_name }= protein_complex.complex_name
+        %td= protein_complex.status
+        %td= protein_complex.alternative_name
+        %td= protein_complex.protein
+        %td= protein_complex.uniprot_id
+        %td= protein_complex.pmid_complex
+        %td= protein_complex.function
+        %td= protein_complex.pmid_function
+        %td= protein_complex.target
+        %td= protein_complex.specific_target
+        %td= protein_complex.product
+        %td= protein_complex.uniprot_id_target
+        %td= protein_complex.pmid_target
+        %td= protein_complex.comment
+        %td= protein_complex.genes

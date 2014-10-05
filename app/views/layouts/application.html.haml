@@ -11,13 +11,13 @@
         = menu_group do
           = menu_item 'Home', root_path
           = menu_item 'Genes', genes_path
-          = menu_item 'Сomplexes', gene_complexes_path
+          = menu_item 'Сomplexes', protein_complexes_path
           = menu_item 'Histones and protamines', histones_path
         = form_tag epigene_search_path, class: 'pull-right navbar-search' do
           = label_tag do
             Search:
             = text_field_tag 'search', params[:search]
-          = select_tag 'kind', options_for_select({'Genes' => :genes, 'Gene complexes' => :gene_complexes, 'Targets' => :histones},  [:genes, :gene_complexes, :histones].include?(params[:controller].to_sym) ? params[:controller].to_sym : :genes)
+          = select_tag 'kind', options_for_select({'Genes' => :genes, 'Сomplexes' => :protein_complexes, 'Histones and protamines' => :histones},  [:genes, :protein_complexes, :histones].include?(params[:controller].to_sym) ? params[:controller].to_sym : :genes)
           = submit_tag 'Search'
     .container
       = yield

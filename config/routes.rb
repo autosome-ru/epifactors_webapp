@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post 'epigenes/search' => 'epigene_welcome#search', as: :epigene_search
 
   resources :genes, only: [:show, :index]
-  resources :gene_complexes, only: [:show, :index]
+  resources :protein_complexes, only: [:show, :index]
   resources :histones, only: [:show, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
