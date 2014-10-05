@@ -7,8 +7,8 @@ class GenesController < ApplicationController
   end
   def show
     @gene = Gene.find(params[:id])
-    @expressions = GeneExpressions.instance.expressions_by_hgnc(@gene.hgnc_id)
-    @expression_statistics = Statistics.new(@expressions.map{|k,v| v })
+    @expressions = @gene.gene_expressions
+    @expression_statistics = @gene.expression_statistics
 
     @expression_statistics = StatisticsDecorator.decorate(@expression_statistics)
     @gene = @gene.decorate

@@ -25,4 +25,11 @@ class Gene < ActiveRecord::Base
   def tf?
     functional_class.split(',').map(&:strip).include?('TF')
   end
+
+  def gene_expressions
+    @gene_expressions ||= GeneExpressions.instance.expressions_by_hgnc(hgnc_id)
+  end
+  def expression_statistics
+    @expression_statistics ||= Statistics.new(gene_expressions.map{|k,v| v })
+  end
 end

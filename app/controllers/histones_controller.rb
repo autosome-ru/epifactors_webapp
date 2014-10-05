@@ -11,8 +11,8 @@ class HistonesController < ApplicationController
   end
   def show
     @histone = Histone.find(params[:id])
-    @expressions = GeneExpressions.instance.expressions_by_hgnc(@histone.hgnc_id)
-    @expression_statistics = Statistics.new(@expressions.map{|k,v| v })
+    @expressions = @histone.gene_expressions
+    @expression_statistics = @histone.expression_statistics
 
     @expression_statistics = StatisticsDecorator.decorate(@expression_statistics)
     @histone = @histone.decorate
