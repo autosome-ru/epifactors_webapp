@@ -95,17 +95,23 @@ histones = extract_worksheet_data(histones_worksheet, HISTONES_COLUMNS_ORDER)
 
 $stderr.puts 'Extracting epigenes...'
 epigenes.each_with_index do |epigene_info, ind|
-  Gene.where(id: ind + 1).first_or_create( epigene_info )
+  Gene.where(id: ind + 1).first_or_create!( epigene_info )
 end
 
 $stderr.puts 'Extracting gene complexes...'
 gene_complexes.each_with_index do |gene_complex_info, ind|
-  GeneComplex.where(id: ind + 1).first_or_create( gene_complex_info )
+  GeneComplex.where(id: ind + 1).first_or_create!( gene_complex_info )
 end
 
 $stderr.puts 'Extracting histones...'
 histones.each_with_index do |histone_info, ind|
-  Histone.where(id: ind + 1).first_or_create( histone_info )
+  Histone.where(id: ind + 1).first_or_create!( histone_info )
+end
+
+GeneComplex.find_each do |gene_complex|
+  Gene.where(uniprot_id: gene_complex.uniprot_ids_splitted).find_each do |gene|
+    GeneInComplex.where(gene_id: gene.id, gene_complex_id: gene_complex.id).first_or_create!
+  end
 end
 
 { '/home/ilya/iogen/cages/hg19/robust_phase1_pls_2.tpm.desc121113.osc.txt' => Rails.root.join('db', 'data', 'gene_expressions_by_tissue_with_timecourses.txt'),

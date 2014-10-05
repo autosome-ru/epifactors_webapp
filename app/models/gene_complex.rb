@@ -1,5 +1,6 @@
 class GeneComplex < ActiveRecord::Base
-
+  has_many :gene_in_complexes
+  has_many :genes, :through => :gene_in_complexes
   def uniprot_ids_splitted
     uniprot_id.gsub(/[?+()|]/, ', ').split(',').map(&:strip).reject(&:empty?)
     # uniprot_id.strip.split(',')
@@ -8,9 +9,10 @@ class GeneComplex < ActiveRecord::Base
     #   .flat_map{|one_uniprot_id| one_uniprot_id.strip.sub(/\?$/,'')}
   end
 
-  def genes
-    Gene.where(uniprot_id: uniprot_ids_splitted)
-  end
+  # Now this information is stored into an association table (GeneInComplex model) and loaded via SQL for all complexes at once
+  # def genes
+  #   Gene.where(uniprot_id: uniprot_ids_splitted)
+  # end
 
   # searchable_attributes = [ :complex_group,:complex_group_name,:complex_name,:alternative_names,:proteins_involved,
   #                           :uniprot_ids,:funct,:specific_target,:target_molecule,:product,:target_uniprot_ids,:details]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702200321) do
+ActiveRecord::Schema.define(version: 20141005145843) do
 
   create_table "gene_complexes", force: true do |t|
     t.string   "group"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20140702200321) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "gene_in_complexes", force: true do |t|
+    t.integer  "gene_complex_id"
+    t.integer  "gene_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gene_in_complexes", ["gene_complex_id"], name: "index_gene_in_complexes_on_gene_complex_id"
+  add_index "gene_in_complexes", ["gene_id"], name: "index_gene_in_complexes_on_gene_id"
 
   create_table "genes", force: true do |t|
     t.string   "hgnc_symbol"

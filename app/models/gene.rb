@@ -1,4 +1,6 @@
 class Gene < ActiveRecord::Base
+  has_many :gene_in_complexes
+  has_many :gene_complexes, :through => :gene_in_complexes
   # # BAD DEFINITION
   # def gene_complexes
   #   GeneComplex.where('uniprot_ids LIKE ? OR uniprot_ids LIKE ? OR uniprot_ids LIKE ? OR uniprot_ids LIKE ?', 

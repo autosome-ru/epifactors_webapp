@@ -11,6 +11,7 @@ class GeneComplexesController < ApplicationController
     else
       @gene_complexes = GeneComplex.by_word(params[:search])
     end
+    @gene_complexes = @gene_complexes.includes(:genes)
     @gene_complexes = GeneComplexDecorator.decorate_collection(@gene_complexes)
     respond_with(@gene_complexes)
   end
