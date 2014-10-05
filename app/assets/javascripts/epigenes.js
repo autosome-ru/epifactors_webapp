@@ -329,7 +329,6 @@ page_ready = function() {
       output_encoding      : 'data:application/octet-stream;charset=utf8,'
     },
 
-    filter_reset : 'button.reset',
     // delayInit: false,
     initialized : function(table){
       apply_converter('.gene_id',         gene_id_link);
