@@ -12,4 +12,4 @@
       %tr
         %td= tissue
         %td= expression.round(1)
-        %td= expression.round
+        %td= 100 * expression.to_f / statistics.max

@@ -8,6 +8,15 @@ table.gene_expression_by_tissue, table:not(.tablesorter) {
   margin-left: 20px;
 }
 
+table.gene_expression_by_tissue {
+  td,th {
+    &:nth-child(3) {
+      min-width: 500px;
+      display: none;
+    }
+  }
+}
+
 h4 { margin-left:20px; }
 
 .expression-bar {

@@ -94,7 +94,7 @@ page_ready = function() {
   };
 
   expression_bar = function(value) {
-    return '<div class="expression-bar" style="width:' + value + 'px;"></div>';
+    return '<div class="expression-bar" style="width:' + value + '%;"></div>';
   };
 
   hocomoco_link = function(value) {
@@ -343,7 +343,10 @@ page_ready = function() {
       apply_converter('.uniprot_ac',      uniprot_ac_link);
       apply_converter('.refseq',          refseq_link);
       apply_converter('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
+
       apply_converter('.expression_bar',  expression_bar);
+      $('table.gene_expression_by_tissue').find('td:nth-child(3), th:nth-child(3)').show();
+
       table.config.widgetOptions.output_saveFileName = $('.csv-filename').val();
       table.config.widgetOptions.output_ignoreColumns = columns_by_header(table, '.ignore_csv_output');
       $('.loading_table').hide();

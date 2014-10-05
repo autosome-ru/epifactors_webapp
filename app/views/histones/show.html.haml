@@ -24,4 +24,4 @@
 %hr
 %h4 Expression statistics
 = render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
-= render partial: 'shared/expressions_by_tissues', locals: {expressions_by_tissues: @expressions}
+= render partial: 'shared/expressions_by_tissues', locals: {expressions_by_tissues: @expressions, statistics: @expression_statistics}
