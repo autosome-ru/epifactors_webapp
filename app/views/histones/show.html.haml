@@ -17,7 +17,7 @@
     = table_info_row @histone, :gene_desc
     = table_info_row @histone, :complex_name
     = table_info_row @histone, :targeted_by_protein
-    = table_info_row @histone, :targeted_by_complex
+    = table_info_row @histone, :targeted_by_complex, value_column_html: {class: 'target_complex'}
     = table_info_row @histone, :pmid, value_column_html: {class: 'pmid'}
     = table_info_row @histone, :comment
 
