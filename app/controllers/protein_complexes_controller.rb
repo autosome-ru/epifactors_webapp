@@ -20,4 +20,12 @@ class ProteinComplexesController < ApplicationController
     @protein_complex = @protein_complex.decorate
     respond_with(@protein_complex)
   end
+protected
+  def page_title
+    if params[:action].to_sym == :show
+      @protein_complex.complex_name + ' complex - ' + super
+    else
+      'Complexes - ' + super
+    end
+  end
 end

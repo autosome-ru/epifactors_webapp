@@ -1,14 +1,6 @@
 class Gene < ActiveRecord::Base
   has_many :gene_in_complexes
   has_many :protein_complexes, :through => :gene_in_complexes
-  # # BAD DEFINITION
-  # def complexes
-  #   Complex.where('uniprot_ids LIKE ? OR uniprot_ids LIKE ? OR uniprot_ids LIKE ? OR uniprot_ids LIKE ?', 
-  #                     uniprot_id,
-  #                     "%, #{uniprot_id},%",
-  #                     "#{uniprot_id}, %",
-  #                     "%, #{uniprot_id}" )
-  # end
 
   searchable_attributes = [
     :hgnc_symbol, :hgnc_id, :hgnc_name, :gene_id, :uniprot_ac, :uniprot_id,

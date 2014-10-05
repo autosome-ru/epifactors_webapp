@@ -18,4 +18,12 @@ class HistonesController < ApplicationController
     @histone = @histone.decorate
     respond_with(@histone)
   end
+protected
+  def page_title
+    if params[:action].to_sym == :show
+      @histone.hgnc_symbol + " #{@histone.molecule_kind} - " + super
+    else
+      'Histones and protamines - ' + super
+    end
+  end
 end
