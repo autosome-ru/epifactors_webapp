@@ -13,6 +13,7 @@
       = protein_complex_table_header :group_name
       = protein_complex_table_header :complex_name, show_always: true
       = protein_complex_table_header :status, hide_by_default: true
+      = protein_complex_table_header :genes, dont_sort: true
       = protein_complex_table_header :alternative_name
       = protein_complex_table_header :protein, hide_by_default: true
       = protein_complex_table_header :uniprot_id, class: 'uniprot_id_comb'
@@ -25,7 +26,6 @@
       = protein_complex_table_header :uniprot_id_target, hide_by_default: true, class: 'uniprot_id'
       = protein_complex_table_header :pmid_target, dont_sort: true, hide_by_default: true, class: 'pmid'
       = protein_complex_table_header :comment, hide_by_default: true
-      = protein_complex_table_header :genes, dont_sort: true
 
   %tbody
     - @protein_complexes.each do |protein_complex|
@@ -34,6 +34,7 @@
         %td= protein_complex.group_name
         %td{'data-original-value' => protein_complex.object.complex_name }= protein_complex.complex_name
         %td= protein_complex.status
+        %td= protein_complex.genes
         %td= protein_complex.alternative_name
         %td= protein_complex.protein
         %td= protein_complex.uniprot_id
@@ -46,4 +47,3 @@
         %td= protein_complex.uniprot_id_target
         %td= protein_complex.pmid_target
         %td= protein_complex.comment
-        %td= protein_complex.genes
