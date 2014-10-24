@@ -123,7 +123,7 @@ animate_svg = function() {
 };
 
 load_svg = function() {
-  $('#main_scheme_svg').load('/main_scheme.svg', null, function() {
+  $('#main_scheme_svg').load('http://gattaca.imppc.org/svgs/main_scheme.svg', null, function() {
     animate_svg();
     $('#main_scheme_png_stub').hide();
     $('.loading_figure').hide();
