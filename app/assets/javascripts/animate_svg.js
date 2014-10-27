@@ -122,11 +122,21 @@ animate_svg = function() {
   );
 };
 
+
+onload_callback = function() {
+  animate_svg();
+  $('#main_scheme_png_stub').hide();
+  $('.loading_figure').hide();
+};
+
 load_svg = function() {
-  $('#main_scheme_svg').load('http://gattaca.imppc.org/svgs/main_scheme.svg', null, function() {
-    animate_svg();
-    $('#main_scheme_png_stub').hide();
-    $('.loading_figure').hide();
+  //$('#main_scheme_svg').load('http://gattaca.imppc.org/svgs/main_scheme.svg', null, function(response, status, xhr) {
+  $('#main_scheme_svg').load('http://epigene-db.appspot.com/images/main_scheme.svg', null, function(response, status, xhr) {
+    if (status == "error") {
+        $('#main_scheme_svg').load('/main_scheme.svg', null, onload_callback);
+    } else {
+      onload_callback();
+    }
   });
 }
 
