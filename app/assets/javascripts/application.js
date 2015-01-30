@@ -15,3 +15,6 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+//= require select2
+//= require jquery-tablesorter
+//= require jquery-tablesorter/jquery.tablesorter.widgets-filter-formatter-select2
