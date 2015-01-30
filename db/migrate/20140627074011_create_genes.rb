@@ -16,8 +16,8 @@ class CreateGenes < ActiveRecord::Migration
       t.string  :uniprot_id_mm          # UniProt_ID_Mm
       t.string  :gene_tag               # GeneTag
       t.string  :gene_desc              # GeneDesc
-      t.string  :functional_class       # Functional_class
       t.string  :function               # Function
+      t.string  :modification           # Modification
       t.string  :pmid_function          # PMID_function
       t.string  :complex_name           # Complex_name
       t.string  :target                 # Target

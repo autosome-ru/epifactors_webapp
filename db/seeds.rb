@@ -12,7 +12,7 @@ require 'rubyXL'
 
 EPIGENES_COLUMNS_ORDER =  [
   :hgnc_symbol, :status, :hgnc_id, :hgnc_name, :gene_id, :uniprot_ac, :uniprot_id, :domain, :mgi_symbol,
-  :mgi_id, :uniprot_ac_mm, :uniprot_id_mm, :gene_tag, :gene_desc, :functional_class, :function, :pmid_function,
+  :mgi_id, :uniprot_ac_mm, :uniprot_id_mm, :gene_tag, :gene_desc, :function, :modification, :pmid_function,
   :complex_name, :target, :specific_target, :product, :uniprot_id_target, :pmid_target, :comment
 ]
 

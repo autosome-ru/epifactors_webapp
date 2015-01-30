@@ -37,8 +37,8 @@ en:
         uniprot_id_mm:              UniProt ID (Mm)
         gene_tag:                   HGNC gene family tag
         gene_desc:                  HGNC gene family description
-        functional_class:           Functional class
         function:                   Function
+        modification:               Modification
         pmid_function:              PMID for information on function
         complex_name:               Protein complex
         target:                     Target molecule

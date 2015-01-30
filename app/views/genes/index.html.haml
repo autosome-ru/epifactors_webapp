@@ -23,8 +23,8 @@
       = gene_table_header :uniprot_id_mm, class: 'uniprot_id'
       = gene_table_header :gene_tag, hide_by_default: true
       = gene_table_header :gene_desc, hide_by_default: true
-      = gene_table_header :functional_class, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = gene_table_header :modification, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :pmid_function, hide_by_default: true, dont_sort: true, class: 'pmid'
       = gene_table_header :complex_name, class: 'target_complex'
       = gene_table_header :target, class: ['splitted_terms_filter', 'filter-onlyAvail']
@@ -52,8 +52,8 @@
         %td= gene.uniprot_id_mm
         %td= gene.gene_tag
         %td= gene.gene_desc
-        %td= gene.functional_class
         %td= gene.function
+        %td= gene.modification
         %td= gene.pmid_function
         %td= gene.complex_name
         %td= gene.target

@@ -5,7 +5,7 @@ class Gene < ActiveRecord::Base
   searchable_attributes = [
     :hgnc_symbol, :hgnc_id, :hgnc_name, :gene_id, :uniprot_ac, :uniprot_id,
     :domain, :mgi_symbol, :mgi_id, :uniprot_ac_mm, :uniprot_id_mm, :gene_tag,
-    :gene_desc, :functional_class, :function, :complex_name, :target,
+    :gene_desc, :function, :modification, :complex_name, :target,
     :specific_target, :product, :uniprot_id_target, :comment
   ]
 
@@ -15,7 +15,7 @@ class Gene < ActiveRecord::Base
   searchable_by(searchable_attributes)
 
   def tf?
-    functional_class.split(',').map(&:strip).include?('TF')
+    function.split(',').map(&:strip).include?('TF')
   end
 
   def gene_expressions
