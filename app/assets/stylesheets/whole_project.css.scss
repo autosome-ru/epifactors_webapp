@@ -1,11 +1,16 @@
+.container.action-index {
+  &.controller-genes, &.controller-protein_complexes, &.controller-histones {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 table:not(.tablesorter) {
   tr, td {
     border-color: #a7a7a7;
   }
-}
-
-table.gene_expression_by_tissue, table:not(.tablesorter) {
-  margin-left: 20px;
 }
 
 table.gene_expression_by_tissue {
