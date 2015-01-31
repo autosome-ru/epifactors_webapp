@@ -18,3 +18,6 @@
 //= require select2
 //= require jquery-tablesorter
 //= require jquery-tablesorter/jquery.tablesorter.widgets-filter-formatter-select2
+//= require jquery-tablesorter/widgets/widget-output
+//= require jquery-tablesorter/widgets/widget-columnSelector
+//= require jquery-tablesorter/widgets/widget-cssStickyHeaders
