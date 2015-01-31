@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'epigene_welcome#index'
   get 'epigenes/' => 'epigene_welcome#index', as: :epigene_index
+  get 'description' => 'epigene_welcome#description', as: :epigene_description
   post 'epigenes/search' => 'epigene_welcome#search', as: :epigene_search
 
   resources :genes, only: [:show, :index]

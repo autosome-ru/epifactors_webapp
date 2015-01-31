@@ -2,6 +2,9 @@ class EpigeneWelcomeController < ApplicationController
   def index
   end
 
+  def description
+  end
+
   def search
     case params[:kind]
     when 'genes'
