@@ -9,7 +9,6 @@
 %table#protein-complexes.bootstrap-select-columns-popup.tablesorter
   %thead
     %tr
-      = protein_complex_table_header :group, hide_by_default: true
       = protein_complex_table_header :group_name
       = protein_complex_table_header :complex_name, show_always: true
       = protein_complex_table_header :status, hide_by_default: true
@@ -30,7 +29,6 @@
   %tbody
     - @protein_complexes.each do |protein_complex|
       %tr
-        %td= protein_complex.group
         %td= protein_complex.group_name
         %td{'data-original-value' => protein_complex.complex_name }= protein_complex.complex_name_with_complex_card_link
         %td= protein_complex.status
