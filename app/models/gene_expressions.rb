@@ -27,6 +27,6 @@ class GeneExpressions
   end
 
   def self.instance
-    @instance ||= GeneExpressions.read_from_file( Rails.root.join('db','data','gene_expressions_by_tissue.txt') )
+    @instance ||= GeneExpressions.read_from_file( Rails.root.join('public', 'public_data', 'gene_expressions_by_tissue.txt') )
   end
 end

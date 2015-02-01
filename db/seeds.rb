@@ -84,9 +84,9 @@ def gene_expressions_from_peaks_file(tpm_filename, target_hgnc_ids)
 end
 
 $stderr.puts 'Reading XLSes...'
-epigenes_worksheet = RubyXL::Parser.parse(Rails.root.join('db', 'data', 'v1.6', 'EpiGenes_main_1_6.xlsx')).worksheets[0]
-protein_complexes_worksheet = RubyXL::Parser.parse(Rails.root.join('db', 'data', 'v1.6', 'EpiGenes_complexes_1_6.xlsx')).worksheets[0]
-histones_worksheet = RubyXL::Parser.parse(Rails.root.join('db', 'data', 'v1.6', 'EpiGenes_histones_1_6.xlsx')).worksheets[0]
+epigenes_worksheet = RubyXL::Parser.parse(Rails.root.join('public', 'public_data', 'v1.6', 'EpiGenes_main_1_6.xlsx')).worksheets[0]
+protein_complexes_worksheet = RubyXL::Parser.parse(Rails.root.join('public', 'public_data', 'v1.6', 'EpiGenes_complexes_1_6.xlsx')).worksheets[0]
+histones_worksheet = RubyXL::Parser.parse(Rails.root.join('public', 'public_data', 'v1.6', 'EpiGenes_histones_1_6.xlsx')).worksheets[0]
 
 $stderr.puts 'Extracting worksheet data...'
 epigenes = extract_worksheet_data(epigenes_worksheet, EPIGENES_COLUMNS_ORDER)
@@ -114,8 +114,8 @@ ProteinComplex.find_each do |protein_complex|
   end
 end
 
-{ '/home/ilya/iogen/cages/hg19/robust_phase1_pls_2.tpm.desc121113.osc.txt' => Rails.root.join('db', 'data', 'gene_expressions_by_tissue_with_timecourses.txt'),
-  '/home/ilya/iogen/cages/hg19/freeze1/hg19.cage_peak_tpm_ann.osc.txt' => Rails.root.join('db', 'data', 'gene_expressions_by_tissue.txt')
+{ '/home/ilya/iogen/cages/hg19/robust_phase1_pls_2.tpm.desc121113.osc.txt' => Rails.root.join('public', 'public_data', 'gene_expressions_by_tissue_with_timecourses.txt'),
+  '/home/ilya/iogen/cages/hg19/freeze1/hg19.cage_peak_tpm_ann.osc.txt' => Rails.root.join('public', 'public_data', 'gene_expressions_by_tissue.txt')
 }.each do |tpm_filename, tissue_expressions_file|
   if File.exist?(tissue_expressions_file)
     $stderr.puts "Skipping gene expressions (#{tpm_filename} --> #{tissue_expressions_file})..."

@@ -44,6 +44,6 @@ class UniprotHocomocoMapping
   end
 
   def self.instance
-    @instance ||= UniprotHocomocoMapping.read_from_file( Rails.root.join('db','data','HOCOMOCOv9_motifs2uniprot.txt') )
+    @instance ||= UniprotHocomocoMapping.read_from_file( Rails.root.join('public', 'public_data', 'HOCOMOCOv9_motifs2uniprot.txt') )
   end
 end
