@@ -6,6 +6,8 @@ page_ready = function() {
     };
   };
 
+  var func_trim = methodToFunction(String.prototype.trim);
+
   convert_argument = function(converter) {
     var inp = $(this).text();
     $(this).html( converter(inp) );
@@ -16,6 +18,46 @@ page_ready = function() {
 
   convert_element = function(converter) {
     return function() { convert_argument.call(this, converter); };
+  };
+
+  // 'abc|def' --> '<div class="alternative_uniprot">abc</div><div class="alternative_uniprot">def</div>']
+  uniprot_id_comb_markup_alternatives = function(uniprot_comb_part) {
+    var tokens = [''];
+    for (var i = 0; i < uniprot_comb_part.length; ++i) {
+      if (uniprot_comb_part[i] == '|') {
+        tokens.push('');
+      } else {
+        tokens.push(tokens.pop() + uniprot_comb_part[i]);
+      }
+    }
+    return tokens.map(func_trim).map(function(token) {
+      return '<span class="uniprot_comb_alternative">' + uniprot_markup_term(token) + '</span>';
+    }).join('|');
+  };
+
+  uniprot_markup_term = function(term) {
+    if (term.slice(-1) == '+') {
+      return '<span class="uniprot_comb_multiple">' + uniprot_markup_term(term.slice(0, -1)) + '+</span>';
+    } else if (term.slice(-1) == '?') {
+      return '<span class="uniprot_comb_optional">' + uniprot_markup_term(term.slice(0, -1)) + '?</span>';
+    } else if (term.slice(0, 1) == '(' && term.slice(-1) == ')') {
+      return '<span class="uniprot_comb_alternative_group">(' + uniprot_id_comb_markup_alternatives(term.slice(1, -1)) + ')</span>';
+    } else {
+      return uniprot_id_link(term);
+    }
+  }
+
+  uniprot_id_comb_link = function(uniprot_comb) {
+    var tokens = [''];
+    for (var i = 0; i < uniprot_comb.length; ++i) {
+      if (uniprot_comb[i] == ',') {
+        tokens.push('');
+      } else {
+        tokens.push(tokens.pop() + uniprot_comb[i]);
+      }
+    }
+    tokens = tokens.map(func_trim);
+    return '<span class="uniprot_comb">' + tokens.map(uniprot_markup_term).join(', ') + '</span>';
   };
 
   // pattern MUST be a single group, otherwise spliter-terms won't be in split results;
@@ -43,7 +85,7 @@ page_ready = function() {
     if (typeof(joining_sequence)==='undefined') joining_sequence = ', ';
     return function(multiple_ids) {
       // return multiple_ids.split(splitter_pattern).map(function(el){ return apply_func( el.trim() ); }).join(joining_sequence)
-      return multiple_ids.split(splitter_pattern).map(methodToFunction(String.prototype.trim)).map(apply_func).join(joining_sequence)
+      return multiple_ids.split(splitter_pattern).map(func_trim).map(apply_func).join(joining_sequence)
     };
   };
 
@@ -249,7 +291,7 @@ page_ready = function() {
           // manipulate the array as desired, then return it
           var tokens = [];
           $.each(array, function(i,el) {
-            tokens = tokens.concat( el.split(',').map(methodToFunction(String.prototype.trim)) );
+            tokens = tokens.concat( el.split(',').map(func_trim) );
           });
           return $.unique(tokens).filter( function(el) { return el.length > 0; } );
         }
@@ -338,7 +380,7 @@ page_ready = function() {
       apply_converter('.hgnc_id',         hgnc_id_link);
       apply_converter('.mgi_id',          mgi_id_link);
       apply_converter('.uniprot_id',      convert_multiple(uniprot_id_link));
-      apply_converter('.uniprot_id_comb', convert_each_token_with(uniprot_id_link));
+      apply_converter('.uniprot_id_comb', uniprot_id_comb_link);
       apply_converter('.uniprot_ac',      uniprot_ac_link);
       apply_converter('.refseq',          refseq_link);
       apply_converter('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
@@ -422,7 +464,7 @@ page_ready = function() {
   apply_converter_to_non_table('.hgnc_id',         hgnc_id_link);
   apply_converter_to_non_table('.mgi_id',          mgi_id_link);
   apply_converter_to_non_table('.uniprot_id',      convert_multiple(uniprot_id_link));
-  apply_converter_to_non_table('.uniprot_id_comb', convert_each_token_with(uniprot_id_link));
+  apply_converter_to_non_table('.uniprot_id_comb', uniprot_id_comb_link);
   apply_converter_to_non_table('.uniprot_ac',      uniprot_ac_link);
   apply_converter_to_non_table('.refseq',          refseq_link);
   apply_converter_to_non_table('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
