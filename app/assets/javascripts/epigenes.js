@@ -60,26 +60,6 @@ page_ready = function() {
     return '<span class="uniprot_comb">' + tokens.map(uniprot_markup_term).join(', ') + '</span>';
   };
 
-  // pattern MUST be a single group, otherwise spliter-terms won't be in split results;
-  // multiple groups will result in several indistinguashable partial splitter terms. So use /(pattern)/ with pattern without (groups)
-  convert_each_token_with = function(converter, splitter_pattern) {
-    if (typeof(splitter_pattern)==='undefined') splitter_pattern = /([\s?|()+,]+)/;
-
-    return function(input) {
-      var result = '';
-      // var elements = input.split(new RegExp(/(\s*,\s*|\s*\(\s*|\s*\)\s*\+?\s*|\s*\|\s*)/));
-      var elements = input.split(splitter_pattern);
-      $.each(elements, function(index, element){
-        if (splitter_pattern.test(element)) { // splitters goes as they go
-          result += element;
-        } else {
-          result += converter(element);
-        }
-      });
-      return result;
-    };
-  };
-
   convert_multiple = function(apply_func, joining_sequence, splitter_pattern) {
     if (typeof(splitter_pattern)==='undefined') splitter_pattern = /,/;
     if (typeof(joining_sequence)==='undefined') joining_sequence = ', ';
