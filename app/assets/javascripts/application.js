@@ -14,10 +14,14 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require_tree .
 //= require select2
 //= require jquery-tablesorter
 //= require jquery-tablesorter/jquery.tablesorter.widgets-filter-formatter-select2
 //= require jquery-tablesorter/widgets/widget-output
 //= require jquery-tablesorter/widgets/widget-columnSelector
 //= require jquery-tablesorter/widgets/widget-cssStickyHeaders
+
+// Later (from tablesorter 2.18.5) it should go with tablesorter itself
+//= require ./widgets/widget-formatter
+
+//= require_tree .
