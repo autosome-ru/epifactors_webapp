@@ -15,13 +15,22 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require select2
-//= require jquery-tablesorter
-//= require jquery-tablesorter/jquery.tablesorter.widgets-filter-formatter-select2
-//= require jquery-tablesorter/widgets/widget-output
-//= require jquery-tablesorter/widgets/widget-columnSelector
-//= require jquery-tablesorter/widgets/widget-cssStickyHeaders
+// Do be required later jquery-tablesorter
+//                      jquery-tablesorter/widgets/widget-output
+//                      jquery-tablesorter/widgets/widget-columnSelector
+//                      jquery-tablesorter/widgets/widget-cssStickyHeaders
+//                      jquery-tablesorter/widgets/widget-formatter
+//                      jquery-tablesorter/jquery.tablesorter.widgets-filter-formatter-select2
 
 // Later (from tablesorter 2.18.5) it should go with tablesorter itself
+//= require ./jquery.metadata
+//= require ./jquery.tablesorter
+//= require ./jquery.tablesorter.widgets
+//= require ./jquery.tablesorter.widgets-filter-formatter
+//= require ./jquery.tablesorter.widgets-filter-formatter-select2
+//= require ./widgets/widget-output
+//= require ./widgets/widget-columnSelector
+//= require ./widgets/widget-cssStickyHeaders
 //= require ./widgets/widget-formatter
 
 //= require_tree .

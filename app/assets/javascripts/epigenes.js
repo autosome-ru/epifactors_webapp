@@ -172,9 +172,13 @@ page_ready = function() {
   $(".tablesorter").tablesorter({
     theme: 'blue',
     widthFixed : true,
-    widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output'],
+    widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output', 'formatter'],
     ignoreCase: false,
     widgetOptions : {
+      formatter_column: {
+        
+      },
+
       filter_childRows : false,
 
       // if true, a filter will be added to the top of each table column;
