@@ -1,4 +1,4 @@
-/*! tableSorter (FORK) 2.16+ widgets - updated 12/22/2014 (v2.18.4)
+/*! tableSorter (FORK) 2.16+ widgets - updated 2/7/2015 (v2.19.0)
  *
  * Column Styles
  * Column Filters
@@ -187,7 +187,7 @@ ts.addWidget({
 	id: "uitheme",
 	priority: 10,
 	format: function(table, c, wo) {
-		var i, hdr, icon, time, hdrClass, iconClass, $header, $icon, $tfoot, $h, oldtheme, oldremove, oldIconRmv, hasOldTheme,
+		var i, hdr, icon, time, $header, $icon, $tfoot, $h, oldtheme, oldremove, oldIconRmv, hasOldTheme,
 			themesAll = ts.themes,
 			$table = c.$table.add( c.$extraTables ),
 			$headers = c.$headers.add( c.$extraHeaders ),
@@ -1314,7 +1314,6 @@ ts.filter = {
 							if (wo.filter_useParsedData || data.parsed[columnIndex]) {
 								data.exact = data.cache;
 							} else {
-							// using older or original tablesorter
 								val = $cells[columnIndex];
 								result = $.trim( val.getAttribute( c.textAttribute ) || val.textContent || $cells.eq(columnIndex).text() );
 								data.exact = c.sortLocaleCompare ? ts.replaceAccents(result) : result; // issue #405
