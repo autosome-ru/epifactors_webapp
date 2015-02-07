@@ -13,13 +13,13 @@
       = protein_complex_table_header :complex_name, show_always: true
       = protein_complex_table_header :status, hide_by_default: true
       = protein_complex_table_header :genes, dont_sort: true
-      = protein_complex_table_header :alternative_name
+      = protein_complex_table_header :alternative_name, hide_by_default: true
       = protein_complex_table_header :protein, hide_by_default: true
-      = protein_complex_table_header :uniprot_id, class: 'uniprot_id_comb'
+      = protein_complex_table_header :uniprot_id, class: 'uniprot_id_comb', dont_sort: true
       = protein_complex_table_header :pmid_complex, dont_sort: true, hide_by_default: true, class: 'pmid'
       = protein_complex_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = protein_complex_table_header :pmid_function, dont_sort: true, hide_by_default: true, class: 'pmid'
-      = protein_complex_table_header :target, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = protein_complex_table_header :target, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = protein_complex_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = protein_complex_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = protein_complex_table_header :uniprot_id_target, hide_by_default: true, class: 'uniprot_id'

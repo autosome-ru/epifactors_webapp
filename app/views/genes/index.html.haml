@@ -17,9 +17,9 @@
       = gene_table_header :uniprot_ac, hide_by_default: true, dont_sort: true, class: 'uniprot_ac'
       = gene_table_header :uniprot_id, class: 'uniprot_id'
       = gene_table_header :domain, class: 'pfam_domain'
-      = gene_table_header :mgi_symbol
-      = gene_table_header :mgi_id, class: 'mgi_id'
-      = gene_table_header :uniprot_ac_mm, class: 'uniprot_ac'
+      = gene_table_header :mgi_symbol, hide_by_default: true
+      = gene_table_header :mgi_id, hide_by_default: true, class: 'mgi_id'
+      = gene_table_header :uniprot_ac_mm, hide_by_default: true, class: 'uniprot_ac'
       = gene_table_header :uniprot_id_mm, class: 'uniprot_id'
       = gene_table_header :gene_tag, hide_by_default: true
       = gene_table_header :gene_desc, hide_by_default: true
@@ -27,7 +27,7 @@
       = gene_table_header :modification, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :pmid_function, hide_by_default: true, dont_sort: true, class: 'pmid'
       = gene_table_header :complex_name, class: 'target_complex'
-      = gene_table_header :target, class: ['splitted_terms_filter', 'filter-onlyAvail']
+      = gene_table_header :target, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :uniprot_id_target, class: 'uniprot_id', hide_by_default: true

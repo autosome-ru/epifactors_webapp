@@ -2,6 +2,8 @@
 
 page_ready = function() {
 
+  $('[data-toggle="tooltip"]').tooltip();
+
   columns_by_header = function(table_selector, header_classes) {
     var header_indices = $(table_selector).find('thead tr th').filter(header_classes).map(function() {
       return $(this).index();
@@ -21,10 +23,12 @@ page_ready = function() {
   $(".tablesorter").tablesorter({
     theme: 'blue',
     widthFixed : true,
-    widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output', 'formatter'],
+    widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output', 'formatter', /*'resizable'*/],
     ignoreCase: false,
     widgetOptions : {
       formatter_column: epigeneDB.tablesorter_formatters,
+
+      // resizable_addLastColumn: false,
 
       filter_childRows : false,
 
