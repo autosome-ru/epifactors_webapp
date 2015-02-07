@@ -2,7 +2,7 @@ class GeneDecorator < Draper::Decorator
   delegate_all
 
   def hgnc_symbol_link
-    ( object.hgnc_symbol + '<br/>' + h.link_to('(gene info)', h.gene_path(object)) ).html_safe
+    ( object.hgnc_symbol + '<br/>' + h.link_to('(details)', h.gene_path(object)) ).html_safe
   end
 
   def refseq_mm

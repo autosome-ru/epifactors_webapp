@@ -32,7 +32,7 @@
   %tbody
     - @histones.each do |histone|
       %tr
-        %td{'data-original-value' => histone.hgnc_symbol }= histone.hgnc_symbol_link
+        %td{'data-text' => histone.hgnc_symbol }= histone.hgnc_symbol_link
         %td= histone.status
         %td= histone.hgnc_id
         %td= histone.hgnc_name

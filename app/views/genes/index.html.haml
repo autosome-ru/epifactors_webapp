@@ -38,7 +38,7 @@
   %tbody
     - @genes.each do |gene|
       %tr
-        %td{'data-original-value' => gene.hgnc_symbol }= gene.hgnc_symbol_link
+        %td{'data-text' => gene.hgnc_symbol }= gene.hgnc_symbol_link
         %td= gene.status
         %td= gene.hgnc_id
         %td= gene.hgnc_name

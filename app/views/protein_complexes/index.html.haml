@@ -30,7 +30,7 @@
     - @protein_complexes.each do |protein_complex|
       %tr
         %td= protein_complex.group_name
-        %td{'data-original-value' => protein_complex.complex_name }= protein_complex.complex_name_with_complex_card_link
+        %td{'data-text' => protein_complex.complex_name }= protein_complex.complex_name_with_complex_card_link
         %td= protein_complex.status
         %td= protein_complex.genes
         %td= protein_complex.alternative_name

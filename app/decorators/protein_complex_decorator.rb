@@ -5,7 +5,7 @@ class ProteinComplexDecorator < Draper::Decorator
   end
 
   def complex_name_with_complex_card_link
-    ( object.complex_name + '<br/>' + complex_name_link('(complex info)') ).html_safe
+    ( object.complex_name + '<br/>' + complex_name_link('(details)') ).html_safe
   end
   def genes
     object.genes.map{|gene|
