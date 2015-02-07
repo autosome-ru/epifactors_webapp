@@ -1,165 +1,12 @@
+//= require ./formatters.js
+
 page_ready = function() {
-
-  methodToFunction = function(meth) {
-    return function(el) {
-      return meth.call(el);
-    };
-  };
-
-  var func_trim = methodToFunction(String.prototype.trim);
-
-  convert_argument = function(converter) {
-    var inp = $(this).text();
-    $(this).html( converter(inp) );
-    if ( !$(this).attr('data-original-value') ) {
-      $(this).attr('data-original-value', inp);
-    }
-  };
-
-  convert_element = function(converter) {
-    return function() { convert_argument.call(this, converter); };
-  };
-
-  // 'abc|def' --> '<div class="alternative_uniprot">abc</div><div class="alternative_uniprot">def</div>']
-  uniprot_id_comb_markup_alternatives = function(uniprot_comb_part) {
-    var tokens = [''];
-    for (var i = 0; i < uniprot_comb_part.length; ++i) {
-      if (uniprot_comb_part[i] == '|') {
-        tokens.push('');
-      } else {
-        tokens.push(tokens.pop() + uniprot_comb_part[i]);
-      }
-    }
-    return tokens.map(func_trim).map(function(token) {
-      return '<span class="uniprot_comb_alternative">' + uniprot_markup_term(token) + '</span>';
-    }).join('|');
-  };
-
-  uniprot_markup_term = function(term) {
-    if (term.slice(-1) == '+') {
-      return '<span class="uniprot_comb_multiple">' + uniprot_markup_term(term.slice(0, -1)) + '+</span>';
-    } else if (term.slice(-1) == '?') {
-      return '<span class="uniprot_comb_optional">' + uniprot_markup_term(term.slice(0, -1)) + '?</span>';
-    } else if (term.slice(0, 1) == '(' && term.slice(-1) == ')') {
-      return '<span class="uniprot_comb_alternative_group">(' + uniprot_id_comb_markup_alternatives(term.slice(1, -1)) + ')</span>';
-    } else {
-      return uniprot_id_link(term);
-    }
-  }
-
-  uniprot_id_comb_link = function(uniprot_comb) {
-    var tokens = [''];
-    for (var i = 0; i < uniprot_comb.length; ++i) {
-      if (uniprot_comb[i] == ',') {
-        tokens.push('');
-      } else {
-        tokens.push(tokens.pop() + uniprot_comb[i]);
-      }
-    }
-    tokens = tokens.map(func_trim);
-    return '<span class="uniprot_comb">' + tokens.map(uniprot_markup_term).join(', ') + '</span>';
-  };
-
-  convert_multiple = function(apply_func, joining_sequence, splitter_pattern) {
-    if (typeof(splitter_pattern)==='undefined') splitter_pattern = /,/;
-    if (typeof(joining_sequence)==='undefined') joining_sequence = ', ';
-    return function(multiple_ids) {
-      // return multiple_ids.split(splitter_pattern).map(function(el){ return apply_func( el.trim() ); }).join(joining_sequence)
-      return multiple_ids.split(splitter_pattern).map(func_trim).map(apply_func).join(joining_sequence)
-    };
-  };
-
-  pmid_link = function(pmid) {
-    return '<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
-  };
-  mgi_id_link = function(mgi_name) {
-    // return '<a href="http://www.informatics.jax.org/searchtool/Search.do?query=MGI:' + mgi_name + '">' + mgi_name + '</a>';
-    return '<a href="http://www.informatics.jax.org/marker/MGI:' + mgi_name + '">' + mgi_name + '</a>';
-  };
-  uniprot_id_link = function(uniprot_id) {
-    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
-  };
-  hgnc_id_link = function(hgnc) {
-    return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>';
-  };
-  uniprot_ac_link = function(uniprot_ac) {
-    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>';
-  };
-  gene_id_link = function(gene_id) {
-    return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>';
-  };
-  refseq_link = function(refseq) {
-    return '<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>';
-  };
-  pfam_domain_link = function(pfam_info) {
-    var infos = pfam_info.trim().split(/\s+/);
-    return '<a href="http://pfam.xfam.org/family/' + infos[1] + '">' + infos.slice(0, 2).join('&nbsp;') + '</a> (' + infos.slice(2).join(', ') + ')';
-  };
-
-  target_complex_link = function(target) {
-    return '<a href="/protein_complexes?complex_name=' + target + '">' + target + '</a>';
-  };
-
-  ec_number_link = function(ec) {
-    var ec_parts = ec.split('.');
-    var ec_query = [];
-    $.each(ec_parts, function(ec_part_index, ec_part) {
-      if (Number(ec_part)) {
-        ec_query.push('field' + (1 + ec_part_index) + '=' + ec_part);
-      }
-    });
-    if (ec_query.length > 0) {
-      return '<a href="http://enzyme.expasy.org/cgi-bin/enzyme/enzyme-search-ec?' + ec_query.join('&') + '">' + ec + '</a>';
-    } else {
-      return ec;
-    }
-  };
-
-  expression_bar = function(value) {
-    return '<div class="expression-bar" style="width:' + value + '%;"></div>';
-  };
-
-  hocomoco_link = function(value) {
-    if (value == '') {
-      return '';
-    }
-    var parts = value.split('_');
-    var tf = parts[0];
-    var model = parts[1];
-    var img_html = '<img src="http://autosome.ru/HOCOMOCO/logos/thumbs/' + value + '_thumb.jpg">';
-    var link_html = '<a href="http://autosome.ru/HOCOMOCO/modelDetails.php?tf=' + tf + '&model=' + model + '">' +
-                    value + img_html +
-                    '</a>';
-    return '<div class="hocomoco_link">' + link_html + '</div>';
-  };
-
-  // convert_to_uniprot    = function() { convert_each_uniprot.call(this, uniprot_id_link); };
-
 
   columns_by_header = function(table_selector, header_classes) {
     var header_indices = $(table_selector).find('thead tr th').filter(header_classes).map(function() {
       return $(this).index();
     });
     return $.unique(header_indices);
-  };
-
-  apply_to_columns = function(table_selector, header_classes, apply_func) {
-    var $table_selector = $(table_selector)
-    var header_indices = columns_by_header($table_selector, header_classes);
-    $.each(header_indices, function(i, column_index) {
-      $table_selector.find('tbody tr td:nth-child(' + (column_index + 1) + ')').each(apply_func);
-    });
-  };
-
-  // applies transformation to every element with given class and to every cell in a column with header of given class
-  apply_converter = function(element_classes, apply_func) {
-    var transformation_func = convert_element(apply_func);
-    apply_to_columns('table', element_classes, transformation_func); // applied to any table, not a specific one
-  };
-
-  apply_converter_to_non_table = function(element_classes, apply_func) {
-    var transformation_func = convert_element(apply_func);
-    $(element_classes).filter(':not(th)').each(transformation_func); // not applied to header names in tables but to any other element
   };
 
   $('.download').click(function(){
@@ -169,15 +16,15 @@ page_ready = function() {
     $('.tablesorter')[0].config.widgetOptions.output_saveFileName = $(e.target).val();
   });
 
+  epigeneDB.apply_formatters( $('tbody:not(.tablesorter)').find('td') );
+
   $(".tablesorter").tablesorter({
     theme: 'blue',
     widthFixed : true,
     widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output', 'formatter'],
     ignoreCase: false,
     widgetOptions : {
-      formatter_column: {
-        
-      },
+      formatter_column: epigeneDB.tablesorter_formatters,
 
       filter_childRows : false,
 
@@ -257,7 +104,7 @@ page_ready = function() {
         '.splitted_terms_filter' : function(exact_text, normalized_text, search_for, column_index, $row) {
           // `/pattern/` string --> /pattern/ regexp
           var search_regexp = eval(search_for);
-          var tokens = exact_text.trim().split(', ');
+          var tokens = $.trim(exact_text).split(', ');
 
           for(var i = 0; i < tokens.length; ++i) {
             if (search_regexp.test(tokens[i])) {
@@ -274,10 +121,15 @@ page_ready = function() {
           var array = $.tablesorter.filter.getOptions(table, column, onlyAvail);
           // manipulate the array as desired, then return it
           var tokens = [];
+          
           $.each(array, function(i,el) {
-            tokens = tokens.concat( el.split(',').map(func_trim) );
+            var tokens_in_cell = $.map(el.split(','), $.trim);
+            tokens = tokens.concat( tokens_in_cell );
           });
-          return $.unique(tokens).filter( function(el) { return el.length > 0; } );
+
+          return $.unique(tokens).filter(function(el){
+            return el.length > 0; 
+          });
         }
       },
 
@@ -333,7 +185,7 @@ page_ready = function() {
 
       output_separator     : "\t",         // ',' 'json', 'array' or separator (e.g. ',')
       output_ignoreColumns : [],          // columns to ignore [0, 1,... ] (zero-based index)
-      output_dataAttrib    : 'data-original-value', // data-attribute containing alternate cell text
+      output_dataAttrib    : 'data-text', // data-attribute containing alternate cell text
       output_headerRows    : true,        // output all header rows (multiple rows)
       output_delivery      : 'd',         // (p)opup, (d)ownload
       output_saveRows      : 'f',         // (a)ll, (f)iltered or (v)isible
@@ -357,19 +209,6 @@ page_ready = function() {
 
     // delayInit: false,
     initialized : function(table){
-      apply_converter('.gene_id',         gene_id_link);
-      apply_converter('.pmid',            convert_multiple(pmid_link));
-      apply_converter('.target_complex',  convert_multiple(target_complex_link));
-      apply_converter('.ec_number',       ec_number_link);
-      apply_converter('.hgnc_id',         hgnc_id_link);
-      apply_converter('.mgi_id',          mgi_id_link);
-      apply_converter('.uniprot_id',      convert_multiple(uniprot_id_link));
-      apply_converter('.uniprot_id_comb', uniprot_id_comb_link);
-      apply_converter('.uniprot_ac',      uniprot_ac_link);
-      apply_converter('.refseq',          refseq_link);
-      apply_converter('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
-
-      apply_converter('.expression_bar',  expression_bar);
       $('table.gene_expression_by_tissue').find('td:nth-child(3), th:nth-child(3)').show();
 
       table.config.widgetOptions.output_saveFileName = $('.csv-filename').val();
@@ -441,18 +280,6 @@ page_ready = function() {
     widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'output']
   });
 
-  apply_converter_to_non_table('.gene_id',         gene_id_link);
-  apply_converter_to_non_table('.pmid',            convert_multiple(pmid_link));
-  apply_converter_to_non_table('.target_complex',  convert_multiple(target_complex_link));
-  apply_converter_to_non_table('.ec_number',       ec_number_link);
-  apply_converter_to_non_table('.hgnc_id',         hgnc_id_link);
-  apply_converter_to_non_table('.mgi_id',          mgi_id_link);
-  apply_converter_to_non_table('.uniprot_id',      convert_multiple(uniprot_id_link));
-  apply_converter_to_non_table('.uniprot_id_comb', uniprot_id_comb_link);
-  apply_converter_to_non_table('.uniprot_ac',      uniprot_ac_link);
-  apply_converter_to_non_table('.refseq',          refseq_link);
-  apply_converter_to_non_table('.pfam_domain',     convert_multiple(pfam_domain_link, '<br/>'));
-  apply_converter_to_non_table('.hocomoco',        convert_multiple(hocomoco_link, ''));
 };
 
 $(document).ready(page_ready)
