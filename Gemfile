@@ -47,7 +47,7 @@ end
 
 gem 'rubyXL'
 gem 'haml-rails'
-gem 'jquery-tablesorter'
+gem 'jquery-tablesorter', '>= 1.14' # tablesorter 2.19
 gem 'select2-rails'
 
 gem 'therubyracer'
@@ -55,3 +55,10 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
 gem 'draper'
 # gem 'pg'
+
+group :development, :test do
+  # Draw DB diagrams (https://github.com/preston/railroady)
+  gem 'railroady'
+  # or alternatively (https://github.com/voormedia/rails-erd)
+  # gem 'rails-erd'
+end
