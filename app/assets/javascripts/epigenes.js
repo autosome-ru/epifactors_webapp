@@ -1,11 +1,8 @@
 //= require ./formatters.js
 //= require ./select_columns.js
 
-page_ready = function() {
-
-  $('[data-toggle="tooltip"]').tooltip();
-
-  columns_by_header = function(table_selector, header_classes) {
+var page_ready = function() {
+  var columns_by_header = function(table_selector, header_classes) {
     var header_indices = $(table_selector).find('thead tr th').filter(header_classes).map(function() {
       return $(this).index();
     });
@@ -164,7 +161,7 @@ page_ready = function() {
       //   0: 'disable' /* set to disabled; not allowed to unselect it */
       // },
       // remember selected columns (requires $.tablesorter.storage)
-      columnSelector_saveColumns: false,
+      // columnSelector_saveColumns: false,
 
       // container layout
       columnSelector_layout : '<label><input type="checkbox">{name}</label>',
@@ -222,11 +219,8 @@ page_ready = function() {
     }
   });
 
-  epigeneDB.ui.applyColumnSelector()
-
-
-
+  epigeneDB.ui.applyColumnSelector();
 };
 
-$(document).ready(page_ready)
-$(document).on('page:load', page_ready)
+$(document).ready(page_ready);
+$(document).on('page:load', page_ready);

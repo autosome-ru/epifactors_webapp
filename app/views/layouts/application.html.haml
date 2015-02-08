@@ -10,7 +10,7 @@
       = nav_bar do
         = menu_group do
           = menu_item 'Home', root_path
-          = menu_item 'Genes', genes_path, data: {toggle: 'tooltip', placement: 'right', title: 'Please be careful, the whole table will take some time to load.'}
+          = menu_item 'Genes', genes_path, data: {toggle: 'tooltip', placement: 'right', title: 'Please be careful, the whole table will take some time to load.'}, class: 'has-tooltip'
           = menu_item 'Сomplexes', protein_complexes_path
           = menu_item 'Histones and protamines', histones_path
           = menu_item 'DB description', epigene_description_path
