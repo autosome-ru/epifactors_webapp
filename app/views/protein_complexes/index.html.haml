@@ -1,12 +1,12 @@
 .table-actions
   %button.reset{type: 'button'} Reset filters
-  %button#popover{type: 'button'} Select Columns
+  %button.select-columns-btn{type: 'button'} Select Columns
   %button.download{type: 'button'} Get CSV
   %input{type: "text", value: 'protein_complexes.csv', class: 'csv-filename'}
   .loading_table
     .loading_logo
 
-%table#protein-complexes.bootstrap-select-columns-popup.tablesorter
+%table#protein-complexes.tablesorter.attach-column-selector
   %thead
     %tr
       = protein_complex_table_header :group_name

@@ -1,4 +1,5 @@
 //= require ./formatters.js
+//= require ./select_columns.js
 
 page_ready = function() {
 
@@ -125,14 +126,14 @@ page_ready = function() {
           var array = $.tablesorter.filter.getOptions(table, column, onlyAvail);
           // manipulate the array as desired, then return it
           var tokens = [];
-          
+
           $.each(array, function(i,el) {
             var tokens_in_cell = $.map(el.split(','), $.trim);
             tokens = tokens.concat( tokens_in_cell );
           });
 
           return $.unique(tokens).filter(function(el){
-            return el.length > 0; 
+            return el.length > 0;
           });
         }
       },
@@ -221,68 +222,9 @@ page_ready = function() {
     }
   });
 
-  $.fn.check = function() {
-    this.each(function(ind, el) {
-      if (! $(el).is(':checked')) {
-        this.click();
-      }
-    });
-  };
-  $.fn.uncheck = function() {
-    this.each(function(ind, el) {
-      if ($(el).is(':checked')) {
-        this.click();
-      }
-    });
-  };
+  epigeneDB.ui.applyColumnSelector()
 
-  $('#popover')
-    .popover({
-      placement: 'right',
-      html: true, // required if content has HTML
-      content: '<div id="popover-target"></div>'
-    })
-    // bootstrap popover event triggered when the popover opens
-    .on('shown.bs.popover', function () {
-      // call this function to copy the column selection code into the popover
-      $.tablesorter.columnSelector.attachTo( $('.bootstrap-select-columns-popup'), '#popover-target');
-      var buttons_html =  '<div>' +
-                          '<a href="#" class="default-columns">Default</a> / ' +
-                          '<a href="#" class="hide-all">Hide all</a> / ' +
-                          '<a href="#" class="show-all">Show all</a>' +
-                          '</div>'
-      $('#popover-target').prepend($(buttons_html));
-      $('#popover-target .show-all').click(function(e) {
-        e.preventDefault;
-        $(e.target).closest('#popover-target').find('input:checkbox').check();
-        return false;
-      });
-      $('#popover-target .hide-all').click(function(e) {
-        e.preventDefault;
-        $(e.target).closest('#popover-target').find('input:checkbox').uncheck();
-        return false;
-      });
-      $('#popover-target .default-columns').click(function(e) {
-        e.preventDefault;
-        $('.bootstrap-select-columns-popup thead th').each(function(index, el) {
-          var column_index = $(el).data('column');
-          if ($(el).is('.columnSelector-false')) {
-            $(e.target).closest('#popover-target').find('input:checkbox[data-column=' + column_index + ']').uncheck();
-          } else {
-            $(e.target).closest('#popover-target').find('input:checkbox[data-column=' + column_index + ']').check();
-          }
-        });
-        return false;
-      });
-    });
 
-  // Ilya: Don't understand whether it's neccesary
-  // initialize column selector using default settings
-  // note: no container is defined!
-  $(".bootstrap-select-columns-popup").tablesorter({
-    theme: 'blue',
-    widgets: ['zebra', 'columnSelector', 'stickyHeaders', 'output']
-  });
 
 };
 
