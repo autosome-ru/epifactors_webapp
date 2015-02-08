@@ -9,8 +9,6 @@ class Gene < ActiveRecord::Base
     :specific_target, :product, :uniprot_id_target, :comment
   ]
 
-  # searchable_attributes = [ :hgnc_symbol, :hgnc_name, :refseq_hs,:uniprot_ac,:uniprot_id,:mgi_id,:refseq_mm,:ec_description,
-                            # :gene_tag,:gene_desc,:funct_class,:funct,:protein_complex,:target,:target_molecule,:product,:details]
   include SearchableFullText
   searchable_by(searchable_attributes)
 
