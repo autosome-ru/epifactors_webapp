@@ -24,7 +24,7 @@
       = protein_complex_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = protein_complex_table_header :uniprot_id_target, hide_by_default: true, class: 'uniprot_id'
       = protein_complex_table_header :pmid_target, dont_sort: true, hide_by_default: true, class: 'pmid'
-      = protein_complex_table_header :comment, hide_by_default: true
+      = protein_complex_table_header :comment, hide_by_default: true, class: 'comment'
 
   %tbody
     - @protein_complexes.each do |protein_complex|

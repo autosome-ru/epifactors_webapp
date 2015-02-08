@@ -27,7 +27,7 @@
       = histone_table_header :targeted_by_protein, hide_by_default: true
       = histone_table_header :targeted_by_complex, class: ['splitted_terms_filter', 'filter-onlyAvail', 'target_complex'], dont_sort: true
       = histone_table_header :pmid, class: 'pmid', hide_by_default: true, dont_sort: true
-      = histone_table_header :comment, hide_by_default: true
+      = histone_table_header :comment, hide_by_default: true, class: 'comment'
 
   %tbody
     - @histones.each do |histone|
