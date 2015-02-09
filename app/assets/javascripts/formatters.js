@@ -14,7 +14,7 @@
   };
 
   epigeneDB.uniprot_id_link = function(uniprot_id) {
-    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
+    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'" class="uniprot_id_term">' + uniprot_id + '</a>';
   };
 
   epigeneDB.uniprot_ac_link = function(uniprot_ac) {
