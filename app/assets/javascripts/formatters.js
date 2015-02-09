@@ -71,14 +71,11 @@
     return '<div class="hocomoco_link">' + link_html + '</div>';
   };
 
-  
   var uniprot_id_comb_markup_alternatives,
       uniprot_markup_term,
       multiterm,
       formatter_preserving_text,
       make_tablesorter_formatters;
-
-
 
   // 'abc|def' --> '<div class="alternative_uniprot">abc</div><div class="alternative_uniprot">def</div>']
   uniprot_id_comb_markup_alternatives = function(uniprot_comb_part) {
@@ -92,7 +89,7 @@
     }
     return $.map(tokens, function(token) {
       return '<span class="uniprot_comb_alternative">' + uniprot_markup_term($.trim(token)) + '</span>';
-    }).join('|');
+    }).join(' | ');
   };
 
   uniprot_markup_term = function(term) {
@@ -120,9 +117,8 @@
     return '<span class="uniprot_comb">' + $.map(tokens, uniprot_markup_term).join(', ') + '</span>';
   };
 
-  
   multiterm = function(apply_func, joining_sequence, splitter_pattern) {
-    if (typeof(splitter_pattern)==='undefined') splitter_pattern = /,/;
+    if (typeof(splitter_pattern)==='undefined') splitter_pattern = ', ';
     if (typeof(joining_sequence)==='undefined') joining_sequence = ', ';
     return function(multiple_ids) {
       var terms = multiple_ids.split(splitter_pattern);
@@ -155,12 +151,12 @@
     '.uniprot_ac'      : epigeneDB.uniprot_ac_link,
     '.refseq'          : epigeneDB.refseq_link,
     '.uniprot_id_comb' : epigeneDB.uniprot_id_comb_link,
-    '.expression_bar'   : epigeneDB.expression_bar,
+    '.expression_bar'  : epigeneDB.expression_bar,
     '.pmid'            : multiterm( epigeneDB.pmid_link ),
-    '.target_complex'  : multiterm( epigeneDB.target_complex_link ),
+    '.target_complex'  : multiterm( epigeneDB.target_complex_link),
     '.uniprot_id'      : multiterm( epigeneDB.uniprot_id_link ),
     '.pfam_domain'     : multiterm( epigeneDB.pfam_domain_link, '<br/>' ),
-    '.hocomoco'        : multiterm( epigeneDB.hocomoco_link, '' ),
+    '.hocomoco'        : multiterm( epigeneDB.hocomoco_link, '' ), // hocomoco links with motif logos go on different lines, comma is unnecessary
   };
 
   epigeneDB.tablesorter_formatters = make_tablesorter_formatters(epigeneDB.formatters);

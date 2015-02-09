@@ -14,6 +14,6 @@ class GeneDecorator < Draper::Decorator
   end
 
   def hocomoco_link
-    UniprotHocomocoMapping.instance.hocomoco_motifs(object.uniprot_id, object.uniprot_id_mm).join(',')
+    UniprotHocomocoMapping.instance.hocomoco_motifs(object.uniprot_id, object.uniprot_id_mm).join(', ')
   end
 end
