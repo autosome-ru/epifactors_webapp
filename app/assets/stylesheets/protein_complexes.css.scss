@@ -1,13 +1,3 @@
-// Place all the styles related to the protein_complexes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-table#protein-complexes {
-  th:nth-child(14) {
-    min-width: 200px;
-  }
-}
-
 .uniprot_comb {
   // TODO:  '?' after alternative group is opaque but not lighgreen
   //        while '+' after alternative group is orange. Not consistent design
@@ -30,4 +20,3 @@ table#protein-complexes {
     }
   }
 }
-

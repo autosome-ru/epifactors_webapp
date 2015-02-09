@@ -1,20 +1,3 @@
-.table-actions {
-  padding-left: 10px;
-}
-
-.tablesorter {
-  th {
-    min-width: 150px;
-  }
-  th.splitted_terms_filter {
-    min-width: 200px;
-  }
-
-  input.tablesorter-filter {
-    height: 28px;
-  }
-}
-
 #column-selector-target {
   label {
     text-align: left;
@@ -23,20 +6,72 @@
   }
 }
 
-.loading_table {
-  display: inline-block;
-}
-.loading_figure {
-  display: block;
+table.tablesorter {
+  // box-sizing: content-box; // resizable widget requires this option
+  .tablesorter-filter {
+    height: 28px;
+  }
+
+  th, td {
+    &.comment{
+      min-width: 350px;
+      max-width: 450px;
+    }
+    &.splitted_terms_filter, &.uniprot_id_comb {
+      min-width: 220px;
+      max-width: 250px;
+    }
+    &:not(.comment):not(.splitted_terms_filter):not(.uniprot_id_comb){
+      min-width: 150px;
+      max-width: 300px;
+    }
+  }
 }
 
+table.gene_expression_by_tissue {
+  td,th {
+    &:nth-child(3) {
+      min-width: 500px;
+      display: none;
+    }
+  }
+}
 
-.loading_logo {
-  display: inline-block;
-  vertical-align: middle;
-  $size: 34px;
-  height: $size;
-  width: $size;
-  background-image: image-url("loading.gif");
-  background-size: $size $size;
+table:not(.tablesorter) {
+  tr, td {
+    border-color: #a7a7a7;
+  }
+}
+
+table.key_value_info {
+  width: 100%;
+  td {
+    padding: 5px;
+    border: 1px solid black;
+  }
+  td:first-child {
+    width: 25%;
+    font-weight: bolder;
+  }
+  td:last-child {
+    width: 75%;
+  }
+}
+
+table.expression_statistics {
+  width: 100%;
+  margin: 20px 0;
+  tr:first-child td {padding-top: 10px;}
+  tr:last-child td {padding-bottom: 10px;}
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.expression-bar {
+  background-color: red;
+  height: 7px;
+}
+
+.table-actions {
+  padding-left: 10px;
 }

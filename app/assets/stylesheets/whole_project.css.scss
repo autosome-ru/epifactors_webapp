@@ -7,27 +7,7 @@
   }
 }
 
-table:not(.tablesorter) {
-  tr, td {
-    border-color: #a7a7a7;
-  }
-}
-
-table.gene_expression_by_tissue {
-  td,th {
-    &:nth-child(3) {
-      min-width: 500px;
-      display: none;
-    }
-  }
-}
-
 h4 { margin-left:20px; }
-
-.expression-bar {
-  background-color: red;
-  height: 7px;
-}
 
 .hocomoco_link {
   padding-top: 5px;
@@ -48,6 +28,19 @@ h4 { margin-left:20px; }
   width: 250px;
 }
 
-table.tablesorter {
-  box-sizing: content-box;
+.loading_table {
+  display: inline-block;
+}
+.loading_figure {
+  display: block;
+}
+
+.loading_logo {
+  display: inline-block;
+  vertical-align: middle;
+  $size: 34px;
+  height: $size;
+  width: $size;
+  background-image: image-url("loading.gif");
+  background-size: $size $size;
 }
