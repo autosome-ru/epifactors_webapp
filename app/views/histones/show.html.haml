@@ -1,4 +1,4 @@
-%h4 #{@histone.molecule_kind.capitalize} info
+.table_caption #{@histone.molecule_kind.capitalize} info
 %table.key_value_info
   %tbody
     = table_info_row @histone, :hgnc_symbol
@@ -22,6 +22,6 @@
     = table_info_row @histone, :comment
 
 %hr
-%h4 Expression statistics
+.table_caption Expression statistics
 = render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
 = render partial: 'shared/expressions_by_tissues', locals: {expressions_by_tissues: @expressions, statistics: @expression_statistics}

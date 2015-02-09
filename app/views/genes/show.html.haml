@@ -1,4 +1,4 @@
-%h4 Gene info
+.table_caption Gene info
 %table.key_value_info
   %tbody
     = table_info_row @gene, :hgnc_symbol
@@ -30,6 +30,6 @@
     -# = table_info_row @gene, :protein_complexes
 
 %hr
-%h4 Expression statistics
+.table_caption Expression statistics
 = render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
 = render partial: 'shared/expressions_by_tissues', locals: {expressions_by_tissues: @expressions, statistics: @expression_statistics}
