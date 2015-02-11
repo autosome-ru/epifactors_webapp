@@ -24,8 +24,7 @@
 # err_log    = "#{rails_root}/log/unicorn_error.log"
 # old_pid    = pid_file + '.oldbin'
 
-
-deploy_to  = "/home/ilya/EpigeneDB"
+deploy_to  = File.absolute_path('../../', __FILE__)
 rails_root = "#{deploy_to}"
 pid_file   = "#{rails_root}/tmp/pids/unicorn.pid"
 socket_file= "#{rails_root}/tmp/sockets/unicorn.sock"
