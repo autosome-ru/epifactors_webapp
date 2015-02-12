@@ -28,7 +28,7 @@ table.tablesorter {
   }
 }
 
-table.gene_expression_by_tissue {
+table.gene_expression_by_sample {
   td,th {
     &:nth-child(3) {
       min-width: 500px;

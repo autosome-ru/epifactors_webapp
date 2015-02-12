@@ -15,6 +15,4 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/db/data/gene_expressions_by_tissue.txt
-/db/data/gene_expressions_by_tissue_with_timecourses.txt
 /public/assets/

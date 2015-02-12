@@ -96,7 +96,7 @@ var page_ready = function() {
 
     // delayInit: false,
     initialized : function(table){
-      $('table.gene_expression_by_tissue').find('td:nth-child(3), th:nth-child(3)').show();
+      $('table.gene_expression_by_sample').find('td:nth-child(3), th:nth-child(3)').show();
 
       table.config.widgetOptions.output_ignoreColumns = columns_by_header(table, '.ignore_csv_output');
       $('.loading_table').hide();
