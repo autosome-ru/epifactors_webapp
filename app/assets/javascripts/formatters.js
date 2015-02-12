@@ -42,6 +42,22 @@
     return '<div class="expression-bar" style="width:' + value + '%;"></div>';
   };
 
+  epigeneDB.sample_link = function(value, data) {
+    var match, name, sample_id, sample_format, url;
+    match = /^(.+)\.(CNhs\w+\.\w+-\w+)?$/.exec(value);
+    name = match[1];
+    sample_id = match[2];
+    sample_format = data.$header.data('sample-format');
+    url = '/samples/' + sample_id;
+    if (!sample_format || sample_format == 'short') {
+      return '<a href="' + url + '"">' + name + '</a>';
+    } else if (sample_format == 'full') {
+      return '<a href="/samples/' + sample_id + '">' + value + '</a>';
+    } else {
+      return value;
+    }
+  };
+
   epigeneDB.ec_number_link = function(ec) {
     var ec_parts = ec.split('.');
     var ec_query = [];
@@ -152,6 +168,7 @@
     '.refseq'          : epigeneDB.refseq_link,
     '.uniprot_id_comb' : epigeneDB.uniprot_id_comb_link,
     '.expression_bar'  : epigeneDB.expression_bar,
+    '.sample_link'     : epigeneDB.sample_link,
     '.pmid'            : multiterm( epigeneDB.pmid_link ),
     '.target_complex'  : multiterm( epigeneDB.target_complex_link),
     '.uniprot_id'      : multiterm( epigeneDB.uniprot_id_link ),

@@ -1,10 +1,11 @@
 .expressions-table-actions
+  %button.toggle-sample-format Full/short names
   %button.download{type: 'button'} Get CSV
   %input{type: "text", value: 'expressions.csv', class: 'csv-filename'}
-%table.gene_expression_by_tissue.tablesorter{'data-sortlist' => '[[1,1]]'}
+%table.gene_expression_by_tissue.toggle-sample-format-target.tablesorter{'data-sortlist' => '[[1,1]]'}
   %thead
     %tr
-      %th Sample
+      %th.sample_link{data: {'sample-format' => 'short'}} Sample
       %th{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'} Expression
       %th.sorter-false.ignore_csv_output.expression_bar Expression bar
   %tbody
