@@ -89,3 +89,6 @@ en:
         targeted_by_complex:        Name of targeting complex
         pmid:                       PMID for reference on annotation
         comment:                    Comment
+
+      sample:
+        sample_name:                Sample

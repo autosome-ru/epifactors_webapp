@@ -1,0 +1,17 @@
+.table-actions
+  %button.reset{type: 'button'} Reset filters
+  %button.toggle-sample-format Full/short names
+  %button.download{type: 'button'} Get CSV
+  %input{type: "text", value: 'samples.csv', class: 'csv-filename'}
+  .loading_table
+    .loading_logo
+
+%table#samples.toggle-sample-format-target.tablesorter
+  %thead
+    %tr
+      = sample_table_header :sample_name, show_always: true, class: ['sample_link'], data: {'sample-format' => 'short'}
+
+  %tbody
+    - @samples.each do |sample|
+      %tr
+        %td= sample

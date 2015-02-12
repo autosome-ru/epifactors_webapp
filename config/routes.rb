@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :genes, only: [:show, :index]
   resources :protein_complexes, only: [:show, :index]
   resources :histones, only: [:show, :index]
+  resources :samples, only: [:show, :index], constraints: {:id => /CNhs\w+\.\w+-\w+/}
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
