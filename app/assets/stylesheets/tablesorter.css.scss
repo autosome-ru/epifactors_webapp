@@ -12,18 +12,20 @@ table.tablesorter {
     height: 28px;
   }
 
-  th, td {
-    &.comment{
-      min-width: 350px;
-      max-width: 450px;
-    }
-    &.splitted_terms_filter, &.uniprot_id_comb {
-      min-width: 220px;
-      max-width: 250px;
-    }
-    &:not(.comment):not(.splitted_terms_filter):not(.uniprot_id_comb){
-      min-width: 150px;
-      max-width: 300px;
+  &#epigenes, &#protein-complexes, &#histones, &#samples {
+    th, td {
+      &.comment{
+        min-width: 350px;
+        max-width: 450px;
+      }
+      &.splitted_terms_filter, &.uniprot_id_comb {
+        min-width: 220px;
+        max-width: 250px;
+      }
+      &:not(.comment):not(.splitted_terms_filter):not(.uniprot_id_comb){
+        min-width: 150px;
+        max-width: 300px;
+      }
     }
   }
 }
