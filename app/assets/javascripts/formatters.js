@@ -43,16 +43,18 @@
   };
 
   epigeneDB.sample_link = function(value, data) {
-    var match, name, sample_id, sample_format, url;
-    match = /^(.+)\.(CNhs\w+\.\w+-\w+)?$/.exec(value);
+    var match, name, library_id, extract_name, sample_format, url;
+    match = /^(.+)\.(CNhs\w+)\.(\w+-\w+)?$/.exec(value);
     name = match[1];
-    sample_id = match[2];
+    library_id = match[2];
+    extract_name = match[3];
     sample_format = data.$header.data('sample-format');
-    url = '/samples/' + sample_id;
+    url = '/samples/' + library_id;
+    fantom_sstar_url = 'http://fantom.gsc.riken.jp/5/sstar/FF:' + extract_name;
     if (!sample_format || sample_format == 'short') {
-      return '<a href="' + url + '"">' + name + '</a>';
+      return '<a href="' + url + '"">' + name + '</a> <span class="fantom-external-link">(<a href="' + fantom_sstar_url + '">FANTOM5 SSTAR</a>)</span>';
     } else if (sample_format == 'full') {
-      return '<a href="/samples/' + sample_id + '">' + value + '</a>';
+      return '<a href="' + url + '">' + value + '</a> <span class="fantom-external-link">(<a href="' + fantom_sstar_url + '">FANTOM5 SSTAR</a>)</span>';
     } else {
       return value;
     }
