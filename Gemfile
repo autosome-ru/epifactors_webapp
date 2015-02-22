@@ -47,7 +47,7 @@ end
 
 gem 'rubyXL'
 gem 'haml-rails'
-gem 'jquery-tablesorter', '>= 1.14' # tablesorter 2.19
+gem 'jquery-tablesorter', '>= 1.15' # tablesorter 2.19
 gem 'select2-rails'
 
 gem 'therubyracer'
