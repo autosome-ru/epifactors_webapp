@@ -38,8 +38,11 @@
     return '<a href="http://pfam.xfam.org/family/' + infos[1] + '">' + infos.slice(0, 2).join('&nbsp;') + '</a> (' + infos.slice(2).join(', ') + ')';
   };
 
-  epigeneDB.expression_bar = function(value) {
-    return '<div class="expression-bar" style="width:' + value + '%;"></div>';
+  epigeneDB.expression_bar = function(value, data) {
+    var tbodyIndex      = data.config.$tbodies.index( data.$cell.parents('tbody').filter(':first') ),
+        max_expression  = data.config.cache[tbodyIndex].colMax[data.columnIndex],
+        percentage      = 100.0 * value / max_expression;
+    return Number(value).toFixed(1) + '<div class="expression-bar" style="width:' + percentage + '%;">' + '</div>';
   };
 
   epigeneDB.sample_link = function(value, data) {

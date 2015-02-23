@@ -2,15 +2,16 @@
   %button.toggle-sample-format Full/short names
   %button.download{type: 'button'} Get CSV
   %input{type: "text", value: 'expressions.csv', class: 'csv-filename'}
-%table.gene_expression_by_sample.toggle-sample-format-target.tablesorter{'data-sortlist' => '[[1,1]]'}
+%table.gene_expression_by_sample.toggle-sample-format-target.tablesorter
   %thead
     %tr
+      %th.group-separator Sample kind
       %th.sample_link{data: {'sample-format' => 'short'}} Sample
-      %th{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'} Expression
-      %th.sorter-false.ignore_csv_output.expression_bar Expression bar
+      %th.expression_bar{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'} Expression
+
   %tbody
     - expressions_by_samples.each do |sample, expression|
       %tr
+        %td= sample.sample_kind
         %td= sample
-        %td= expression.round(1)
-        %td= 100 * expression.to_f / statistics.max
+        %td= expression

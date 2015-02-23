@@ -2,13 +2,6 @@
 //= require ./select_columns.js
 
 var page_ready = function() {
-  var columns_by_header = function(table_selector, header_classes) {
-    var header_indices = $(table_selector).find('thead tr th').filter(header_classes).map(function() {
-      return $(this).index();
-    });
-    return $.unique(header_indices);
-  };
-
   $('.download').click(function(){
     $('table.tablesorter').get(0).config.widgetOptions.output_saveFileName = $('.csv-filename').val();
     $('table.tablesorter').trigger('outputTable');
@@ -16,7 +9,7 @@ var page_ready = function() {
 
   epigeneDB.apply_formatters( $('tbody:not(.tablesorter)').find('td') );
 
-  $(".tablesorter").tablesorter({
+  $("#epigenes, #protein-complexes, #histones, #samples").filter('table.tablesorter').tablesorter({
     theme: 'blue',
     widthFixed : true,
     widgets: ['saveSort', 'zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output', 'formatter'/*, 'resizable'*/],
@@ -96,9 +89,6 @@ var page_ready = function() {
 
     // delayInit: false,
     initialized : function(table){
-      $('table.gene_expression_by_sample').find('td:nth-child(3), th:nth-child(3)').show();
-
-      table.config.widgetOptions.output_ignoreColumns = columns_by_header(table, '.ignore_csv_output');
       $('.loading_table').hide();
     }
   });
