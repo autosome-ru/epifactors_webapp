@@ -33,6 +33,6 @@
 //= require jquery-tablesorter/widgets/widget-columnSelector
 //= require jquery-tablesorter/widgets/widget-cssStickyHeaders
 //= require jquery-tablesorter/widgets/widget-formatter
-//= require jquery-tablesorter/widgets/widget-grouping
+//= require ./widget-grouping
 
 //= require_tree .
