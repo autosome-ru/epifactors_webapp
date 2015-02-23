@@ -29,7 +29,6 @@ var page_ready = function() {
       group_collapsible : true,
       group_collapsed : true,
       group_saveGroups : true,
-      group_separator:  'never occurs',
 
       // CSV output
       // Need fix in tablesorter to make it possible to remove group headers from output

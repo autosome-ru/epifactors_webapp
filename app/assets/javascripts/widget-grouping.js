@@ -30,6 +30,9 @@ ts.grouping = {
 			var word = (txt + '').split(c.widgetOptions.group_separator);
 			return $.trim(word && num > 0 && word.length >= num ? word[(num || 1) - 1] : '');
 		},
+		text : function(c, $column, txt){
+			return txt;
+		},
 		word : function(c, $column, txt, num){
 			var word = (txt + ' ').match(/\w+/g);
 			return word && word.length >= num ? word[num - 1] : txt || '';
