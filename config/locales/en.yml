@@ -91,4 +91,5 @@ en:
         comment:                    Comment
 
       sample:
+        sample_kind:                Kind of sample
         sample_name:                Sample

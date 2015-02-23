@@ -1,5 +1,5 @@
 var page_ready = function() {
-  $(".gene_expression_by_sample.tablesorter").tablesorter({
+  $(".gene_expression_by_sample.tablesorter, #samples").tablesorter({
     theme: 'blue',
     widthFixed : true,
     widgets: ['zebra', 'stickyHeaders', 'filter', 'output', 'formatter', 'group'],

@@ -9,7 +9,7 @@ var page_ready = function() {
 
   epigeneDB.apply_formatters( $('tbody:not(.tablesorter)').find('td') );
 
-  $("#epigenes, #protein-complexes, #histones, #samples").filter('table.tablesorter').tablesorter({
+  $("#epigenes, #protein-complexes, #histones").filter('table.tablesorter').tablesorter({
     theme: 'blue',
     widthFixed : true,
     widgets: ['saveSort', 'zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output', 'formatter'/*, 'resizable'*/],

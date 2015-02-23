@@ -4,6 +4,6 @@ class SamplesController < ApplicationController
   end
 
   def show
-    @sample = GeneExpressions.instance.sample_by_id(params[:id])
+    @sample = Sample.find_by_sample_id(params[:id].to_sym)
   end
 end
