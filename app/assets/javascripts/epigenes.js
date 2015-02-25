@@ -1,7 +1,8 @@
-//= require ./formatters.js
+//= require ./tablesorter_defaults.js
 //= require ./select_columns.js
 
 var page_ready = function() {
+
   $('.download').click(function(){
     $('table.tablesorter').get(0).config.widgetOptions.output_saveFileName = $('.csv-filename').val();
     $('table.tablesorter').trigger('outputTable');
@@ -9,89 +10,13 @@ var page_ready = function() {
 
   epigeneDB.apply_formatters( $('tbody:not(.tablesorter)').find('td') );
 
-  $("#epigenes, #protein-complexes, #histones").filter('table.tablesorter').tablesorter({
-    theme: 'blue',
-    widthFixed : true,
-    widgets: ['saveSort', 'zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output', 'formatter'/*, 'resizable'*/],
-    ignoreCase: false,
-    widgetOptions : {
-      formatter_column: epigeneDB.tablesorter_formatters,
-
-      stickyHeaders_addResizeEvent : false,
-
-      columnSelector_saveColumns: true,
-      columnSelector_mediaquery: false,
-
-      filter_columnFilters : true,
-      filter_hideFilters : false,
-      filter_saveFilters: true,
-      filter_ignoreCase : true,
-      filter_liveSearch : true,
-      filter_onlyAvail : 'filter-onlyAvail',
-      filter_reset : 'button.reset',
-      filter_searchDelay : 300,
-      filter_startsWith : false,
-      filter_useParsedData : false,
-
-      filter_formatter : {
-        '.splitted_terms_filter' : function($cell, indx){
-          return $.tablesorter.filterFormatter.select2( $cell, indx, {
-            match : false,
-            multiple: true
-          });
-        }
-      },
-
-      filter_functions : {
-        '.splitted_terms_filter' : function(exact_text, normalized_text, search_for, column_index, $row) {
-          // `/pattern/` string --> /pattern/ regexp
-          var search_regexp = eval(search_for);
-          var tokens = $.trim(exact_text).split(', ');
-
-          for(var i = 0; i < tokens.length; ++i) {
-            if (search_regexp.test(tokens[i])) {
-              return true;
-            }
-          }
-          return false;
-        }
-      },
-
-      filter_selectSource : {
-        '.splitted_terms_filter' : function(table, column, onlyAvail){
-          // get an array of all table cell contents for a table column
-          var array = $.tablesorter.filter.getOptions(table, column, onlyAvail);
-          // manipulate the array as desired, then return it
-          var tokens = [];
-
-          $.each(array, function(i,el) {
-            var tokens_in_cell = $.map(el.split(', '), $.trim);
-            tokens = tokens.concat( tokens_in_cell );
-          });
-
-          return $.unique(tokens).filter(function(el){
-            return el.length > 0;
-          });
-        }
-      },
-
-      filter_external : '', // Possibly it will replace server-side search (not sure it's a good idea, but leave such a variant)
-
-      // CSV output
-      output_separator     : "\t",
-      output_ignoreColumns : [],
-      output_dataAttrib    : 'data-text', // the same attribute as is used in textAttribute config option (used by formatter widget and extractors)
-      output_delivery      : 'd',         // (p)opup, (d)ownload
-      output_saveRows      : 'f',         // (a)ll, (f)iltered or (v)isible
-
-      // resizable_addLastColumn: true,
-    },
-
-    // delayInit: false,
-    initialized : function(table){
-      $('.loading_table').hide();
-    }
-  });
+  $("#epigenes, #protein-complexes, #histones").filter('table.tablesorter').tablesorter(
+    $.extend(true, {},
+      epigeneDB.defaultConfig,
+      epigeneDB.configForWidgets(['saveSort', 'zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output', 'formatter', /*, 'resizable'*/]),
+      { } // custom options
+    )
+  );
 
   epigeneDB.ui.applyColumnSelector();
 
