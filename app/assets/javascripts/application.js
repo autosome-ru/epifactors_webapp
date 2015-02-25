@@ -29,6 +29,7 @@
 //= require jquery-tablesorter/widgets/widget-filter-formatter-jui
 //= require jquery-tablesorter/widgets/widget-filter-formatter-select2
 
+//= require jquery-tablesorter/widgets/widget-storage
 //= require jquery-tablesorter/widgets/widget-output
 //= require jquery-tablesorter/widgets/widget-columnSelector
 //= require jquery-tablesorter/widgets/widget-cssStickyHeaders
