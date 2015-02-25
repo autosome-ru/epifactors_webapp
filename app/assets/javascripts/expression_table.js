@@ -23,7 +23,7 @@ var page_ready = function() {
       epigeneDB.defaultConfig,
       epigeneDB.configForWidgets(['zebra', 'stickyHeaders', 'filter', 'output', 'formatter', 'columnSelector']),
       {
-        sortList : [[2,1]], // Sort by expression descending
+        sortList : [[3,1]], // Sort by expression descending
         widgetOptions : {
           filter_saveFilters: false,
         }
