@@ -12,7 +12,7 @@ table.tablesorter {
     height: 28px;
   }
 
-  &#epigenes, &#protein-complexes, &#histones, &#samples {
+  &#epigenes, &#protein-complexes, &#histones {
     th, td {
       &.comment{
         min-width: 350px;
@@ -69,10 +69,6 @@ table.expression_statistics {
 .expression-bar {
   background-color: red;
   height: 7px;
-}
-
-.table-actions {
-  padding-left: 10px;
 }
 
 // Grouping widget style begin
