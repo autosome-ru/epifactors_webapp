@@ -12,7 +12,7 @@
       = protein_complex_table_header :group_name
       = protein_complex_table_header :complex_name, show_always: true
       = protein_complex_table_header :status, hide_by_default: true
-      = protein_complex_table_header :genes, dont_sort: true
+      = protein_complex_table_header :involved_genes, class: 'gene_comb', dont_sort: true
       = protein_complex_table_header :alternative_name, hide_by_default: true
       = protein_complex_table_header :protein, hide_by_default: true
       = protein_complex_table_header :uniprot_id, class: 'uniprot_id_comb', dont_sort: true
@@ -32,7 +32,7 @@
         %td= protein_complex.group_name
         %td{'data-text' => protein_complex.complex_name }= protein_complex.complex_name_with_complex_card_link
         %td= protein_complex.status
-        %td= protein_complex.genes
+        %td= protein_complex.involved_genes
         %td= protein_complex.alternative_name
         %td= protein_complex.protein
         %td= protein_complex.uniprot_id

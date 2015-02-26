@@ -20,17 +20,17 @@ var page_ready = function() {
 
   epigeneDB.ui.applyColumnSelector();
 
-  $('.uniprot_comb').find('.uniprot_comb_multiple, .uniprot_comb_alternative_group, .uniprot_comb_optional').find('.uniprot_id_term').tooltip({
+  $('.comb').find('.comb_multiple, .comb_alternative_group, .comb_optional').find('.comb_term').tooltip({
     container: 'body', // not to draw tooltip on an optional element opaque
     title: function(){
       var texts = [], $el = $(this);
-      if ($el.closest('.uniprot_comb_multiple').length) {
+      if ($el.closest('.comb_multiple').length) {
         texts.push('More than one member of this list can be included.');
       }
-      if ($el.closest('.uniprot_comb_alternative_group').length) {
+      if ($el.closest('.comb_alternative_group').length) {
         texts.push('These members are alternative.');
       }
-      if ($el.closest('.uniprot_comb_optional').length) {
+      if ($el.closest('.comb_optional').length) {
         texts.push('This member is facultative.');
       }
       return texts.join(' ');

@@ -14,7 +14,7 @@
   };
 
   epigeneDB.uniprot_id_link = function(uniprot_id) {
-    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'" class="uniprot_id_term">' + uniprot_id + '</a>';
+    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
   };
 
   epigeneDB.uniprot_ac_link = function(uniprot_ac) {
@@ -92,51 +92,48 @@
     return '<div class="hocomoco_link">' + link_html + '</div>';
   };
 
-  var uniprot_id_comb_markup_alternatives,
-      uniprot_markup_term,
+  var markup_comb_alternatives,
+      markup_comb_term,
       multiterm,
       formatter_preserving_text,
       make_tablesorter_formatters;
 
   // 'abc|def' --> '<div class="alternative_uniprot">abc</div><div class="alternative_uniprot">def</div>']
-  uniprot_id_comb_markup_alternatives = function(uniprot_comb_part) {
-    var tokens = [''];
-    for (var i = 0; i < uniprot_comb_part.length; ++i) {
-      if (uniprot_comb_part[i] == '|') {
-        tokens.push('');
-      } else {
-        tokens[tokens.length - 1] += uniprot_comb_part[i];
-      }
-    }
+  markup_comb_alternatives = function(comb_part, term_formatter) {
+    var tokens = comb_part.split('|');
     return $.map(tokens, function(token) {
-      return '<span class="uniprot_comb_alternative">' + uniprot_markup_term($.trim(token)) + '</span>';
+      return '<span class="comb_alternative">' + markup_comb_term($.trim(token), term_formatter) + '</span>';
     }).join(' | ');
   };
 
-  uniprot_markup_term = function(term) {
+  markup_comb_term = function(term, term_formatter) {
     if (term.slice(-1) == '+') {
-      return '<span class="uniprot_comb_multiple">' + uniprot_markup_term(term.slice(0, -1)) + '+</span>';
+      return '<span class="comb_multiple">' + markup_comb_term(term.slice(0, -1), term_formatter) + '+</span>';
     } else if (term.slice(-1) == '?') {
-      return '<span class="uniprot_comb_optional">' + uniprot_markup_term(term.slice(0, -1)) + '?</span>';
+      return '<span class="comb_optional">' + markup_comb_term(term.slice(0, -1), term_formatter) + '?</span>';
     } else if (term.slice(0, 1) == '(' && term.slice(-1) == ')') {
-      return '<span class="uniprot_comb_alternative_group">(' + uniprot_id_comb_markup_alternatives(term.slice(1, -1)) + ')</span>';
+      return '<span class="comb_alternative_group">(' + markup_comb_alternatives(term.slice(1, -1), term_formatter) + ')</span>';
     } else {
-      return epigeneDB.uniprot_id_link(term);
+      return '<span class="comb_term">' + term_formatter(term) + '</span>';
     }
   };
 
-  epigeneDB.uniprot_id_comb_link = function(uniprot_comb) {
-    var tokens = [''];
-    for (var i = 0; i < uniprot_comb.length; ++i) {
-      if (uniprot_comb[i] == ',') {
-        tokens.push('');
-      } else {
-        tokens.push(tokens.pop() + uniprot_comb[i]);
-      }
-    }
+  epigeneDB.markup_comb = function(comb, term_formatter) {
+    var tokens = comb.split(',');
+
     tokens = $.map(tokens, $.trim);
-    return '<span class="uniprot_comb">' + $.map(tokens, uniprot_markup_term).join(', ') + '</span>';
+    return '<span class="comb">' + $.map(tokens, function(term){
+      return markup_comb_term(term, term_formatter);
+    }).join(', ') + '</span>';
   };
+
+  epigeneDB.uniprot_comb_link = function(txt, data) {
+    return epigeneDB.markup_comb(txt, epigeneDB.uniprot_id_link);
+  }
+
+  epigeneDB.gene_comb_link = function(txt, data) {
+    return epigeneDB.markup_comb(data.$cell[0].innerHTML, function(txt) { return txt; });
+  }
 
   multiterm = function(apply_func, joining_sequence, splitter_pattern) {
     if (typeof(splitter_pattern)==='undefined') splitter_pattern = ', ';
@@ -171,7 +168,8 @@
     '.mgi_id'          : epigeneDB.mgi_id_link,
     '.uniprot_ac'      : epigeneDB.uniprot_ac_link,
     '.refseq'          : epigeneDB.refseq_link,
-    '.uniprot_id_comb' : epigeneDB.uniprot_id_comb_link,
+    '.uniprot_id_comb' : epigeneDB.uniprot_comb_link,
+    '.gene_comb'       : epigeneDB.gene_comb_link,
     '.expression_bar'  : epigeneDB.expression_bar,
     '.sample_link'     : epigeneDB.sample_link,
     '.pmid'            : multiterm( epigeneDB.pmid_link ),
@@ -189,7 +187,10 @@
       formatter = epigeneDB.formatters[selector];
 
       $(jquery_selector).filter(selector).each(function(ind, elem) {
-        $(elem).html( formatter($(elem).text()) );
+        var data = {
+          $cell: $(elem).eq(0),
+        };
+        $(elem).html( formatter($(elem).text(), data) );
       });
     };
   };

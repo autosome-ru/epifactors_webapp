@@ -18,4 +18,21 @@ class ProteinComplex < ActiveRecord::Base
                             :function, :target, :specific_target, :product, :uniprot_id_target, :comment ]
   include SearchableFullText
   searchable_by(searchable_attributes)
+
+  def to_s
+    complex_name
+  end
+
+  def involved_genes
+    ComplexPattern.from_string(uniprot_id).map{|uniprot_id|
+      genes = Gene.where(uniprot_id: uniprot_id).all
+      if genes.size > 1
+        ComplexPattern::Any.new(genes.map{|gene| ComplexPattern::Term.new(gene) })
+      elsif genes.size == 1
+        ComplexPattern::Term.new(genes.first)
+      else
+        nil
+      end
+    }
+  end
 end

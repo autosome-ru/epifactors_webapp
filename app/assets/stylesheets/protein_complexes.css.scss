@@ -1,21 +1,21 @@
-.uniprot_comb {
+.comb {
   // TODO:  '?' after alternative group is opaque but not lighgreen
   //        while '+' after alternative group is orange. Not consistent design
 
-  .uniprot_comb_optional {
+  .comb_optional {
     opacity: 0.5;
   }
 
-  .uniprot_comb_alternative_group {
+  .comb_alternative_group {
     background-color: lightgreen;
   }
-  .uniprot_comb_alternative { // One item of alternative group
+  .comb_alternative { // One item of alternative group
     font-weight: bolder;
   }
 
-  .uniprot_comb_multiple { // Multiple imples alternative group inside
+  .comb_multiple { // Multiple imples alternative group inside
     background-color: orange; // colorize '+' sign
-    .uniprot_comb_alternative_group { // More specific selector than simple alternative group
+    .comb_alternative_group { // More specific selector than simple alternative group
       background-color: orange;
     }
   }

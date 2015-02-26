@@ -4,7 +4,7 @@
     = table_info_row @protein_complex, :group_name
     = table_info_row @protein_complex, :complex_name
     = table_info_row @protein_complex, :status
-    = table_info_row @protein_complex, :genes
+    = table_info_row @protein_complex, :involved_genes, value_column_html: {class: 'gene_comb'}
     = table_info_row @protein_complex, :alternative_name
     = table_info_row @protein_complex, :protein
     = table_info_row @protein_complex, :uniprot_id, value_column_html: {class: 'uniprot_id_comb'}
