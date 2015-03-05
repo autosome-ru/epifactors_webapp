@@ -31,7 +31,11 @@ HISTONES_COLUMNS_ORDER =  [
 
 def extract_worksheet_data(worksheet, column_order)
   worksheet.extract_data.drop(1).map {|row|
-    column_order.each_with_index.map {|column_name, column_index| [column_name, row[column_index]] }.to_h
+    column_order.each_with_index.map {|column_name, column_index|
+      cell_data = row[column_index]
+      cell_data = cell_data.strip  if cell_data.respond_to?(:strip)
+      [column_name, cell_data]
+    }.to_h
   }
 end
 
