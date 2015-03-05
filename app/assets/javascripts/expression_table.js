@@ -2,15 +2,31 @@
 //= require ./select_columns.js
 
 var page_ready = function() {
-  $(".gene_expression_by_sample, #samples").tablesorter(
+  $("#samples").tablesorter(
     $.extend(true, {},
       epigeneDB.defaultConfig,
       epigeneDB.configForWidgets(['zebra', 'stickyHeaders', 'filter', 'output', 'formatter', 'group']),
       {
-        // Sort by sample kind so that tissues became grouped; don't allow to resort tissue kinds (just because it's confusing)
+        // Sort by sample kind so that tissues become grouped; don't allow to resort tissue kinds (just because it's confusing)
         sortForce : [[0,0]],
         headers : {0: {sorter: false}},
-        sortList : [[0,0]],
+        sortList : [[0,0]], // Sort by sample kind (for grouping)
+        widgetOptions : {
+          filter_saveFilters: false,
+        }
+      }
+    )
+  );
+
+  $(".gene_expression_by_sample").tablesorter(
+    $.extend(true, {},
+      epigeneDB.defaultConfig,
+      epigeneDB.configForWidgets(['zebra', 'stickyHeaders', 'filter', 'output', 'formatter', 'group']),
+      {
+        // Sort by sample kind so that tissues become grouped; don't allow to resort tissue kinds (just because it's confusing)
+        sortForce : [[0,0]],
+        headers : {0: {sorter: false}},
+        sortList : [[0,0],[2,1]], // Sort by sample kind (for grouping) then by expression descending
         widgetOptions : {
           filter_saveFilters: false,
         }
@@ -21,9 +37,12 @@ var page_ready = function() {
   $(".sample-expressions").tablesorter(
     $.extend(true, {},
       epigeneDB.defaultConfig,
-      epigeneDB.configForWidgets(['zebra', 'stickyHeaders', 'filter', 'output', 'formatter', 'columnSelector']),
+      epigeneDB.configForWidgets(['zebra', 'stickyHeaders', 'filter', 'output', 'formatter', 'columnSelector', 'group']),
       {
-        sortList : [[3,1]], // Sort by expression descending
+        // Sort by types (gene/histone/protamine) so that tissues become grouped; don't allow to resort molecule types (just because it's confusing)
+        sortForce : [[0,0]],
+        headers : {0: {sorter: false}},
+        sortList : [[0,0],[3,1]], // Sort by molecule type (for grouping), then by expression descending
         widgetOptions : {
           filter_saveFilters: false,
         }

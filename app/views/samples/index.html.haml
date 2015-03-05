@@ -9,7 +9,7 @@
 %table#samples.toggle-sample-format-target.tablesorter
   %thead
     %tr
-      = sample_table_header :sample_kind, class: ['group-text']
+      = sample_table_header :sample_kind, class: ['group-text', 'sample_kind']
       = sample_table_header :sample_name, show_always: true, class: ['sample_link'], data: {'sample-format' => 'short'}
 
   %tbody

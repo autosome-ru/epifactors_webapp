@@ -92,5 +92,12 @@ en:
         comment:                    Comment
 
       sample:
-        sample_kind:                Kind of sample
+        sample_kind:                Sample class
         sample_name:                Sample
+        expression:                 Expression
+
+      expression:
+        molecule_kind:              Type
+        hgnc_symbol:                HGNC approved symbol
+        hgnc_id:                    HGNC ID
+        expression:                 Expression

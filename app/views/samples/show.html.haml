@@ -11,10 +11,14 @@
 %table.sample-expressions.tablesorter.toggle-sample-format-target.attach-column-selector
   %thead
     %tr
-      %th.filter-select Molecule kind
-      %th HGNC approved symbol
-      %th.hgnc_id HGNC ID
-      %th.expression_bar{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'} Expression
+      %th.molecule_kind.filter-select.group-text
+        = t 'activerecord.attributes.expression.molecule_kind'
+      %th.hgnc_symbol
+        = t 'activerecord.attributes.expression.hgnc_symbol'
+      %th.hgnc_id
+        = t 'activerecord.attributes.expression.hgnc_id'
+      %th.expression_bar{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'}
+        = t 'activerecord.attributes.expression.expression'
 
   %tbody
     - @sample_expressions.each do |hgnc_id, expression|

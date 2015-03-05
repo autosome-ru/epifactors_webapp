@@ -27,10 +27,10 @@
         '.splitted_terms_filter' : function(exact_text, normalized_text, search_for, column_index, $row) {
           // `/pattern/` string --> /pattern/ regexp
           var search_regexp = eval(search_for);
-          var tokens = $.trim(exact_text).split(', ');
+          var tokens = exact_text.split(', ');
 
           for(var i = 0; i < tokens.length; ++i) {
-            if (search_regexp.test(tokens[i])) {
+            if (search_regexp.test( $.trim(tokens[i]) )) {
               return true;
             }
           }
@@ -105,7 +105,7 @@
 
   epigeneDB.defaultConfig = {
     theme: 'blue',
-    widthFixed : true,
+    widthFixed : false, // This is default
     ignoreCase: true,
     // delayInit: false,
     initialized : function(table){
