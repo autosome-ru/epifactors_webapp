@@ -4,6 +4,12 @@
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
+    .tablesorter-sticky-wrapper {
+      margin-left: 10px;
+      .tablesorter {
+        margin-left: 0;
+      }
+    }
     .tablesorter {
       margin-left: 10px;
     }
