@@ -17,7 +17,8 @@ class ProteinComplex < ActiveRecord::Base
   searchable_attributes = [ :group_name, :complex_name, :status, :alternative_name, :protein, :uniprot_id,
                             :function, :target, :specific_target, :product, :uniprot_id_target, :comment ]
   include SearchableFullText
-  searchable_by(searchable_attributes)
+  fulltext_searchable_by(searchable_attributes)
+  define_search_by_attributes
 
   def to_s
     complex_name

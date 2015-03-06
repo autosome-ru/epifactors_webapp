@@ -10,7 +10,8 @@ class Gene < ActiveRecord::Base
   ]
 
   include SearchableFullText
-  searchable_by(searchable_attributes)
+  fulltext_searchable_by(searchable_attributes)
+  define_search_by_attributes
 
   def tf?
     function.split(',').map(&:strip).include?('TF')

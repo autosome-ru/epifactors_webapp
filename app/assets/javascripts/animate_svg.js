@@ -86,12 +86,12 @@ animate_svg = function() {
 
   epigenes.click(function(e) {
     var name = $(e.target).closest('g.epigene').data('epigene-name');
-    window.location = 'protein_complexes?group_name='+name;
+    window.location = '/protein_complexes?search='+name+'&field=group_name&similar=1';
   });
 
   histones.click(function(e) {
     var name = $(e.target).closest('g.histone').data('histone-name');
-    window.location = 'histones?target_type=' + name;
+    window.location = '/histones?search=' + name + '&field=uniprot_id&similar=1';
   });
 
   histones.hover(

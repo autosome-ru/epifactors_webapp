@@ -1,11 +1,12 @@
 class HistonesController < ApplicationController
   respond_to :html
   def index
-    if params[:target_type]
-      @histones = Histone.where("\"uniprot_id\" LIKE ?", "#{params[:target_type]}%")
-    else
-      @histones = Histone.by_word(params[:search])
+    @histones = Histone.by_params(params)
+
+    if @histones.count == 1 && !(params[:redirect] == 'no')
+      redirect_to histone_path(@histones.first.id) and return
     end
+
     @histones = HistoneDecorator.decorate_collection(@histones)
     respond_with(@histones)
   end

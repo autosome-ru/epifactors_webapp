@@ -1,7 +1,11 @@
 class GenesController < ApplicationController
   respond_to :html
   def index
-    @genes = Gene.by_word(params[:search])
+    @genes = Gene.by_params(params)
+    if @genes.count == 1 && !(params[:redirect] == 'no')
+      redirect_to gene_path(@genes.first.id) and return
+    end
+
     @genes = GeneDecorator.decorate_collection(@genes)
     respond_with(@genes)
   end

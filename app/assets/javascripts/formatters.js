@@ -30,7 +30,7 @@
   };
 
   epigeneDB.target_complex_link = function(target) {
-    return '<a href="/protein_complexes?complex_name=' + target + '">' + target + '</a>';
+    return '<a href="/protein_complexes?search=' + target + '&field=complex_name">' + target + '</a>';
   };
 
   epigeneDB.pfam_domain_link = function(pfam_info) {
