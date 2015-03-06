@@ -12,7 +12,4 @@ class ProteinComplexDecorator < Draper::Decorator
       h.link_to gene.hgnc_symbol, h.gene_path(gene)
     }.join(', ').html_safe
   end
-  def involved_genes
-    object.involved_genes.map{|term| h.link_to(term.to_s, term) }.to_s.html_safe
-  end
 end

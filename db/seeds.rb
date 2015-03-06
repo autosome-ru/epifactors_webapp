@@ -118,6 +118,12 @@ ProteinComplex.find_each do |protein_complex|
   end
 end
 
+# cache protein complex's gene inclusion pattern
+ProteinComplex.find_each do |protein_complex|
+  protein_complex.genes_in_complex = protein_complex.involved_genes.map{|gene| "#{gene.to_s}##{gene.id}" }.to_s
+  protein_complex.save
+end
+
 { '/home/ilya/iogen/cages/hg19/robust_phase1_pls_2.tpm.desc121113.osc.txt' => Rails.root.join('public', 'public_data', 'gene_expressions_by_sample_with_timecourses.txt'),
   '/home/ilya/iogen/cages/hg19/freeze1/hg19.cage_peak_tpm_ann.osc.txt' => Rails.root.join('public', 'public_data', 'gene_expressions_by_sample.txt')
 }.each do |tpm_filename, sample_expressions_file|

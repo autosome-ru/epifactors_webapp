@@ -13,6 +13,23 @@
     return '<a href="http://www.informatics.jax.org/marker/MGI:' + mgi_name + '">' + mgi_name + '</a>';
   };
 
+  // genename_with_id is `SMARCA4#561` -- a SMARCA4 gene with id 561.
+  epigeneDB.epigeneDB_gene_link = function(genename_with_id) {
+    var gene_name, gene_id,
+        match = /^(.+)#(\d+)$/.exec(genename_with_id);
+    if (!match) { return genename_with_id; }
+    gene_name = match[1];
+    gene_id = match[2];
+    return '<a href="/genes/' + gene_id +'">' + gene_name + '</a>';
+  };
+
+  // genename_with_id is `SMARCA4#561` -- a SMARCA4 gene with id 561.
+  epigeneDB.epigeneDB_gene_name_only = function(genename_with_id) {
+    var match = /^(.+)#(\d+)$/.exec(genename_with_id);
+    if (!match) { return genename_with_id; }
+    return match[1];
+  };
+
   epigeneDB.uniprot_id_link = function(uniprot_id) {
     return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
   };
@@ -99,40 +116,65 @@
       make_tablesorter_formatters;
 
   // 'abc|def' --> '<div class="alternative_uniprot">abc</div><div class="alternative_uniprot">def</div>']
-  markup_comb_alternatives = function(comb_part, term_formatter) {
+  markup_comb_alternatives = function(comb_part, term_formatter, wrappers) {
     var tokens = comb_part.split('|');
     return $.map(tokens, function(token) {
-      return '<span class="comb_alternative">' + markup_comb_term($.trim(token), term_formatter) + '</span>';
-    }).join(' | ');
+      return wrappers.alternative[0] + markup_comb_term($.trim(token), term_formatter, wrappers) + wrappers.alternative[1];
+    }).join(wrappers.join_alternatives);
   };
 
-  markup_comb_term = function(term, term_formatter) {
+  epigeneDB.comb_span_wrappers = {
+    term:               ['<span class="comb_term">',                '</span>'],
+    multiple:           ['<span class="comb_multiple">',            '+</span>'],
+    optional:           ['<span class="comb_optional">',            '?</span>'],
+    alternative:        ['<span class="comb_alternative">',         '</span>'],
+    alternative_group:  ['<span class="comb_alternative_group">(',  ')</span>'],
+    comb:               ['<span class="comb">',                     '</span>'],
+    join_alternatives:  ' | ',
+    join_enumeration:   ', ',
+  };
+
+  epigeneDB.comb_plain_wrappers = {
+    term:               ['',  ''],
+    multiple:           ['',  '+'],
+    optional:           ['',  '?'],
+    alternative:        ['',  ''],
+    alternative_group:  ['(', ')'],
+    comb:               ['',  ''],
+    join_alternatives:  '|',
+    join_enumeration:   ', ',
+  };
+
+  markup_comb_term = function(term, term_formatter, wrappers) {
     if (term.slice(-1) == '+') {
-      return '<span class="comb_multiple">' + markup_comb_term(term.slice(0, -1), term_formatter) + '+</span>';
+      return wrappers.multiple[0] + markup_comb_term(term.slice(0, -1), term_formatter, wrappers) + wrappers.multiple[1];
     } else if (term.slice(-1) == '?') {
-      return '<span class="comb_optional">' + markup_comb_term(term.slice(0, -1), term_formatter) + '?</span>';
+      return wrappers.optional[0] + markup_comb_term(term.slice(0, -1), term_formatter, wrappers) + wrappers.optional[1];
     } else if (term.slice(0, 1) == '(' && term.slice(-1) == ')') {
-      return '<span class="comb_alternative_group">(' + markup_comb_alternatives(term.slice(1, -1), term_formatter) + ')</span>';
+      return wrappers.alternative_group[0] + markup_comb_alternatives(term.slice(1, -1), term_formatter, wrappers) + wrappers.alternative_group[1];
     } else {
-      return '<span class="comb_term">' + term_formatter(term) + '</span>';
+      return wrappers.term[0] + term_formatter(term) + wrappers.term[1];
     }
   };
 
-  epigeneDB.markup_comb = function(comb, term_formatter) {
+  epigeneDB.markup_comb = function(comb, term_formatter, wrappers) {
     var tokens = comb.split(',');
 
     tokens = $.map(tokens, $.trim);
-    return '<span class="comb">' + $.map(tokens, function(term){
-      return markup_comb_term(term, term_formatter);
-    }).join(', ') + '</span>';
+    return wrappers.comb[0] + $.map(tokens, function(term){
+      return markup_comb_term(term, term_formatter, wrappers);
+    }).join(wrappers.join_enumeration) + wrappers.comb[1];
   };
 
   epigeneDB.uniprot_comb_link = function(txt, data) {
-    return epigeneDB.markup_comb(txt, epigeneDB.uniprot_id_link);
+    return epigeneDB.markup_comb(txt, epigeneDB.uniprot_id_link, epigeneDB.comb_span_wrappers);
   }
 
   epigeneDB.gene_comb_link = function(txt, data) {
-    return epigeneDB.markup_comb(data.$cell[0].innerHTML, function(txt) { return txt; });
+    return epigeneDB.markup_comb(txt, function(txt) { return epigeneDB.epigeneDB_gene_link(txt); }, epigeneDB.comb_span_wrappers);
+  }
+  epigeneDB.gene_comb_names_only = function(txt, data) {
+    return epigeneDB.markup_comb(txt, epigeneDB.epigeneDB_gene_name_only, epigeneDB.comb_plain_wrappers);
   }
 
   multiterm = function(apply_func, joining_sequence, splitter_pattern) {
@@ -145,18 +187,21 @@
     };
   };
 
-  formatter_preserving_text = function(formatter) {
+  formatter_preserving_text = function(formatter, preservedTextFormatter) {
     return function(text, data) {
-      data.$cell.attr(data.config.textAttribute, text);
+      var preservedText = $.isFunction(preservedTextFormatter) ? preservedTextFormatter(text, data) : text;
+      if (!data.$cell.attr(data.config.textAttribute)) {
+        data.$cell.attr(data.config.textAttribute, preservedText);
+      }
       return formatter(text, data);
     };
   };
 
-  make_tablesorter_formatters = function(formatters) {
+  make_tablesorter_formatters = function(formatters, preserveFormatters) {
     var result = {},
         selector;
     for (selector in formatters) {
-      result[selector] = formatter_preserving_text(formatters[selector]);
+      result[selector] = formatter_preserving_text(formatters[selector], preserveFormatters[selector]);
     }
     return result;
   };
@@ -179,7 +224,11 @@
     '.hocomoco'        : multiterm( epigeneDB.hocomoco_link, '' ), // hocomoco links with motif logos go on different lines, comma is unnecessary
   };
 
-  epigeneDB.tablesorter_formatters = make_tablesorter_formatters(epigeneDB.formatters);
+  epigeneDB.preserveFormatters = { // What to save in cell textAttribute (for CSV output and search facilities)
+    '.gene_comb'       : epigeneDB.gene_comb_names_only,
+  };
+
+  epigeneDB.tablesorter_formatters = make_tablesorter_formatters(epigeneDB.formatters, epigeneDB.preserveFormatters);
 
   epigeneDB.apply_formatters = function(jquery_selector) {
     var selector, formatter;
