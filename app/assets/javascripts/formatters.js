@@ -4,6 +4,10 @@
     return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>';
   };
 
+  epigeneDB.fantom_sstar_gene_link = function(gene_id) {
+    return '<a href="http://fantom.gsc.riken.jp/5/sstar/EntrezGene:' + gene_id + '">' + gene_id + '</a>';
+  };
+
   epigeneDB.hgnc_id_link = function(hgnc) {
     return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>';
   };
@@ -68,7 +72,7 @@
     name = match[1];
     library_id = match[2];
     extract_name = match[3];
-    sample_format = data.$header.data('sample-format');
+    sample_format = data.$header && data.$header.data('sample-format');
     url = '/samples/' + library_id;
     fantom_sstar_url = 'http://fantom.gsc.riken.jp/5/sstar/FF:' + extract_name;
     if (!sample_format || sample_format == 'short') {
@@ -217,6 +221,7 @@
     '.gene_comb'       : epigeneDB.gene_comb_link,
     '.expression_bar'  : epigeneDB.expression_bar,
     '.sample_link'     : epigeneDB.sample_link,
+    '.fantom_sstar_gene' : epigeneDB.fantom_sstar_gene_link,
     '.pmid'            : multiterm( epigeneDB.pmid_link ),
     '.target_complex'  : multiterm( epigeneDB.target_complex_link),
     '.uniprot_id'      : multiterm( epigeneDB.uniprot_id_link ),
@@ -239,6 +244,8 @@
         var data = {
           $cell: $(elem).eq(0),
         };
+        console.log(data);
+        window.dat = data;
         $(elem).html( formatter($(elem).text(), data) );
       });
     };

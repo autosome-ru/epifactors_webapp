@@ -1,4 +1,7 @@
-%h4= @sample
+%h4
+  = @sample
+  = surround '(', ')' do
+    = @sample.fantom_sstar_link
 
 .table-actions
   %button.reset{type: 'button'} Reset filters

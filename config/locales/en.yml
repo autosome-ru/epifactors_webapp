@@ -46,6 +46,7 @@ en:
         product:                    Product
         uniprot_id_target:          UniProt ID of targets
         pmid_target:                PMID for information on target
+        fantom_sstar_gene:          Sample specific expression (FANTOM5)
         comment:                    Comment
 
         hocomoco_link:              HOCOMOCO TFBS model
@@ -89,6 +90,7 @@ en:
         targeted_by_protein:        UniProt ID of targeting protein
         targeted_by_complex:        Name of targeting complex
         pmid:                       PMID for reference on annotation
+        fantom_sstar_gene:          Sample specific expression (FANTOM5)
         comment:                    Comment
 
       sample:

@@ -9,5 +9,6 @@ class SamplesController < ApplicationController
     @sample_expressions = @gene_expressions.expressions_by_sample(@sample.sample_id)
     @genes_by_hgnc_id = Gene.all.map{|gene| [gene.hgnc_id.to_i, gene] }.to_h
     @histones_by_hgnc_id = Histone.all.map{|histone| [histone.hgnc_id.to_i, histone] }.to_h
+    @sample = SampleDecorator.decorate(@sample)
   end
 end

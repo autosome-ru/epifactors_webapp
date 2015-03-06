@@ -24,6 +24,10 @@ class Gene < ActiveRecord::Base
     @expression_statistics ||= Statistics.new(gene_expressions.map{|k,v| v })
   end
 
+  def fantom_sstar_gene
+    gene_id
+  end
+
   def to_s
     hgnc_symbol
   end
