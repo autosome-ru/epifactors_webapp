@@ -1,3 +1,7 @@
+в запросах поиска хорошо бы отключать сохраненные фильтры.
+
+Когда ничего не найдено правильно было бы выводить табличку Sorry, nothing found
+
 /opt/google_appengine/appcfg.py update ~/iogen/EpigeneDB/cdn/
 
 

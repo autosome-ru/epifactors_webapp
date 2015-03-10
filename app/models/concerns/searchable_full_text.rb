@@ -28,14 +28,15 @@ module SearchableFullText
 
     def by_params(params)
       if params[:search]
+        query = params[:search].strip
         if params[:field]
           if params[:similar]
-            by_attr_similar(params[:field], params[:search])
+            by_attr_similar(params[:field], query)
           else
-            by_attr_exact(params[:field], params[:search])
+            by_attr_exact(params[:field], query)
           end
         else # full-text search
-          by_word(params[:search])
+          by_word(query)
         end
       else
         all
