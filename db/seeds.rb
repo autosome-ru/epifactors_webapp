@@ -11,6 +11,7 @@ require 'set'
 require 'rubyXL'
 
 EPIGENES_COLUMNS_ORDER =  [
+  :id,
   :hgnc_symbol, :status, :hgnc_id, :hgnc_name, :gene_id, :uniprot_ac, :uniprot_id, :domain, :mgi_symbol,
   :mgi_id, :uniprot_ac_mm, :uniprot_id_mm, :gene_tag, :gene_desc, :function, :modification, :pmid_function,
   :complex_name, :target, :specific_target, :product, :uniprot_id_target, :pmid_target, :comment
@@ -19,11 +20,13 @@ EPIGENES_COLUMNS_ORDER =  [
 
 
 PROTEIN_COMPLEXES_COLUMNS_ORDER =  [
+  :id,
   :group, :group_name, :complex_name, :status, :alternative_name, :protein, :uniprot_id, :pmid_complex,
   :function, :pmid_function, :target, :specific_target, :product, :uniprot_id_target, :pmid_target, :comment
 ]
 
 HISTONES_COLUMNS_ORDER =  [
+  :id,
   :hgnc_symbol, :status, :hgnc_id, :hgnc_name, :gene_id, :uniprot_ac, :uniprot_id, :domain,
   :mgi_symbol, :mgi_id, :uniprot_ac_mm, :uniprot_id_mm, :gene_tag, :gene_desc, :complex_name,
   :targeted_by_protein, :targeted_by_complex, :pmid, :comment
@@ -98,18 +101,18 @@ protein_complexes = extract_worksheet_data(protein_complexes_worksheet, PROTEIN_
 histones = extract_worksheet_data(histones_worksheet, HISTONES_COLUMNS_ORDER)
 
 $stderr.puts 'Extracting epigenes...'
-epigenes.each_with_index do |epigene_info, ind|
-  Gene.where(id: ind + 1).first_or_create!( epigene_info )
+epigenes.each do |epigene_info|
+  Gene.create!( epigene_info )
 end
 
 $stderr.puts 'Extracting protein complexes...'
-protein_complexes.each_with_index do |protein_complex_info, ind|
-  ProteinComplex.where(id: ind + 1).first_or_create!( protein_complex_info )
+protein_complexes.each do |protein_complex_info|
+  ProteinComplex.create!( protein_complex_info )
 end
 
 $stderr.puts 'Extracting histones...'
-histones.each_with_index do |histone_info, ind|
-  Histone.where(id: ind + 1).first_or_create!( histone_info )
+histones.each do |histone_info|
+  Histone.create!( histone_info )
 end
 
 ProteinComplex.find_each do |protein_complex|

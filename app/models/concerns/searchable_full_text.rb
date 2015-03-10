@@ -36,7 +36,7 @@ module SearchableFullText
             by_attr_exact(params[:field], query)
           end
         else # full-text search
-          by_word(query)
+          by_word(query) # TODO: It would be good if `by_word` concerned about params[:similar] too. For now it's turned on by default
         end
       else
         all
