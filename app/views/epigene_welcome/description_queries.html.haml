@@ -1,0 +1,314 @@
+%h4 Querying database
+
+%p
+  Epifactors allows one to search genes, histones and protein complexes by multiple characteristics.
+%p
+  Search query displays a list of entities of requested type (or a single entity if the only one was found). There are several ways to customize search parameters.
+  %ul
+    %li
+      The simplest query looks like:
+      %code epifactors.ru/genes
+      which shows a list of all genes.
+    %li
+      Query to
+      %code epifactors.ru/genes?search=xxx
+      performs a full-text search of
+      %code xxx
+      across most of gene parameters. It matches any string containing query. The same query is performed by a search box in the site header.
+    %li
+      Query to
+      %code epifactors.ru/genes?search=xxx&field=yyy
+      performs a search of
+      %code xxx
+      across
+      %code yyy
+      genes' parameter. It looks for an exact match of this field.
+    %li
+      Query to
+      %code epifactors.ru/genes?search=xxx&field=yyy&similar=1
+      performs a search of
+      %code xxx
+      across
+      %code yyy
+      genes' parameter. It looks for any matches of this field. Unlike exact match it will find genes which contain
+      %code xxx
+      inside
+      %code yyy
+      field string, or being a prefix of such string. So if you need to match strings like "xxx, xxx_2" or "Involves xxx", use
+      %code similar
+      parameter. If you don't want to match similar strings, skip similar parameter at all,
+      %b
+        %i don't
+      use
+      %code &similar=0
+      !
+
+%p
+  By default, if any search request returned the only record, it redirects from full page to this record automatically. To prevent this behavior use
+  = succeed '.' do
+    %code &redirect=no
+
+%p
+  Available tables for search are:
+  %ul
+    %li
+      Genes. Search path is:
+      %code /genes
+      Fields available for search are:
+      %ul
+        %li
+          %code hgnc_symbol
+          for
+          = t 'activerecord.attributes.gene.hgnc_symbol'
+        %li
+          %code status
+          for
+          = t 'activerecord.attributes.gene.status'
+        %li
+          %code hgnc_id
+          for
+          = t 'activerecord.attributes.gene.hgnc_id'
+        %li
+          %code hgnc_name
+          for
+          = t 'activerecord.attributes.gene.hgnc_name'
+        %li
+          %code gene_id
+          for
+          = t 'activerecord.attributes.gene.gene_id'
+        %li
+          %code uniprot_ac
+          for
+          = t 'activerecord.attributes.gene.uniprot_ac'
+        %li
+          %code uniprot_id
+          for
+          = t 'activerecord.attributes.gene.uniprot_id'
+        %li
+          %code domain
+          for
+          = t 'activerecord.attributes.gene.domain'
+        %li
+          %code mgi_symbol
+          for
+          = t 'activerecord.attributes.gene.mgi_symbol'
+        %li
+          %code mgi_id
+          for
+          = t 'activerecord.attributes.gene.mgi_id'
+        %li
+          %code uniprot_ac_mm
+          for
+          = t 'activerecord.attributes.gene.uniprot_ac_mm'
+        %li
+          %code uniprot_id_mm
+          for
+          = t 'activerecord.attributes.gene.uniprot_id_mm'
+        %li
+          %code gene_tag
+          for
+          = t 'activerecord.attributes.gene.gene_tag'
+        %li
+          %code gene_desc
+          for
+          = t 'activerecord.attributes.gene.gene_desc'
+        %li
+          %code function
+          for
+          = t 'activerecord.attributes.gene.function'
+        %li
+          %code modification
+          for
+          = t 'activerecord.attributes.gene.modification'
+        %li
+          %code pmid_function
+          for
+          = t 'activerecord.attributes.gene.pmid_function'
+        %li
+          %code complex_name
+          for
+          = t 'activerecord.attributes.gene.complex_name'
+        %li
+          %code target
+          for
+          = t 'activerecord.attributes.gene.target'
+        %li
+          %code specific_target
+          for
+          = t 'activerecord.attributes.gene.specific_target'
+        %li
+          %code product
+          for
+          = t 'activerecord.attributes.gene.product'
+        %li
+          %code uniprot_id_target
+          for
+          = t 'activerecord.attributes.gene.uniprot_id_target'
+        %li
+          %code pmid_target
+          for
+          = t 'activerecord.attributes.gene.pmid_target'
+        %li
+          %code comment
+          for
+          = t 'activerecord.attributes.gene.comment'
+
+    %li
+      Protein complexes. Search path is:
+      %code /protein_complexes
+      Fields available for search are:
+      %ul
+        %li
+          %code group
+          for
+          = t 'activerecord.attributes.protein_complex.group'
+        %li
+          %code group_name
+          for
+          = t 'activerecord.attributes.protein_complex.group_name'
+        %li
+          %code complex_name
+          for
+          = t 'activerecord.attributes.protein_complex.complex_name'
+        %li
+          %code status
+          for
+          = t 'activerecord.attributes.protein_complex.status'
+        %li
+          %code alternative_name
+          for
+          = t 'activerecord.attributes.protein_complex.alternative_name'
+        %li
+          %code protein
+          for
+          = t 'activerecord.attributes.protein_complex.protein'
+        %li
+          %code uniprot_id
+          for
+          = t 'activerecord.attributes.protein_complex.uniprot_id'
+        %li
+          %code pmid_complex
+          for
+          = t 'activerecord.attributes.protein_complex.pmid_complex'
+        %li
+          %code function
+          for
+          = t 'activerecord.attributes.protein_complex.function'
+        %li
+          %code pmid_function
+          for
+          = t 'activerecord.attributes.protein_complex.pmid_function'
+        %li
+          %code target
+          for
+          = t 'activerecord.attributes.protein_complex.target'
+        %li
+          %code specific_target
+          for
+          = t 'activerecord.attributes.protein_complex.specific_target'
+        %li
+          %code product
+          for
+          = t 'activerecord.attributes.protein_complex.product'
+        %li
+          %code uniprot_id_target
+          for
+          = t 'activerecord.attributes.protein_complex.uniprot_id_target'
+        %li
+          %code pmid_target
+          for
+          = t 'activerecord.attributes.protein_complex.pmid_target'
+        %li
+          %code comment
+          for
+          = t 'activerecord.attributes.protein_complex.comment'
+        %li
+          %code genes_in_complex
+          for
+          = t 'activerecord.attributes.protein_complex.genes_in_complex'
+
+    %li
+      Histones. Search path is:
+      %code /histones
+      Fields available for search are:
+      %ul
+        %li
+          %code group
+          for
+          = t 'activerecord.attributes.protein_complex.group'
+        %li
+          %code hgnc_symbol
+          for
+          = t 'activerecord.attributes.histone.hgnc_symbol'
+        %li
+          %code status
+          for
+          = t 'activerecord.attributes.histone.status'
+        %li
+          %code hgnc_id
+          for
+          = t 'activerecord.attributes.histone.hgnc_id'
+        %li
+          %code hgnc_name
+          for
+          = t 'activerecord.attributes.histone.hgnc_name'
+        %li
+          %code gene_id
+          for
+          = t 'activerecord.attributes.histone.gene_id'
+        %li
+          %code uniprot_ac
+          for
+          = t 'activerecord.attributes.histone.uniprot_ac'
+        %li
+          %code uniprot_id
+          for
+          = t 'activerecord.attributes.histone.uniprot_id'
+        %li
+          %code domain
+          for
+          = t 'activerecord.attributes.histone.domain'
+        %li
+          %code mgi_symbol
+          for
+          = t 'activerecord.attributes.histone.mgi_symbol'
+        %li
+          %code mgi_id
+          for
+          = t 'activerecord.attributes.histone.mgi_id'
+        %li
+          %code uniprot_ac_mm
+          for
+          = t 'activerecord.attributes.histone.uniprot_ac_mm'
+        %li
+          %code uniprot_id_mm
+          for
+          = t 'activerecord.attributes.histone.uniprot_id_mm'
+        %li
+          %code gene_tag
+          for
+          = t 'activerecord.attributes.histone.gene_tag'
+        %li
+          %code gene_desc
+          for
+          = t 'activerecord.attributes.histone.gene_desc'
+        %li
+          %code complex_name
+          for
+          = t 'activerecord.attributes.histone.complex_name'
+        %li
+          %code targeted_by_protein
+          for
+          = t 'activerecord.attributes.histone.targeted_by_protein'
+        %li
+          %code targeted_by_complex
+          for
+          = t 'activerecord.attributes.histone.targeted_by_complex'
+        %li
+          %code pmid
+          for
+          = t 'activerecord.attributes.histone.pmid'
+        %li
+          %code comment
+          for
+          = t 'activerecord.attributes.histone.comment'

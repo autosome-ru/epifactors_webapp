@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'epigene_welcome#index'
+  get '/description/queries' => 'epigene_welcome#description_queries', as: :description_queries
   get 'epifactors/' => 'epigene_welcome#index', as: :epigene_index
   get 'epigenes/' => 'epigene_welcome#index'
   get 'description' => 'epigene_welcome#description', as: :epigene_description

@@ -2,6 +2,9 @@ class EpigeneWelcomeController < ApplicationController
   def index
   end
 
+  def description_queries
+  end
+
   def description
   end
 
