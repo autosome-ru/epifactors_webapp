@@ -3,8 +3,7 @@
 %p
   Database statistics:
   %ul
-    %li #{Gene.count + Histone.count} Genes (including histones and protamines)
-    %li #{Histone.count} Histones and protamines
+    %li #{Gene.count + Histone.count} Genes (including #{Histone.count} histones and protamines)
     %li #{ProteinComplex.count} Protein complexes
 
 %p
@@ -27,5 +26,5 @@
     %li= link_to 'Table of all histones and protamines in .xlsx format', '/public_data/v1.6/EpiGenes_histones_1_6.xlsx'
     %li= link_to 'Pfam domains', '/Pfam_domains.pdf'
     %li= link_to 'Gene expressions table (FANTOM 5 data)', '/public_data/gene_expressions_by_sample.zip'
-    %li= link_to 'Information about FANTOM5 samples', '/public_data/fantom_sample_infos.zip'
-    %li= link_to 'UNIPROT to HOCOMOCO mapping', '/public_data/HOCOMOCOv9_motifs2uniprot.txt'
+    %li= link_to 'FANTOM5 samples description', '/public_data/fantom_sample_infos.zip'
+    %li= link_to 'UNIPROT to HOCOMOCO (transcription factor binding motifs) mapping', '/public_data/HOCOMOCOv9_motifs2uniprot.txt'

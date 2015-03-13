@@ -1,42 +1,43 @@
-%h4 Querying database
+%h4 Querying database by URL
 
 %p
-  Epifactors allows one to search genes, histones and protein complexes by multiple characteristics.
+  Epifactors allows searching genes, histones and protein complexes by multiple characteristics.
 %p
-  Search query displays a list of entities of requested type (or a single entity if the only one was found). There are several ways to customize search parameters.
+  Search results present a list of database entries (or a single entry if it was the only one found). 
+  There are several ways to customize search parameters.
   %ul
     %li
-      The simplest query looks like:
+      The simplest URL query looks like:
       %code epifactors.ru/genes
-      which shows a list of all genes.
+      which results in a list of all genes.
     %li
-      Query to
+      An URL query 
       %code epifactors.ru/genes?search=xxx
       performs a full-text search of
       %code xxx
-      across most of gene parameters. It matches any string containing query. The same query is performed by a search box in the site header.
+      over most of gene database fields. It matches any string containing query. The same database search is performed by the search field in the top-right corner of the webpage.
     %li
-      Query to
+      An URL query 
       %code epifactors.ru/genes?search=xxx&field=yyy
       performs a search of
       %code xxx
-      across
+      using
       %code yyy
-      genes' parameter. It looks for an exact match of this field.
+      genes' field (exact match).
     %li
-      Query to
+      An URL query 
       %code epifactors.ru/genes?search=xxx&field=yyy&similar=1
       performs a search of
       %code xxx
-      across
+      using
       %code yyy
-      genes' parameter. It looks for any matches of this field. Unlike exact match it will find genes which contain
+      genes' parameter (any matches). Unlike exact match it will find gene entries containing
       %code xxx
       inside
       %code yyy
-      field string, or being a prefix of such string. So if you need to match strings like "xxx, xxx_2" or "Involves xxx", use
+      field string (or, e.g., being a prefix). So if you need to match strings like "xxx, xxx_2" or "Involves xxx", use
       %code similar
-      parameter. If you don't want to match similar strings, skip similar parameter at all,
+      parameter. If you don't want to match similar strings, skip this parameter,
       %b
         %i don't
       use
@@ -44,15 +45,15 @@
       !
 
 %p
-  By default, if any search request returned the only record, it redirects from full page to this record automatically. To prevent this behavior use
+  By default, if a search request returned the only record, it redirects to this record automatically. To prevent this behavior (display a table with the single record) use
   = succeed '.' do
     %code &redirect=no
 
 %p
-  Available tables for search are:
+  Tables available for search:
   %ul
     %li
-      Genes. Search path is:
+      Genes. URL path is:
       %code /genes
       Fields available for search are:
       %ul
@@ -154,7 +155,7 @@
           = t 'activerecord.attributes.gene.comment'
 
     %li
-      Protein complexes. Search path is:
+      Protein complexes. URL path is:
       %code /protein_complexes
       Fields available for search are:
       %ul
@@ -228,7 +229,7 @@
           = t 'activerecord.attributes.protein_complex.genes_in_complex'
 
     %li
-      Histones. Search path is:
+      Histones. URL path is:
       %code /histones
       Fields available for search are:
       %ul
