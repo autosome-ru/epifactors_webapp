@@ -7,7 +7,6 @@ class ProteinComplexesController < ApplicationController
       redirect_to protein_complex_path(@protein_complexes.first.id) and return
     end
 
-    @protein_complexes = @protein_complexes.includes(:genes)
     @protein_complexes = ProteinComplexDecorator.decorate_collection(@protein_complexes)
     respond_with(@protein_complexes)
   end

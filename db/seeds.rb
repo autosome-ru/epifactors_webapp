@@ -115,12 +115,6 @@ histones.each do |histone_info|
   Histone.create!( histone_info )
 end
 
-ProteinComplex.find_each do |protein_complex|
-  Gene.where(uniprot_id: protein_complex.uniprot_ids_splitted).find_each do |gene|
-    GeneInComplex.where(gene_id: gene.id, protein_complex_id: protein_complex.id).first_or_create!
-  end
-end
-
 # cache protein complex's gene inclusion pattern
 ProteinComplex.find_each do |protein_complex|
   protein_complex.genes_in_complex = protein_complex.involved_genes.map{|gene| "#{gene.to_s}##{gene.id}" }.to_s

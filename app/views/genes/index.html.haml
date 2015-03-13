@@ -34,7 +34,6 @@
       = gene_table_header :pmid_target, hide_by_default: true, dont_sort: true, class: 'pmid'
       = gene_table_header :fantom_sstar_gene, hide_by_default: true, dont_sort: true, class: 'fantom_sstar_gene'
       = gene_table_header :comment, hide_by_default: true, dont_sort: true, class: 'comment'
-      -# = gene_table_header :protein_complexes, dont_sort: true
 
   %tbody
     - @genes.each do |gene|
@@ -64,4 +63,3 @@
         %td= gene.pmid_target
         %td= gene.fantom_sstar_gene
         %td= gene.comment
-        -# %td= gene.protein_complexes
