@@ -2,7 +2,7 @@
 <!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
-   xmlns:i="&amp;#38;ns_ai;"
+   xmlns:i="&amp;#38;#38;ns_ai;"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -20,8 +20,8 @@
    enable-background="new 0 90 595.2800293 740"
    xml:space="preserve"
    id="svg2"
-   inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="scheme_main.svg"><metadata
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="main_scheme.svg"><metadata
    id="metadata2707"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
@@ -1094,7 +1094,7 @@
 				
 			
 				
-		</defs><sodipodi:namedview
+</defs><sodipodi:namedview
    pagecolor="#ffffff"
    bordercolor="#666666"
    borderopacity="1"
@@ -1103,17 +1103,17 @@
    guidetolerance="10"
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
-   inkscape:window-width="1280"
-   inkscape:window-height="753"
+   inkscape:window-width="1920"
+   inkscape:window-height="1003"
    id="namedview2703"
    showgrid="false"
-   inkscape:zoom="1.5857387"
-   inkscape:cx="287.06298"
-   inkscape:cy="333.78586"
-   inkscape:window-x="-3"
-   inkscape:window-y="-3"
+   inkscape:zoom="0.56064329"
+   inkscape:cx="808.40781"
+   inkscape:cy="423.03839"
+   inkscape:window-x="-9"
+   inkscape:window-y="-9"
    inkscape:window-maximized="1"
-   inkscape:current-layer="g14180" />
+   inkscape:current-layer="svg2" />
 <g
    id="Задние_усы">
 			<circle
@@ -11544,6 +11544,7 @@
    letter-spacing="-1"
    id="text2532">HAT</text>
 
+
 </g><g
    id="g13995"
    class="epigene"
@@ -11557,6 +11558,7 @@
    font-size="15"
    id="text2540"
    style="font-size:15px;font-family:ArialMT">HDAC</text>
+
 
 </g><g
    id="g14003"
@@ -11572,6 +11574,7 @@
    id="text2542"
    style="font-size:15px;font-family:ArialMT">PcG</text>
 
+
 </g><g
    id="g13999"
    class="epigene"
@@ -11586,33 +11589,36 @@
    id="text2544"
    style="font-size:15px;font-family:ArialMT">DUB</text>
 
+
 </g><g
    id="g14034"
    class="epigene"
    data-epigene-name="HAT"><path
-   d="m 339.77707,338.29349 c 0,5.37353 -4.35611,9.72964 -9.72965,9.72964 h -19.49725 c -5.37353,0 -9.72964,-4.35611 -9.72964,-9.72964 l 0,0 c 0,-5.37354 4.35611,-9.72965 9.72964,-9.72965 h 19.49725 c 5.37354,0 9.72965,4.35611 9.72965,9.72965 l 0,0 z"
+   d="m 390,316 c 0,5.37353 -4.35611,9.72964 -9.72965,9.72964 h -19.49725 c -5.37353,0 -9.72964,-4.35611 -9.72964,-9.72964 l 0,0 c 0,-5.37354 4.35611,-9.72965 9.72964,-9.72965 h 19.49725 c 5.37354,0 9.72965,4.35611 9.72965,9.72965 l 0,0 z"
    id="path2521"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="344.28314"
-   x="307.07425"
+   y="322.28314"
+   x="357.07425"
    letter-spacing="-1"
-   style="font-size:15px;font-family:ArialMT"
+   style="font-size:15px;letter-spacing:-1;font-family:ArialMT"
    id="text2546">HAT</text>
+
 
 </g><g
    id="g14030"
    class="epigene"
    data-epigene-name="HDAC"><path
-   d="m 342.69324,313.80502 c 0,-5.61398 -4.55103,-10.16501 -10.16504,-10.16501 h -27.27982 c -5.61398,0 -10.16504,4.55103 -10.16504,10.16501 l 0,0 c 0,5.61402 4.55106,10.16504 10.16504,10.16504 h 27.27982 c 5.61401,0 10.16504,-4.55102 10.16504,-10.16504 l 0,0 z"
+   d="m 394,294 c 0,-5.61398 -4.55103,-10.16501 -10.16504,-10.16501 h -27.27982 c -5.61398,0 -10.16504,4.55103 -10.16504,10.16501 l 0,0 c 0,5.61402 4.55106,10.16504 10.16504,10.16504 h 27.27982 c 5.61401,0 10.16504,-4.55102 10.16504,-10.16504 l 0,0 z"
    id="path2523"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="319.72552"
-   x="298.46704"
+   x="350"
+   y="300"
    font-size="15"
    id="text2554"
    style="font-size:15px;font-family:ArialMT">HDAC</text>
+
 
 </g><g
    id="g14007"
@@ -11627,6 +11633,7 @@
    style="font-size:15px;font-family:ArialMT"
    id="text2556">MLL</text>
 
+
 </g><g
    id="g14013"
    class="epigene"
@@ -11639,6 +11646,7 @@
    x="178.44135"
    style="font-size:15px;font-family:ArialMT"
    id="text2562">HMT</text>
+
 
 </g><g
    id="g14023"
@@ -11654,6 +11662,7 @@
    style="font-size:15px;font-family:ArialMT"
    id="text2568">HAT</text>
 
+
 </g><g
    id="g14019"
    class="epigene"
@@ -11667,6 +11676,7 @@
    font-size="15"
    id="text2576"
    style="font-size:15px;font-family:ArialMT">HDAC</text>
+
 
 </g><g
    id="g14101"
@@ -11682,6 +11692,7 @@
    style="font-size:15px;font-family:ArialMT"
    id="text2578">HAT</text>
 
+
 </g><g
    id="g13942"
    class="epigene"
@@ -11695,6 +11706,7 @@
    font-size="15"
    id="text2586"
    style="font-size:15px;font-family:ArialMT">lno80</text>
+
 
 </g><g
    id="g13966"
@@ -11710,6 +11722,7 @@
    id="text2588"
    style="font-size:15px;font-family:ArialMT">lno80</text>
 
+
 </g><g
    id="g14064"
    class="epigene"
@@ -11723,6 +11736,7 @@
    font-size="15"
    id="text2590"
    style="font-size:15px;font-family:ArialMT">lno80</text>
+
 
 </g><g
    id="g14084"
@@ -11738,19 +11752,35 @@
    id="text2592"
    style="font-size:15px;font-family:ArialMT">PcG</text>
 
+
 </g><g
    id="g14074"
    class="epigene"
-   data-epigene-name="ISWI"><path
-   d="m 262.1983,126.99129 c 0,5.37353 -4.35611,9.72964 -9.72966,9.72964 H 232.9714 c -5.37353,0 -9.72964,-4.35611 -9.72964,-9.72964 l 0,0 c 0,-5.37353 4.35611,-9.72965 9.72964,-9.72965 h 19.49724 c 5.37355,0 9.72966,4.35612 9.72966,9.72965 l 0,0 z"
+   data-epigene-name="SWR"><path
+   d="m 198,149 c 0,5.37353 -4.35611,9.72964 -9.72966,9.72964 H 168 c -5.37353,0 -9.72964,-4.35611 -9.72964,-9.72964 l 0,0 c 0,-5.37353 4.35611,-9.72965 9.72964,-9.72965 h 19.49724 c 5.37355,0 9.72966,4.35612 9.72966,9.72965 l 0,0 z"
    id="path2473"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="132.88809"
-   x="226.59158"
+   x="160"
+   y="155"
+   font-size="15"
+   id="text2594"
+   style="font-size:15px;font-family:ArialMT">SWR</text>
+
+
+</g><g
+   class="epigene"
+   data-epigene-name="ISWI"><path
+   d="m 253,127 c 0,5.37353 -4.35611,9.72964 -9.72966,9.72964 H 223 c -5.37353,0 -9.72964,-4.35611 -9.72964,-9.72964 l 0,0 c 0,-5.37353 4.35611,-9.72965 9.72964,-9.72965 h 19.49724 c 5.37355,0 9.72966,4.35612 9.72966,9.72965 l 0,0 z"
+   id="path2473"
+   inkscape:connector-curvature="0"
+   style="opacity:0.5;fill:#a8d5ff" /><text
+   x="217"
+   y="133"
    font-size="15"
    id="text2594"
    style="font-size:15px;font-family:ArialMT">ISWI</text>
+
 
 </g><g
    id="g14088"
@@ -11765,6 +11795,7 @@
    style="font-size:15px;font-family:ArialMT"
    id="text2596">FACT</text>
 
+
 </g><g
    id="g14078"
    class="epigene"
@@ -11777,6 +11808,7 @@
    x="234.98131"
    style="font-size:15px;font-family:ArialMT"
    id="text2604">CREST</text>
+
 
 </g><g
    id="g14095"
@@ -11809,6 +11841,7 @@
    style="font-size:15px;font-family:ArialMT"
    id="text2616">SRCAP</text>
 
+
 </g><g
    id="g14112"
    class="epigene"
@@ -11823,6 +11856,7 @@
    id="text2622"
    style="font-size:15px;font-family:ArialMT">CAF-1</text>
 
+
 </g><g
    id="g13931"
    class="epigene"
@@ -11835,6 +11869,7 @@
    x="313.16965"
    style="font-size:15px;font-family:ArialMT"
    id="text2624">FACT</text>
+
 
 </g><g
    id="g13946"
@@ -11850,6 +11885,7 @@
    id="text2632"
    style="font-size:15px;font-family:ArialMT">ISWI</text>
 
+
 </g><g
    id="g13938"
    class="epigene"
@@ -11863,6 +11899,7 @@
    font-size="15"
    id="text2634"
    style="font-size:15px;font-family:ArialMT">APOB</text>
+
 
 </g><g
    id="g13976"
@@ -11878,6 +11915,7 @@
    id="text2636"
    style="font-size:15px;font-family:ArialMT">ISWI</text>
 
+
 </g><g
    id="g13970"
    class="epigene"
@@ -11890,6 +11928,7 @@
    x="151.03516"
    style="font-size:15px;font-family:ArialMT"
    id="text2638">FACT</text>
+
 
 </g><g
    id="g13980"
@@ -11905,6 +11944,7 @@
    id="text2644"
    style="font-size:15px;font-family:ArialMT">APOB</text>
 
+
 </g><g
    id="g14108"
    class="epigene"
@@ -11919,6 +11959,7 @@
    id="text2646"
    style="font-size:15px;font-family:ArialMT">HDAC</text>
 
+
 </g><g
    id="g13960"
    class="epigene"
@@ -11932,6 +11973,7 @@
    style="font-size:15px;font-family:ArialMT"
    id="text2648">HMT</text>
 
+
 </g><g
    id="g13954"
    class="epigene"
@@ -11944,6 +11986,7 @@
    x="264.35675"
    style="font-size:15px;font-family:ArialMT"
    id="text2654">MLL</text>
+
 
 </g><g
    id="g13950"
@@ -11959,6 +12002,7 @@
    id="text2660"
    style="font-size:15px;font-family:ArialMT">PcG</text>
 
+
 </g><g
    id="g13984"
    class="epigene"
@@ -11973,6 +12017,7 @@
    id="text2662"
    style="font-size:15px;font-family:ArialMT">ISWI</text>
 
+
 </g><g
    id="g14057"
    class="epigene"
@@ -11985,6 +12030,7 @@
    x="498.16821"
    style="font-size:15px;font-family:ArialMT"
    id="text2664">FACT</text>
+
 
 </g><g
    id="g14053"
@@ -12000,6 +12046,7 @@
    id="text2672"
    style="font-size:15px;font-family:ArialMT">lno80</text>
 
+
 </g><g
    id="g14049"
    class="epigene"
@@ -12013,6 +12060,7 @@
    font-size="15"
    id="text2674"
    style="font-size:15px;font-family:ArialMT">CAF-1</text>
+
 
 </g><g
    id="g14045"
@@ -12028,6 +12076,7 @@
    id="text2676"
    style="font-size:15px;font-family:ArialMT">DUB</text>
 
+
 </g><g
    id="g14041"
    class="epigene"
@@ -12041,6 +12090,7 @@
    font-size="15"
    id="text2678"
    style="font-size:15px;font-family:ArialMT">ISWI</text>
+
 
 </g><g
    id="g14172"
@@ -12063,6 +12113,7 @@
    id="text2681"
    style="font-size:9px;font-family:Arial-BoldMT">H2B</text>
 
+
 </g><g
    id="g14180"
    class="histone"
@@ -12082,8 +12133,9 @@
    x="79.662659"
    id="text2683" style="font-size:9px;font-family:Arial-BoldMT">H2A</text>
 
+
 </g><g
-   id="g14172"
+   id="g1525"
    class="histone"
    data-histone-name="H1"><ellipse
    stroke-miterlimit="10"
@@ -12091,7 +12143,7 @@
    cy="418"
    rx="9.7469559"
    ry="9.850502"
-   id="ellipse2517"
+   id="ellipse1527"
    sodipodi:cx="150"
    sodipodi:cy="358"
    sodipodi:rx="9.7469559"
@@ -12100,8 +12152,9 @@
    y="421"
    x="374"
    font-size="9"
-   id="text2681"
+   id="text1529"
    style="font-size:9px;font-family:Arial-BoldMT">H1</text>
+
 
 </g><g
    id="g14176"
@@ -12124,6 +12177,7 @@
    id="text2689"
    style="font-size:9px;font-family:Arial-BoldMT">H4</text>
 
+
 </g><g
    id="g14186"
    class="histone"
@@ -12143,6 +12197,7 @@
    font-size="9"
    id="text2691"
    style="font-size:9px;font-family:Arial-BoldMT">H3</text>
+
 
 </g><g
    id="g14206"
@@ -12183,6 +12238,7 @@
    font-size="12"
    id="text2693"
    style="font-size:12.00004673px;fill:#ffffff;stroke:#000000;stroke-width:0.10000039;stroke-miterlimit:10;font-family:Arial-BoldMT">pol l</text>
+
 
 </g><g
    id="g14527"
@@ -12258,6 +12314,7 @@
    style="font-size:12px;fill:#ffffff;stroke:#000000;stroke-width:0.1;stroke-miterlimit:10;font-family:Arial-BoldMT">pol ll</text>
 
 
+
 			</g></g><g
    id="g14512"
    class="pol-III"><ellipse
@@ -12297,6 +12354,7 @@
    id="text2699"
    style="font-size:12.00001144px;fill:#ffffff;stroke:#000000;stroke-width:0.1000001;stroke-miterlimit:10;font-family:Arial-BoldMT">pol lll</text>
 
+
 </g><g
    id="g14168"
    class="histone"
@@ -12317,6 +12375,7 @@
    font-size="7"
    id="text2701"
    style="font-size:7px;font-family:Arial-BoldMT">H2AX</text>
+
 
 </g>
 <i:pgf
@@ -18104,4 +18163,67 @@ E3Q52Df95vM3/TTHd/1kbj6S/5wpQLVd0vvM7Dv08v53k/F9Lw5H+/wHf/vi01c/++LFZ7+0Xf7T
 L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
 	
 </i:pgf>
+
+<defs>
+   <g id="epigeneBox">
+      <path
+         d="
+         m -40,35
+         l 80,0
+         a 20,35 0 0,0 0,-70
+         l -80,0
+         a 20,35 0 0,0 0,70
+         z
+         "
+         transform="scale(0.3)"
+         style="opacity:0.5;"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cssccssc" />
+      </g>
+</defs>
+
+<style>
+   g.epigene_1 text {
+      font-size: 15px;
+      font-family: ArialMT;
+   }
+   g.epigene_1 use {
+      fill: #a8d5ff;
+   }
+</style>
+
+<g class="epigene_1" data-epigene-name="Exosome" transform="translate(20,700)">
+   <g>
+      <use xlink:href="#epigeneBox" transform="scale(1.9,1)" />
+      <text font-size="15" x="-27.5" y="5" text-anchor="start" alignment-baseline="baseline">Exosome</text>
+   </g>
+</g>
+
+<g class="epigene_1" data-epigene-name="CoREST" transform="translate(265,330)">
+   <g>
+      <use xlink:href="#epigeneBox" transform="scale(1.9,1)" />
+      <text font-size="15" x="-27.5" y="5" text-anchor="start" alignment-baseline="baseline">CoREST</text>
+   </g>
+</g>
+
+<g class="epigene_1" data-epigene-name="CoREST" transform="translate(225,565)">
+   <g>
+      <use xlink:href="#epigeneBox" transform="scale(1.9,1)" />
+      <text font-size="15" x="-27.5" y="5" text-anchor="start" alignment-baseline="baseline">CoREST</text>
+   </g>
+</g>
+
+<g class="epigene_1" data-epigene-name="L3MBTL1" transform="translate(265,355)">
+   <g>
+      <use xlink:href="#epigeneBox" transform="scale(2.3,1)" />
+      <text font-size="15" x="-32.5" y="5" text-anchor="start" alignment-baseline="baseline">L3MBTL1</text>
+   </g>
+</g>
+
+<g class="epigene_1" data-epigene-name="L3MBTL1" transform="translate(430,475)">
+   <g>
+      <use xlink:href="#epigeneBox" transform="scale(2.3,1)" />
+      <text font-size="15" x="-32.5" y="5" text-anchor="start" alignment-baseline="baseline">L3MBTL1</text>
+   </g>
+</g>
 </svg>
