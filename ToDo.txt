@@ -2,7 +2,7 @@
 
 Когда ничего не найдено правильно было бы выводить табличку Sorry, nothing found
 
-/opt/google_appengine/appcfg.py update ~/iogen/EpigeneDB/cdn/
+/opt/google_appengine/appcfg.py update ./cdn/
 
 
 - По дефолту надо скрыть пустые колонки. В простыне, где выбирать колонки, хотелось бы чтобы можно было выбрать/отключить все.

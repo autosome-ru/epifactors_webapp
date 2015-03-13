@@ -66,7 +66,6 @@ rescale_svg = function(element, scale_x, scale_y) {
 animate_svg = function() {
   var image = $('#main_scheme_svg');
   var epigenes = image.find('g.epigene');
-  var epigenes_1 = image.find('g.epigene_1');
   var histones = image.find('g.histone');
   epigenes.hover(
     function(e) {
@@ -85,32 +84,8 @@ animate_svg = function() {
     }
   );
 
-  epigenes_1.hover(
-    function(e) {
-      var name = $(e.target).closest('g.epigene_1').data('epigene-name');
-      var same_epigenes = epigenes_1.filter('[data-epigene-name="'+name+'"]');
-
-      $(e.target).closest('g.epigene_1')[0].classList.add('emphasized');
-      set_css_attr(same_epigenes.find('use'), 'fill', function(){return 'red';} );
-      same_epigenes.each(function(i,el){ rescale_svg(el,1.5,1.5); });
-    },
-    function(e) {
-      var name = $(e.target).closest('g.epigene_1').data('epigene-name');
-      var same_epigenes = epigenes_1.filter('[data-epigene-name="'+name+'"]');
-
-      $(e.target).closest('g.epigene_1')[0].classList.remove('emphasized');
-      restore_css_attr(same_epigenes.find('use'), 'fill');
-      same_epigenes.each(function(i,el){ rescale_svg(el,1,1); });
-    }
-  );
-
   epigenes.click(function(e) {
     var name = $(e.target).closest('g.epigene').data('epigene-name');
-    window.location = '/protein_complexes?search='+name+'&field=group_name&similar=1';
-  });
-
-  epigenes_1.click(function(e) {
-    var name = $(e.target).closest('g.epigene_1').data('epigene-name');
     window.location = '/protein_complexes?search='+name+'&field=group_name&similar=1';
   });
 
