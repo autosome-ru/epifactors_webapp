@@ -18190,7 +18190,7 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    style="opacity:0.5;fill: #a8d5ff;"
    inkscape:connector-curvature="0"
    sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="-7.5" y="705" text-anchor="start" alignment-baseline="baseline" style="font-size: 15px;font-family: ArialMT;">Exosome</text>
+   <text font-size="15" x="-7.5" y="705" style="font-size: 15px;font-family: ArialMT;">Exosome</text>
 </g>
 
 <g class="epigene" data-epigene-name="CoREST">
@@ -18206,7 +18206,7 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    style="opacity:0.5;fill: #a8d5ff;"
    inkscape:connector-curvature="0"
    sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="237.5" y="335" text-anchor="start" alignment-baseline="baseline" style="font-size: 15px;font-family: ArialMT;">CoREST</text>
+   <text font-size="15" x="237.5" y="335" style="font-size: 15px;font-family: ArialMT;">CoREST</text>
 </g>
 
 <g class="epigene" data-epigene-name="CoREST">
@@ -18222,7 +18222,7 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    style="opacity:0.5;fill: #a8d5ff;"
    inkscape:connector-curvature="0"
    sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="197.5" y="570" text-anchor="start" alignment-baseline="baseline" style="font-size: 15px;font-family: ArialMT;">CoREST</text>
+   <text font-size="15" x="197.5" y="570" style="font-size: 15px;font-family: ArialMT;">CoREST</text>
 </g>
 
 <g class="epigene" data-epigene-name="L3MBTL1">
@@ -18238,7 +18238,7 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    style="opacity:0.5;fill: #a8d5ff;"
    inkscape:connector-curvature="0"
    sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="232.5" y="360" text-anchor="start" alignment-baseline="baseline" style="font-size: 15px;font-family: ArialMT;">L3MBTL1</text>
+   <text font-size="15" x="232.5" y="360" style="font-size: 15px;font-family: ArialMT;">L3MBTL1</text>
 </g>
 
 
@@ -18255,7 +18255,7 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    style="opacity:0.5;fill: #a8d5ff;"
    inkscape:connector-curvature="0"
    sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="397.5" y="480" text-anchor="start" alignment-baseline="baseline" style="font-size: 15px;font-family: ArialMT;">L3MBTL1</text>
+   <text font-size="15" x="397.5" y="480" style="font-size: 15px;font-family: ArialMT;">L3MBTL1</text>
 </g>
 
 </svg>
