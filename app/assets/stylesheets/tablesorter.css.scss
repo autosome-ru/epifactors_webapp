@@ -46,7 +46,7 @@ table.key_value_info {
   width: 100%;
   td {
     padding: 5px;
-    border: 1px solid black;
+    border: 1px solid darkgray;
   }
   td:first-child {
     width: 25%;
@@ -62,8 +62,8 @@ table.expression_statistics {
   margin: 20px 0;
   tr:first-child td {padding-top: 10px;}
   tr:last-child td {padding-bottom: 10px;}
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid darkgray;
+  border-bottom: 1px solid darkgray;
 }
 
 .expression-bar {
