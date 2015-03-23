@@ -1,11 +1,11 @@
 ;(function(epigeneDB, $, undefined) {
 
   epigeneDB.gene_id_link = function(gene_id) {
-    return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>';
+    return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>' + '<br/>(' + epigeneDB.fantom_sstar_gene_link(gene_id) + ')';
   };
 
   epigeneDB.fantom_sstar_gene_link = function(gene_id) {
-    return '<a href="http://fantom.gsc.riken.jp/5/sstar/EntrezGene:' + gene_id + '">' + gene_id + '</a>';
+    return '<a href="http://fantom.gsc.riken.jp/5/sstar/EntrezGene:' + gene_id + '">sstar profile</a>';
   };
 
   epigeneDB.hgnc_id_link = function(hgnc) {
