@@ -1,5 +1,5 @@
 %h4 Epifactors database description
-%h5 Current version 1.6 (10 March, 2015)
+%h5 Current version 1.6.0 (10 March, 2015)
 %p
   Database statistics:
   %ul
@@ -10,6 +10,12 @@
   %b Help:
   %ul
     %li= link_to 'Database description', '/public_data/v1.6/Database_entries_1_6.doc'
+    %li
+      Database structure
+      = surround '(', ')' do
+        = succeed ',' do
+          = link_to 'png', '/public_data/v1.6/database_structure.png'
+        = link_to 'svg', '/public_data/v1.6/database_structure.svg'
     %li= link_to 'Standard terms used', '/public_data/v1.6/Standard_terms_1_6.doc'
     %li= link_to 'Querying database', '/description/queries'
 %p
@@ -19,7 +25,7 @@
       Scheme image
       = surround '(', ')' do
         = succeed ',' do
-          = link_to 'png', '/main_scheme_100dpi.png'
+          = link_to 'png', '/main_scheme_300dpi.png'
         = link_to 'svg', '/main_scheme.svg'
     %li= link_to 'Table of all genes in .xlsx format', '/public_data/v1.6/EpiGenes_main_1_6.xlsx'
     %li= link_to 'Table of all protein complexes in .xlsx format', '/public_data/v1.6/EpiGenes_complexes_1_6.xlsx'
