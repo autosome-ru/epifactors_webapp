@@ -5,7 +5,7 @@
     filter: {
       filter_columnFilters : true,
       filter_hideFilters : false,
-      filter_saveFilters: true,
+      filter_saveFilters: false,
       filter_ignoreCase : true,
       filter_liveSearch : true,
       filter_onlyAvail : 'filter-onlyAvail',
