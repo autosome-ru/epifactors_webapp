@@ -97,12 +97,10 @@ en:
         sample_name:                Sample
         expression:                 Expression (RLE-normalized CAGE tags per million)
         percentile_over_genes:      Percentile over all genes
-        percentile_over_samples:    Percentile over all samples
 
       expression:
         molecule_kind:              Type
         hgnc_symbol:                HGNC approved symbol
         hgnc_id:                    HGNC ID
         expression:                 Expression (RLE-normalized CAGE tags per million)
-        percentile_over_genes:      Percentile over all genes
         percentile_over_samples:    Percentile over all samples
