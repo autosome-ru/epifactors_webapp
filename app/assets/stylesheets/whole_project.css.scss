@@ -59,3 +59,16 @@
   background-image: image-url("loading.gif");
   background-size: $size $size;
 }
+
+.export_uniprot {
+  width: 16px;
+  height: 16px;
+  background-size: 16px 16px;
+  margin-left: 5px;
+  vertical-align: bottom;
+  background-image: image-url("uniprot_favicon.ico");
+  display: inline-block;
+  &:hover {
+    cursor: pointer;
+  }
+}

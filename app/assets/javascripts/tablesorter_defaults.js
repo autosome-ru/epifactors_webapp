@@ -110,6 +110,9 @@
     // delayInit: false,
     initialized : function(table){
       $('.loading_table').hide();
+    },
+    onRenderHeader: function(index){
+      $(this).find('.has-tooltip').tooltip(); // As headers can be rerendered, collective .tooltip() call doesn't work
     }
   }
 })(window.epigeneDB = window.epigeneDB || {}, jQuery);

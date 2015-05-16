@@ -14,13 +14,21 @@
       = gene_table_header :hgnc_id, hide_by_default: true, dont_sort: true, class: 'hgnc_id'
       = gene_table_header :hgnc_name
       = gene_table_header :gene_id, hide_by_default: true, dont_sort: true, class: 'gene_id'
-      = gene_table_header :uniprot_ac, hide_by_default: true, dont_sort: true, class: 'uniprot_ac'
-      = gene_table_header :uniprot_id, class: 'uniprot_id'
+      = gene_table_header :uniprot_ac, hide_by_default: true, dont_sort: true, class: 'uniprot_ac' do |content|
+        = content
+        .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
+      = gene_table_header :uniprot_id, class: 'uniprot_id' do |content|
+        = content
+        .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
       = gene_table_header :domain, class: 'pfam_domain'
       = gene_table_header :mgi_symbol, hide_by_default: true
       = gene_table_header :mgi_id, hide_by_default: true, class: 'mgi_id'
-      = gene_table_header :uniprot_ac_mm, hide_by_default: true, class: 'uniprot_ac'
-      = gene_table_header :uniprot_id_mm, class: 'uniprot_id'
+      = gene_table_header :uniprot_ac_mm, hide_by_default: true, dont_sort: true, class: 'uniprot_ac' do |content|
+        = content
+        .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
+      = gene_table_header :uniprot_id_mm, class: 'uniprot_id' do |content|
+        = content
+        .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
       = gene_table_header :gene_tag, hide_by_default: true
       = gene_table_header :gene_desc, hide_by_default: true
       = gene_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
