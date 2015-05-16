@@ -67,6 +67,7 @@ animate_svg = function() {
   var image = $('#main_scheme_svg');
   var epigenes = image.find('g.epigene');
   var histones = image.find('g.histone');
+  var pseudocomplexes = image.find('g.pseudocomplex');
   epigenes.hover(
     function(e) {
       var name = $(e.target).closest('g.epigene').data('epigene-name');
@@ -84,15 +85,22 @@ animate_svg = function() {
     }
   );
 
-  epigenes.click(function(e) {
-    var name = $(e.target).closest('g.epigene').data('epigene-name');
-    window.location = '/protein_complexes?search='+name+'&field=group_name&similar=1';
-  });
+  pseudocomplexes.hover(
+    function(e) {
+      var name = $(e.target).closest('g.pseudocomplex').data('pseudocomplex-name');
+      var same_pseudocomplexes = pseudocomplexes.filter('[data-pseudocomplex-name="'+name+'"]');
 
-  histones.click(function(e) {
-    var name = $(e.target).closest('g.histone').data('histone-name');
-    window.location = '/histones?search=' + name + '&field=uniprot_id&similar=1';
-  });
+      set_css_attr(same_pseudocomplexes.find('path'), 'fill', function(){return 'red';} );
+      same_pseudocomplexes.each(function(i,el){ rescale(el,1.5,1.5); });
+    },
+    function(e) {
+      var name = $(e.target).closest('g.pseudocomplex').data('pseudocomplex-name');
+      var same_pseudocomplexes = pseudocomplexes.filter('[data-pseudocomplex-name="'+name+'"]');
+
+      restore_css_attr(same_pseudocomplexes.find('path'), 'fill');
+      same_pseudocomplexes.each(function(i,el){ rescale(el,1,1); });
+    }
+  );
 
   histones.hover(
     function(e) {
@@ -108,6 +116,21 @@ animate_svg = function() {
       same_histones.each(function(i,el){ rescale(el,1,1); });
     }
   );
+
+  epigenes.click(function(e) {
+    var name = $(e.target).closest('g.epigene').data('epigene-name');
+    window.location = '/protein_complexes?search='+name+'&field=group_name&similar=1';
+  });
+
+  histones.click(function(e) {
+    var name = $(e.target).closest('g.histone').data('histone-name');
+    window.location = '/histones?search=' + name + '&field=uniprot_id&similar=1';
+  });
+
+  pseudocomplexes.click(function(e) {
+    var name = $(e.target).closest('g.pseudocomplex').data('pseudocomplex-name');
+    window.location = '/genes?search=' + name + '&field=hgnc_symbol&similar=1';
+  });
 };
 
 
