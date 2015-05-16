@@ -33,8 +33,8 @@ en:
         domain:                     Pfam domains
         mgi_symbol:                 MGI symbol
         mgi_id:                     MGI ID
-        uniprot_ac_mm:              UniProt AC (Mm)
-        uniprot_id_mm:              UniProt ID (Mm)
+        uniprot_ac_mm:              UniProt AC (mouse)
+        uniprot_id_mm:              UniProt ID (mouse)
         gene_tag:                   HGNC gene family tag
         gene_desc:                  HGNC gene family description
         function:                   Function
@@ -81,8 +81,8 @@ en:
         domain:                     Pfam domains
         mgi_symbol:                 MGI symbol
         mgi_id:                     MGI ID
-        uniprot_ac_mm:              UniProt AC (Mm)
-        uniprot_id_mm:              UniProt ID (Mm)
+        uniprot_ac_mm:              UniProt AC (mouse)
+        uniprot_id_mm:              UniProt ID (mouse)
         gene_tag:                   HGNC gene family tag
         gene_desc:                  HGNC gene family description
         complex_name:               Protein complex
