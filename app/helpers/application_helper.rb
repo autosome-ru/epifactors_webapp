@@ -28,4 +28,13 @@ module ApplicationHelper
       block_given? ? block.call(content) : content
     end
   end
+
+  def download_button
+    content_tag :button, 'Get CSV', class: ['download', 'has-tooltip'],
+                                    type: 'button',
+                                    data: { toggle: 'tooltip',
+                                            placement: 'right',
+                                            title: 'CSV export works in Firefox / Google Chrome / IE 11 only.'
+                                          }
+  end
 end

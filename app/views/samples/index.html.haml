@@ -1,7 +1,7 @@
 .table-actions
   %button.reset{type: 'button'} Reset filters
   %button.toggle-sample-format Full/short names
-  %button.download{type: 'button'} Get CSV
+  = download_button
   %input{type: "text", value: 'samples.csv', class: 'csv-filename'}
   .loading_table
     .loading_logo

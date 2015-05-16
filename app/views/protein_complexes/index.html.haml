@@ -1,7 +1,7 @@
 .table-actions
   %button.reset{type: 'button'} Reset filters
   %button.select-columns-btn{type: 'button'} Select Columns
-  %button.download{type: 'button'} Get CSV
+  = download_button
   %input{type: "text", value: 'protein_complexes.csv', class: 'csv-filename'}
   .loading_table
     .loading_logo

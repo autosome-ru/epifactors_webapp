@@ -1,6 +1,6 @@
 .expressions-table-actions
   %button.toggle-sample-format Full/short names
-  %button.download{type: 'button'} Get CSV
+  = download_button
   %input{type: "text", value: 'expressions.csv', class: 'csv-filename'}
 %table.gene_expression_by_sample.toggle-sample-format-target.tablesorter
   %thead
