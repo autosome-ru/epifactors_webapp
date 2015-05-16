@@ -31,29 +31,42 @@ HISTONES_COLUMNS_ORDER =  [
 ]
 
 
-epigenes_worksheet = RubyXL::Parser.parse(Rails.root.join('public', 'public_data', 'v1.6', 'EpiGenes_main_1_6.xlsx')).worksheets[0]
-protein_complexes_worksheet = RubyXL::Parser.parse(Rails.root.join('public', 'public_data', 'v1.6', 'EpiGenes_complexes_1_6.xlsx')).worksheets[0]
-histones_worksheet = RubyXL::Parser.parse(Rails.root.join('public', 'public_data', 'v1.6', 'EpiGenes_histones_1_6.xlsx')).worksheets[0]
+epigenes_filename = 'public/public_data/v1.6/EpiGenes_main_1_6.xlsx'
+protein_complexes_filename = 'public/public_data/v1.6/EpiGenes_complexes_1_6.xlsx'
+histones_filename = 'public/public_data/v1.6/EpiGenes_histones_1_6.xlsx'
 
 namespace :data do
   desc 'Load all data from excel files into DB'
-  task :load_excel_to_db => ['load_excel_to_db:epigenes', 'load_excel_to_db:protein_complex', 'load_excel_to_db:histones']
-  
-  namespace :load_excel_to_db do
+  task :store_excel_to_db => ['store_excel_to_db:store_epigenes', 'store_excel_to_db:store_protein_complexes', 'store_excel_to_db:store_histones']
+
+  task :load_epigenes => [epigenes_filename] do
+    epigenes_worksheet = RubyXL::Parser.parse(epigenes_filename).worksheets[0]
+    $epigenes = extract_worksheet_data(epigenes_worksheet, EPIGENES_COLUMNS_ORDER)
+  end
+
+  task :load_protein_complexes => [protein_complexes_filename] do
+    protein_complexes_worksheet = RubyXL::Parser.parse(protein_complexes_filename).worksheets[0]
+    $protein_complexes = extract_worksheet_data(protein_complexes_worksheet, PROTEIN_COMPLEXES_COLUMNS_ORDER)
+  end
+
+  task :load_histones => [histones_filename] do
+    histones_worksheet = RubyXL::Parser.parse(histones_filename).worksheets[0]
+    $histones = extract_worksheet_data(histones_worksheet, HISTONES_COLUMNS_ORDER)
+  end
+
+  namespace :store_excel_to_db do
     desc 'Load epigenes from xlsx-file into database'
-    task :epigenes => [:environment, epigenes_worksheet] do
-      epigenes = extract_worksheet_data(epigenes_worksheet, EPIGENES_COLUMNS_ORDER)
+    task :store_epigenes => [:environment, :load_epigenes] do
       Gene.delete_all
-      epigenes.each do |epigene_info|
+      $epigenes.each do |epigene_info|
         Gene.create!( epigene_info )
       end
     end
 
     desc 'Load protein complex from xlsx-file into database'
-    task :protein_complex => [:environment, protein_complexes_worksheet, :epigenes] do
-      protein_complexes = extract_worksheet_data(protein_complexes_worksheet, PROTEIN_COMPLEXES_COLUMNS_ORDER)
+    task :store_protein_complexes => [:environment, :load_protein_complexes, :store_epigenes] do
       ProteinComplex.delete_all
-      protein_complexes.each do |protein_complex_info|
+      $protein_complexes.each do |protein_complex_info|
         ProteinComplex.create!( protein_complex_info )
       end
 
@@ -65,9 +78,9 @@ namespace :data do
     end
 
     desc 'Load histones from xlsx-file into database'
-    task :histones => [:environment, histones_worksheet] do
-      histones = extract_worksheet_data(histones_worksheet, HISTONES_COLUMNS_ORDER)
-      histones.each do |histone_info|
+    task :store_histones => [:environment, :load_histones] do
+      Histone.delete_all
+      $histones.each do |histone_info|
         Histone.create!( histone_info )
       end
     end
