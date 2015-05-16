@@ -201,11 +201,26 @@
     };
   };
 
+  formatter_ignoring_sharp = function(formatter) {
+    return function(text, data) {
+      if (text == '#') {
+        return '#';
+      } else {
+        return formatter(text, data);
+      }
+    };
+  }
+
   make_tablesorter_formatters = function(formatters, preserveFormatters) {
     var result = {},
         selector;
     for (selector in formatters) {
-      result[selector] = formatter_preserving_text(formatters[selector], preserveFormatters[selector]);
+      result[selector] = formatter_ignoring_sharp(
+                            formatter_preserving_text(
+                                formatters[selector],
+                                preserveFormatters[selector]
+                            )
+                          );
     }
     return result;
   };
