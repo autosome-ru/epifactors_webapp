@@ -47,7 +47,11 @@
   };
 
   epigeneDB.pmid_link = function(pmid) {
-    return '<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
+    if (isNaN(pmid)) {
+      return pmid; // Some PMIDs look like "Uniprot", "by similarity" and "Uniprot (by similarity)"
+    } else {
+      return '<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
+    }
   };
 
   epigeneDB.target_complex_link = function(target) {
