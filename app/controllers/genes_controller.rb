@@ -11,7 +11,7 @@ class GenesController < ApplicationController
   end
   def show
     @gene = Gene.find(params[:id])
-    @expressions = @gene.gene_expressions
+    @expressions_with_percentiles = @gene.gene_expressions_with_percentiles
     @expression_statistics = @gene.expression_statistics
 
     @expression_statistics = StatisticsDecorator.decorate(@expression_statistics)

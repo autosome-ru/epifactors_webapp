@@ -17,6 +17,11 @@ class Gene < ActiveRecord::Base
   def gene_expressions
     @gene_expressions ||= GeneExpressions.instance.expressions_by_hgnc(hgnc_id)
   end
+
+  def gene_expressions_with_percentiles
+    @gene_expressions_with_percentiles ||= GeneExpressions.instance.expressions_with_percentiles_by_hgnc(hgnc_id)
+  end
+
   def expression_statistics
     @expression_statistics ||= Statistics.new(gene_expressions.map{|k,v| v })
   end

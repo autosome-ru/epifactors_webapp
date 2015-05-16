@@ -11,10 +11,16 @@
         = t 'activerecord.attributes.sample.sample_name'
       %th.expression_bar{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'}
         = t 'activerecord.attributes.sample.expresison'
+      %th.percentile_over_genes
+        = t 'activerecord.attributes.sample.percentile_over_genes'
+      %th.percentile_over_samples
+        = t 'activerecord.attributes.sample.percentile_over_samples'
 
   %tbody
-    - expressions_by_samples.each do |sample, expression|
+    - expressions_with_percentiles.each do |sample, expression, percentile_over_genes, percentiles_over_samples|
       %tr
         %td= sample.sample_kind
         %td= sample
         %td= expression
+        %td= '%.5f' % percentile_over_genes
+        %td= '%.5f' % percentiles_over_samples

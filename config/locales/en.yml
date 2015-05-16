@@ -96,9 +96,13 @@ en:
         sample_kind:                Sample class
         sample_name:                Sample
         expression:                 Expression
+        percentile_over_genes:      Percentile over all genes
+        percentile_over_samples:    Percentile over all samples
 
       expression:
         molecule_kind:              Type
         hgnc_symbol:                HGNC approved symbol
         hgnc_id:                    HGNC ID
         expression:                 Expression
+        percentile_over_genes:      Percentile over all genes
+        percentile_over_samples:    Percentile over all samples

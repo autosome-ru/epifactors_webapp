@@ -31,4 +31,4 @@
 %hr
 .table_caption Expression statistics
 = render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
-= render partial: 'shared/expressions_by_samples', locals: {expressions_by_samples: @expressions, statistics: @expression_statistics}
+= render partial: 'shared/expressions_by_samples', locals: {statistics: @expression_statistics, expressions_with_percentiles: @expressions_with_percentiles}
