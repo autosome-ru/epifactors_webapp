@@ -76,8 +76,8 @@ en:
         hgnc_id:                    HGNC ID
         hgnc_name:                  HGNC approved name
         gene_id:                    Entrez gene ID
-        uniprot_ac:                 UniProt AC
-        uniprot_id:                 UniProt ID
+        uniprot_ac:                 UniProt AC (human)
+        uniprot_id:                 UniProt ID (human)
         domain:                     Pfam domains
         mgi_symbol:                 MGI symbol
         mgi_id:                     MGI ID
