@@ -90,7 +90,7 @@ animate_svg = function() {
       var name = $(e.target).closest('g.pseudocomplex').data('pseudocomplex-name');
       var same_pseudocomplexes = pseudocomplexes.filter('[data-pseudocomplex-name="'+name+'"]');
 
-      set_css_attr(same_pseudocomplexes.find('path'), 'fill', function(){return 'red';} );
+      set_css_attr(same_pseudocomplexes.find('path'), 'fill', function(){return '#c2271f';} );
       same_pseudocomplexes.each(function(i,el){ rescale(el,1.5,1.5); });
     },
     function(e) {
