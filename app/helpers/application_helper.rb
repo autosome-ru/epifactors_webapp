@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def table_info_row(obj, attrib, html_options = {}, &block)
+  def table_info_row(obj, attrib, html_options: {}, header_cell: nil, &block)
     key_column = content_tag(:td, html_options[:key_column_html]) do
-      I18n.t "activerecord.attributes.#{ActiveSupport::Inflector.underscore(obj.class.model_name)}.#{attrib}"
+      header_cell || I18n.t("activerecord.attributes.#{ActiveSupport::Inflector.underscore(obj.class.model_name)}.#{attrib}")
     end
     value_column = content_tag(:td, html_options[:value_column_html]) do
       if block_given?

@@ -117,20 +117,6 @@
     return '<div class="hocomoco_link">' + link_html + '</div>';
   };
 
-  var markup_comb_alternatives,
-      markup_comb_term,
-      multiterm,
-      formatter_preserving_text,
-      make_tablesorter_formatters;
-
-  // 'abc|def' --> '<div class="alternative_uniprot">abc</div><div class="alternative_uniprot">def</div>']
-  markup_comb_alternatives = function(comb_part, term_formatter, wrappers) {
-    var tokens = comb_part.split('|');
-    return $.map(tokens, function(token) {
-      return wrappers.alternative[0] + markup_comb_term($.trim(token), term_formatter, wrappers) + wrappers.alternative[1];
-    }).join(wrappers.join_alternatives);
-  };
-
   epigeneDB.comb_span_wrappers = {
     term:               ['<span class="comb_term">',                '</span>'],
     multiple:           ['<span class="comb_multiple">',            '+</span>'],
@@ -151,6 +137,20 @@
     comb:               ['',  ''],
     join_alternatives:  '|',
     join_enumeration:   ', ',
+  };
+
+  var markup_comb_alternatives,
+      markup_comb_term,
+      multiterm,
+      formatter_preserving_text,
+      make_tablesorter_formatters;
+
+  // 'abc|def' --> '<div class="alternative_uniprot">abc</div><div class="alternative_uniprot">def</div>']
+  markup_comb_alternatives = function(comb_part, term_formatter, wrappers) {
+    var tokens = comb_part.split('|');
+    return $.map(tokens, function(token) {
+      return wrappers.alternative[0] + markup_comb_term($.trim(token), term_formatter, wrappers) + wrappers.alternative[1];
+    }).join(wrappers.join_alternatives);
   };
 
   markup_comb_term = function(term, term_formatter, wrappers) {
@@ -263,7 +263,6 @@
         var data = {
           $cell: $(elem).eq(0),
         };
-        console.log(data);
         window.dat = data;
         $(elem).html( formatter($(elem).text(), data) );
       });

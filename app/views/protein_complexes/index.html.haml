@@ -15,7 +15,9 @@
       = protein_complex_table_header :genes_in_complex, class: 'gene_comb', dont_sort: true
       = protein_complex_table_header :alternative_name, hide_by_default: true
       = protein_complex_table_header :protein, hide_by_default: true
-      = protein_complex_table_header :uniprot_id, class: 'uniprot_id_comb', dont_sort: true
+      = protein_complex_table_header :uniprot_id, class: 'uniprot_id_comb', dont_sort: true do |content|
+        = content
+        .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
       = protein_complex_table_header :pmid_complex, dont_sort: true, hide_by_default: true, class: 'pmid'
       = protein_complex_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = protein_complex_table_header :pmid_function, dont_sort: true, hide_by_default: true, class: 'pmid'

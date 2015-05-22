@@ -52,41 +52,100 @@ var page_ready = function() {
     return false;
   });
 
-  var uniprotURL = function($header_cell, field_name){
-    var column = $header_cell.data('column');
-    var $table = $header_cell.closest('table');
-    var cells = $.tablesorter.getColumnText($table, column, function(data) {
+  var comb_alternative_terms, comb_term, comb_terms, uniprotCombTermsShown, uniprotURL;
+
+  comb_alternative_terms = function(comb_part) {
+    var tokens = comb_part.split('|');
+    return $.map(tokens, function(token) {
+      return comb_term($.trim(token));
+    });
+    return Array.prototype.concat.apply([], tokens);
+  };
+
+  comb_term = function(term) {
+    if (term.slice(-1) == '+') {
+      return comb_term(term.slice(0, -1))
+    } else if (term.slice(-1) == '?') {
+      return comb_term(term.slice(0, -1))
+    } else if (term.slice(0, 1) == '(' && term.slice(-1) == ')') {
+      return comb_alternative_terms(term.slice(1, -1))
+    } else {
+      return term;
+    }
+  };
+
+  comb_terms = function(comb) {
+    var tokens;
+    tokens = $.map(comb.split(','), $.trim);
+    tokens_splitted = $.map(tokens, function(term){
+      return comb_term(term);
+    });
+    return Array.prototype.concat.apply([], tokens_splitted);
+  };
+
+  uniprotCombTermsShown = function($header_cell) {
+    var column, $table_not_resolved, $table, cells, not_null_cells, terms, terms_flatten;
+    column = $header_cell.data('column');
+    $table_not_resolved = $header_cell.closest('table'); // This can be either normal table or sticky-header copy of original table
+    $table = $(document.getElementById($table_not_resolved[0].id.replace(/-sticky$/,''))); // So we need to address original table
+    cells = $.tablesorter.getColumnText($table, column, function(data) {
       return !data.$row.hasClass('filtered');
     }).raw;
-    var uniq_cells = $.grep(
-                        $.unique(cells),
+    not_null_cells = $.grep(
+                        cells,
                         function(el){
                           return (el != '') && (el != '#');
                         }
                       );
+    terms = [];
+    $.each(not_null_cells, function(index, cell){
+      Array.prototype.push.apply(terms, comb_terms(cell));
+    });
+    return $.grep(
+              $.unique(terms),
+              function(el){
+                return (el != '') && (el != '#');
+              }
+            );
+  };
 
+  uniprotURL = function(cells, field_name){
     var maxNumberOfUniprots = 100;
-    if (uniq_cells.length > maxNumberOfUniprots) {
-      alert("You are trying to send a list of " + uniq_cells.length + " unique Uniprot identifiers.\n" +
+    if (cells.length > maxNumberOfUniprots) {
+      alert("You are trying to send a list of " + cells.length + " unique Uniprot identifiers.\n" +
             "Maximal number of genes to be sent to Uniprot is " + maxNumberOfUniprots + ".");
       return '#'; // It won't redirect us
     }
 
-    var query = $.map(uniq_cells, function(cell){
+    var query = $.map(cells, function(cell){
       return field_name + ':' + cell;
     }).join(' OR ');
     return 'http://www.uniprot.org/uniprot/?query=' + encodeURIComponent(query);
   };
 
-  $('.uniprot_ac .export_uniprot').mouseup(function(e){
+  $('th.uniprot_ac .export_uniprot').mouseup(function(e){
     e.stopPropagation(); // We should prevent mouseup propagation, other tablesorter will resort column
   }).click(function(e){
-    window.location = uniprotURL($(e.target).closest('th'), 'accession');
+    window.location = uniprotURL(uniprotCombTermsShown($(e.target).closest('th')), 'accession');
   });
-  $('.uniprot_id .export_uniprot').mouseup(function(e){
+
+  $('th.uniprot_id, .uniprot_id_comb').find('.export_uniprot').mouseup(function(e){
     e.stopPropagation(); // We should prevent mouseup propagation, other tablesorter will resort column
   }).click(function(e){
-    window.location = uniprotURL($(e.target).closest('th'), 'mnemonic');
+    window.location = uniprotURL(uniprotCombTermsShown($(e.target).closest('th')), 'mnemonic');
+  });
+
+  $('tr.uniprot_id_comb_row td .export_uniprot').mouseup(function(e){
+    e.stopPropagation();
+  }).click(function(e){
+    var value_cell = $(e.target).closest('tr.uniprot_id_comb_row').find('td.uniprot_id_comb').text();
+    var terms = $.grep(
+              $.unique(comb_terms(value_cell)),
+              function(el){
+                return (el != '') && (el != '#');
+              }
+            );
+    window.location = uniprotURL(terms, 'mnemonic');
   });
 };
 
