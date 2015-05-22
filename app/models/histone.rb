@@ -9,8 +9,8 @@ class Histone < ActiveRecord::Base
     @gene_expressions ||= GeneExpressions.instance.expressions_by_hgnc(hgnc_id)
   end
 
-  def gene_expressions_with_percentiles
-    @gene_expressions_with_percentiles ||= GeneExpressions.instance.expressions_with_percentiles_by_hgnc(hgnc_id)
+  def gene_expressions_with_quantiles
+    @gene_expressions_with_quantiles ||= GeneExpressions.instance.expressions_with_quantiles_by_hgnc(hgnc_id)
   end
 
   def expression_statistics

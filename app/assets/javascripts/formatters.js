@@ -70,6 +70,10 @@
     return Number(value).toFixed(1) + '<div class="expression-bar" style="width:' + percentage + '%;">' + '</div>';
   };
 
+  epigeneDB.quantile = function(value, data) {
+    return Number(value).toFixed(4);
+  }
+
   epigeneDB.sample_link = function(value, data) {
     var match, name, library_id, extract_name, sample_format, url;
     match = /^(.+)\.(CNhs\w+)\.(\w+-\w+)?$/.exec(value);
@@ -239,6 +243,7 @@
     '.uniprot_id_comb' : epigeneDB.uniprot_comb_link,
     '.gene_comb'       : epigeneDB.gene_comb_link,
     '.expression_bar'  : epigeneDB.expression_bar,
+    '.quantile'        : epigeneDB.quantile,
     '.sample_link'     : epigeneDB.sample_link,
     '.fantom_sstar_gene' : epigeneDB.fantom_sstar_gene_link,
     '.pmid'            : multiterm( epigeneDB.pmid_link ),

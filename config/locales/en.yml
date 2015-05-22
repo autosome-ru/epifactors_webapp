@@ -28,8 +28,8 @@ en:
         hgnc_id:                    HGNC ID
         hgnc_name:                  HGNC approved name
         gene_id:                    Entrez gene ID
-        uniprot_ac:                 UniProt AC
-        uniprot_id:                 UniProt ID
+        uniprot_ac:                 UniProt AC (human)
+        uniprot_id:                 UniProt ID (human)
         domain:                     Pfam domains
         mgi_symbol:                 MGI symbol
         mgi_id:                     MGI ID
@@ -96,11 +96,11 @@ en:
         sample_kind:                Sample class
         sample_name:                Sample
         expression:                 Expression (RLE-normalized CAGE tags per million)
-        percentile_over_genes:      Percentile over all genes
+        quantile_over_genes:        Quantile over all genes
 
       expression:
         molecule_kind:              Type
         hgnc_symbol:                HGNC approved symbol
         hgnc_id:                    HGNC ID
         expression:                 Expression (RLE-normalized CAGE tags per million)
-        percentile_over_samples:    Percentile over all samples
+        quantile_over_samples:      Quantile over all samples

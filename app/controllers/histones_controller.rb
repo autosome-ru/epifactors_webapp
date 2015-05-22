@@ -12,7 +12,7 @@ class HistonesController < ApplicationController
   end
   def show
     @histone = Histone.find(params[:id])
-    @expressions_with_percentiles = @histone.gene_expressions_with_percentiles
+    @expressions_with_quantiles = @histone.gene_expressions_with_quantiles
     @expression_statistics = @histone.expression_statistics
 
     @expression_statistics = StatisticsDecorator.decorate(@expression_statistics)
