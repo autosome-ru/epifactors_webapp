@@ -50,12 +50,12 @@ var page_ready = function() {
     )
   );
 
-  $('.help-icon, .help-text').hover(
+  $('.help').hover(
     function(e){
       $(e.target).parent().find('.help-text').show();
     }
   );
-  $('.help-icon, .help-text').parent().hover(null,
+  $('.help').parent().hover(null,
     function(e){
       console.log(e, e.currentTarget);
       $(e.currentTarget).find('.help-text').hide();
