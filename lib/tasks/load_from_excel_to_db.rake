@@ -31,9 +31,9 @@ HISTONES_COLUMNS_ORDER =  [
 ]
 
 
-epigenes_filename = 'public/public_data/v1.6/EpiGenes_main_1_6.xlsx'
-protein_complexes_filename = 'public/public_data/v1.6/EpiGenes_complexes_1_6.xlsx'
-histones_filename = 'public/public_data/v1.6/EpiGenes_histones_1_6.xlsx'
+epigenes_filename = 'public/public_data/current/EpiGenes_main.xlsx'
+protein_complexes_filename = 'public/public_data/current/EpiGenes_complexes.xlsx'
+histones_filename = 'public/public_data/current/EpiGenes_histones.xlsx'
 
 namespace :data do
   desc 'Load all data from excel files into DB'
