@@ -11,8 +11,16 @@
         = t 'activerecord.attributes.sample.sample_name'
       %th.expression_bar{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'}
         = t 'activerecord.attributes.sample.expression'
-      %th.quantile_over_genes.quantile
+        .help-icon
+        .help-text
+          The gene expression values are derived from #{link_to 'FANTOM5', 'http://fantom.gsc.riken.jp/5/'} TSS, aggregating values for each gene (via HGNC mapping) if several TSS were annotated.
+          %br
+          FANTOM5 expression data are presented as normalized tags per million (TPM) calculated using the relative log expression (RLE) method.
+      %th.quantile_over_genes.quantile{data: {placeholder: 'Try >=0.95', value: '>=0.95'} }
         = t 'activerecord.attributes.sample.quantile_over_genes'
+        .help-icon
+        .help-text
+          Use >= 0.95 filter to show only top 5% samples with the highest expression of a gene
 
   %tbody
     - expressions_with_quantiles.each do |sample, expression, quantile_over_genes|

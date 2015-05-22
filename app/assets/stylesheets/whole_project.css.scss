@@ -72,3 +72,19 @@
     cursor: pointer;
   }
 }
+
+.help-icon {
+  width: 16px;
+  height: 16px;
+  background-size: 16px 16px;
+  margin-left: 5px;
+  vertical-align: bottom;
+  background-image: image-url("help-icon.png");
+  display: inline-block;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.help-text {
+  display: none;
+}

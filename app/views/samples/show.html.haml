@@ -20,11 +20,18 @@
         = t 'activerecord.attributes.expression.hgnc_symbol'
       %th.hgnc_id
         = t 'activerecord.attributes.expression.hgnc_id'
-      %th.expression_bar{'data-placeholder' => "Try `>=100` or `100 to 1000`", 'data-value' => '>10'}
+      %th.expression_bar{data: {placeholder: "Try `>=100` or `100 to 1000`", value: '>10'} }
         = t 'activerecord.attributes.expression.expression'
-      %th.quantile_over_samples.quantile
+        .help-icon
+        .help-text
+          The gene expression values are derived from #{link_to 'FANTOM5', 'http://fantom.gsc.riken.jp/5/'} TSS, aggregating values for each gene (via HGNC mapping) if several TSS were annotated.
+          %br
+          FANTOM5 expression data are presented as normalized tags per million (TPM) calculated using the relative log expression (RLE) method.
+      %th.quantile_over_samples.quantile{data: {placeholder: 'Try >=0.95', value: '>=0.95'} }
         = t 'activerecord.attributes.expression.quantile_over_samples'
-
+        .help-icon
+        .help-text
+          Use >=0.95 filter to show only top 5% of genes ranked by expression values
 
   %tbody
     - @sample_expressions_with_quantiles.each do |hgnc_id, expression, quantile_over_samples|
