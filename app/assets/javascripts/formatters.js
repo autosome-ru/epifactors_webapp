@@ -259,13 +259,14 @@
 
   epigeneDB.tablesorter_formatters = make_tablesorter_formatters(epigeneDB.formatters, epigeneDB.preserveFormatters);
 
+  // apply formatters outside of tablesorter
   epigeneDB.apply_formatters = function(jquery_selector) {
     var selector, formatter;
     for (selector in epigeneDB.formatters) {
-      formatter = epigeneDB.formatters[selector];
+      formatter = formatter_ignoring_sharp(epigeneDB.formatters[selector]);
 
       $(jquery_selector).filter(selector).each(function(ind, elem) {
-        var data = {
+        var data = { // mimic table cell
           $cell: $(elem).eq(0),
         };
         window.dat = data;
