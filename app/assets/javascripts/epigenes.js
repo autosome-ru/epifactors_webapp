@@ -109,7 +109,7 @@ var page_ready = function() {
             );
   };
 
-  uniprotURL = function(cells, field_name){
+  uniprotURL = function(cells, field_prefix){
     var maxNumberOfUniprots = 100;
     if (cells.length > maxNumberOfUniprots) {
       alert("You are trying to send a list of " + cells.length + " unique Uniprot identifiers.\n" +
@@ -118,7 +118,7 @@ var page_ready = function() {
     }
 
     var query = $.map(cells, function(cell){
-      return field_name + ':' + cell;
+      return field_prefix + cell;
     }).join(' OR ');
     return 'http://www.uniprot.org/uniprot/?query=' + encodeURIComponent(query);
   };
@@ -126,13 +126,13 @@ var page_ready = function() {
   $('th.uniprot_ac .export_uniprot').mouseup(function(e){
     e.stopPropagation(); // We should prevent mouseup propagation, other tablesorter will resort column
   }).click(function(e){
-    window.location = uniprotURL(uniprotCombTermsShown($(e.target).closest('th')), 'accession');
+    window.location = uniprotURL(uniprotCombTermsShown($(e.target).closest('th')), 'accession:');
   });
 
   $('th.uniprot_id, .uniprot_id_comb').find('.export_uniprot').mouseup(function(e){
     e.stopPropagation(); // We should prevent mouseup propagation, other tablesorter will resort column
   }).click(function(e){
-    window.location = uniprotURL(uniprotCombTermsShown($(e.target).closest('th')), 'mnemonic');
+    window.location = uniprotURL(uniprotCombTermsShown($(e.target).closest('th')), '');
   });
 
   $('tr.uniprot_id_comb_row td .export_uniprot').mouseup(function(e){
@@ -145,7 +145,7 @@ var page_ready = function() {
                 return (el != '') && (el != '#');
               }
             );
-    window.location = uniprotURL(terms, 'mnemonic');
+    window.location = uniprotURL(terms, '');
   });
 };
 
