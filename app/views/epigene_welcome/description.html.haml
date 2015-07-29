@@ -60,3 +60,13 @@
     %li= link_to 'Gene expressions table (FANTOM 5 data)', '/public_data/gene_expressions_by_sample.zip'
     %li= link_to 'FANTOM5 samples description', '/public_data/fantom_sample_infos.zip'
     %li= link_to 'UNIPROT to HOCOMOCO (transcription factor binding motifs) mapping', '/public_data/HOCOMOCOv9_motifs2uniprot.txt'
+%p
+  %b Contacts:
+  %ul
+    %li Technical questions and suggestions can be addressed to #{link_to 'Ilya Vorontsov', 'mailto:vorontsov.i.e _at_ gmail _dot_ com'}
+    %li Annotation errors can be reported to #{link_to 'Yulia Medvedeva', 'mailto:ju.medvedeva _at_ gmail _dot_ com'}
+    %li General questions can be addressed to #{link_to 'Yulia Medvedeva', 'mailto:ju.medvedeva _at_ gmail _dot_ com'}
+
+.citation
+  %b Please cite:
+  = render 'shared/citation'
