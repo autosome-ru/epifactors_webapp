@@ -5,7 +5,7 @@
   };
 
   epigeneDB.fantom_sstar_gene_link = function(gene_id) {
-    return '<a href="http://fantom.gsc.riken.jp/5/sstar/EntrezGene:' + gene_id + '">sstar profile</a>';
+    return '<a href="http://fantom.gsc.riken.jp/5/sstar/EntrezGene:' + gene_id + '">SSTAR profile</a>';
   };
 
   epigeneDB.hgnc_id_link = function(hgnc) {
