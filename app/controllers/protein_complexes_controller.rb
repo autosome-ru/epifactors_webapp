@@ -1,5 +1,4 @@
 class ProteinComplexesController < ApplicationController
-  respond_to :html
   def index
     @protein_complexes = ProteinComplex.by_params(params)
 
@@ -7,13 +6,21 @@ class ProteinComplexesController < ApplicationController
       redirect_to protein_complex_path(@protein_complexes.first.id) and return
     end
 
-    @protein_complexes = ProteinComplexDecorator.decorate_collection(@protein_complexes)
-    respond_with(@protein_complexes)
+    respond_to do |format|
+      format.html do
+        @protein_complexes = ProteinComplexDecorator.decorate_collection(@protein_complexes)
+      end
+      format.json{ render json: @protein_complexes.map{|protein_complex| {id: protein_complex.id, complex_name: protein_complex.complex_name} } }
+    end
   end
   def show
     @protein_complex = ProteinComplex.find(params[:id])
-    @protein_complex = @protein_complex.decorate
-    respond_with(@protein_complex)
+    respond_to do |format|
+      format.html do
+        @protein_complex = @protein_complex.decorate
+      end
+      format.json
+    end
   end
 protected
   def page_title

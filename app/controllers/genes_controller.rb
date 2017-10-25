@@ -1,13 +1,16 @@
 class GenesController < ApplicationController
-  respond_to :html
   def index
     @genes = Gene.by_params(params)
     if @genes.count == 1 && !(params[:redirect] == 'no')
       redirect_to gene_path(@genes.first.id) and return
     end
 
-    @genes = GeneDecorator.decorate_collection(@genes)
-    respond_with(@genes)
+    respond_to do |format|
+      format.html do
+        @genes = GeneDecorator.decorate_collection(@genes)
+      end
+      format.json{ render json: @genes.map{|gene| {id: gene.id, hgnc_symbol: gene.hgnc_symbol} } }
+    end
   end
   def show
     @gene = Gene.find(params[:id])
@@ -15,8 +18,12 @@ class GenesController < ApplicationController
     @expression_statistics = @gene.expression_statistics
 
     @expression_statistics = StatisticsDecorator.decorate(@expression_statistics)
-    @gene = @gene.decorate
-    respond_with(@gene)
+    respond_to do |format|
+      format.html do
+        @gene = @gene.decorate
+      end
+      format.json
+    end
   end
 
 protected

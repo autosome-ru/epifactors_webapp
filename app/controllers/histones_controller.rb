@@ -1,5 +1,4 @@
 class HistonesController < ApplicationController
-  respond_to :html
   def index
     @histones = Histone.by_params(params)
 
@@ -7,8 +6,12 @@ class HistonesController < ApplicationController
       redirect_to histone_path(@histones.first.id) and return
     end
 
-    @histones = HistoneDecorator.decorate_collection(@histones)
-    respond_with(@histones)
+    respond_to do |format|
+      format.html do
+        @histones = HistoneDecorator.decorate_collection(@histones)
+      end
+      format.json{ render json: @histones.map{|histone| {id: histone.id, hgnc_symbol: histone.hgnc_symbol} } }
+    end
   end
   def show
     @histone = Histone.find(params[:id])
@@ -16,8 +19,13 @@ class HistonesController < ApplicationController
     @expression_statistics = @histone.expression_statistics
 
     @expression_statistics = StatisticsDecorator.decorate(@expression_statistics)
-    @histone = @histone.decorate
-    respond_with(@histone)
+    respond_to do |format|
+      format.html do
+        @histone = @histone.decorate
+      end
+      format.json
+    end
+
   end
 protected
   def page_title

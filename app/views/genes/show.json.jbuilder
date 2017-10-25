@@ -1,0 +1,25 @@
+json.hgnc_symbol  @gene.hgnc_symbol
+json.status  @gene.status
+json.hgnc_id  @gene.hgnc_id
+json.hgnc_name  @gene.hgnc_name
+json.gene_id  @gene.gene_id
+json.uniprot_ac  @gene.uniprot_ac
+json.uniprot_id  @gene.uniprot_id
+json.domain  @gene.domain
+json.mgi_symbol  @gene.mgi_symbol
+json.mgi_id  @gene.mgi_id
+json.uniprot_ac_mm  @gene.uniprot_ac_mm
+json.uniprot_id_mm  @gene.uniprot_id_mm
+json.gene_tag  @gene.gene_tag
+json.gene_desc  @gene.gene_desc
+json.function  @gene.function
+json.modification  @gene.modification
+json.pmid_function  @gene.pmid_function
+json.complex_name  @gene.complex_name
+json.target  @gene.target
+json.specific_target  @gene.specific_target
+json.hocomoco_link  @gene.hocomoco_link  if @gene.tf?
+json.product  @gene.product
+json.uniprot_id_target  @gene.uniprot_id_target
+json.pmid_target  @gene.pmid_target
+json.comment  @gene.comment
