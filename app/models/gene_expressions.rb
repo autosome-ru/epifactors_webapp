@@ -61,6 +61,7 @@ class GeneExpressions
 
   def expressions_with_quantiles_by_sample(sample_id)
     sample_index = @index_of_sample_cache[sample_id]
+    return []  unless sample_index
     @gene_expressions.map{|hgnc_id, expressions_for_samples|
       [ hgnc_id,
         expressions_for_samples[sample_index],
