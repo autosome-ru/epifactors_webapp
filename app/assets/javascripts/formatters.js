@@ -111,11 +111,9 @@
     if (value == '') {
       return '';
     }
-    var parts = value.split('_');
-    var tf = parts[0];
-    var model = parts[1];
-    var img_html = '<img src="http://autosome.ru/HOCOMOCO/logos/thumbs/' + value + '_thumb.jpg">';
-    var link_html = '<a href="http://autosome.ru/HOCOMOCO/modelDetails.php?tf=' + tf + '&model=' + model + '">' +
+    var species = value.split('.')[0].split('_')[1];
+    var img_html = '<img src="http://hocomoco11.autosome.ru/final_bundle/hocomoco11/full/' + species + '/mono/logo_small/' + value + '_direct.png">';
+    var link_html = '<a href="http://hocomoco11.autosome.ru/motif/' + value + '">' +
                     value + img_html +
                     '</a>';
     return '<div class="hocomoco_link">' + link_html + '</div>';
