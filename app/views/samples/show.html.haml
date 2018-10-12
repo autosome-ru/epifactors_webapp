@@ -37,3 +37,6 @@
         %td= hgnc_id
         %td= expression
         %td= quantile_over_samples
+
+- content_for(:meta_description) do
+  = "Expression of epigenetic factors in #{@sample.sample_name} (#{@sample.library_name}.#{@sample.extract_name})"

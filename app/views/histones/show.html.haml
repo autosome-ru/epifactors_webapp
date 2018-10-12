@@ -25,3 +25,6 @@
 .table_caption Expression statistics
 = render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
 = render partial: 'shared/expressions_by_samples', locals: {statistics: @expression_statistics, expressions_with_quantiles: @expressions_with_quantiles}
+
+- content_for(:meta_description) do
+  = "#{@histone.molecule_kind.capitalize} info for human #{@histone.hgnc_symbol} (#{@histone.uniprot_id} in UniProt) and murine #{@histone.mgi_symbol} (#{@histone.uniprot_id_mm} in UniProt)"

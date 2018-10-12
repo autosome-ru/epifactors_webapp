@@ -28,9 +28,6 @@ class GenesController < ApplicationController
 
 protected
   def page_title
-    'Genes - ' + super
-  end
-  def page_title
     if params[:action].to_sym == :show
       @gene.hgnc_symbol + " gene - " + super
     else

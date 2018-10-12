@@ -32,3 +32,6 @@
 .table_caption Expression statistics
 = render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
 = render partial: 'shared/expressions_by_samples', locals: {statistics: @expression_statistics, expressions_with_quantiles: @expressions_with_quantiles}
+
+- content_for(:meta_description) do
+  = "Gene info for human #{@gene.hgnc_symbol} (#{@gene.uniprot_id} in UniProt) and murine #{@gene.mgi_symbol} (#{@gene.uniprot_id_mm} in UniProt)"

@@ -11,4 +11,12 @@ class SamplesController < ApplicationController
     @histones_by_hgnc_id = Histone.all.map{|histone| [histone.hgnc_id.to_i, histone] }.to_h
     @sample = SampleDecorator.decorate(@sample)
   end
+protected
+  def page_title
+    if params[:action].to_sym == :show
+      "Expression in #{@sample} - " + super
+    else
+      'Samples - ' + super
+    end
+  end
 end
