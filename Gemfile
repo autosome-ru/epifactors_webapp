@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.2'
+gem 'rails', '~>4.2.10'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -61,4 +61,5 @@ group :development, :test do
   gem 'railroady'
   # or alternatively (https://github.com/voormedia/rails-erd)
   # gem 'rails-erd'
+  gem 'web-console', '~> 2.0'
 end
