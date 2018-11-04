@@ -1,4 +1,6 @@
 class ProteinComplexesController < ApplicationController
+  caches_action :index, unless: ->{ params.has_key? :search }
+
   def index
     @protein_complexes = ProteinComplex.by_params(params)
 

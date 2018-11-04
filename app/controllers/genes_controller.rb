@@ -1,4 +1,6 @@
 class GenesController < ApplicationController
+  caches_action :index, unless: ->{ params.has_key? :search }
+
   def index
     @genes = Gene.by_params(params)
     if @genes.count == 1 && !(params[:redirect] == 'no')

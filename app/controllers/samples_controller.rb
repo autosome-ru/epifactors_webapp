@@ -1,4 +1,6 @@
 class SamplesController < ApplicationController
+  caches_action :index
+
   def index
     @samples = SampleDecorator.decorate_collection(GeneExpressions.instance.samples)
   end

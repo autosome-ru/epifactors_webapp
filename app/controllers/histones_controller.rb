@@ -1,4 +1,6 @@
 class HistonesController < ApplicationController
+  caches_action :index, unless: ->{ params.has_key? :search }
+
   def index
     @histones = Histone.by_params(params)
 

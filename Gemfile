@@ -55,6 +55,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
 gem 'draper'
 # gem 'pg'
+gem 'actionpack-action_caching'
 
 group :development, :test do
   # Draw DB diagrams (https://github.com/preston/railroady)
