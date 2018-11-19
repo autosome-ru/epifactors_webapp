@@ -21,7 +21,7 @@
 //= require jquery-tablesorter/widgets/widget-resizable
 //= require jquery-tablesorter/widgets/widget-saveSort
 //= require jquery-tablesorter/widgets/widget-stickyHeaders
-//= require jquery-tablesorter/widgets/widget-storage 
+//= require jquery-tablesorter/widgets/widget-storage
 //= require jquery-tablesorter/widgets/widget-uitheme
 
 //= require jquery-tablesorter/widgets/widget-filter-formatter-html5

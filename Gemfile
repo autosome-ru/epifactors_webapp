@@ -16,8 +16,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -47,12 +45,12 @@ end
 
 gem 'rubyXL'
 gem 'haml-rails'
-gem 'jquery-tablesorter', '>= 1.15' # tablesorter 2.19
-gem 'select2-rails'
+gem 'jquery-tablesorter', '~>1.22.0' # '~> 1.16.5' # tablesorter 2.19
+gem 'select2-rails', '~>3.5'
 
 gem 'therubyracer'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
+gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git', :ref => "1d93c5a77049b3d21d17c847ad0531d7714fa229" #, branch: 'bootstrap3'
 gem 'draper'
 # gem 'pg'
 gem 'actionpack-action_caching'
