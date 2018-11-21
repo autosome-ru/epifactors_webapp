@@ -1,3 +1,4 @@
+//= depend_on "env.yaml"
 ;(function(epigeneDB, $, undefined) {
 
   epigeneDB.gene_id_link = function(gene_id) {
@@ -112,8 +113,8 @@
       return '';
     }
     var species = value.split('.')[0].split('_')[1];
-    var img_html = '<img src="http://hocomoco11.autosome.ru/final_bundle/hocomoco11/full/' + species + '/mono/logo_small/' + value + '_direct.png">';
-    var link_html = '<a href="http://hocomoco11.autosome.ru/motif/' + value + '">' +
+    var img_html = '<img src="<%= ENV['HOCOMOCO11_URL'] %>final_bundle/hocomoco11/full/' + species + '/mono/logo_small/' + value + '_direct.png">';
+    var link_html = '<a href="<%= ENV['HOCOMOCO11_URL'] %>motif/' + value + '">' +
                     value + img_html +
                     '</a>';
     return '<div class="hocomoco_link">' + link_html + '</div>';
