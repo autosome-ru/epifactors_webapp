@@ -43,10 +43,6 @@
     return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>';
   };
 
-  epigeneDB.refseq_link = function(refseq) {
-    return '<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>';
-  };
-
   epigeneDB.pmid_link = function(pmid) {
     if (isNaN(pmid)) {
       return pmid; // Some PMIDs look like "Uniprot", "by similarity" and "Uniprot (by similarity)"
@@ -90,21 +86,6 @@
       return '<a href="' + url + '">' + value + '</a> <span class="fantom-external-link">(<a href="' + fantom_sstar_url + '">FANTOM5 SSTAR</a>)</span>';
     } else {
       return value;
-    }
-  };
-
-  epigeneDB.ec_number_link = function(ec) {
-    var ec_parts = ec.split('.');
-    var ec_query = [];
-    $.each(ec_parts, function(ec_part_index, ec_part) {
-      if (Number(ec_part)) {
-        ec_query.push('field' + (1 + ec_part_index) + '=' + ec_part);
-      }
-    });
-    if (ec_query.length > 0) {
-      return '<a href="http://enzyme.expasy.org/cgi-bin/enzyme/enzyme-search-ec?' + ec_query.join('&') + '">' + ec + '</a>';
-    } else {
-      return ec;
     }
   };
 
@@ -234,11 +215,9 @@
 
   epigeneDB.formatters = {
     '.gene_id'         : epigeneDB.gene_id_link,
-    '.ec_number'       : epigeneDB.ec_number_link,
     '.hgnc_id'         : epigeneDB.hgnc_id_link,
     '.mgi_id'          : epigeneDB.mgi_id_link,
     '.uniprot_ac'      : epigeneDB.uniprot_ac_link,
-    '.refseq'          : epigeneDB.refseq_link,
     '.uniprot_id_comb' : epigeneDB.uniprot_comb_link,
     '.gene_comb'       : epigeneDB.gene_comb_link,
     '.expression_bar'  : epigeneDB.expression_bar,
