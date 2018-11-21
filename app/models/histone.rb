@@ -20,4 +20,8 @@ class Histone < ActiveRecord::Base
   def to_s
     hgnc_symbol
   end
+
+  def molecule_kind
+    hgnc_name.start_with?('protamine')  ? 'protamine' : 'histone'
+  end
 end

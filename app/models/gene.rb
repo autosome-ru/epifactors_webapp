@@ -29,4 +29,8 @@ class Gene < ActiveRecord::Base
   def to_s
     hgnc_symbol
   end
+
+  def molecule_kind
+    'gene'
+  end
 end
