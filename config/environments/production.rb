@@ -21,7 +21,7 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_files = false
+  config.serve_static_files = true # it's simpler to serve them in case that nginx is turned off
 
   # Compress JavaScripts and CSS.
   # select2(jquery) fix for IE8
