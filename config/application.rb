@@ -14,6 +14,8 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module EpigeneDB
+  DATA_VERSION = '1.7.3'
+
   class Application < Rails::Application
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'env.yaml')
