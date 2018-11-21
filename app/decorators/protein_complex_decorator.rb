@@ -1,4 +1,4 @@
-class ProteinComplexDecorator < Draper::Decorator
+class ProteinComplexDecorator < ApplicationDecorator
   delegate_all
   def complex_name_link(text = nil)
      h.link_to(text || object.complex_name, h.protein_complex_path(object))

@@ -1,4 +1,4 @@
-class StatisticsDecorator < Draper::Decorator
+class StatisticsDecorator < ApplicationDecorator
   delegate_all
 
   def min; object.min || 'N/A'; end

@@ -1,4 +1,4 @@
-class HistoneDecorator < Draper::Decorator
+class HistoneDecorator < ApplicationDecorator
   delegate_all
 
   def molecule_kind

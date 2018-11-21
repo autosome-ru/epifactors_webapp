@@ -1,4 +1,4 @@
-class GeneDecorator < Draper::Decorator
+class GeneDecorator < ApplicationDecorator
   delegate_all
 
   def molecule_kind
