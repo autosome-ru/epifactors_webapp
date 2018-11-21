@@ -35,8 +35,8 @@
         %td= obj.molecule_kind
         %td= link_to hgnc_symbol, obj
         %td= hgnc_id
-        %td= expression
-        %td= quantile_over_samples
+        %td= expression.round(1)
+        %td= quantile_over_samples.round(3)
 
 - content_for(:meta_description) do
   = "Expression of epigenetic factors in #{@sample.sample_name} (#{@sample.library_name}.#{@sample.extract_name})"
