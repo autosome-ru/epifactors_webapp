@@ -18,7 +18,7 @@ module EpigeneDB
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'env.yaml')
       next  unless File.exists?(env_file)
-      YAML.load_file(env_file).each{|k,v| ENV[k] = v }
+      YAML.load_file(env_file).each{|k,v| ENV[k] ||= v }
     end
 
     # Settings in config/environments/* take precedence over those specified here.
