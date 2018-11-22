@@ -1,6 +1,5 @@
 json.group_name  @protein_complex.group_name
 json.complex_name  @protein_complex.complex_name
-json.status  @protein_complex.status
 json.genes_in_complex  @protein_complex.genes_in_complex
 json.alternative_name  @protein_complex.alternative_name
 json.protein  @protein_complex.protein
@@ -14,3 +13,4 @@ json.product  @protein_complex.product
 json.uniprot_id_target  @protein_complex.uniprot_id_target
 json.pmid_target  @protein_complex.pmid_target
 json.comment  @protein_complex.comment
+json.status  @protein_complex.status

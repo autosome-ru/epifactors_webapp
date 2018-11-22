@@ -2,7 +2,6 @@
 %table.key_value_info
   %tbody
     = table_info_row(@gene, :hgnc_symbol){|g| hgnc_id_link(g.hgnc_id, name: g.hgnc_symbol) }
-    = table_info_row(@gene, :status)
     = table_info_row(@gene, :hgnc_id){|g| hgnc_id_link(g.hgnc_id) }
     = table_info_row(@gene, :hgnc_name)
     = table_info_row(@gene, :gene_id){|g| gene_id_link(g.gene_id) }
@@ -27,6 +26,7 @@
     = table_info_row(@gene, :uniprot_id_target){|g| uniprot_id_or_ac_links(g.uniprot_id_target) }
     = table_info_row(@gene, :pmid_target){|g| pmid_links(g.pmid_target) }
     = table_info_row @gene, :comment
+    = table_info_row @gene, :status
 
 %hr
 .table_caption Expression statistics

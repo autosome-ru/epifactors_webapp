@@ -10,7 +10,6 @@
   %thead
     %tr
       = histone_table_header :hgnc_symbol, show_always: true
-      = histone_table_header :status, hide_by_default: true
       = histone_table_header :hgnc_id, hide_by_default: true, dont_sort: true, class: 'hgnc_id'
       = histone_table_header :hgnc_name
       = histone_table_header :gene_id, hide_by_default: true, dont_sort: true, class: 'gene_id'
@@ -36,6 +35,7 @@
       = histone_table_header :targeted_by_complex, class: ['splitted_terms_filter', 'filter-onlyAvail', 'target_complex'], dont_sort: true
       = histone_table_header :pmid, class: 'pmid', hide_by_default: true, dont_sort: true
       = histone_table_header :comment, hide_by_default: true, class: 'comment'
+      = histone_table_header :status, hide_by_default: true
 
   %tbody
     - @histones.each do |histone|
@@ -44,7 +44,6 @@
           = histone.hgnc_symbol
           %br
           = link_to '(details)', histone_path(histone)
-        %td= histone.status
         %td= histone.hgnc_id
         %td= histone.hgnc_name
         %td= histone.gene_id
@@ -62,3 +61,4 @@
         %td= histone.targeted_by_complex
         %td= histone.pmid
         %td= histone.comment
+        %td= histone.status

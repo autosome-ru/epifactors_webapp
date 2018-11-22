@@ -1,5 +1,4 @@
 json.hgnc_symbol  @histone.hgnc_symbol
-json.status  @histone.status
 json.hgnc_id  @histone.hgnc_id
 json.hgnc_name  @histone.hgnc_name
 json.gene_id  @histone.gene_id
@@ -17,3 +16,4 @@ json.targeted_by_protein  @histone.targeted_by_protein
 json.targeted_by_complex  @histone.targeted_by_complex
 json.pmid  @histone.pmid
 json.comment  @histone.comment
+json.status  @histone.status

@@ -2,7 +2,6 @@
 %table.key_value_info
   %tbody
     = table_info_row(@histone, :hgnc_symbol){|h| hgnc_id_link(h.hgnc_id, name: h.hgnc_symbol) }
-    = table_info_row(@histone, :status)
     = table_info_row(@histone, :hgnc_id){|h| hgnc_id_link(h.hgnc_id) }
     = table_info_row(@histone, :hgnc_name)
     = table_info_row(@histone, :gene_id){|h| gene_id_link(h.gene_id) }
@@ -20,6 +19,7 @@
     = table_info_row(@histone, :targeted_by_complex){|h| target_complex_links(h.targeted_by_complex) }
     = table_info_row(@histone, :pmid){|h| pmid_links(h.pmid) }
     = table_info_row @histone, :comment
+    = table_info_row @histone, :status
 
 %hr
 .table_caption Expression statistics

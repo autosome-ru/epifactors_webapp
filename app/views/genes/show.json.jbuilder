@@ -1,5 +1,4 @@
 json.hgnc_symbol  @gene.hgnc_symbol
-json.status  @gene.status
 json.hgnc_id  @gene.hgnc_id
 json.hgnc_name  @gene.hgnc_name
 json.gene_id  @gene.gene_id
@@ -23,3 +22,4 @@ json.product  @gene.product
 json.uniprot_id_target  @gene.uniprot_id_target
 json.pmid_target  @gene.pmid_target
 json.comment  @gene.comment
+json.status  @gene.status

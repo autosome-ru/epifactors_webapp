@@ -3,7 +3,6 @@
   %tbody
     = table_info_row @protein_complex, :group_name
     = table_info_row @protein_complex, :complex_name
-    = table_info_row @protein_complex, :status
     = table_info_row @protein_complex, :genes_in_complex, html_options: { value_column_html: {class: 'gene_comb'} }
     = table_info_row @protein_complex, :alternative_name
     = table_info_row @protein_complex, :protein
@@ -17,6 +16,7 @@
     = table_info_row(@protein_complex, :uniprot_id_target){|pc| uniprot_id_or_ac_links(pc.uniprot_id_target) }
     = table_info_row(@protein_complex, :pmid_target){|pc| pmid_links(pc.pmid_target) }
     = table_info_row @protein_complex, :comment
+    = table_info_row @protein_complex, :status
 
 - content_for(:meta_description) do
   = "#{@protein_complex.complex_name} protein complex (group #{@protein_complex.group_name}). Consists of #{@protein_complex.genes_in_complex_names_only} genes."

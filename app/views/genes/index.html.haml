@@ -10,7 +10,6 @@
   %thead
     %tr
       = gene_table_header :hgnc_symbol, show_always: true
-      = gene_table_header :status, hide_by_default: true
       = gene_table_header :hgnc_id, hide_by_default: true, dont_sort: true, class: 'hgnc_id'
       = gene_table_header :hgnc_name
       = gene_table_header :gene_id, hide_by_default: true, dont_sort: true, class: 'gene_id'
@@ -41,6 +40,7 @@
       = gene_table_header :uniprot_id_target, class: 'uniprot_id', hide_by_default: true
       = gene_table_header :pmid_target, hide_by_default: true, dont_sort: true, class: 'pmid'
       = gene_table_header :comment, hide_by_default: true, dont_sort: true, class: 'comment'
+      = gene_table_header :status, hide_by_default: true
 
   %tbody
     - @genes.each do |gene|
@@ -49,7 +49,6 @@
           = gene.hgnc_symbol
           %br
           = link_to '(details)', gene_path(gene)
-        %td= gene.status
         %td= gene.hgnc_id
         %td= gene.hgnc_name
         %td= gene.gene_id
@@ -72,3 +71,4 @@
         %td= gene.uniprot_id_target
         %td= gene.pmid_target
         %td= gene.comment
+        %td= gene.status
