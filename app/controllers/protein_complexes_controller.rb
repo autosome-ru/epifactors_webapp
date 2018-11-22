@@ -2,7 +2,7 @@ class ProteinComplexesController < ApplicationController
   caches_action :index, unless: ->{ params.has_key? :search }
 
   def index
-    @protein_complexes = ProteinComplex.by_params(params)
+    @protein_complexes = ProteinComplex.by_params(params).sort_by(&:complex_name)
 
     if @protein_complexes.count == 1 && !(params[:redirect] == 'no')
       redirect_to protein_complex_path(@protein_complexes.first.id) and return

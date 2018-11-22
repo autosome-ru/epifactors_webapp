@@ -2,7 +2,7 @@ class HistonesController < ApplicationController
   caches_action :index, unless: ->{ params.has_key? :search }
 
   def index
-    @histones = Histone.by_params(params)
+    @histones = Histone.by_params(params).sort_by(&:hgnc_symbol)
 
     if @histones.count == 1 && !(params[:redirect] == 'no')
       redirect_to histone_path(@histones.first.id) and return
@@ -17,7 +17,9 @@ class HistonesController < ApplicationController
   end
   def show
     @histone = Histone.find(params[:id])
-    @expressions_with_quantiles = @histone.gene_expressions_with_quantiles
+    @expressions_with_quantiles = @histone.gene_expressions_with_quantiles.sort_by{|sample, expression, quantile_over_genes|
+      [sample.sample_kind, -expression]
+    }
     @expression_statistics = @histone.expression_statistics
 
     @expression_statistics = StatisticsDecorator.decorate(@expression_statistics)
