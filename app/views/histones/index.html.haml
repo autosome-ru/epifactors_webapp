@@ -30,11 +30,7 @@
         .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
       = histone_table_header :gene_tag, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = histone_table_header :gene_desc, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = histone_table_header :complex_name, hide_by_default: true
-      = histone_table_header :targeted_by_protein, hide_by_default: true
       = histone_table_header :targeted_by_complex, class: ['splitted_terms_filter', 'filter-onlyAvail', 'target_complex'], dont_sort: true
-      = histone_table_header :pmid, class: 'pmid', hide_by_default: true, dont_sort: true
-      = histone_table_header :comment, hide_by_default: true, class: 'comment'
       = histone_table_header :status, hide_by_default: true
 
   %tbody
@@ -56,9 +52,5 @@
         %td= histone.uniprot_id_mm
         %td= histone.gene_tag
         %td= histone.gene_desc
-        %td= histone.complex_name
-        %td= histone.targeted_by_protein
         %td= histone.targeted_by_complex
-        %td= histone.pmid
-        %td= histone.comment
         %td= histone.status

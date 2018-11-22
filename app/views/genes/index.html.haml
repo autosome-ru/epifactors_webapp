@@ -37,7 +37,6 @@
       = gene_table_header :target, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
       = gene_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_table_header :uniprot_id_target, class: 'uniprot_id', hide_by_default: true
       = gene_table_header :pmid_target, hide_by_default: true, dont_sort: true, class: 'pmid'
       = gene_table_header :comment, hide_by_default: true, dont_sort: true, class: 'comment'
       = gene_table_header :status, hide_by_default: true
@@ -68,7 +67,6 @@
         %td= gene.target
         %td= gene.specific_target
         %td= gene.product
-        %td= gene.uniprot_id_target
         %td= gene.pmid_target
         %td= gene.comment
         %td= gene.status

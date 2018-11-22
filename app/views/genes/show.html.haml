@@ -23,7 +23,6 @@
     - if @gene.tf?
       = table_info_row @gene, :hocomoco_link
     = table_info_row @gene, :product
-    = table_info_row(@gene, :uniprot_id_target){|g| uniprot_id_or_ac_links(g.uniprot_id_target) }
     = table_info_row(@gene, :pmid_target){|g| pmid_links(g.pmid_target) }
     = table_info_row @gene, :comment
     = table_info_row @gene, :status
