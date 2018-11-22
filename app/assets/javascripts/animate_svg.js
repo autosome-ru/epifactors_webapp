@@ -152,4 +152,3 @@ load_svg = function() {
 }
 
 $(document).ready(load_svg)
-$(document).on('page:load', load_svg)

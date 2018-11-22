@@ -15,7 +15,7 @@
 //= require twitter/bootstrap
 //= require select2
 
-//= require jquery-tablesorter
+//= require jquery-tablesorter/jquery.tablesorter
 //= require jquery-tablesorter/widgets/widget-columns
 //= require jquery-tablesorter/widgets/widget-filter
 //= require jquery-tablesorter/widgets/widget-resizable
