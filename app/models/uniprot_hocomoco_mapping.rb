@@ -4,7 +4,7 @@ class UniprotHocomocoMapping
   end
 
   def motifs_by_uniprots(*uniprots)
-    @motifs_by_uniprot.values_at(*uniprots).compact.uniq
+    @motifs_by_uniprot.values_at(*uniprots).compact.flatten.uniq
   end
 
   def uniprot_by_motif(motif)
