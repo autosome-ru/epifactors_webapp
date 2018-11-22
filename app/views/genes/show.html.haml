@@ -1,31 +1,31 @@
 .table_caption Gene info
 %table.key_value_info
   %tbody
-    = table_info_row @gene, :hgnc_symbol
-    = table_info_row @gene, :status
-    = table_info_row @gene, :hgnc_id, html_options: { value_column_html: {class: 'hgnc_id'} }
-    = table_info_row @gene, :hgnc_name
-    = table_info_row @gene, :gene_id, html_options: { value_column_html: {class: 'gene_id'} }
-    = table_info_row @gene, :uniprot_ac, html_options: { value_column_html: {class: 'uniprot_ac'} }
-    = table_info_row @gene, :uniprot_id, html_options: { value_column_html: {class: 'uniprot_id'} }
-    = table_info_row @gene, :domain, html_options: { value_column_html: {class: 'pfam_domain'} }
-    = table_info_row @gene, :mgi_symbol
-    = table_info_row @gene, :mgi_id, html_options: { value_column_html: {class: 'mgi_id'} }
-    = table_info_row @gene, :uniprot_ac_mm, html_options: { value_column_html: {class: 'uniprot_ac'} }
-    = table_info_row @gene, :uniprot_id_mm, html_options: { value_column_html: {class: 'uniprot_id'} }
+    = table_info_row(@gene, :hgnc_symbol){|g| hgnc_id_link(g.hgnc_id, name: g.hgnc_symbol) }
+    = table_info_row(@gene, :status)
+    = table_info_row(@gene, :hgnc_id){|g| hgnc_id_link(g.hgnc_id) }
+    = table_info_row(@gene, :hgnc_name)
+    = table_info_row(@gene, :gene_id){|g| gene_id_link(g.gene_id) }
+    = table_info_row(@gene, :uniprot_ac){|g| uniprot_id_or_ac_links(g.uniprot_ac) }
+    = table_info_row(@gene, :uniprot_id){|g| uniprot_id_or_ac_links(g.uniprot_id) }
+    = table_info_row(@gene, :domain){|g| pfam_domain_links(g.domain) }
+    = table_info_row(@gene, :mgi_symbol){|g| mgi_id_link(g.mgi_id, name: g.mgi_symbol) }
+    = table_info_row(@gene, :mgi_id){|g| mgi_id_link(g.mgi_id) }
+    = table_info_row(@gene, :uniprot_ac_mm){|g| uniprot_id_or_ac_links(g.uniprot_ac_mm) }
+    = table_info_row(@gene, :uniprot_id_mm){|g| uniprot_id_or_ac_links(g.uniprot_id_mm) }
     = table_info_row @gene, :gene_tag
     = table_info_row @gene, :gene_desc
     = table_info_row @gene, :function
     = table_info_row @gene, :modification
-    = table_info_row @gene, :pmid_function, html_options: { value_column_html: {class: 'pmid'} }
-    = table_info_row @gene, :complex_name, html_options: { value_column_html: {class: 'target_complex'} }
+    = table_info_row(@gene, :pmid_function){|g| pmid_links(g.pmid_function) }
+    = table_info_row(@gene, :complex_name){|g| target_complex_links(g.complex_name) }
     = table_info_row @gene, :target
     = table_info_row @gene, :specific_target
     - if @gene.tf?
-      = table_info_row @gene, :hocomoco_link, html_options: { value_column_html: {class: 'hocomoco'} }
+      = table_info_row @gene, :hocomoco_link
     = table_info_row @gene, :product
-    = table_info_row @gene, :uniprot_id_target, html_options: { value_column_html: {class: 'uniprot_id'} }
-    = table_info_row @gene, :pmid_target, html_options: { value_column_html: {class: 'pmid'} }
+    = table_info_row(@gene, :uniprot_id_target){|g| uniprot_id_or_ac_links(g.uniprot_id_target) }
+    = table_info_row(@gene, :pmid_target){|g| pmid_links(g.pmid_target) }
     = table_info_row @gene, :comment
 
 %hr

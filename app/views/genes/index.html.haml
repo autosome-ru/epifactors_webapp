@@ -45,7 +45,10 @@
   %tbody
     - @genes.each do |gene|
       %tr
-        %td{'data-text' => gene.hgnc_symbol }= gene.hgnc_symbol_link
+        %td{'data-text' => gene.hgnc_symbol }
+          = gene.hgnc_symbol
+          %br
+          = link_to '(details)', gene_path(gene)
         %td= gene.status
         %td= gene.hgnc_id
         %td= gene.hgnc_name

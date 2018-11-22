@@ -18,7 +18,7 @@ json.pmid_function  @gene.pmid_function
 json.complex_name  @gene.complex_name
 json.target  @gene.target
 json.specific_target  @gene.specific_target
-json.hocomoco_link  @gene.hocomoco_link  if @gene.tf?
+json.hocomoco_link  @gene.hocomoco_motifs.join(', ')  if @gene.tf?
 json.product  @gene.product
 json.uniprot_id_target  @gene.uniprot_id_target
 json.pmid_target  @gene.pmid_target

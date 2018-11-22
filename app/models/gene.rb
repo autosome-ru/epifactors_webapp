@@ -33,4 +33,9 @@ class Gene < ActiveRecord::Base
   def molecule_kind
     'gene'
   end
+
+  def hocomoco_motifs
+    return []  unless tf?
+    UniprotHocomocoMapping.instance.motifs_by_uniprots(uniprot_id, uniprot_id_mm)
+  end
 end

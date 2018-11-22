@@ -8,14 +8,14 @@
     = table_info_row @protein_complex, :alternative_name
     = table_info_row @protein_complex, :protein
     = table_info_row_uniprot_comb @protein_complex, html_options: { value_column_html: {class: 'uniprot_id_comb'}, row_html:{ class: 'uniprot_id_comb_row'} }
-    = table_info_row @protein_complex, :pmid_complex, html_options: { value_column_html: {class: 'pmid'} }
+    = table_info_row(@protein_complex, :pmid_complex){|pc| pmid_links(pc.pmid_complex) }
     = table_info_row @protein_complex, :function
-    = table_info_row @protein_complex, :pmid_function, html_options: { value_column_html: {class: 'pmid'} }
+    = table_info_row(@protein_complex, :pmid_function){|pc| pmid_links(pc.pmid_function) }
     = table_info_row @protein_complex, :target
     = table_info_row @protein_complex, :specific_target
     = table_info_row @protein_complex, :product
-    = table_info_row @protein_complex, :uniprot_id_target, html_options: { value_column_html: {class: 'uniprot_id'} }
-    = table_info_row @protein_complex, :pmid_target, html_options: { value_column_html: {class: 'pmid'} }
+    = table_info_row(@protein_complex, :uniprot_id_target){|pc| uniprot_id_or_ac_links(pc.uniprot_id_target) }
+    = table_info_row(@protein_complex, :pmid_target){|pc| pmid_links(pc.pmid_target) }
     = table_info_row @protein_complex, :comment
 
 - content_for(:meta_description) do

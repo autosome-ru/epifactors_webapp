@@ -1,4 +1,3 @@
-//= depend_on "env.yaml"
 ;(function(epigeneDB, $, undefined) {
 
   epigeneDB.gene_id_link = function(gene_id) {
@@ -87,18 +86,6 @@
     } else {
       return value;
     }
-  };
-
-  epigeneDB.hocomoco_link = function(value) {
-    if (value == '') {
-      return '';
-    }
-    var species = value.split('.')[0].split('_')[1];
-    var img_html = '<img src="<%= ENV['HOCOMOCO11_URL'] %>final_bundle/hocomoco11/full/' + species + '/mono/logo_small/' + value + '_direct.png">';
-    var link_html = '<a href="<%= ENV['HOCOMOCO11_URL'] %>motif/' + value + '">' +
-                    value + img_html +
-                    '</a>';
-    return '<div class="hocomoco_link">' + link_html + '</div>';
   };
 
   epigeneDB.comb_span_wrappers = {
@@ -228,7 +215,6 @@
     '.target_complex'  : multiterm( epigeneDB.target_complex_link),
     '.uniprot_id'      : multiterm( epigeneDB.uniprot_id_link ),
     '.pfam_domain'     : multiterm( epigeneDB.pfam_domain_link, '<br/>' ),
-    '.hocomoco'        : multiterm( epigeneDB.hocomoco_link, '' ), // hocomoco links with motif logos go on different lines, comma is unnecessary
   };
 
   epigeneDB.preserveFormatters = { // What to save in cell textAttribute (for CSV output and search facilities)
@@ -236,21 +222,5 @@
   };
 
   epigeneDB.tablesorter_formatters = make_tablesorter_formatters(epigeneDB.formatters, epigeneDB.preserveFormatters);
-
-  // apply formatters outside of tablesorter
-  epigeneDB.apply_formatters = function(jquery_selector) {
-    var selector, formatter;
-    for (selector in epigeneDB.formatters) {
-      formatter = formatter_ignoring_sharp(epigeneDB.formatters[selector]);
-
-      $(jquery_selector).filter(selector).each(function(ind, elem) {
-        var data = { // mimic table cell
-          $cell: $(elem).eq(0),
-        };
-        window.dat = data;
-        $(elem).html( formatter($(elem).text(), data) );
-      });
-    };
-  };
 
 })(window.epigeneDB = window.epigeneDB || {}, jQuery);

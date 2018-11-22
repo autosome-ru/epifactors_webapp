@@ -1,11 +1,16 @@
 class GeneDecorator < ApplicationDecorator
   delegate_all
 
-  def hgnc_symbol_link
-    ( object.hgnc_symbol + '<br/>' + h.link_to('(details)', h.gene_path(object)) ).html_safe
-  end
-
   def hocomoco_link
-    UniprotHocomocoMapping.instance.motifs_by_uniprots(object.uniprot_id, object.uniprot_id_mm).join(', ')
+    object.hocomoco_motifs.map{|motif|
+      species = motif.split('.').first.split('_')[1]
+      img_url = ENV['HOCOMOCO11_URL'] + "final_bundle/hocomoco11/full/#{species}/mono/logo_small/#{motif}_direct.png"
+      motif_url = ENV['HOCOMOCO11_URL'] + "motif/#{motif}"
+      h.content_tag(:div, class: 'hocomoco_link'){
+        h.link_to(motif_url){
+          (motif + h.tag(:img, src: img_url)).html_safe
+        }
+      }
+    }.join.html_safe
   end
 end

@@ -1,24 +1,24 @@
 .table_caption #{@histone.molecule_kind.capitalize} info
 %table.key_value_info
   %tbody
-    = table_info_row @histone, :hgnc_symbol
-    = table_info_row @histone, :status
-    = table_info_row @histone, :hgnc_id, html_options: { value_column_html: {class: 'hgnc_id'} }
-    = table_info_row @histone, :hgnc_name
-    = table_info_row @histone, :gene_id, html_options: { value_column_html: {class: 'gene_id'} }
-    = table_info_row @histone, :uniprot_ac, html_options: { value_column_html: {class: 'uniprot_ac'} }
-    = table_info_row @histone, :uniprot_id, html_options: { value_column_html: {class: 'uniprot_id'} }
-    = table_info_row @histone, :domain, html_options: { value_column_html: {class: 'pfam_domain'} }
-    = table_info_row @histone, :mgi_symbol
-    = table_info_row @histone, :mgi_id, html_options: { value_column_html: {class: 'mgi_id'} }
-    = table_info_row @histone, :uniprot_ac_mm, html_options: { value_column_html: {class: 'uniprot_ac'} }
-    = table_info_row @histone, :uniprot_id_mm, html_options: { value_column_html: {class: 'uniprot_id'} }
+    = table_info_row(@histone, :hgnc_symbol){|h| hgnc_id_link(h.hgnc_id, name: h.hgnc_symbol) }
+    = table_info_row(@histone, :status)
+    = table_info_row(@histone, :hgnc_id){|h| hgnc_id_link(h.hgnc_id) }
+    = table_info_row(@histone, :hgnc_name)
+    = table_info_row(@histone, :gene_id){|h| gene_id_link(h.gene_id) }
+    = table_info_row(@histone, :uniprot_ac){|h| uniprot_id_or_ac_links(h.uniprot_ac) }
+    = table_info_row(@histone, :uniprot_id){|h| uniprot_id_or_ac_links(h.uniprot_id) }
+    = table_info_row(@histone, :domain){|h| pfam_domain_links(h.domain) }
+    = table_info_row(@histone, :mgi_symbol){|h| mgi_id_link(h.mgi_id, name: h.mgi_symbol) }
+    = table_info_row(@histone, :mgi_id){|h| mgi_id_link(h.mgi_id) }
+    = table_info_row(@histone, :uniprot_ac_mm){|h| uniprot_id_or_ac_links(h.uniprot_ac_mm) }
+    = table_info_row(@histone, :uniprot_id_mm){|h| uniprot_id_or_ac_links(h.uniprot_id_mm) }
     = table_info_row @histone, :gene_tag
     = table_info_row @histone, :gene_desc
     = table_info_row @histone, :complex_name
     = table_info_row @histone, :targeted_by_protein
-    = table_info_row @histone, :targeted_by_complex, html_options: { value_column_html: {class: 'target_complex'} }
-    = table_info_row @histone, :pmid, html_options: { value_column_html: {class: 'pmid'} }
+    = table_info_row(@histone, :targeted_by_complex){|h| target_complex_links(h.targeted_by_complex) }
+    = table_info_row(@histone, :pmid){|h| pmid_links(h.pmid) }
     = table_info_row @histone, :comment
 
 %hr
