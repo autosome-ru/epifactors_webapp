@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~>4.2.10'
+gem 'rails', '~>4.2.11.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -43,6 +43,7 @@ group :development do
   gem 'quiet_assets'
 end
 
+gem 'rubyzip', '>=1.3.0'
 gem 'rubyXL'
 gem 'haml-rails'
 gem 'jquery-tablesorter', '~>1.22.0' # '~> 1.16.5' # tablesorter 2.19
