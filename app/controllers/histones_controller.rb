@@ -15,8 +15,27 @@ class HistonesController < ApplicationController
       format.json{ render json: @histones.map{|histone| {id: histone.id, hgnc_symbol: histone.hgnc_symbol} } }
     end
   end
+
   def show
-    @histone = Histone.find(params[:id])
+    histone = Histone.find(params[:id])
+    if histone.hgnc_symbol
+      respond_to do |format|
+        format.html { redirect_to histone_by_hgnc_path(histone.hgnc_symbol) }
+        format.json { redirect_to histone_by_hgnc_path(histone.hgnc_symbol, format: :json) }
+      end
+    else
+      show_histone histone
+    end
+  end
+
+  def show_by_hgnc
+    show_histone Histone.where(hgnc_symbol: params[:hgnc_symbol]).first
+  end
+
+protected
+
+  def show_histone(histone)
+    @histone = histone
     @expressions_with_quantiles = @histone.gene_expressions_with_quantiles.sort_by{|sample, expression, quantile_over_genes|
       [sample.sample_kind, -expression]
     }
@@ -26,12 +45,12 @@ class HistonesController < ApplicationController
     respond_to do |format|
       format.html do
         @histone = @histone.decorate
+        render :show
       end
-      format.json
+      format.json{ render :show }
     end
-
   end
-protected
+
   def page_title
     if params[:action].to_sym == :show
       @histone.hgnc_symbol + " #{@histone.molecule_kind} - " + super
