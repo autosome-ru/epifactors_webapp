@@ -47,7 +47,7 @@
         %td{'data-text' => gene.hgnc_symbol }
           = gene.hgnc_symbol
           %br
-          = link_to '(details)', gene_path(gene)
+          = link_to '(details)', (gene.hgnc_symbol ? gene_by_hgnc_path(gene.hgnc_symbol) : gene_path(gene))
         %td= gene.hgnc_id
         %td= gene.hgnc_name
         %td= gene.gene_id

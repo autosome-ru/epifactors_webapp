@@ -39,7 +39,7 @@
         %td{'data-text' => histone.hgnc_symbol }
           = histone.hgnc_symbol
           %br
-          = link_to '(details)', histone_path(histone)
+          = link_to '(details)', (histone.hgnc_symbol ? histone_by_hgnc_path(histone.hgnc_symbol) : histone_path(histone))
         %td= histone.hgnc_id
         %td= histone.hgnc_name
         %td= histone.gene_id

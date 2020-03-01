@@ -4,7 +4,12 @@ class GenesController < ApplicationController
   def index
     @genes = Gene.by_params(params).sort_by(&:hgnc_symbol)
     if @genes.count == 1 && !(params[:redirect] == 'no')
-      redirect_to gene_path(@genes.first.id) and return
+      gene = @genes.first
+      if gene.hgnc_symbol
+        redirect_to gene_by_hgnc_path(gene.hgnc_symbol) and return
+      else
+        redirect_to gene_path(gene.id) and return
+      end
     end
 
     respond_to do |format|

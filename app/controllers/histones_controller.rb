@@ -5,7 +5,12 @@ class HistonesController < ApplicationController
     @histones = Histone.by_params(params).sort_by(&:hgnc_symbol)
 
     if @histones.count == 1 && !(params[:redirect] == 'no')
-      redirect_to histone_path(@histones.first.id) and return
+      histone = @histones.first
+      if histone.hgnc_symbol
+        redirect_to histone_by_hgnc_path(histone.hgnc_symbol) and return
+      else
+        redirect_to histone_path(histone.id) and return
+      end
     end
 
     respond_to do |format|
