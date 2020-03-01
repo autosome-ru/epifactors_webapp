@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'epigenes/search' => 'epigene_welcome#search'
 
   resources :genes, only: [:show, :index]
+  get 'genes/by_hgnc/:hgnc_symbol', to: 'genes#show_by_hgnc', as: 'gene_by_hgnc'
   resources :protein_complexes, only: [:show, :index]
   resources :histones, only: [:show, :index]
   resources :samples, only: [:show, :index], constraints: {:id => /CNhs\d+/}
