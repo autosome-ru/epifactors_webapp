@@ -1,17 +1,21 @@
-в запросах поиска хорошо бы отключать сохраненные фильтры.
+* Check whether we can add named URLs to protein complexes
 
-Когда ничего не найдено правильно было бы выводить табличку Sorry, nothing found
+* Invert logic of CDN (not to load file with svg scheme manually). Now it's done using:
+    `/opt/google_appengine/appcfg.py update ./cdn/`
 
-/opt/google_appengine/appcfg.py update ./cdn/
+* It'd be better to disable stored tablesorter filters when we show search results.
+
+* It'd be good to output "Sorry, nothing found" when search failed to find anything
 
 
-- По дефолту надо скрыть пустые колонки. В простыне, где выбирать колонки, хотелось бы чтобы можно было выбрать/отключить все.
+* add links from e.g. hgnc_symbol to `http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=...` in addition to a link from hgnc_id
+
+* regenerate sitemap
+
+* По дефолту надо скрыть пустые колонки. В простыне, где выбирать колонки, хотелось бы чтобы можно было выбрать/отключить все.
     Сейчас отключены колонки, которые пустые везде. Но при поиске может быть выбрано подмножество, где всё пусто. Я попробую придумать, как это исправить.
-- При поиске учитываются колонки, которые не показаны по-умолчанию. Это может удивить пользователя, поскольку он не сразу поймет, почему найденный объект ему действительно подходит.
+* При поиске учитываются колонки, которые не показаны по-умолчанию. Это может удивить пользователя, поскольку он не сразу поймет, почему найденный объект ему действительно подходит.
 
-- Кэширование бы на таблицы генов...
-
-- поставить ссылки например с  hgnc_symbol на http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=... помимо ссылки с hgnc_id
 
 
 3. Можем ли мы задешево (если не надо много кодить) по маусоверу еще и
