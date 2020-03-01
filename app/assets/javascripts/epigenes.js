@@ -8,6 +8,8 @@ var page_ready = function() {
     $('table.tablesorter').trigger('outputTable');
   });
 
+  epigeneDB.apply_formatters( $('table:not(.tablesorter) tbody td') );
+
   $("#epigenes, #protein-complexes, #histones").filter('table.tablesorter').tablesorter(
     $.extend(true, {},
       epigeneDB.defaultConfig,
