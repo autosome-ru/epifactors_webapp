@@ -1,19 +1,23 @@
-.table-actions
-  %button.reset{type: 'button'} Reset filters
-  %button.toggle-sample-format Full/short names
-  = download_button
-  %input{type: "text", value: 'samples.csv', class: 'csv-filename'}
-  .loading_table
-    .loading_logo
+.row-fluid
+  .col-12
+    .table-actions
+      %button.reset{type: 'button'} Reset filters
+      %button.toggle-sample-format Full/short names
+      = download_button
+      %input{type: "text", value: 'samples.csv', class: 'csv-filename'}
+      .loading_table
+        .loading_logo
 
-%table#samples.toggle-sample-format-target.tablesorter
-  %thead
-    %tr
-      = sample_table_header :sample_kind, class: ['group-text', 'sample_kind']
-      = sample_table_header :sample_name, show_always: true, class: ['sample_link'], data: {'sample-format' => 'short'}
+.row-fluid
+  .col-12
+    %table#samples.toggle-sample-format-target.tablesorter
+      %thead
+        %tr
+          = sample_table_header :sample_kind, class: ['group-text', 'sample_kind']
+          = sample_table_header :sample_name, show_always: true, class: ['sample_link'], data: {'sample-format' => 'short'}
 
-  %tbody
-    - @samples.each do |sample|
-      %tr
-        %td= sample.sample_kind
-        %td= sample
+      %tbody
+        - @samples.each do |sample|
+          %tr
+            %td= sample.sample_kind
+            %td= sample

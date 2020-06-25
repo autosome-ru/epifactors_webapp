@@ -1,72 +1,76 @@
-.table-actions
-  %button.reset{type: 'button'} Reset filters
-  %button.select-columns-btn{type: 'button'} Select Columns
-  = download_button
-  %input{type: "text", value: 'genes.csv', class: 'csv-filename'}
-  .loading_table
-    .loading_logo
+.row-fluid
+  .col-12
+    .table-actions
+      %button.reset{type: 'button'} Reset filters
+      %button.select-columns-btn{type: 'button'} Select Columns
+      = download_button
+      %input{type: "text", value: 'genes.csv', class: 'csv-filename'}
+      .loading_table
+        .loading_logo
 
-%table#epigenes.tablesorter.attach-column-selector
-  %thead
-    %tr
-      = gene_table_header :hgnc_symbol, show_always: true
-      = gene_table_header :hgnc_id, hide_by_default: true, dont_sort: true, class: 'hgnc_id'
-      = gene_table_header :hgnc_name
-      = gene_table_header :gene_id, hide_by_default: true, dont_sort: true, class: 'gene_id'
-      = gene_table_header :uniprot_ac, hide_by_default: true, dont_sort: true, class: 'uniprot_ac' do |content|
-        = content
-        .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
-      = gene_table_header :uniprot_id, class: 'uniprot_id' do |content|
-        = content
-        .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
-      = gene_table_header :domain, class: 'pfam_domain'
-      = gene_table_header :mgi_symbol, hide_by_default: true
-      = gene_table_header :mgi_id, hide_by_default: true, class: 'mgi_id'
-      = gene_table_header :uniprot_ac_mm, hide_by_default: true, dont_sort: true, class: 'uniprot_ac' do |content|
-        = content
-        .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
-      = gene_table_header :uniprot_id_mm, class: 'uniprot_id' do |content|
-        = content
-        .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
-      = gene_table_header :gene_tag, hide_by_default: true
-      = gene_table_header :gene_desc, hide_by_default: true
-      = gene_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_table_header :modification, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_table_header :pmid_function, hide_by_default: true, dont_sort: true, class: 'pmid'
-      = gene_table_header :complex_name, class: ['target_complex']
-      = gene_table_header :target, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = gene_table_header :pmid_target, hide_by_default: true, dont_sort: true, class: 'pmid'
-      = gene_table_header :comment, hide_by_default: true, dont_sort: true, class: 'comment'
-      = gene_table_header :status, hide_by_default: true
+.row-fluid
+  .col-12
+    %table#epigenes.tablesorter.attach-column-selector
+      %thead
+        %tr
+          = gene_table_header :hgnc_symbol, show_always: true
+          = gene_table_header :hgnc_id, hide_by_default: true, dont_sort: true, class: 'hgnc_id'
+          = gene_table_header :hgnc_name
+          = gene_table_header :gene_id, hide_by_default: true, dont_sort: true, class: 'gene_id'
+          = gene_table_header :uniprot_ac, hide_by_default: true, dont_sort: true, class: 'uniprot_ac' do |content|
+            = content
+            .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
+          = gene_table_header :uniprot_id, class: 'uniprot_id' do |content|
+            = content
+            .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
+          = gene_table_header :domain, class: 'pfam_domain'
+          = gene_table_header :mgi_symbol, hide_by_default: true
+          = gene_table_header :mgi_id, hide_by_default: true, class: 'mgi_id'
+          = gene_table_header :uniprot_ac_mm, hide_by_default: true, dont_sort: true, class: 'uniprot_ac' do |content|
+            = content
+            .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
+          = gene_table_header :uniprot_id_mm, class: 'uniprot_id' do |content|
+            = content
+            .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
+          = gene_table_header :gene_tag, hide_by_default: true
+          = gene_table_header :gene_desc, hide_by_default: true
+          = gene_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = gene_table_header :modification, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = gene_table_header :pmid_function, hide_by_default: true, dont_sort: true, class: 'pmid'
+          = gene_table_header :complex_name, class: ['target_complex']
+          = gene_table_header :target, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = gene_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = gene_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = gene_table_header :pmid_target, hide_by_default: true, dont_sort: true, class: 'pmid'
+          = gene_table_header :comment, hide_by_default: true, dont_sort: true, class: 'comment'
+          = gene_table_header :status, hide_by_default: true
 
-  %tbody
-    - @genes.each do |gene|
-      %tr
-        %td{'data-text' => gene.hgnc_symbol }
-          = gene.hgnc_symbol
-          %br
-          = link_to '(details)', (gene.hgnc_symbol ? gene_by_hgnc_path(gene.hgnc_symbol) : gene_path(gene))
-        %td= gene.hgnc_id
-        %td= gene.hgnc_name
-        %td= gene.gene_id
-        %td= gene.uniprot_ac
-        %td= gene.uniprot_id
-        %td= gene.domain
-        %td= gene.mgi_symbol
-        %td= gene.mgi_id
-        %td= gene.uniprot_ac_mm
-        %td= gene.uniprot_id_mm
-        %td= gene.gene_tag
-        %td= gene.gene_desc
-        %td= gene.function
-        %td= gene.modification
-        %td= gene.pmid_function
-        %td= gene.complex_name
-        %td= gene.target
-        %td= gene.specific_target
-        %td= gene.product
-        %td= gene.pmid_target
-        %td= gene.comment
-        %td= gene.status
+      %tbody
+        - @genes.each do |gene|
+          %tr
+            %td{'data-text' => gene.hgnc_symbol }
+              = gene.hgnc_symbol
+              %br
+              = link_to '(details)', (gene.hgnc_symbol ? gene_by_hgnc_path(gene.hgnc_symbol) : gene_path(gene))
+            %td= gene.hgnc_id
+            %td= gene.hgnc_name
+            %td= gene.gene_id
+            %td= gene.uniprot_ac
+            %td= gene.uniprot_id
+            %td= gene.domain
+            %td= gene.mgi_symbol
+            %td= gene.mgi_id
+            %td= gene.uniprot_ac_mm
+            %td= gene.uniprot_id_mm
+            %td= gene.gene_tag
+            %td= gene.gene_desc
+            %td= gene.function
+            %td= gene.modification
+            %td= gene.pmid_function
+            %td= gene.complex_name
+            %td= gene.target
+            %td= gene.specific_target
+            %td= gene.product
+            %td= gene.pmid_target
+            %td= gene.comment
+            %td= gene.status

@@ -1,72 +1,74 @@
-%h4 Epifactors database description
-%h5 Current version #{EpigeneDB::DATA_VERSION} (21 Nov, 2018)
-%p
-  Database statistics:
-  %ul
-    %li #{Gene.count + Histone.count} Genes (including #{Histone.count} histones and protamines)
-    %li #{ProteinComplex.count} Protein complexes
+.row-fluid
+  .col-12
+    %h4 Epifactors database description
+    %h5 Current version #{EpigeneDB::DATA_VERSION} (21 Nov, 2018)
+    %p
+      Database statistics:
+      %ul
+        %li #{Gene.count + Histone.count} Genes (including #{Histone.count} histones and protamines)
+        %li #{ProteinComplex.count} Protein complexes
 
-%p
-  %b Help:
-  %ul
-    %li
-      Database description
-      = surround '(', ')' do
-        = succeed ',' do
-          = link_to '.pdf', "/public_data/v#{EpigeneDB::DATA_VERSION}/Database_entries.pdf"
-        = link_to '.doc', "/public_data/v#{EpigeneDB::DATA_VERSION}/Database_entries.doc"
-    %li
-      Database structure
-      = surround '(', ')' do
-        = succeed ',' do
-          = link_to 'png', "/public_data/v#{EpigeneDB::DATA_VERSION}/database_structure.png"
-        = link_to 'svg', "/public_data/v#{EpigeneDB::DATA_VERSION}/database_structure.svg"
-    %li
-      Standard terms used
-      = surround '(', ')' do
-        = succeed ',' do
-          = link_to '.pdf', "/public_data/v#{EpigeneDB::DATA_VERSION}/Standard_terms.pdf"
-        = link_to '.doc', "/public_data/v#{EpigeneDB::DATA_VERSION}/Standard_terms.doc"
-    %li= link_to 'Querying database', '/description/queries'
-%p
-  %b Downloads:
-  %ul
-    %li
-      Scheme image
-      = surround '(', ')' do
-        = succeed ',' do
-          = link_to 'png', '/main_scheme_300dpi.png'
-        = link_to 'svg', '/main_scheme.svg'
-    %li
-      Table of all genes
-      = surround '(', ')' do
-        = succeed ',' do
-          = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_main.csv"
-        = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_main.xlsx"
-    %li
-      Table of all protein complexes
-      = surround '(', ')' do
-        = succeed ',' do
-          = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_complexes.csv"
-        = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_complexes.xlsx"
-    %li
-      Table of all histones and protamines
-      = surround '(', ')' do
-        = succeed ',' do
-          = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_histones.csv"
-        = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_histones.xlsx"
+    %p
+      %b Help:
+      %ul
+        %li
+          Database description
+          = surround '(', ')' do
+            = succeed ',' do
+              = link_to '.pdf', "/public_data/v#{EpigeneDB::DATA_VERSION}/Database_entries.pdf"
+            = link_to '.doc', "/public_data/v#{EpigeneDB::DATA_VERSION}/Database_entries.doc"
+        %li
+          Database structure
+          = surround '(', ')' do
+            = succeed ',' do
+              = link_to 'png', "/public_data/v#{EpigeneDB::DATA_VERSION}/database_structure.png"
+            = link_to 'svg', "/public_data/v#{EpigeneDB::DATA_VERSION}/database_structure.svg"
+        %li
+          Standard terms used
+          = surround '(', ')' do
+            = succeed ',' do
+              = link_to '.pdf', "/public_data/v#{EpigeneDB::DATA_VERSION}/Standard_terms.pdf"
+            = link_to '.doc', "/public_data/v#{EpigeneDB::DATA_VERSION}/Standard_terms.doc"
+        %li= link_to 'Querying database', '/description/queries'
+    %p
+      %b Downloads:
+      %ul
+        %li
+          Scheme image
+          = surround '(', ')' do
+            = succeed ',' do
+              = link_to 'png', '/main_scheme_300dpi.png'
+            = link_to 'svg', '/main_scheme.svg'
+        %li
+          Table of all genes
+          = surround '(', ')' do
+            = succeed ',' do
+              = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_main.csv"
+            = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_main.xlsx"
+        %li
+          Table of all protein complexes
+          = surround '(', ')' do
+            = succeed ',' do
+              = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_complexes.csv"
+            = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_complexes.xlsx"
+        %li
+          Table of all histones and protamines
+          = surround '(', ')' do
+            = succeed ',' do
+              = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_histones.csv"
+            = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_histones.xlsx"
 
-    %li= link_to 'Pfam domains', '/Pfam_domains.pdf'
-    %li= link_to 'Gene expressions table (FANTOM 5 data)', '/public_data/gene_expressions_by_sample.zip'
-    %li= link_to 'FANTOM5 samples description', '/public_data/fantom_sample_infos.zip'
-    %li= link_to 'UNIPROT to HOCOMOCOv9 (transcription factor binding motifs) mapping', '/public_data/HOCOMOCOv9_motifs2uniprot.txt'
-%p
-  %b Contacts:
-  %ul
-    %li Technical questions and suggestions can be addressed to #{link_to 'Ilya Vorontsov', 'mailto:vorontsov.i.e _at_ gmail _dot_ com'}.
-    %li Annotation errors can be reported to #{link_to 'Yulia Medvedeva', 'mailto:ju.medvedeva _at_ gmail _dot_ com'} or #{link_to 'Finn Drabløs', 'mailto:finn.drablos _at_ ntnu _dot_ no'}.
-    %li General questions can be addressed to #{link_to 'Yulia Medvedeva', 'mailto:ju.medvedeva _at_ gmail _dot_ com'} or #{link_to 'Finn Drabløs', 'mailto:finn.drablos _at_ ntnu _dot_ no'}.
+        %li= link_to 'Pfam domains', '/Pfam_domains.pdf'
+        %li= link_to 'Gene expressions table (FANTOM 5 data)', '/public_data/gene_expressions_by_sample.zip'
+        %li= link_to 'FANTOM5 samples description', '/public_data/fantom_sample_infos.zip'
+        %li= link_to 'UNIPROT to HOCOMOCOv9 (transcription factor binding motifs) mapping', '/public_data/HOCOMOCOv9_motifs2uniprot.txt'
+    %p
+      %b Contacts:
+      %ul
+        %li Technical questions and suggestions can be addressed to #{link_to 'Ilya Vorontsov', 'mailto:vorontsov.i.e _at_ gmail _dot_ com'}.
+        %li Annotation errors can be reported to #{link_to 'Yulia Medvedeva', 'mailto:ju.medvedeva _at_ gmail _dot_ com'} or #{link_to 'Finn Drabløs', 'mailto:finn.drablos _at_ ntnu _dot_ no'}.
+        %li General questions can be addressed to #{link_to 'Yulia Medvedeva', 'mailto:ju.medvedeva _at_ gmail _dot_ com'} or #{link_to 'Finn Drabløs', 'mailto:finn.drablos _at_ ntnu _dot_ no'}.
 
-.citation
-  %b Please cite:
-  = render 'shared/citation'
+    .citation
+      %b Please cite:
+      = render 'shared/citation'

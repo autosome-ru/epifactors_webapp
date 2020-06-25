@@ -1,52 +1,56 @@
-.table-actions
-  %button.reset{type: 'button'} Reset filters
-  %button.select-columns-btn{type: 'button'} Select Columns
-  = download_button
-  %input{type: "text", value: 'protein_complexes.csv', class: 'csv-filename'}
-  .loading_table
-    .loading_logo
+.row-fluid
+  .col-12
+    .table-actions
+      %button.reset{type: 'button'} Reset filters
+      %button.select-columns-btn{type: 'button'} Select Columns
+      = download_button
+      %input{type: "text", value: 'protein_complexes.csv', class: 'csv-filename'}
+      .loading_table
+        .loading_logo
 
-%table#protein-complexes.tablesorter.attach-column-selector
-  %thead
-    %tr
-      = protein_complex_table_header :group_name
-      = protein_complex_table_header :complex_name, show_always: true
-      = protein_complex_table_header :genes_in_complex, class: 'gene_comb', dont_sort: true
-      = protein_complex_table_header :alternative_name, hide_by_default: true
-      = protein_complex_table_header :protein, hide_by_default: true
-      = protein_complex_table_header :uniprot_id, class: 'uniprot_id_comb', dont_sort: true do |content|
-        = content
-        .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
-      = protein_complex_table_header :pmid_complex, dont_sort: true, hide_by_default: true, class: 'pmid'
-      = protein_complex_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = protein_complex_table_header :pmid_function, dont_sort: true, hide_by_default: true, class: 'pmid'
-      = protein_complex_table_header :target, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = protein_complex_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = protein_complex_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
-      = protein_complex_table_header :uniprot_id_target, hide_by_default: true, class: 'uniprot_id'
-      = protein_complex_table_header :pmid_target, dont_sort: true, hide_by_default: true, class: 'pmid'
-      = protein_complex_table_header :comment, hide_by_default: true, class: 'comment'
-      = protein_complex_table_header :status, hide_by_default: true
+.row-fluid
+  .col-12
+    %table#protein-complexes.tablesorter.attach-column-selector
+      %thead
+        %tr
+          = protein_complex_table_header :group_name
+          = protein_complex_table_header :complex_name, show_always: true
+          = protein_complex_table_header :genes_in_complex, class: 'gene_comb', dont_sort: true
+          = protein_complex_table_header :alternative_name, hide_by_default: true
+          = protein_complex_table_header :protein, hide_by_default: true
+          = protein_complex_table_header :uniprot_id, class: 'uniprot_id_comb', dont_sort: true do |content|
+            = content
+            .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
+          = protein_complex_table_header :pmid_complex, dont_sort: true, hide_by_default: true, class: 'pmid'
+          = protein_complex_table_header :function, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = protein_complex_table_header :pmid_function, dont_sort: true, hide_by_default: true, class: 'pmid'
+          = protein_complex_table_header :target, hide_by_default: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = protein_complex_table_header :specific_target, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = protein_complex_table_header :product, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = protein_complex_table_header :uniprot_id_target, hide_by_default: true, class: 'uniprot_id'
+          = protein_complex_table_header :pmid_target, dont_sort: true, hide_by_default: true, class: 'pmid'
+          = protein_complex_table_header :comment, hide_by_default: true, class: 'comment'
+          = protein_complex_table_header :status, hide_by_default: true
 
-  %tbody
-    - @protein_complexes.each do |protein_complex|
-      %tr
-        %td= protein_complex.group_name
-        %td{'data-text' => protein_complex.complex_name }
-          = protein_complex.complex_name
-          %br
-          = link_to '(details)', protein_complex_path(protein_complex)
-        %td= protein_complex.genes_in_complex
-        %td= protein_complex.alternative_name
-        %td= protein_complex.protein
-        %td= protein_complex.uniprot_id
-        %td= protein_complex.pmid_complex
-        %td= protein_complex.function
-        %td= protein_complex.pmid_function
-        %td= protein_complex.target
-        %td= protein_complex.specific_target
-        %td= protein_complex.product
-        %td= protein_complex.uniprot_id_target
-        %td= protein_complex.pmid_target
-        %td= protein_complex.comment
-        %td= protein_complex.status
+      %tbody
+        - @protein_complexes.each do |protein_complex|
+          %tr
+            %td= protein_complex.group_name
+            %td{'data-text' => protein_complex.complex_name }
+              = protein_complex.complex_name
+              %br
+              = link_to '(details)', protein_complex_path(protein_complex)
+            %td= protein_complex.genes_in_complex
+            %td= protein_complex.alternative_name
+            %td= protein_complex.protein
+            %td= protein_complex.uniprot_id
+            %td= protein_complex.pmid_complex
+            %td= protein_complex.function
+            %td= protein_complex.pmid_function
+            %td= protein_complex.target
+            %td= protein_complex.specific_target
+            %td= protein_complex.product
+            %td= protein_complex.uniprot_id_target
+            %td= protein_complex.pmid_target
+            %td= protein_complex.comment
+            %td= protein_complex.status

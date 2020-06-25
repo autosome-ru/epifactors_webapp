@@ -1,26 +1,32 @@
-.table_caption #{@histone.molecule_kind.capitalize} info
-%table.key_value_info
-  %tbody
-    = table_info_row(@histone, :hgnc_symbol){|h| hgnc_id_link(h.hgnc_id, name: h.hgnc_symbol) }
-    = table_info_row(@histone, :hgnc_id){|h| hgnc_id_link(h.hgnc_id) }
-    = table_info_row(@histone, :hgnc_name)
-    = table_info_row(@histone, :gene_id){|h| gene_id_link(h.gene_id) }
-    = table_info_row(@histone, :uniprot_ac){|h| uniprot_id_or_ac_links(h.uniprot_ac) }
-    = table_info_row(@histone, :uniprot_id){|h| uniprot_id_or_ac_links(h.uniprot_id) }
-    = table_info_row(@histone, :domain){|h| pfam_domain_links(h.domain) }
-    = table_info_row(@histone, :mgi_symbol){|h| mgi_id_link(h.mgi_id, name: h.mgi_symbol) }
-    = table_info_row(@histone, :mgi_id){|h| mgi_id_link(h.mgi_id) }
-    = table_info_row(@histone, :uniprot_ac_mm){|h| uniprot_id_or_ac_links(h.uniprot_ac_mm) }
-    = table_info_row(@histone, :uniprot_id_mm){|h| uniprot_id_or_ac_links(h.uniprot_id_mm) }
-    = table_info_row @histone, :gene_tag
-    = table_info_row @histone, :gene_desc
-    = table_info_row(@histone, :targeted_by_complex){|h| target_complex_links(h.targeted_by_complex) }
-    = table_info_row @histone, :status
+.row-fluid
+  .col-12
+    .table_caption #{@histone.molecule_kind.capitalize} info
+    %table.key_value_info
+      %tbody
+        = table_info_row(@histone, :hgnc_symbol){|h| hgnc_id_link(h.hgnc_id, name: h.hgnc_symbol) }
+        = table_info_row(@histone, :hgnc_id){|h| hgnc_id_link(h.hgnc_id) }
+        = table_info_row(@histone, :hgnc_name)
+        = table_info_row(@histone, :gene_id){|h| gene_id_link(h.gene_id) }
+        = table_info_row(@histone, :uniprot_ac){|h| uniprot_id_or_ac_links(h.uniprot_ac) }
+        = table_info_row(@histone, :uniprot_id){|h| uniprot_id_or_ac_links(h.uniprot_id) }
+        = table_info_row(@histone, :domain){|h| pfam_domain_links(h.domain) }
+        = table_info_row(@histone, :mgi_symbol){|h| mgi_id_link(h.mgi_id, name: h.mgi_symbol) }
+        = table_info_row(@histone, :mgi_id){|h| mgi_id_link(h.mgi_id) }
+        = table_info_row(@histone, :uniprot_ac_mm){|h| uniprot_id_or_ac_links(h.uniprot_ac_mm) }
+        = table_info_row(@histone, :uniprot_id_mm){|h| uniprot_id_or_ac_links(h.uniprot_id_mm) }
+        = table_info_row @histone, :gene_tag
+        = table_info_row @histone, :gene_desc
+        = table_info_row(@histone, :targeted_by_complex){|h| target_complex_links(h.targeted_by_complex) }
+        = table_info_row @histone, :status
 
-%hr
-.table_caption Expression statistics
-= render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
-= render partial: 'shared/expressions_by_samples', locals: {statistics: @expression_statistics, expressions_with_quantiles: @expressions_with_quantiles}
+.row-fluid
+  .col-12
+    %hr
+    .table_caption Expression statistics
+    = render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
+.row-fluid
+  .col-12
+    = render partial: 'shared/expressions_by_samples', locals: {statistics: @expression_statistics, expressions_with_quantiles: @expressions_with_quantiles}
 
 - content_for(:meta_description) do
   = "#{@histone.molecule_kind.capitalize} info for human #{@histone.hgnc_symbol} (#{@histone.uniprot_id} in UniProt) and murine #{@histone.mgi_symbol} (#{@histone.uniprot_id_mm} in UniProt)"

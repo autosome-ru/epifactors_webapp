@@ -1,36 +1,42 @@
-.table_caption Gene info
-%table.key_value_info
-  %tbody
-    = table_info_row(@gene, :hgnc_symbol){|g| hgnc_id_link(g.hgnc_id, name: g.hgnc_symbol) }
-    = table_info_row(@gene, :hgnc_id){|g| hgnc_id_link(g.hgnc_id) }
-    = table_info_row(@gene, :hgnc_name)
-    = table_info_row(@gene, :gene_id){|g| gene_id_link(g.gene_id) }
-    = table_info_row(@gene, :uniprot_ac){|g| uniprot_id_or_ac_links(g.uniprot_ac) }
-    = table_info_row(@gene, :uniprot_id){|g| uniprot_id_or_ac_links(g.uniprot_id) }
-    = table_info_row(@gene, :domain){|g| pfam_domain_links(g.domain) }
-    = table_info_row(@gene, :mgi_symbol){|g| mgi_id_link(g.mgi_id, name: g.mgi_symbol) }
-    = table_info_row(@gene, :mgi_id){|g| mgi_id_link(g.mgi_id) }
-    = table_info_row(@gene, :uniprot_ac_mm){|g| uniprot_id_or_ac_links(g.uniprot_ac_mm) }
-    = table_info_row(@gene, :uniprot_id_mm){|g| uniprot_id_or_ac_links(g.uniprot_id_mm) }
-    = table_info_row @gene, :gene_tag
-    = table_info_row @gene, :gene_desc
-    = table_info_row @gene, :function
-    = table_info_row @gene, :modification
-    = table_info_row(@gene, :pmid_function){|g| pmid_links(g.pmid_function) }
-    = table_info_row(@gene, :complex_name){|g| target_complex_links(g.complex_name) }
-    = table_info_row @gene, :target
-    = table_info_row @gene, :specific_target
-    - if @gene.tf?
-      = table_info_row @gene, :hocomoco_link
-    = table_info_row @gene, :product
-    = table_info_row(@gene, :pmid_target){|g| pmid_links(g.pmid_target) }
-    = table_info_row @gene, :comment
-    = table_info_row @gene, :status
+.row-fluid
+  .col-12
+    .table_caption Gene info
+    %table.key_value_info
+      %tbody
+        = table_info_row(@gene, :hgnc_symbol){|g| hgnc_id_link(g.hgnc_id, name: g.hgnc_symbol) }
+        = table_info_row(@gene, :hgnc_id){|g| hgnc_id_link(g.hgnc_id) }
+        = table_info_row(@gene, :hgnc_name)
+        = table_info_row(@gene, :gene_id){|g| gene_id_link(g.gene_id) }
+        = table_info_row(@gene, :uniprot_ac){|g| uniprot_id_or_ac_links(g.uniprot_ac) }
+        = table_info_row(@gene, :uniprot_id){|g| uniprot_id_or_ac_links(g.uniprot_id) }
+        = table_info_row(@gene, :domain){|g| pfam_domain_links(g.domain) }
+        = table_info_row(@gene, :mgi_symbol){|g| mgi_id_link(g.mgi_id, name: g.mgi_symbol) }
+        = table_info_row(@gene, :mgi_id){|g| mgi_id_link(g.mgi_id) }
+        = table_info_row(@gene, :uniprot_ac_mm){|g| uniprot_id_or_ac_links(g.uniprot_ac_mm) }
+        = table_info_row(@gene, :uniprot_id_mm){|g| uniprot_id_or_ac_links(g.uniprot_id_mm) }
+        = table_info_row @gene, :gene_tag
+        = table_info_row @gene, :gene_desc
+        = table_info_row @gene, :function
+        = table_info_row @gene, :modification
+        = table_info_row(@gene, :pmid_function){|g| pmid_links(g.pmid_function) }
+        = table_info_row(@gene, :complex_name){|g| target_complex_links(g.complex_name) }
+        = table_info_row @gene, :target
+        = table_info_row @gene, :specific_target
+        - if @gene.tf?
+          = table_info_row @gene, :hocomoco_link
+        = table_info_row @gene, :product
+        = table_info_row(@gene, :pmid_target){|g| pmid_links(g.pmid_target) }
+        = table_info_row @gene, :comment
+        = table_info_row @gene, :status
 
-%hr
-.table_caption Expression statistics
-= render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
-= render partial: 'shared/expressions_by_samples', locals: {statistics: @expression_statistics, expressions_with_quantiles: @expressions_with_quantiles}
+.row-fluid
+  .col-12
+    %hr
+    .table_caption Expression statistics
+    = render partial: 'shared/statistics', locals: {statistics: @expression_statistics}
+.row-fluid
+  .col-12
+    = render partial: 'shared/expressions_by_samples', locals: {statistics: @expression_statistics, expressions_with_quantiles: @expressions_with_quantiles}
 
 - content_for(:meta_description) do
   = "Gene info for human #{@gene.hgnc_symbol} (#{@gene.uniprot_id} in UniProt) and murine #{@gene.mgi_symbol} (#{@gene.uniprot_id_mm} in UniProt)"

@@ -1,22 +1,24 @@
-.table_caption Protein complex info
-%table.protein_complex_info.key_value_info
-  %tbody
-    = table_info_row @protein_complex, :group_name
-    = table_info_row @protein_complex, :complex_name
-    = table_info_row @protein_complex, :genes_in_complex, html_options: { value_column_html: {class: 'gene_comb'} }
-    = table_info_row @protein_complex, :alternative_name
-    = table_info_row @protein_complex, :protein
-    = table_info_row_uniprot_comb @protein_complex, html_options: { value_column_html: {class: 'uniprot_id_comb'}, row_html:{ class: 'uniprot_id_comb_row'} }
-    = table_info_row(@protein_complex, :pmid_complex){|pc| pmid_links(pc.pmid_complex) }
-    = table_info_row @protein_complex, :function
-    = table_info_row(@protein_complex, :pmid_function){|pc| pmid_links(pc.pmid_function) }
-    = table_info_row @protein_complex, :target
-    = table_info_row @protein_complex, :specific_target
-    = table_info_row @protein_complex, :product
-    = table_info_row(@protein_complex, :uniprot_id_target){|pc| uniprot_id_or_ac_links(pc.uniprot_id_target) }
-    = table_info_row(@protein_complex, :pmid_target){|pc| pmid_links(pc.pmid_target) }
-    = table_info_row @protein_complex, :comment
-    = table_info_row @protein_complex, :status
+.row-fluid
+  .col-12
+    .table_caption Protein complex info
+    %table.protein_complex_info.key_value_info
+      %tbody
+        = table_info_row @protein_complex, :group_name
+        = table_info_row @protein_complex, :complex_name
+        = table_info_row @protein_complex, :genes_in_complex, html_options: { value_column_html: {class: 'gene_comb'} }
+        = table_info_row @protein_complex, :alternative_name
+        = table_info_row @protein_complex, :protein
+        = table_info_row_uniprot_comb @protein_complex, html_options: { value_column_html: {class: 'uniprot_id_comb'}, row_html:{ class: 'uniprot_id_comb_row'} }
+        = table_info_row(@protein_complex, :pmid_complex){|pc| pmid_links(pc.pmid_complex) }
+        = table_info_row @protein_complex, :function
+        = table_info_row(@protein_complex, :pmid_function){|pc| pmid_links(pc.pmid_function) }
+        = table_info_row @protein_complex, :target
+        = table_info_row @protein_complex, :specific_target
+        = table_info_row @protein_complex, :product
+        = table_info_row(@protein_complex, :uniprot_id_target){|pc| uniprot_id_or_ac_links(pc.uniprot_id_target) }
+        = table_info_row(@protein_complex, :pmid_target){|pc| pmid_links(pc.pmid_target) }
+        = table_info_row @protein_complex, :comment
+        = table_info_row @protein_complex, :status
 
 - content_for(:meta_description) do
   = "#{@protein_complex.complex_name} protein complex (group #{@protein_complex.group_name}). Consists of #{@protein_complex.genes_in_complex_names_only} genes."

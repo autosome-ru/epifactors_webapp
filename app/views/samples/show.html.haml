@@ -1,40 +1,44 @@
-%h4
-  = @sample
-  = surround '(', ')' do
-    = @sample.fantom_sstar_link
+.row-fluid
+  .col-12
+    %h4
+      = @sample
+      = surround '(', ')' do
+        = @sample.fantom_sstar_link
 
-.table-actions
-  %button.reset{type: 'button'} Reset filters
-  %button.select-columns-btn{type: 'button'} Select Columns
-  = download_button
-  %input{type: "text", value: 'samples.csv', class: 'csv-filename'}
-  .loading_table
-    .loading_logo
+    .table-actions
+      %button.reset{type: 'button'} Reset filters
+      %button.select-columns-btn{type: 'button'} Select Columns
+      = download_button
+      %input{type: "text", value: 'samples.csv', class: 'csv-filename'}
+      .loading_table
+        .loading_logo
 
-%table.sample-expressions.tablesorter.toggle-sample-format-target.attach-column-selector
-  %thead
-    %tr
-      %th.molecule_kind.filter-select.group-text
-        = t 'activerecord.attributes.expression.molecule_kind'
-      %th.hgnc_symbol
-        = t 'activerecord.attributes.expression.hgnc_symbol'
-      %th.hgnc_id
-        = t 'activerecord.attributes.expression.hgnc_id'
-      %th.expression_bar{data: {placeholder: "Try `>=100` or `100 to 1000`", value: '>10'} }
-        = t 'activerecord.attributes.expression.expression'
-        .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'The gene expression values are derived from FANTOM5 TSS, aggregating values for each gene (via HGNC mapping) if several TSS were annotated. FANTOM5 expression data are presented as normalized tags per million (TPM) calculated using the relative log expression (RLE) method.'}}          
-      %th.quantile_over_samples.quantile{data: {placeholder: 'Try >=0.95', value: '>=0.95'} }
-        = t 'activerecord.attributes.expression.quantile_over_samples'
-        .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Use >=0.95 filter to show only top 5% of genes ranked by expression values.'}}
+.row-fluid
+  .col-12
+    %table.sample-expressions.tablesorter.toggle-sample-format-target.attach-column-selector
+      %thead
+        %tr
+          %th.molecule_kind.filter-select.group-text
+            = t 'activerecord.attributes.expression.molecule_kind'
+          %th.hgnc_symbol
+            = t 'activerecord.attributes.expression.hgnc_symbol'
+          %th.hgnc_id
+            = t 'activerecord.attributes.expression.hgnc_id'
+          %th.expression_bar{data: {placeholder: "Try `>=100` or `100 to 1000`", value: '>10'} }
+            = t 'activerecord.attributes.expression.expression'
+            .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'The gene expression values are derived from FANTOM5 TSS, aggregating values for each gene (via HGNC mapping) if several TSS were annotated. FANTOM5 expression data are presented as normalized tags per million (TPM) calculated using the relative log expression (RLE) method.'}}          
+          %th.quantile_over_samples.quantile{data: {placeholder: 'Try >=0.95', value: '>=0.95'} }
+            = t 'activerecord.attributes.expression.quantile_over_samples'
+            .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Use >=0.95 filter to show only top 5% of genes ranked by expression values.'}}
 
-  %tbody
-    - @sample_infos.each do |hgnc_id, hgnc_symbol, gene_or_histone, expression, quantile_over_samples|
-      %tr
-        %td= gene_or_histone.molecule_kind
-        %td= link_to hgnc_symbol, gene_or_histone
-        %td= hgnc_id
-        %td= expression.round(1)
-        %td= quantile_over_samples.round(3)
+      %tbody
+        - @sample_infos.each do |hgnc_id, hgnc_symbol, gene_or_histone, expression, quantile_over_samples|
+          %tr
+            %td= gene_or_histone.molecule_kind
+            %td= link_to hgnc_symbol, gene_or_histone
+            %td= hgnc_id
+            %td= expression.round(1)
+            %td= quantile_over_samples.round(3)
 
 - content_for(:meta_description) do
   = "Expression of epigenetic factors in #{@sample.sample_name} (#{@sample.library_name}.#{@sample.extract_name})"
