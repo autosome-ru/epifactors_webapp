@@ -1,30 +1,35 @@
-.loading_figure
-  %h4 Loading graphical menu...
-  .loading_logo
+.row-fluid
+  .col-8
+    .loading_figure
+      %h4 Loading graphical menu...
+      .loading_logo
 
-.graphical_menu
-  #main_scheme_svg
-  #main_scheme_png_stub
-.description
-  EpiFactors is a database for epigenetic factors, corresponding genes and products.
+    .graphical_menu
+      #main_scheme_svg
+      #main_scheme_png_stub
+  .col-4
+    .description
+      EpiFactors is a database for epigenetic factors, corresponding genes and products.
 
-  Epigenetic factors are defined as:
-  %ul
-    %li
-      Proteins that change the general structure of chromatin (chromatin remodeling), including
+      Epigenetic factors are defined as:
       %ul
-        %li Proteins that act upon post-translational modifications of histones (histone modification read, write and erase);
-        %li Proteins that move, eject or restructure nucleosomes (ATP-dependent chromatin remodelers);
-        %li Proteins that incorporate histone variants into the nucleosomes.
+        %li
+          Proteins that change the general structure of chromatin (chromatin remodeling), including
+          %ul
+            %li Proteins that act upon post-translational modifications of histones (histone modification read, write and erase);
+            %li Proteins that move, eject or restructure nucleosomes (ATP-dependent chromatin remodelers);
+            %li Proteins that incorporate histone variants into the nucleosomes.
 
-      Specific subgroups of proteins may be annotated as such, e.g. the Polycomb group (PcG) proteins.
+          Specific subgroups of proteins may be annotated as such, e.g. the Polycomb group (PcG) proteins.
 
-    %li Protein cofactors forming complexes with epigenetic factors, where complex formation is important for the activity (cofactor).
-    %li Proteins acting as histones, histone variants or protamines (histone).
+        %li Protein cofactors forming complexes with epigenetic factors, where complex formation is important for the activity (cofactor).
+        %li Proteins acting as histones, histone variants or protamines (histone).
 
-    %li Proteins assisting histone folding and assembly (histone chaperone).
+        %li Proteins assisting histone folding and assembly (histone chaperone).
 
-    %li Proteins that act upon modifications of DNA or RNA in such a way that it affects gene expression, but not throught RNA precessing (DNA or RNA modification).
+        %li Proteins that act upon modifications of DNA or RNA in such a way that it affects gene expression, but not throught RNA precessing (DNA or RNA modification).
 
-.citation
-  = render 'shared/citation'
+.row-fluid
+  .col-12
+    .citation
+      = render 'shared/citation'
