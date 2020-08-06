@@ -19,7 +19,7 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
@@ -55,6 +55,7 @@ gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-boot
 gem 'draper'
 # gem 'pg'
 gem 'actionpack-action_caching'
+gem "json", ">= 2.3.0"
 
 group :development, :test do
   # Draw DB diagrams (https://github.com/preston/railroady)
