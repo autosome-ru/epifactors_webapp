@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~>4.2.11.1'
 # Use sqlite3 as the database for Active Record
@@ -56,6 +55,7 @@ gem 'draper'
 # gem 'pg'
 gem 'actionpack-action_caching'
 gem "json", ">= 2.3.0"
+gem 'nokogiri', '~> 1.12.5'
 
 group :development, :test do
   # Draw DB diagrams (https://github.com/preston/railroady)
