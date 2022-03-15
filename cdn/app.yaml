@@ -8,4 +8,4 @@ handlers:
 - url: /images
   static_dir: images
   http_headers:
-    Access-Control-Allow-Origin: '*' #http://epigenes.autosome.ru
+    Access-Control-Allow-Origin: '*' #http://epigenes.autosome.org
