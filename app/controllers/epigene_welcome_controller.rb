@@ -16,6 +16,8 @@ class EpigeneWelcomeController < ApplicationController
       redirect_to protein_complexes_path(search: params[:search])
     when 'histones'
       redirect_to histones_path(search: params[:search])
+    when 'lncrnas'
+      redirect_to lncrnas_path(search: params[:search])
     end
   end
 end

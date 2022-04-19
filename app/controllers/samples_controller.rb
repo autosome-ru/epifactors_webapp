@@ -14,13 +14,14 @@ class SamplesController < ApplicationController
     gene_expressions = GeneExpressions.instance
     genes_by_hgnc_id = Gene.all.map{|gene| [gene.hgnc_id.to_i, gene] }.to_h
     histones_by_hgnc_id = Histone.all.map{|histone| [histone.hgnc_id.to_i, histone] }.to_h
+    lncrnas_by_hgnc_id = Lncrna.all.map{|lncrna| [lncrna.hgnc_id.to_i, lncrna] }.to_h
     sample_expressions_with_quantiles = GeneExpressions.instance.expressions_with_quantiles_by_sample(@sample.sample_id)
     @sample_infos = sample_expressions_with_quantiles.map{|hgnc_id, expression, quantile_over_samples|
-      gene_or_histone = (genes_by_hgnc_id[hgnc_id] || histones_by_hgnc_id[hgnc_id]).decorate
+      gene_or_histone_or_lncrna = (genes_by_hgnc_id[hgnc_id] || histones_by_hgnc_id[hgnc_id] || lncrnas_by_hgnc_id[hgnc_id]).decorate
       hgnc_symbol = gene_expressions.hgnc_symbol_by_id(hgnc_id)
-      [hgnc_id, hgnc_symbol, gene_or_histone, expression, quantile_over_samples]
-    }.sort_by{|hgnc_id, hgnc_symbol, gene_or_histone, expression, quantile_over_samples|
-      [gene_or_histone.molecule_kind, -expression]
+      [hgnc_id, hgnc_symbol, gene_or_histone_or_lncrna, expression, quantile_over_samples]
+    }.sort_by{|hgnc_id, hgnc_symbol, gene_or_histone_or_lncrna, expression, quantile_over_samples|
+      [gene_or_histone_or_lncrna.molecule_kind, -expression]
     }
   end
 protected
