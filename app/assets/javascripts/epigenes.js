@@ -10,7 +10,7 @@ var page_ready = function() {
 
   epigeneDB.apply_formatters( $('table:not(.tablesorter) tbody td') );
 
-  $("#epigenes, #protein-complexes, #histones").filter('table.tablesorter').tablesorter(
+  $("#epigenes, #protein-complexes, #histones, #lncrnas").filter('table.tablesorter').tablesorter(
     $.extend(true, {},
       epigeneDB.defaultConfig,
       epigeneDB.configForWidgets(['saveSort', 'zebra', 'columnSelector', 'stickyHeaders', 'filter', 'output', 'formatter', /*, 'resizable'*/]),
