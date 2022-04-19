@@ -110,10 +110,11 @@ namespace :data do
     { 'public/public_data/gene_expressions_by_sample_with_timecourses.txt' => 'source_data/hg19.cage_peak_phase1and2combined_tpm_ann.osc.txt',
       'public/public_data/gene_expressions_by_sample.txt' => 'source_data/hg19.cage_peak_tpm_ann.osc.txt'
     }.each do |sample_expressions_file, tpm_filename|
-      file sample_expressions_file => [tpm_filename, :load_epigenes, :load_histones] do |t|
+      file sample_expressions_file => [tpm_filename, :load_epigenes, :load_histones, :load_lncrnas] do |t|
         hgnc_symbols = {}
         $epigenes.select{|info| info[:hgnc_id] && info[:hgnc_id] != '-' }.each{|info| hgnc_symbols[info[:hgnc_id]] = info[:hgnc_symbol] }
         $histones.select{|info| info[:hgnc_id] && info[:hgnc_id] != '-' }.each{|info| hgnc_symbols[info[:hgnc_id]] = info[:hgnc_symbol] }
+        $lncrnas.select{|info| info[:hgnc_id] && info[:hgnc_id] != '-' }.each{|info| hgnc_symbols[info[:hgnc_id]] = info[:hgnc_symbol] }
         target_hgnc_ids = Set.new(hgnc_symbols.keys)
 
         extract_gene_expression_into_file(t.prerequisites.first, t.name, hgnc_symbols, target_hgnc_ids)
