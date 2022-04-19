@@ -32,10 +32,10 @@
             .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Use >=0.95 filter to show only top 5% of genes ranked by expression values.'}}
 
       %tbody
-        - @sample_infos.each do |hgnc_id, hgnc_symbol, gene_or_histone, expression, quantile_over_samples|
+        - @sample_infos.each do |hgnc_id, hgnc_symbol, gene_or_histone_or_lncrna, expression, quantile_over_samples|
           %tr
-            %td= gene_or_histone.molecule_kind
-            %td= link_to hgnc_symbol, gene_or_histone
+            %td= gene_or_histone_or_lncrna.molecule_kind
+            %td= link_to hgnc_symbol, gene_or_histone_or_lncrna
             %td= hgnc_id
             %td= expression.round(1)
             %td= quantile_over_samples.round(3)
