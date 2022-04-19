@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306112416) do
+ActiveRecord::Schema.define(version: 20220321234950) do
 
   create_table "genes", force: :cascade do |t|
     t.string   "hgnc_symbol"
@@ -64,6 +64,26 @@ ActiveRecord::Schema.define(version: 20150306112416) do
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "lncrnas", force: :cascade do |t|
+    t.string   "hgnc_symbol"
+    t.string   "status"
+    t.string   "hgnc_id"
+    t.string   "alternative_names"
+    t.string   "hgnc_name"
+    t.string   "gene_id"
+    t.string   "gene_tag"
+    t.string   "gene_desc"
+    t.text     "function"
+    t.string   "pmid_function"
+    t.string   "target"
+    t.string   "specific_target"
+    t.string   "uniprot_id_target"
+    t.string   "pmid_target"
+    t.text     "comment"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "protein_complexes", force: :cascade do |t|
