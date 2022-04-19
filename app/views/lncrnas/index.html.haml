@@ -1,0 +1,55 @@
+.row-fluid
+  .col-12
+    .table-actions
+      %button.reset{type: 'button'} Reset filters
+      %button.select-columns-btn{type: 'button'} Select Columns
+      = download_button
+      %input{type: "text", value: 'lncrnas.csv', class: 'csv-filename'}
+      .loading_table
+        .loading_logo
+
+.row-fluid
+  .col-12
+    %table#lncrnas.tablesorter.attach-column-selector
+      %thead
+        %tr
+          = lncrna_table_header :hgnc_symbol, show_always: true
+          = lncrna_table_header :hgnc_id, hide_by_default: true, dont_sort: true, class: 'hgnc_id'
+          = lncrna_table_header :alternative_names, show_always: true, dont_sort: true, class: 'alternative_names'
+          = lncrna_table_header :hgnc_name, show_always: true
+          = lncrna_table_header :gene_id, hide_by_default: true, dont_sort: true, class: 'gene_id'
+          = lncrna_table_header :gene_tag, hide_by_default: true
+          = lncrna_table_header :gene_desc, hide_by_default: true
+          = lncrna_table_header :function, show_always: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = lncrna_table_header :pmid_function, hide_by_default: true, dont_sort: true, class: 'pmid'
+          = lncrna_table_header :target, show_always: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = lncrna_table_header :specific_target, show_always: true, class: ['splitted_terms_filter', 'filter-onlyAvail']
+          = lncrna_table_header :uniprot_id_target, hide_by_default: true, dont_sort: true, class: 'uniprot_id_target' do |content|
+            = content
+            .export_uniprot.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Send the current gene list to Uniprot.'} }
+          = lncrna_table_header :pmid_target, hide_by_default: true, dont_sort: true, class: 'pmid'
+          = lncrna_table_header :comment, show_always: true, dont_sort: true, class: 'comment'
+          = lncrna_table_header :status, hide_by_default: true
+
+      %tbody
+        - @lncrnas.each do |lncrna|
+          %tr
+            %td{'data-text' => lncrna.hgnc_symbol }
+              = lncrna.hgnc_symbol
+              %br
+              = link_to '(details)', (lncrna.hgnc_symbol ? lncrna_by_hgnc_path(lncrna.hgnc_symbol) : lncrna_path(lncrna))
+            %td= lncrna.hgnc_id
+            %td= lncrna.alternative_names
+            %td= lncrna.hgnc_name
+            %td= lncrna.gene_id
+            %td= lncrna.gene_tag
+            %td= lncrna.gene_desc
+            %td= lncrna.function
+            %td= lncrna.pmid_function
+            %td= lncrna.target
+            %td= lncrna.specific_target
+            %td= lncrna.uniprot_id_target
+            %td= lncrna.pmid_target
+            %td= lncrna.comment
+            %td= lncrna.status
+
