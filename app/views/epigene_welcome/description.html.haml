@@ -5,7 +5,9 @@
     %p
       Database statistics:
       %ul
-        %li #{Gene.count + Histone.count + Lncrna.count} Genes (including #{Histone.count} histones and protamines and #{Lncrna.count} lncRNAs)
+        %li #{Gene.count} Proteins
+        %li #{Histone.count} Histones and protamines
+        %li #{Lncrna.count} lncRNAs
         %li #{ProteinComplex.count} Protein complexes
 
     %p
@@ -40,7 +42,7 @@
               = link_to 'png', '/main_scheme_300dpi.png'
             = link_to 'svg', '/main_scheme.svg'
         %li
-          Table of all genes
+          Table of all proteins
           = surround '(', ')' do
             = succeed ',' do
               = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_main.csv"
