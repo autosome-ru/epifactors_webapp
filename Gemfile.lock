@@ -119,11 +119,11 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     mini_mime (1.0.2)
-    mini_portile2 (2.6.1)
+    mini_portile2 (2.8.0)
     minitest (5.14.0)
     multi_json (1.14.1)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
+    nokogiri (1.13.6)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
@@ -226,7 +226,7 @@ DEPENDENCIES
   jquery-tablesorter (~> 1.22.0)
   json (>= 2.3.0)
   less-rails
-  nokogiri (~> 1.12.5)
+  nokogiri (~> 1.13.6)
   quiet_assets
   railroady
   rails (~> 4.2.11.1)
