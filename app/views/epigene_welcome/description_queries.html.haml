@@ -1,7 +1,7 @@
 %h4 Querying database by URL
 
 %p
-  Epifactors allows searching genes, histones and protein complexes by multiple characteristics.
+  Epifactors allows searching proteins, protein complexes histones, and lncRNAs by multiple characteristics.
 %p
   Search results present a list of database entries (or a single entry if it was the only one found). 
   There are several ways to customize search parameters.
@@ -9,13 +9,13 @@
     %li
       The simplest URL query looks like:
       %code #{root_url}genes
-      which results in a list of all genes.
+      which results in a list of all proteins.
     %li
       An URL query 
       %code #{root_url}genes?search=xxx
       performs a full-text search of
       %code xxx
-      over most of gene database fields. It matches any string containing query. The same database search is performed by the search field in the top-right corner of the webpage.
+      over most of protein database fields. It matches any string containing query. The same database search is performed by the search field in the top-right corner of the webpage.
     %li
       An URL query 
       %code #{root_url}genes?search=xxx&field=yyy
@@ -23,7 +23,7 @@
       %code xxx
       using
       %code yyy
-      genes' field (exact match).
+      protein' field (exact match).
     %li
       An URL query 
       %code #{root_url}genes?search=xxx&field=yyy&similar=1
@@ -53,7 +53,7 @@
   Tables available for search:
   %ul
     %li
-      Genes. URL path is:
+      Proteins. URL path is:
       %code /genes
       Fields available for search are:
       %ul
@@ -313,3 +313,68 @@
           %code comment
           for
           = t 'activerecord.attributes.histone.comment'
+    %li
+      lncRNAs. URL path is:
+      %code /lncrnas
+      Fields available for search are:
+      %ul
+        %li
+          %code hgnc_symbol
+          for
+          = t 'activerecord.attributes.lncrs.hgnc_symbol'
+        %li
+          %code status
+          for
+          = t 'activerecord.attributes.lncrs.status'
+        %li
+          %code hgnc_id
+          for
+          = t 'activerecord.attributes.lncrs.hgnc_id'
+        %li
+          %code alternative_names
+          for
+          = t 'activerecord.attributes.lncrs.alternative_names'
+        %li
+          %code hgnc_name
+          for
+          = t 'activerecord.attributes.lncrs.hgnc_name'
+        %li
+          %code gene_id
+          for
+          = t 'activerecord.attributes.lncrs.gene_id'
+        %li
+          %code gene_tag
+          for
+          = t 'activerecord.attributes.lncrs.gene_tag'
+        %li
+          %code gene_desc
+          for
+          = t 'activerecord.attributes.lncrs.gene_desc'
+        %li
+          %code function
+          for
+          = t 'activerecord.attributes.lncrs.function'
+        %li
+          %code pmid_function
+          for
+          = t 'activerecord.attributes.lncrs.pmid_function'
+        %li
+          %code target
+          for
+          = t 'activerecord.attributes.lncrs.target'
+        %li
+          %code specific_target
+          for
+          = t 'activerecord.attributes.lncrs.specific_target'
+        %li
+          %code uniprot_id_target
+          for
+          = t 'activerecord.attributes.lncrs.uniprot_id_target'
+        %li
+          %code pmid_target
+          for
+          = t 'activerecord.attributes.lncrs.pmid_target'
+        %li
+          %code comment
+          for
+          = t 'activerecord.attributes.lncrs.comment'

@@ -11,19 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306112416) do
+ActiveRecord::Schema.define(version: 20220321234950) do
 
-  create_table "gene_in_complexes", force: true do |t|
-    t.integer  "protein_complex_id"
-    t.integer  "gene_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "gene_in_complexes", ["gene_id"], name: "index_gene_in_complexes_on_gene_id"
-  add_index "gene_in_complexes", ["protein_complex_id"], name: "index_gene_in_complexes_on_protein_complex_id"
-
-  create_table "genes", force: true do |t|
+  create_table "genes", force: :cascade do |t|
     t.string   "hgnc_symbol"
     t.string   "status"
     t.string   "hgnc_id"
@@ -52,7 +42,7 @@ ActiveRecord::Schema.define(version: 20150306112416) do
     t.datetime "updated_at"
   end
 
-  create_table "histones", force: true do |t|
+  create_table "histones", force: :cascade do |t|
     t.string   "hgnc_symbol"
     t.string   "status"
     t.string   "hgnc_id"
@@ -76,7 +66,27 @@ ActiveRecord::Schema.define(version: 20150306112416) do
     t.datetime "updated_at"
   end
 
-  create_table "protein_complexes", force: true do |t|
+  create_table "lncrnas", force: :cascade do |t|
+    t.string   "hgnc_symbol"
+    t.string   "status"
+    t.string   "hgnc_id"
+    t.string   "alternative_names"
+    t.string   "hgnc_name"
+    t.string   "gene_id"
+    t.string   "gene_tag"
+    t.string   "gene_desc"
+    t.text     "function"
+    t.string   "pmid_function"
+    t.string   "target"
+    t.string   "specific_target"
+    t.string   "uniprot_id_target"
+    t.string   "pmid_target"
+    t.text     "comment"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "protein_complexes", force: :cascade do |t|
     t.string   "group"
     t.string   "group_name"
     t.string   "complex_name"

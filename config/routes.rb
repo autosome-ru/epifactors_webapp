@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :protein_complexes, only: [:show, :index]
   resources :histones, only: [:show, :index]
   get 'histones/by_hgnc/:hgnc_symbol', to: 'histones#show_by_hgnc', as: 'histone_by_hgnc'
+  resources :lncrnas, only: [:show, :index]
+  get 'lncrnas/by_hgnc/:hgnc_symbol', to: 'lncrnas#show_by_hgnc', as: 'lncrna_by_hgnc'
   resources :samples, only: [:show, :index], constraints: {:id => /CNhs\d+/}
 
   # The priority is based upon order of creation: first created -> highest priority.

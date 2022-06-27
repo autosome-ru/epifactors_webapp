@@ -1,0 +1,15 @@
+json.hgnc_symbol  @lncrna.hgnc_symbol
+json.hgnc_id  @lncrna.hgnc_id
+json.alternative_names  @lncrna.alternative_names
+json.hgnc_name  @lncrna.hgnc_name
+json.gene_id  @lncrna.gene_id
+json.gene_tag  @lncrna.gene_tag
+json.gene_desc  @lncrna.gene_desc
+json.function  @lncrna.function
+json.pmid_function  @lncrna.pmid_function
+json.target  @lncrna.target
+json.specific_target  @lncrna.specific_target
+json.uniprot_id_target  @lncrna.uniprot_id_target
+json.pmid_target  @lncrna.pmid_target
+json.comment  @lncrna.comment
+json.status  @lncrna.status

@@ -91,6 +91,23 @@ en:
         pmid:                       PMID for reference on annotation
         fantom_sstar_gene:          Sample specific expression (FANTOM5)
         comment:                    Comment
+      
+      lncrna:
+        hgnc_symbol:                HGNC approved symbol
+        status:                     Status of entry
+        hgnc_id:                    HGNC ID
+        alternative_names:          Alternative names
+        hgnc_name:                  HGNC approved name
+        gene_id:                    Entrez gene ID
+        gene_tag:                   HGNC gene family tag
+        gene_desc:                  HGNC gene family description
+        function:                   Function
+        pmid_function:              PMID for reference on function
+        target:                     Target molecule type
+        specific_target:            Specific target
+        uniprot_id_target:          Target UniProt ID
+        pmid_target:                PMID for reference on targets and products
+        comment:                    Comment
 
       sample:
         sample_kind:                Sample class

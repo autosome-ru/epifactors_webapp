@@ -1,11 +1,13 @@
 .row-fluid
   .col-12
     %h4 Epifactors database description
-    %h5 Current version #{EpigeneDB::DATA_VERSION} (21 Nov, 2018)
+    %h5 Current version #{EpigeneDB::DATA_VERSION} (7 Apr, 2022)
     %p
       Database statistics:
       %ul
-        %li #{Gene.count + Histone.count} Genes (including #{Histone.count} histones and protamines)
+        %li #{Gene.count} Proteins
+        %li #{Histone.count} Histones and protamines
+        %li #{Lncrna.count} lncRNAs
         %li #{ProteinComplex.count} Protein complexes
 
     %p
@@ -40,7 +42,7 @@
               = link_to 'png', '/main_scheme_300dpi.png'
             = link_to 'svg', '/main_scheme.svg'
         %li
-          Table of all genes
+          Table of all proteins
           = surround '(', ')' do
             = succeed ',' do
               = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_main.csv"
@@ -57,6 +59,12 @@
             = succeed ',' do
               = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_histones.csv"
             = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_histones.xlsx"
+        %li
+          Table of all lncRNAs
+          = surround '(', ')' do
+            = succeed ',' do
+              = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_lncrnas.csv"
+            = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_lncrnas.xlsx"
 
         %li= link_to 'Pfam domains', '/Pfam_domains.pdf'
         %li= link_to 'Gene expressions table (FANTOM 5 data)', '/public_data/gene_expressions_by_sample.zip'
