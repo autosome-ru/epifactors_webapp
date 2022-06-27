@@ -1,5 +1,6 @@
 require 'cgi'
 require 'set'
+require 'shellwords'
 require 'rake/clean'
 
 def sample_names_from_peaks_file(tpm_filename)
@@ -71,10 +72,10 @@ namespace :data do
 
   namespace :load_expressions do
     desc 'Load gene expressions by samples (with timecourses)'
-    task :with_timecourses => ['public/public_data/gene_expressions_by_sample_with_timecourses.txt']
+    task :with_timecourses => ['public/public_data/gene_expressions_by_sample_with_timecourses.txt', 'public/public_data/gene_expressions_by_sample_with_timecourses.zip']
 
     desc 'Load gene expressions by samples (without timecourses)'
-    task :without_timecourses => ['public/public_data/gene_expressions_by_sample.txt']
+    task :without_timecourses => ['public/public_data/gene_expressions_by_sample.txt', 'public/public_data/gene_expressions_by_sample.zip']
 
     task :download => ['download:tpm_without_timecourses', 'download:tpm_with_timecourses']
     namespace :download do
@@ -120,6 +121,15 @@ namespace :data do
         extract_gene_expression_into_file(t.prerequisites.first, t.name, hgnc_symbols, target_hgnc_ids)
       end
       CLOBBER.include(sample_expressions_file)
+    end
+
+    { 'public/public_data/gene_expressions_by_sample_with_timecourses.zip' => ['public/public_data/gene_expressions_by_sample_with_timecourses.txt'],
+      'public/public_data/gene_expressions_by_sample.zip' => ['public/public_data/gene_expressions_by_sample.txt'],
+    }.each do |archive, files|
+      file archive => files do |t|
+        system("rm -f #{archive.shellescape}")
+        system("zip #{archive.shellescape} #{files.shelljoin}")
+      end
     end
   end
 end
