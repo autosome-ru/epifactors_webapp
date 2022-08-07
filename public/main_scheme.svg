@@ -16,12 +16,12 @@
    y="0px"
    width="595px"
    height="650px"
-   viewBox="0 90 595.2800293 740.0"
+   viewBox="-600 90 595.2800293 740.0"
    enable-background="new 0 90 595.2800293 740"
    xml:space="preserve"
    id="svg2"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="main_scheme.svg"><metadata
+   sodipodi:docname="main_scheme.svg"><g transform="scale(-1,1)"><metadata
    id="metadata2707"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
@@ -37,6 +37,7 @@
    xlink:href="#adobe_illustrator_pgf">
 		</i:pgfRef>
 	</foreignObject>
+
 	
 <linearGradient
    inkscape:collect="always"
@@ -11538,8 +11539,8 @@
    id="path2453"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="391.80954"
-   x="80.362442"
+   transform="translate(80.362442, 391.80954) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    letter-spacing="-1"
    id="text2532">HAT</text>
@@ -11553,11 +11554,12 @@
    id="path2519"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="369.04614"
-   x="80.409378"
+   transform="translate(80.409378, 369.04614) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2540"
    style="font-size:15px;font-family:Arial">HDAC</text>
+
 
 
 </g><g
@@ -11568,8 +11570,8 @@
    id="path2457"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="325.04208"
-   x="87.761879"
+   transform="translate(87.761879, 325.04208) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2542"
    style="font-size:15px;font-family:Arial">PcG</text>
@@ -11583,8 +11585,8 @@
    id="path2455"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="345.73486"
-   x="85.928116"
+   transform="translate(85.928116, 345.73486) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2544"
    style="font-size:15px;font-family:Arial">DUB</text>
@@ -11598,8 +11600,8 @@
    id="path2521"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="322.28314"
-   x="357.07425"
+   transform="translate(357.07425, 322.28314) scale(-1,1)"
+   direction="rtl"
    letter-spacing="-1"
    style="font-size:15px;letter-spacing:-1;font-family:Arial"
    id="text2546">HAT</text>
@@ -11613,8 +11615,8 @@
    id="path2523"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   x="350"
-   y="300"
+   transform="translate(350, 300) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2554"
    style="font-size:15px;font-family:Arial">HDAC</text>
@@ -11628,8 +11630,8 @@
    id="path2447"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="295.74203"
-   x="182.31102"
+   transform="translate(182.31102, 295.74203) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2556">MLL</text>
 
@@ -11642,8 +11644,8 @@
    id="path2449"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="319.0856"
-   x="178.44135"
+   transform="translate(178.44135, 319.0856) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2562">HMT</text>
 
@@ -11656,8 +11658,8 @@
    id="path2451"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="365.00879"
-   x="183.28812"
+   transform="translate(183.28812, 365.00879) scale(-1,1)"
+   direction="rtl"
    letter-spacing="-1"
    style="font-size:15px;font-family:Arial"
    id="text2568">HAT</text>
@@ -11671,8 +11673,8 @@
    id="path2525"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="341.71722"
-   x="173.72571"
+   transform="translate(173.72571, 341.71722) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2576"
    style="font-size:15px;font-family:Arial">HDAC</text>
@@ -11686,8 +11688,8 @@
    id="path2503"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="538.55823"
-   x="266.95453"
+   transform="translate(266.95453, 538.55823) scale(-1,1)"
+   direction="rtl"
    letter-spacing="-1"
    style="font-size:15px;font-family:Arial"
    id="text2578">HAT</text>
@@ -11701,8 +11703,8 @@
    id="path2487"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="697.03015"
-   x="351.6691"
+   transform="translate(351.6691, 697.03015) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2586"
    style="font-size:15px;font-family:Arial">Ino80</text>
@@ -11716,8 +11718,8 @@
    id="path2501"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="621.37744"
-   x="145.32846"
+   transform="translate(145.32846, 621.37744) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2588"
    style="font-size:15px;font-family:Arial">Ino80</text>
@@ -11731,8 +11733,8 @@
    id="path2471"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="112.02464"
-   x="248.83205"
+   transform="translate(248.83205, 112.02464) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2590"
    style="font-size:15px;font-family:Arial">Ino80</text>
@@ -11746,8 +11748,8 @@
    id="path2475"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="224.03395"
-   x="308.26083"
+   transform="translate(308.26083, 224.03395) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2592"
    style="font-size:15px;font-family:Arial">PcG</text>
@@ -11760,8 +11762,8 @@
    id="path2473"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   x="217"
-   y="133"
+   transform="translate(217, 133) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2594"
    style="font-size:15px;font-family:Arial">ISWI</text>
@@ -11775,8 +11777,8 @@
    id="path2479"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="226.2285"
-   x="241.72003"
+   transform="translate(241.72003, 226.2285) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2596">FACT</text>
 
@@ -11789,8 +11791,8 @@
    id="path2477"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="192.35162"
-   x="234.98131"
+   transform="translate(234.98131, 192.35162) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2604">CREST</text>
 
@@ -11803,12 +11805,11 @@
    id="path2481"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="221.88797"
-   x="176.7988"
+   transform="translate(176.7988, 221.88797) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2610">SWI/</text><text
-     x="178.04733"
-     y="239.88797"
+     transform="translate(205.04733, 239.88797) scale(-1,1)"
      font-size="15"
      id="tspan2614"
      style="font-size:15px;font-family:Arial">SNF</text>
@@ -11821,8 +11822,8 @@
    id="path2469"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="132.88811"
-   x="278.47876"
+   transform="translate(278.47876, 132.88811) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2616">SRCAP</text>
 
@@ -11835,8 +11836,8 @@
    id="path2483"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="743.30457"
-   x="500.18784"
+   transform="translate(500.18784, 743.30457) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2622"
    style="font-size:15px;font-family:Arial">CAF-1</text>
@@ -11850,8 +11851,8 @@
    id="path2489"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="742.31799"
-   x="313.16965"
+   transform="translate(313.16965, 742.31799) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2624">FACT</text>
 
@@ -11864,8 +11865,8 @@
    id="path2485"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="660.3938"
-   x="314.95233"
+   transform="translate(314.95233, 660.3938) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2632"
    style="font-size:15px;font-family:Arial">ISWI</text>
@@ -11879,8 +11880,8 @@
    id="path2491"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="727.03827"
-   x="264.74161"
+   transform="translate(264.74161, 727.03827) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2634"
    style="font-size:15px;font-family:Arial">APOB</text>
@@ -11894,8 +11895,8 @@
    id="path2493"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="744.87531"
-   x="198.29965"
+   transform="translate(198.29965, 744.87531) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2636"
    style="font-size:15px;font-family:Arial">ISWI</text>
@@ -11909,8 +11910,8 @@
    id="path2499"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="643.60242"
-   x="151.03516"
+   transform="translate(151.03516, 643.60242) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2638">FACT</text>
 
@@ -11923,8 +11924,8 @@
    id="path2495"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="723.53571"
-   x="112.04417"
+   transform="translate(112.04417, 723.53571) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2644"
    style="font-size:15px;font-family:Arial">APOB</text>
@@ -11938,8 +11939,8 @@
    id="path2527"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="562.21539"
-   x="270.45593"
+   transform="translate(270.45593, 562.21539) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2646"
    style="font-size:15px;font-family:Arial">HDAC</text>
@@ -11953,8 +11954,8 @@
    id="path2505"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="584.56207"
-   x="270.77786"
+   transform="translate(270.77786, 584.56207) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2648">HMT</text>
 
@@ -11967,8 +11968,8 @@
    id="path2507"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="606.3197"
-   x="264.35675"
+   transform="translate(264.35675, 606.3197) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2654">MLL</text>
 
@@ -11981,8 +11982,8 @@
    id="path2509"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="628.03198"
-   x="269.31149"
+   transform="translate(269.31149, 628.03198) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2660"
    style="font-size:15px;font-family:Arial">PcG</text>
@@ -11996,8 +11997,8 @@
    id="path2497"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="653.64447"
-   x="46.856819"
+   transform="translate(46.856819, 653.64447) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2662"
    style="font-size:15px;font-family:Arial">ISWI</text>
@@ -12011,8 +12012,8 @@
    id="path2463"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="369.50385"
-   x="498.16821"
+   transform="translate(498.16821, 369.50385) scale(-1,1)"
+   direction="rtl"
    style="font-size:15px;font-family:Arial"
    id="text2664">FACT</text>
 
@@ -12025,8 +12026,8 @@
    id="path2465"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="347.01492"
-   x="506.54297"
+   transform="translate(506.54297, 347.01492) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2672"
    style="font-size:15px;font-family:Arial">Ino80</text>
@@ -12040,8 +12041,8 @@
    id="path2467"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="323.97006"
-   x="512.25891"
+   transform="translate(512.25891, 323.97006) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2674"
    style="font-size:15px;font-family:Arial">CAF-1</text>
@@ -12055,8 +12056,8 @@
    id="path2459"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="341.31631"
-   x="451.1803"
+   transform="translate(451.1803, 341.31631) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2676"
    style="font-size:15px;font-family:Arial">DUB</text>
@@ -12070,8 +12071,8 @@
    id="path2461"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   y="318.37964"
-   x="458.12268"
+   transform="translate(458.12268, 318.37964) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    id="text2678"
    style="font-size:15px;font-family:Arial">ISWI</text>
@@ -12092,8 +12093,8 @@
    sodipodi:rx="9.7469559"
    sodipodi:ry="9.850502"
    style="fill:#ff9fcb;stroke:#ff3582;stroke-miterlimit:10" /><text
-   y="361.56839"
-   x="332.61862"
+   transform="translate(332.61862, 361.56839) scale(-1,1)"
+   direction="rtl"
    font-size="9"
    id="text2681"
    style="font-size:9px;font-family:Arial-Bold">H2B</text>
@@ -12114,8 +12115,8 @@
    sodipodi:ry="10.024583"
    style="fill:#f4a56e;stroke:#e95f00;stroke-miterlimit:10"
    d="m 98.703149,408.24756 c 0,5.53642 -4.488159,10.02458 -10.024583,10.02458 -5.536424,0 -10.024583,-4.48816 -10.024583,-10.02458 0,-5.53643 4.488159,-10.02458 10.024583,-10.02458 5.536424,0 10.024583,4.48815 10.024583,10.02458 z" /><text
-   y="411.70377"
-   x="79.662659"
+   transform="translate(79.662659, 411.70377) scale(-1,1)"
+   direction="rtl"
    id="text2683" style="font-size:9px;font-family:Arial-Bold">H2A</text>
 
 
@@ -12134,8 +12135,8 @@
    sodipodi:rx="9.7469559"
    sodipodi:ry="9.850502"
    style="fill:#bf912a;stroke:#7f653f;stroke-miterlimit:10" /><text
-   y="421"
-   x="374"
+   transform="translate(374, 421) scale(-1,1)"
+   direction="rtl"
    font-size="9"
    id="text1529"
    style="font-size:9px;font-family:Arial-Bold">H1</text>
@@ -12156,8 +12157,8 @@
    sodipodi:ry="10.024583"
    style="fill:#82ce94;stroke:#009933;stroke-miterlimit:10"
    d="m 201.79994,410.16989 c 0,5.53643 -4.48816,10.02458 -10.02458,10.02458 -5.53642,0 -10.02458,-4.48815 -10.02458,-10.02458 0,-5.53642 4.48816,-10.02458 10.02458,-10.02458 5.53642,0 10.02458,4.48816 10.02458,10.02458 z" /><text
-   y="413.04269"
-   x="186.0318"
+   transform="translate(186.0318, 413.04269) scale(-1,1)"
+   direction="rtl"
    font-size="9"
    id="text2689"
    style="font-size:9px;font-family:Arial-Bold">H4</text>
@@ -12177,8 +12178,8 @@
    sodipodi:rx="10.024583"
    sodipodi:ry="10.024583"
    style="fill:#9aa1f4;stroke:#5f66ff;stroke-miterlimit:10" /><text
-   y="517.18671"
-   x="256.03571"
+   transform="translate(256.03571, 517.18671) scale(-1,1)"
+   direction="rtl"
    font-size="9"
    id="text2691"
    style="font-size:9px;font-family:Arial-Bold">H3</text>
@@ -12186,8 +12187,8 @@
 
 </g><g
    id="g14206"
-   class="pol-I"><ellipse
-   transform="matrix(0.8734419,0.4869283,-0.4869283,0.8734419,329.51218,30.790338)"
+   class="pol-I"
+   transform="matrix(-1,0,0,1,211.0472,0)"><ellipse
    cx="105.52363"
    cy="649.28931"
    rx="11.067916"
@@ -12227,8 +12228,8 @@
 
 </g><g
    id="g14527"
-   class="pol-II"><ellipse
-     transform="matrix(0.8804687,0.4741043,-0.4741043,0.8804687,344.91763,4.1627173)"
+   class="pol-II"
+   transform="matrix(-1,0,0,1,328.4068,0)"><ellipse
      cx="164.2034"
      cy="686.11523"
      rx="11.067916"
@@ -12302,7 +12303,8 @@
 
 			</g></g><g
    id="g14512"
-   class="pol-III"><ellipse
+   class="pol-III"
+   transform="matrix(-1,0,0,1,470.21246,0)"><ellipse
    cx="235.10623"
    cy="708.57593"
    rx="11.067916"
@@ -12355,8 +12357,8 @@
    sodipodi:ry="10.024583"
    style="opacity:0.9;fill:#ffda88;stroke:#ffbb15;stroke-miterlimit:10"
    d="m 455.35875,354.51691 c 0,5.53642 -4.48816,10.02458 -10.02458,10.02458 -5.53643,0 -10.02459,-4.48816 -10.02459,-10.02458 0,-5.53643 4.48816,-10.02459 10.02459,-10.02459 5.53642,0 10.02458,4.48816 10.02458,10.02459 z" /><text
-   y="357.07031"
-   x="436.13574"
+   transform="translate(436.13574, 357.07031) scale(-1,1)"
+   direction="rtl"
    font-size="7"
    id="text2701"
    style="font-size:7px;font-family:Arial-Bold">H2AX</text>
@@ -18150,18 +18152,19 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
 </i:pgf>
 
 <g class="epigene"
-   data-epigene-name="SWR"><path
+   data-epigene-name="SWR"> 
+   <path
    d="m 202,159 c 0,5.37353 -4.35611,9.72964 -9.72966,9.72964 H 168 c -5.37353,0 -9.72964,-4.35611 -9.72964,-9.72964 l 0,0 c 0,-5.37353 4.35611,-9.72965 9.72964,-9.72965 h 23.49724 c 5.37355,0 9.72966,4.35612 9.72966,9.72965 l 0,0 z"
    inkscape:connector-curvature="0"
    style="opacity:0.5;fill:#a8d5ff" /><text
-   x="162"
-   y="165"
+   transform="translate(162, 165) scale(-1,1)"
+   direction="rtl"
    font-size="15"
    style="font-size:15px;font-family:Arial">SWR</text>
 </g>
 
 <defs>
-   <g id="epigeneBox">
+   <g id="epigeneBox"> 
       <path
          d="
          m -12,10.5
@@ -18177,7 +18180,7 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
       </g>
 </defs>
 
-<g class="epigene" data-epigene-name="Exosome">
+<g class="epigene" data-epigene-name="Exosome"> 
    <path
    d="
    m -2.8,710.5
@@ -18189,11 +18192,14 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    "
    style="opacity:0.5;fill: #a8d5ff;"
    inkscape:connector-curvature="0"
-   sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="-7.5" y="705" style="font-size: 15px;font-family: Arial;">Exosome</text>
+   sodipodi:nodetypes="cssccssc" /><text
+   transform="translate(-7.5, 705) scale(-1,1)"
+   direction="rtl"
+   font-size="15" 
+   style="font-size: 15px;font-family: Arial;">Exosome</text>
 </g>
 
-<g class="epigene" data-epigene-name="CoREST">
+<g class="epigene" data-epigene-name="CoREST"> 
    <path
    d="
    m 242.2,340.5
@@ -18205,11 +18211,14 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    "
    style="opacity:0.5;fill: #a8d5ff;"
    inkscape:connector-curvature="0"
-   sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="236.5" y="335" style="font-size: 15px;font-family: Arial;">CoREST</text>
+   sodipodi:nodetypes="cssccssc" /><text 
+   transform="translate(236.5, 335) scale(-1,1)"
+   direction="rtl"
+   font-size="15"
+   style="font-size: 15px;font-family: Arial;">CoREST</text>
 </g>
 
-<g class="epigene" data-epigene-name="CoREST">
+<g class="epigene" data-epigene-name="CoREST"> 
    <path
    d="
    m 202.2,575.5
@@ -18221,11 +18230,14 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    "
    style="opacity:0.5;fill: #a8d5ff;"
    inkscape:connector-curvature="0"
-   sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="196.5" y="570" style="font-size: 15px;font-family: Arial;">CoREST</text>
+   sodipodi:nodetypes="cssccssc" /><text
+   transform="translate(196.5, 570) scale(-1,1)"
+   direction="rtl"
+   font-size="15"
+   style="font-size: 15px;font-family: Arial;">CoREST</text>
 </g>
 
-<g class="epigene" data-epigene-name="L3MBTL1">
+<g class="epigene" data-epigene-name="L3MBTL1"> 
    <path
    d="
    m 237.4,365.5
@@ -18237,12 +18249,15 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    "
    style="opacity:0.5;fill: #a8d5ff;"
    inkscape:connector-curvature="0"
-   sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="230" y="360" style="font-size: 15px;font-family: Arial;">L3MBTL1</text>
+   sodipodi:nodetypes="cssccssc" /><text 
+   transform="translate(230, 360) scale(-1,1)"
+   direction="rtl"
+   font-size="15" 
+   style="font-size: 15px;font-family: Arial;">L3MBTL1</text>
 </g>
 
 
-<g class="epigene" data-epigene-name="L3MBTL1">
+<g class="epigene" data-epigene-name="L3MBTL1"> 
    <path
    d="
    m 402.4,485.5
@@ -18254,11 +18269,14 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    "
    style="opacity:0.5;fill: #a8d5ff;"
    inkscape:connector-curvature="0"
-   sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="395.5" y="480" style="font-size: 15px;font-family: Arial;">L3MBTL1</text>
+   sodipodi:nodetypes="cssccssc" /><text 
+   transform="translate(395.5, 480) scale(-1,1)"
+   direction="rtl"
+   font-size="15"
+   style="font-size: 15px;font-family: Arial;">L3MBTL1</text>
 </g>
 
-<g class="pseudocomplex" data-pseudocomplex-name="TET">
+<g class="pseudocomplex" data-pseudocomplex-name="TET"> 
    <path
    d="
    m 206,670.5
@@ -18270,11 +18288,14 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    "
    style="opacity:0.5;fill: #c6e0c0;"
    inkscape:connector-curvature="0"
-   sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="200" y="665" style="font-size: 15px;font-family: Arial;">TET</text>
+   sodipodi:nodetypes="cssccssc" /><text 
+   transform="translate(200, 665) scale(-1,1)"
+   direction="rtl"
+   font-size="15" 
+   style="font-size: 15px;font-family: Arial;">TET</text>
 </g>
 
-<g class="pseudocomplex" data-pseudocomplex-name="DNMT">
+<g class="pseudocomplex" data-pseudocomplex-name="DNMT"> 
    <path
    d="
    m 266,684.5
@@ -18286,11 +18307,14 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    "
    style="opacity:0.5;fill: #c6e0c0;"
    inkscape:connector-curvature="0"
-   sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="260" y="679" style="font-size: 15px;font-family: Arial;">DNMT</text>
+   sodipodi:nodetypes="cssccssc" /><text 
+   transform="translate(260, 679) scale(-1,1)"
+   direction="rtl"
+   font-size="15" 
+   style="font-size: 15px;font-family: Arial;">DNMT</text>
 </g>
 
-<g class="pseudocomplex" data-pseudocomplex-name="DNMT">
+<g class="pseudocomplex" data-pseudocomplex-name="DNMT"> 
    <path
    d="
    m 356,644.5
@@ -18302,9 +18326,12 @@ L1/866v+xZs3TMirf7Z/03/6xasvra1X/Zf/+Pmv+Rv7Tx7gH3zww5/8qPt/MRicjg==
    "
    style="opacity:0.5;fill: #c6e0c0;"
    inkscape:connector-curvature="0"
-   sodipodi:nodetypes="cssccssc" />
-   <text font-size="15" x="350" y="639" style="font-size: 15px;font-family: Arial;">DNMT</text>
+   sodipodi:nodetypes="cssccssc" /><text 
+   transform="translate(350, 639) scale(-1,1)"
+   direction="rtl"
+   font-size="15"
+   style="font-size: 15px;font-family: Arial;">DNMT</text>
 </g>
 
-
+</g>
 </svg>
