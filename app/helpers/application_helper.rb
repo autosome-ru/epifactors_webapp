@@ -39,6 +39,15 @@ module ApplicationHelper
                                           }
   end
 
+  def full_name_button
+    content_tag :button, 'Full/short names', class: ['toggle-sample-format', 'has-tooltip'],
+                                    type: 'button',
+                                    data: { toggle: 'tooltip',
+                                            placement: 'right',
+                                            title: 'Show or hide FANTOM5 library ID.'
+                                          }
+  end
+
   # "abc, def" --> "{decorated abc}, {decorated def}"
   def decorate_list(str, splitter: ", ", joiner: ", ", &decorating_block)
     str.split(splitter).map(&decorating_block).join(joiner).html_safe
