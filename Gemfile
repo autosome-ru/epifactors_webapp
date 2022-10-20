@@ -55,7 +55,7 @@ gem 'draper'
 # gem 'pg'
 gem 'actionpack-action_caching'
 gem "json", ">= 2.3.0"
-gem 'nokogiri', '~> 1.12.5'
+gem 'nokogiri', '~> 1.13.9'
 
 group :development, :test do
   # Draw DB diagrams (https://github.com/preston/railroady)
