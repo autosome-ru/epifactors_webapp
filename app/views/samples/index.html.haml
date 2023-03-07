@@ -1,4 +1,4 @@
-.row-fluid
+.row-fluid  
   .col-12
     .table-actions
       %button.reset{type: 'button'} Reset filters
@@ -8,14 +8,20 @@
       .loading_table
         .loading_logo
 
+#.row-fluid  
+#  .col-12
+#    .description
+#      The expression data are extracted from FANTOM5 Semantic catalog of Samples, Transcription initiation And Regulators. Cap Analysis of Gene Expression technique (CAGE) were used by the FANTOM5 consortium to measure expression on different promoters for genes in multiple cell lines and tissues and primary cells from different donors. Cell-type specific expression profiles are represented in corresponding sections “CELL_LINE”, “PRIMARY_CELL” and “TISUUE”. Section “TIMECOURSE” provides information on gene expression in time courses after biological stimuli. Additionally, section “FRACTIONATION” contains information on gene expression from cellular fractionation samples.
+
 .row-fluid
   .col-12
     %table#samples.toggle-sample-format-target.tablesorter
       %thead
         %tr
           = sample_table_header :sample_kind, class: ['group-text', 'sample_kind']
+          .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Choose sample class (cell_line, primary_cell, tissue, fractionation or timecourse)'}}
           = sample_table_header :sample_name, show_always: true, class: ['sample_link'], data: {'sample-format' => 'short'}
-
+          .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Choose the sample of interest)'}}
       %tbody
         - @samples.each do |sample|
           %tr

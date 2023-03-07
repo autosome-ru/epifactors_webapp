@@ -20,10 +20,13 @@
         %tr
           %th.molecule_kind.filter-select.group-text
             = t 'activerecord.attributes.expression.molecule_kind'
+            .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Choose the molecule class (histone, protamine, protein or lncRNA)'}}
           %th.hgnc_symbol
             = t 'activerecord.attributes.expression.hgnc_symbol'
+            .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Choose the gene of interest'}}
           %th.hgnc_id
             = t 'activerecord.attributes.expression.hgnc_id'
+            .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Choose the gene of interest'}}
           %th.expression_bar{data: {placeholder: "Try `>=100` or `100 to 1000`", value: '>10'} }
             = t 'activerecord.attributes.expression.expression'
             .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'The gene expression values are derived from FANTOM5 TSS, aggregating values for each gene (via HGNC mapping) if several TSS were annotated. FANTOM5 expression data are presented as normalized tags per million (TPM) calculated using the relative log expression (RLE) method.'}}          
