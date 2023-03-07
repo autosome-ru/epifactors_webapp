@@ -71,10 +71,12 @@ namespace :data do
 
   namespace :load_expressions do
     desc 'Load gene expressions by samples (with timecourses)'
-    task :with_timecourses => ['public/public_data/gene_expressions_by_sample_with_timecourses.txt']
+    task :with_timecourses => ['public/public_data/gene_expressions_by_sample_with_timecourses.txt',
+                               'public/public_data/gene_expressions_by_sample_with_timecourses.txt.gz']
 
     desc 'Load gene expressions by samples (without timecourses)'
-    task :without_timecourses => ['public/public_data/gene_expressions_by_sample.txt']
+    task :without_timecourses => ['public/public_data/gene_expressions_by_sample.txt',
+                                  'public/public_data/gene_expressions_by_sample.txt.gz']
 
     task :download => ['download:tpm_without_timecourses', 'download:tpm_with_timecourses']
     namespace :download do
@@ -120,6 +122,15 @@ namespace :data do
         extract_gene_expression_into_file(t.prerequisites.first, t.name, hgnc_symbols, target_hgnc_ids)
       end
       CLOBBER.include(sample_expressions_file)
+    end
+
+    ['public/public_data/gene_expressions_by_sample_with_timecourses.txt',
+      'public/public_data/gene_expressions_by_sample.txt'
+    ].each do |orig_fn|
+      gzipped_fn = "#{orig_fn}.gz"
+      file(gzipped_fn => [orig_fn]) do |t|
+        sh "gzip -c -9 --keep #{orig_fn} > #{gzipped_fn}"
+      end
     end
   end
 end
