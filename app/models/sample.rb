@@ -69,7 +69,7 @@ class Sample
   # # See https://github.com/charles-plessy/tutorial/blob/master/FANTOM5_SDRF_files/sdrf.md for help with FANTOM samples data
   # # Download:
   # PHASE='latest'
-  # echo 'mget */*sdrf.txt' |   lftp http://fantom.gsc.riken.jp/5/datafiles/$PHASE/basic
+  # echo 'mget */*sdrf.txt' |   lftp https://fantom.gsc.riken.jp/5/datafiles/$PHASE/basic
   def self.load_samples_from_folder(folder)
     Dir.glob(File.join(folder, '*')).select{|filename|
       File.basename(filename).match(SDRF_FILENAME_PATTERN) # Don't include unclassified files

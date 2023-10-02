@@ -54,7 +54,7 @@ module ApplicationHelper
   end
 
   def uniprot_id_or_ac_link(id)
-    (id == '#') ? '#' : link_to(id, "http://www.uniprot.org/uniprot/#{id}")
+    (id == '#') ? '#' : link_to(id, "https://www.uniprot.org/uniprot/#{id}")
   end
 
   def uniprot_id_or_ac_links(ids)
@@ -71,7 +71,7 @@ module ApplicationHelper
 
   def pfam_domain_link(pfam_domain)
     infos = pfam_domain.strip.split(/\s+/)
-    url = "http://pfam.xfam.org/family/#{infos[1]}"
+    url = "https://www.ebi.ac.uk/interpro/entry/pfam/#{infos[1]}/"
     domain_name = infos.first(2).join('&nbsp;').html_safe
     residues_ranges = infos.drop(2).join(', ')
     link_to(domain_name, url) + " (#{residues_ranges})"
@@ -83,7 +83,7 @@ module ApplicationHelper
 
   def pmid_link(pmid)
     if pmid.match(/^\d+$/)
-      link_to("PMID:#{pmid}", "http://www.ncbi.nlm.nih.gov/pubmed/#{pmid}")
+      link_to("PMID:#{pmid}", "https://www.ncbi.nlm.nih.gov/pubmed/#{pmid}")
     else
       pmid # Some PMIDs look like "Uniprot", "by similarity" and "Uniprot (by similarity)"
     end
@@ -94,27 +94,27 @@ module ApplicationHelper
   end
 
   def fantom_sstar_gene_link(gene_id)
-    link_to('SSTAR profile', "http://fantom.gsc.riken.jp/5/sstar/EntrezGene:#{gene_id}")
+    link_to('SSTAR profile', "https://fantom.gsc.riken.jp/5/sstar/EntrezGene:#{gene_id}")
   end
 
   def gene_id_link(gene_id)
     [
-      link_to("GeneID:#{gene_id}", "http://www.ncbi.nlm.nih.gov/gene/#{gene_id}"),
+      link_to("GeneID:#{gene_id}", "https://www.ncbi.nlm.nih.gov/gene/#{gene_id}"),
       '<br/>',
       "(#{ fantom_sstar_gene_link(gene_id) })"
     ].join.html_safe
   end
 
   def hgnc_id_url(hgnc_id)
-    "http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=#{hgnc_id}"
+    "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=#{hgnc_id}"
   end
   def hgnc_id_link(hgnc_id, name: nil)
     link_to((name || "HGNC:#{hgnc_id}"), hgnc_id_url(hgnc_id))
   end
 
   def mgi_url(mgi_id)
-    # "http://www.informatics.jax.org/searchtool/Search.do?query=MGI:#{mgi_id}"
-    "http://www.informatics.jax.org/marker/MGI:#{mgi_id}"
+    # "https://www.informatics.jax.org/searchtool/Search.do?query=MGI:#{mgi_id}"
+    "https://www.informatics.jax.org/marker/MGI:#{mgi_id}"
   end
   def mgi_id_link(mgi_id, name: nil)
     link_to((name || "MGI:#{mgi_id}"), mgi_url(mgi_id))

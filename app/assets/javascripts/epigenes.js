@@ -120,7 +120,7 @@ var page_ready = function() {
     var query = $.map(cells, function(cell){
       return field_prefix + cell;
     }).join(' OR ');
-    return 'http://www.uniprot.org/uniprot/?query=' + encodeURIComponent(query);
+    return 'https://www.uniprot.org/uniprot/?query=' + encodeURIComponent(query);
   };
 
   $('th.uniprot_ac .export_uniprot').mouseup(function(e){

@@ -1,20 +1,20 @@
 ;(function(epigeneDB, $, undefined) {
 
   epigeneDB.gene_id_link = function(gene_id) {
-    return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>' + '<br/>(' + epigeneDB.fantom_sstar_gene_link(gene_id) + ')';
+    return '<a href="https://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>' + '<br/>(' + epigeneDB.fantom_sstar_gene_link(gene_id) + ')';
   };
 
   epigeneDB.fantom_sstar_gene_link = function(gene_id) {
-    return '<a href="http://fantom.gsc.riken.jp/5/sstar/EntrezGene:' + gene_id + '">SSTAR profile</a>';
+    return '<a href="https://fantom.gsc.riken.jp/5/sstar/EntrezGene:' + gene_id + '">SSTAR profile</a>';
   };
 
   epigeneDB.hgnc_id_link = function(hgnc) {
-    return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>';
+    return '<a href="https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>';
   };
 
   epigeneDB.mgi_id_link = function(mgi_name) {
-    // return '<a href="http://www.informatics.jax.org/searchtool/Search.do?query=MGI:' + mgi_name + '">' + mgi_name + '</a>';
-    return '<a href="http://www.informatics.jax.org/marker/MGI:' + mgi_name + '">' + mgi_name + '</a>';
+    // return '<a href="https://www.informatics.jax.org/searchtool/Search.do?query=MGI:' + mgi_name + '">' + mgi_name + '</a>';
+    return '<a href="https://www.informatics.jax.org/marker/MGI:' + mgi_name + '">' + mgi_name + '</a>';
   };
 
   // genename_with_id is `SMARCA4#561` -- a SMARCA4 gene with id 561.
@@ -35,18 +35,18 @@
   };
 
   epigeneDB.uniprot_id_link = function(uniprot_id) {
-    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
+    return '<a href="https://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
   };
 
   epigeneDB.uniprot_ac_link = function(uniprot_ac) {
-    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>';
+    return '<a href="https://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>';
   };
 
   epigeneDB.pmid_link = function(pmid) {
     if (isNaN(pmid)) {
       return pmid; // Some PMIDs look like "Uniprot", "by similarity" and "Uniprot (by similarity)"
     } else {
-      return '<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
+      return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
     }
   };
 
@@ -56,7 +56,7 @@
 
   epigeneDB.pfam_domain_link = function(pfam_info) {
     var infos = $.trim(pfam_info).split(/\s+/);
-    return '<a href="http://pfam.xfam.org/family/' + infos[1] + '">' + infos.slice(0, 2).join('&nbsp;') + '</a> (' + infos.slice(2).join(', ') + ')';
+    return '<a href="https://www.ebi.ac.uk/interpro/entry/pfam/' + infos[1] + '/">' + infos.slice(0, 2).join('&nbsp;') + '</a> (' + infos.slice(2).join(', ') + ')';
   };
 
   epigeneDB.expression_bar = function(value, data) {
@@ -78,7 +78,7 @@
     extract_name = match[3];
     sample_format = data.$header && data.$header.data('sample-format');
     url = '/samples/' + library_id;
-    fantom_sstar_url = 'http://fantom.gsc.riken.jp/5/sstar/FF:' + extract_name;
+    fantom_sstar_url = 'https://fantom.gsc.riken.jp/5/sstar/FF:' + extract_name;
     if (!sample_format || sample_format == 'short') {
       return '<a href="' + url + '"">' + name + '</a> <span class="fantom-external-link">(<a href="' + fantom_sstar_url + '">FANTOM5 SSTAR</a>)</span>';
     } else if (sample_format == 'full') {
