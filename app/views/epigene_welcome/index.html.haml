@@ -1,5 +1,5 @@
-.row-fluid
-  .col-12
+.row
+  .col-lg-8
     .loading_figure
       %h4 Loading graphical menu...
       .loading_logo
@@ -7,6 +7,7 @@
     .graphical_menu
       #main_scheme_svg
       #main_scheme_png_stub
+  .col-lg-4
     .description
       EpiFactors is a database for epigenetic factors, corresponding genes and products.
 
@@ -33,13 +34,12 @@
           %li Chromatin loop formation by recruitment of looping factors or R-loop formation;
           %li Regulation of alternative splicing by modification, recruitment or sequestration of splicing factors, chromatin remodeling or R-loop formation;
           %li miRNA sequestration (sponging).
-
-.row-fluid
-  .col-12
+.row
+  .col-lg-6
     .citation
       = render 'shared/citation_first'
 
-.row-fluid
-  .col-12
+.row
+  .col-lg-6
     .citation
       = render 'shared/citation_second'

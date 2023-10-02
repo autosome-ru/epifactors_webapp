@@ -21,7 +21,7 @@
 
   %body
     %header
-      = nav_bar do
+      = nav_bar responsive: true  do
         = menu_group do
           = menu_item 'Home', root_path
           = menu_item 'Proteins', genes_path, data: {toggle: 'tooltip', placement: 'right', title: 'Please note that the whole table may take a few seconds to load.'}, class: 'has-tooltip'
