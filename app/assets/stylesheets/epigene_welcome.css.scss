@@ -1,7 +1,9 @@
 .graphical_menu {
-  display: inline-block;
-  vertical-align: top;
-  width: 65%;
+  // display: inline-block;
+  // vertical-align: top;
+  svg {
+    // width: 100%;
+  }
 }
 
 .description{

@@ -6,21 +6,24 @@ nav .container {
 .navbar-inner {
   border-radius: 0;
 }
-.navbar-search {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 30px;
-  margin-top: 0;
-  margin-bottom: 0;
-  label, input { display: inline-block; }
-  label, input { padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 0; }
-  input[type=submit] {height: 22px; margin-left: 15px;}
-  select { margin-left: 4px; }
-}
+// .navbar-search {
+//   padding-top: 10px;
+//   padding-bottom: 10px;
+//   padding-right: 30px;
+//   margin-top: 0;
+//   margin-bottom: 0;
+//   label, input { display: inline-block; }
+//   label, input { padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 0; }
+//   input[type=submit] {height: 22px; margin-left: 15px;}
+//   select { margin-left: 4px; }
+// }
 
 .navbar {
   margin-bottom: 10px;
   .nav {
     height: 42px;
   }
+  // .form-group {
+  //   width: 400px;
+  // }
 }

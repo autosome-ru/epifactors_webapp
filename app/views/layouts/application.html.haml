@@ -35,7 +35,7 @@
             = label_tag do
               Search:
               = text_field_tag 'search', params[:search]
-            = select_tag 'kind', options_for_select({'Genes' => :genes, 'Сomplexes' => :protein_complexes, 'Histones and protamines' => :histones, 'lncRNAs' => :lncrnas},  [:genes, :protein_complexes, :histones, :lncrnas].include?(params[:controller].to_sym) ? params[:controller].to_sym : :genes)
+          = select_tag 'kind', options_for_select({'Genes' => :genes, 'Сomplexes' => :protein_complexes, 'Histones and protamines' => :histones, 'lncRNAs' => :lncrnas},  [:genes, :protein_complexes, :histones, :lncrnas].include?(params[:controller].to_sym) ? params[:controller].to_sym : :genes)
           = submit_tag 'Search'
     %div{class: ['container-fluid', "controller-#{params[:controller]}", "action-#{params[:action]}"] }
       = yield
