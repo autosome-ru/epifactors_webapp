@@ -142,13 +142,7 @@ onload_callback = function() {
 
 load_svg = function() {
   //$('#main_scheme_svg').load('https://gattaca.imppc.org/svgs/main_scheme.svg', null, function(response, status, xhr) {
-  $('#main_scheme_svg').load('https://epigene-db.appspot.com/images/main_scheme.svg', null, function(response, status, xhr) {
-    if (status == "error") {
-        $('#main_scheme_svg').load('/main_scheme.svg', null, onload_callback);
-    } else {
-      onload_callback();
-    }
-  });
+  $('#main_scheme_svg').load('/main_scheme.svg', null, onload_callback);
 }
 
 $(document).ready(load_svg)
