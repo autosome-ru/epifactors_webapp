@@ -39,8 +39,8 @@
           Scheme image
           = surround '(', ')' do
             = succeed ',' do
-              = link_to 'png', '/main_scheme_300dpi.png'
-            = link_to 'svg', '/main_scheme.svg'
+              = link_to 'png', asset_path('main_scheme_300dpi.png')
+            = link_to 'svg', asset_path('main_scheme.svg')
         %li
           Table of all proteins
           = surround '(', ')' do
