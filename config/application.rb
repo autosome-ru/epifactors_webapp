@@ -14,7 +14,7 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module EpigeneDB
-  DATA_VERSION = '2.0'
+  DATA_VERSION = '2.1'
 
   class Application < Rails::Application
     config.before_configuration do
