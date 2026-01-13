@@ -1,4 +1,4 @@
-class ProteinComplex < ActiveRecord::Base
+class ProteinComplex < ApplicationRecord
   searchable_attributes = [ :group_name, :complex_name, :status, :alternative_name, :protein, :uniprot_id,
                             :function, :target, :specific_target, :product, :uniprot_id_target, :comment ]
   include SearchableFullText

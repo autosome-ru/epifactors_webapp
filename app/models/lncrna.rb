@@ -1,4 +1,4 @@
-class Lncrna < ActiveRecord::Base  
+class Lncrna < ApplicationRecord
   searchable_attributes = [
       :hgnc_symbol, :hgnc_id, :alternative_names, :hgnc_name, 
       :gene_id, :gene_tag, :gene_desc, 

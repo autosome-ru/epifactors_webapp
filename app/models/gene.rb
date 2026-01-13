@@ -1,4 +1,4 @@
-class Gene < ActiveRecord::Base
+class Gene < ApplicationRecord
   searchable_attributes = [
     :hgnc_symbol, :hgnc_id, :hgnc_name, :gene_id, :uniprot_ac, :uniprot_id,
     :domain, :mgi_symbol, :mgi_id, :uniprot_ac_mm, :uniprot_id_mm, :gene_tag,
