@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~>5.2.0'
+gem 'rails', '~> 6.0.0'
 gem 'bigdecimal', '1.4.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -36,6 +36,8 @@ gem 'unicorn'
 # Use debugger
 # gem 'byebug', group: [:development, :test]
 
+gem "webpacker"
+
 group :development do
   gem "listen"
   gem "better_errors"
@@ -47,17 +49,19 @@ end
 gem 'rubyzip', '>=1.3.0'
 gem 'rubyXL'
 gem 'haml-rails'
-gem 'jquery-tablesorter', '~>1.22.0' # '~> 1.16.5' # tablesorter 2.19
+gem 'jquery-tablesorter', '~>1.27.0'
 gem 'select2-rails', '~>3.5'
 
 gem 'therubyracer'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git', :ref => "1d93c5a77049b3d21d17c847ad0531d7714fa229" #, branch: 'bootstrap3'
+gem 'twitter-bootstrap-rails' #, :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git', :ref => "1d93c5a77049b3d21d17c847ad0531d7714fa229" #, branch: 'bootstrap3'
+gem "font-awesome-less"
 gem 'draper'
 # gem 'pg'
 gem 'actionpack-action_caching'
 gem "json"
 gem 'net-http'
+gem 'nokogiri', '~> 1.15.0'
 
 group :development, :test do
   # Draw DB diagrams (https://github.com/preston/railroady)
@@ -69,3 +73,5 @@ end
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+gem 'concurrent-ruby', '1.3.4'
+gem 'sprockets', '~> 3.0'
