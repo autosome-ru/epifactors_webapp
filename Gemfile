@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~>5.1.0'
+gem 'rails', '~>5.2.0'
 gem 'bigdecimal', '1.4.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -37,6 +37,7 @@ gem 'unicorn'
 # gem 'byebug', group: [:development, :test]
 
 group :development do
+  gem "listen"
   gem "better_errors"
   gem "binding_of_caller"
 
@@ -55,14 +56,16 @@ gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-boot
 gem 'draper'
 # gem 'pg'
 gem 'actionpack-action_caching'
-gem "json", ">= 2.3.0"
+gem "json"
 gem 'net-http'
-gem 'tilt', '~> 1.3'
 
 group :development, :test do
   # Draw DB diagrams (https://github.com/preston/railroady)
   gem 'railroady'
   # or alternatively (https://github.com/voormedia/rails-erd)
   # gem 'rails-erd'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '>= 2.0'
 end
+
+# Reduces boot times through caching; required in config/boot.rb
+gem "bootsnap", require: false
