@@ -52,10 +52,10 @@ gem 'haml-rails'
 gem 'jquery-tablesorter', '~>1.27.0'
 gem 'select2-rails', '~>3.5'
 
-gem 'therubyracer'
-gem 'less-rails'
-gem 'twitter-bootstrap-rails' #, :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git', :ref => "1d93c5a77049b3d21d17c847ad0531d7714fa229" #, branch: 'bootstrap3'
-gem "font-awesome-less"
+# gem 'therubyracer'
+# gem 'less-rails'
+# gem 'twitter-bootstrap-rails' #, :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git', :ref => "1d93c5a77049b3d21d17c847ad0531d7714fa229" #, branch: 'bootstrap3'
+# gem "font-awesome-less"
 gem 'draper'
 # gem 'pg'
 gem 'actionpack-action_caching'

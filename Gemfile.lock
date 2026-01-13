@@ -74,7 +74,6 @@ GEM
       msgpack (~> 1.2)
     builder (3.3.0)
     coderay (1.1.3)
-    commonjs (0.2.7)
     concurrent-ruby (1.3.4)
     crass (1.0.6)
     date (3.5.1)
@@ -89,8 +88,6 @@ GEM
     erubi (1.13.1)
     execjs (2.10.0)
     ffi (1.17.3)
-    font-awesome-less (4.7.0)
-      less (>= 2.4.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     haml (6.4.0)
@@ -115,13 +112,6 @@ GEM
       railties (>= 3.2)
     json (2.3.1)
     kgio (2.11.2)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
-    less-rails (4.0.0)
-      actionpack (>= 4)
-      less (~> 2.6.0)
-      sprockets (>= 2)
-    libv8 (3.16.14.19)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -197,7 +187,6 @@ GEM
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     rdoc (6.3.2)
-    ref (2.0.0)
     request_store (1.7.0)
       rack (>= 1.4)
     ruby2_keywords (0.0.5)
@@ -233,18 +222,10 @@ GEM
     sqlite3 (1.7.3)
       mini_portile2 (~> 2.8.0)
     temple (0.10.4)
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.7.0)
     timeout (0.6.0)
-    twitter-bootstrap-rails (5.1.0)
-      actionpack (>= 5.0, < 9.0)
-      execjs (~> 2.7)
-      less-rails (>= 3.0, < 5.0)
-      railties (>= 5.0, < 9.0)
     tzinfo (1.2.11)
       thread_safe (~> 0.1)
     uglifier (4.1.20)
@@ -280,13 +261,11 @@ DEPENDENCIES
   bootsnap
   concurrent-ruby (= 1.3.4)
   draper
-  font-awesome-less
   haml-rails
   jbuilder (~> 2.11.5)
   jquery-rails
   jquery-tablesorter (~> 1.27.0)
   json
-  less-rails
   listen
   net-http
   nokogiri (~> 1.15.0)
@@ -300,8 +279,6 @@ DEPENDENCIES
   spring
   sprockets (~> 3.0)
   sqlite3
-  therubyracer
-  twitter-bootstrap-rails
   uglifier (>= 1.3.0)
   unicorn
   web-console (>= 2.0)

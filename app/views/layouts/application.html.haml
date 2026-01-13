@@ -2,8 +2,17 @@
 %html
   %head
     %title= page_title
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+    / Ваши старые стили (sprockets) — оставляем
+    = stylesheet_link_tag 'application', media: 'all'
+
+    / Bootstrap CSS из Webpacker (так как мы импортируем bootstrap.css в pack)
+    = stylesheet_pack_tag 'application', media: 'all'
+
+    / Bootstrap + jQuery из Webpacker
+    = javascript_pack_tag 'application', defer: true
+
+    / Ваши старые JS из sprockets — тоже defer, чтобы порядок был предсказуемый
+    = javascript_include_tag 'application', defer: true
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
@@ -21,22 +30,44 @@
 
   %body
     %header
-      = nav_bar responsive: true  do
-        = menu_group do
-          = menu_item 'Home', root_path
-          = menu_item 'Proteins', genes_path, data: {toggle: 'tooltip', placement: 'right', title: 'Please note that the whole table may take a few seconds to load.'}, class: 'has-tooltip'
-          = menu_item 'Сomplexes', protein_complexes_path
-          = menu_item 'Histones and Protamines', histones_path
-          = menu_item 'lncRNAs', lncrnas_path
-          = menu_item 'Expression', samples_path, data: {toggle: 'tooltip', placement: 'right', title: 'Please note that the whole table may take a few seconds to load.'}, class: 'has-tooltip'
-          = menu_item 'Docs and Downloads', epigene_description_path
-        = form_tag epigene_search_path, class: 'pull-right navbar-search navbar-form', role: 'search' do
-          .form-group
-            = label_tag do
-              Search:
-              = text_field_tag 'search', params[:search]
-          = select_tag 'kind', options_for_select({'Genes' => :genes, 'Сomplexes' => :protein_complexes, 'Histones and protamines' => :histones, 'lncRNAs' => :lncrnas},  [:genes, :protein_complexes, :histones, :lncrnas].include?(params[:controller].to_sym) ? params[:controller].to_sym : :genes)
-          = submit_tag 'Search'
+      %nav.navbar.navbar-default{ role: "navigation" }
+        .container
+          .navbar-header
+            %button.navbar-toggle.collapsed{
+              type: "button",
+              data: { toggle: "collapse", target: "#main-navbar" },
+              aria: { expanded: "false" }
+            }
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+
+            / = link_to "EpigeneDB", root_path, class: "navbar-brand"
+
+          #main-navbar.collapse.navbar-collapse
+            %ul.nav.navbar-nav
+              %li= link_to "Home", root_path
+              %li
+                = link_to "Proteins", genes_path,
+                  data: { toggle: "tooltip", placement: "right", title: "Please note that the whole table may take a few seconds to load." },
+                  class: "has-tooltip"
+              %li= link_to "Сomplexes", protein_complexes_path
+              %li= link_to "Histones and Protamines", histones_path
+              %li= link_to "lncRNAs", lncrnas_path
+              %li
+                = link_to "Expression", samples_path,
+                  data: { toggle: "tooltip", placement: "right", title: "Please note that the whole table may take a few seconds to load." },
+                  class: "has-tooltip"
+              %li= link_to "Docs and Downloads", epigene_description_path
+
+            = form_tag epigene_search_path, class: "pull-right navbar-search navbar-form", role: "search" do
+              .form-group
+                = label_tag do
+                  Search:
+                  = text_field_tag "search", params[:search] #, class: "form-control"
+              = select_tag "kind", options_for_select({ "Genes" => :genes, "Сomplexes" => :protein_complexes, "Histones and protamines" => :histones, "lncRNAs" => :lncrnas }, [:genes, :protein_complexes, :histones, :lncrnas].include?(params[:controller].to_sym) ? params[:controller].to_sym : :genes) #, class: "form-control"
+              = submit_tag "Search" #, class: "btn btn-default"
     %div{class: ['container-fluid', "controller-#{params[:controller]}", "action-#{params[:action]}"] }
       = yield
     %footer
