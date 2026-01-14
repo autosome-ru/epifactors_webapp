@@ -26,7 +26,7 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   # select2(jquery) fix for IE8
-  config.assets.js_compressor = Uglifier.new(output: {ascii_only: true, quote_keys: true})
+  config.assets.js_compressor = Uglifier.new(output: {ascii_only: true, quote_keys: true}, harmony: true)
   # config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 

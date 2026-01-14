@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require select2
-
 //= require jquery-tablesorter/jquery.tablesorter
 //= require jquery-tablesorter/widgets/widget-columns
 //= require jquery-tablesorter/widgets/widget-filter
