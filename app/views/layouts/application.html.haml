@@ -2,17 +2,10 @@
 %html
   %head
     %title= page_title
-    / Ваши старые стили (sprockets) — оставляем
-    = stylesheet_link_tag 'application', media: 'all'
-
-    / Bootstrap CSS из Webpacker (так как мы импортируем bootstrap.css в pack)
-    = stylesheet_pack_tag 'application', media: 'all'
-
-    / Bootstrap + jQuery из Webpacker
-    = javascript_pack_tag 'application', defer: true
-
-    / Ваши старые JS из sprockets — тоже defer, чтобы порядок был предсказуемый
-    = javascript_include_tag 'application', defer: true
+    = stylesheet_link_tag 'application', media: 'all' # sprockets
+    = stylesheet_pack_tag 'application', media: 'all' # webpack
+    = javascript_pack_tag 'application', defer: true  # webpack
+    = javascript_include_tag 'application', defer: true # sprockets (after webpack)
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")

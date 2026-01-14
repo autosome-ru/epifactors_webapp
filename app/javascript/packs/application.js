@@ -20,11 +20,13 @@ window.$ = $
 window.jQuery = $
 
 import 'bootstrap/dist/js/bootstrap'
-
 import 'bootstrap/dist/css/bootstrap.css'
 import { initBootstrapWidgets } from '../bootstrap_init';
 
-// Если хотите — можно сюда же перенести и свои стили (опционально):
+import 'select2'
+import 'select2/dist/css/select2.css'
+import 'select2-bootstrap-theme/dist/select2-bootstrap.css'
+
 // import '../../assets/stylesheets/whole_project.css.scss'
 
 console.log('Hello World from Webpacker')
