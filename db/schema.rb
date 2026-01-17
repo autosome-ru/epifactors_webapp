@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220321234950) do
+ActiveRecord::Schema[6.1].define(version: 20220321234950) do
 
   create_table "genes", force: :cascade do |t|
     t.string   "hgnc_symbol"
