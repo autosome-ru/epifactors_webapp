@@ -92,7 +92,7 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
       rouge (>= 1.0.0)
-    bigdecimal (1.4.1)
+    bigdecimal (4.0.1)
     bindex (0.8.1)
     binding_of_caller (1.0.1)
       debug_inspector (>= 1.2.0)
@@ -312,7 +312,7 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   better_errors
-  bigdecimal (= 1.4.1)
+  bigdecimal
   binding_of_caller
   bootsnap
   concurrent-ruby (= 1.3.4)
