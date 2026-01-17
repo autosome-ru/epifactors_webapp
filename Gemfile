@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
+gem "sprockets-rails"
 gem 'bigdecimal', '1.4.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
