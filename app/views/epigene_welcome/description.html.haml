@@ -1,7 +1,7 @@
 .row-fluid
   .col-12
     %h4 Epifactors database description
-    %h5 Current version #{EpigeneDB::DATA_VERSION} (September 10, 2024)
+    %h5 Current version #{Epifactors::DATA_VERSION} (September 10, 2024)
     %p
       Database statistics:
       %ul
@@ -17,20 +17,20 @@
           Database description
           = surround '(', ')' do
             = succeed ',' do
-              = link_to '.pdf', "/public_data/v#{EpigeneDB::DATA_VERSION}/Database_entries.pdf"
-            = link_to '.doc', "/public_data/v#{EpigeneDB::DATA_VERSION}/Database_entries.doc"
+              = link_to '.pdf', "/public_data/v#{Epifactors::DATA_VERSION}/Database_entries.pdf"
+            = link_to '.doc', "/public_data/v#{Epifactors::DATA_VERSION}/Database_entries.doc"
         %li
           Database structure
           = surround '(', ')' do
             = succeed ',' do
-              = link_to 'png', "/public_data/v#{EpigeneDB::DATA_VERSION}/database_structure.png"
-            = link_to 'svg', "/public_data/v#{EpigeneDB::DATA_VERSION}/database_structure.svg"
+              = link_to 'png', "/public_data/v#{Epifactors::DATA_VERSION}/database_structure.png"
+            = link_to 'svg', "/public_data/v#{Epifactors::DATA_VERSION}/database_structure.svg"
         %li
           Standard terms used
           = surround '(', ')' do
             = succeed ',' do
-              = link_to '.pdf', "/public_data/v#{EpigeneDB::DATA_VERSION}/Standard_terms.pdf"
-            = link_to '.doc', "/public_data/v#{EpigeneDB::DATA_VERSION}/Standard_terms.doc"
+              = link_to '.pdf', "/public_data/v#{Epifactors::DATA_VERSION}/Standard_terms.pdf"
+            = link_to '.doc', "/public_data/v#{Epifactors::DATA_VERSION}/Standard_terms.doc"
         %li= link_to 'Querying database', '/description/queries'
     %p
       %b Downloads:
@@ -45,26 +45,26 @@
           Table of all proteins
           = surround '(', ')' do
             = succeed ',' do
-              = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_main.csv"
-            = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_main.xlsx"
+              = link_to '.csv', "/public_data/v#{Epifactors::DATA_VERSION}/EpiGenes_main.csv"
+            = link_to '.xlsx', "/public_data/v#{Epifactors::DATA_VERSION}/EpiGenes_main.xlsx"
         %li
           Table of all protein complexes
           = surround '(', ')' do
             = succeed ',' do
-              = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_complexes.csv"
-            = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_complexes.xlsx"
+              = link_to '.csv', "/public_data/v#{Epifactors::DATA_VERSION}/EpiGenes_complexes.csv"
+            = link_to '.xlsx', "/public_data/v#{Epifactors::DATA_VERSION}/EpiGenes_complexes.xlsx"
         %li
           Table of all histones and protamines
           = surround '(', ')' do
             = succeed ',' do
-              = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_histones.csv"
-            = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_histones.xlsx"
+              = link_to '.csv', "/public_data/v#{Epifactors::DATA_VERSION}/EpiGenes_histones.csv"
+            = link_to '.xlsx', "/public_data/v#{Epifactors::DATA_VERSION}/EpiGenes_histones.xlsx"
         %li
           Table of all lncRNAs
           = surround '(', ')' do
             = succeed ',' do
-              = link_to '.csv', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_lncrnas.csv"
-            = link_to '.xlsx', "/public_data/v#{EpigeneDB::DATA_VERSION}/EpiGenes_lncrnas.xlsx"
+              = link_to '.csv', "/public_data/v#{Epifactors::DATA_VERSION}/EpiGenes_lncrnas.csv"
+            = link_to '.xlsx', "/public_data/v#{Epifactors::DATA_VERSION}/EpiGenes_lncrnas.xlsx"
 
         %li= link_to 'Tables of the EpiFactors v2.0', '/public_data/v2.0.zip'
         %li= link_to 'Tables of the EpiFactors v1.7.3', '/public_data/v1.7.3.zip'
