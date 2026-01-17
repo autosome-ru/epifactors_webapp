@@ -30,6 +30,9 @@ gem 'spring',        group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
+gem "rack", "~> 2.2"
+gem "rack-session", "~> 1.0"
+gem "rackup", "~> 1.0"
 gem 'unicorn'
 
 # Use Capistrano for deployment
