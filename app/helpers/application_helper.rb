@@ -50,7 +50,7 @@ module ApplicationHelper
 
   # "abc, def" --> "{decorated abc}, {decorated def}"
   def decorate_list(str, splitter: ", ", joiner: ", ", &decorating_block)
-    str.split(splitter).map(&decorating_block).join(joiner).html_safe
+    (str || '').split(splitter).map(&decorating_block).join(joiner).html_safe
   end
 
   def uniprot_id_or_ac_link(id)
