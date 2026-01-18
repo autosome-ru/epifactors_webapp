@@ -1,4 +1,4 @@
-class EpigeneWelcomeController < ApplicationController
+class EpifactorsController < ApplicationController
   def index
   end
 

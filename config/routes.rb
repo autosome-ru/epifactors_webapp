@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'epigene_welcome#index'
-  get '/description/queries' => 'epigene_welcome#description_queries', as: :description_queries
-  get 'epifactors/' => 'epigene_welcome#index', as: :epigene_index
-  get 'epigenes/' => 'epigene_welcome#index'
-  get 'description' => 'epigene_welcome#description', as: :epigene_description
-  post 'epifactors/search' => 'epigene_welcome#search', as: :epigene_search
-  post 'epigenes/search' => 'epigene_welcome#search'
+  root 'epifactors#index'
+  get '/description/queries' => 'epifactors#description_queries', as: :description_queries
+  get 'epifactors/' => 'epifactors#index', as: :epigene_index
+  get 'description' => 'epifactors#description', as: :epifactors_description
+  post 'epifactors/search' => 'epifactors#search', as: :epifactors_search
 
   resources :genes, only: [:show, :index]
   get 'genes/by_hgnc/:hgnc_symbol', to: 'genes#show_by_hgnc', as: 'gene_by_hgnc'
