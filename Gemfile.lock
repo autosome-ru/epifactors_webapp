@@ -172,7 +172,7 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.15.7)
+    nokogiri (1.19.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pp (0.6.3)
@@ -319,7 +319,7 @@ DEPENDENCIES
   json
   listen
   net-http
-  nokogiri (~> 1.15.0)
+  nokogiri
   rack (~> 2.2)
   rack-session (~> 1.0)
   rackup (~> 1.0)

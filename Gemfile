@@ -65,7 +65,7 @@ gem 'draper'
 gem 'actionpack-action_caching'
 gem "json"
 gem 'net-http'
-gem 'nokogiri', '~> 1.15.0'
+gem 'nokogiri'
 
 group :development, :test do
   # Draw DB diagrams (https://github.com/preston/railroady)
