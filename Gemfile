@@ -33,7 +33,6 @@ gem 'spring',        group: :development
 gem "rack", "~> 2.2"
 gem "rack-session", "~> 1.0"
 gem "rackup", "~> 1.0"
-#gem 'unicorn'
 gem 'puma'
 
 # Use Capistrano for deployment
